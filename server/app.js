@@ -20,7 +20,9 @@ app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 })
 
-// TODO: Add your routers here
+// Backend routes
+app.use("/auth", require("./auth"));
+app.use("/api", require("./api"));
 
 // Error handling middleware
 app.use((error, req, res, next) => {
