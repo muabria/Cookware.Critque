@@ -29,6 +29,7 @@ model Equipment {
     id Int @id @default(autoincrement())
     name String @unique
     description String
+    //Image on front-end?
     posts Post[]
 }
 
