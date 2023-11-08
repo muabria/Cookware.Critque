@@ -10,9 +10,9 @@ async function hash(pass) {
 
 //fill these in
 const mvPass = hash("MyF@vor1te");
-const bmPass = hash();
-const hmPass = hash();
-const kcPass = hash();
+const bmPass = hash("F@ncySh0es");
+const hmPass = hash("Ded1c@tion");
+const kcPass = hash("De$ignCentra1");
 
 async function seed() {
     console.log("Seeding the database.");
@@ -103,7 +103,7 @@ async function seed() {
         })
 
         //Equipment entries
-        
+
 
         
         //Category entries
