@@ -2,10 +2,9 @@
 const express = require('express');
 const authRouter = express.Router();
 
+const { requireUser } = require("./utils")
 const jwt = require("jsonwebtoken")
 const { JWT_SECRET } = process.env
-
-const { requireUser } = require('./utils');
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
@@ -14,11 +13,11 @@ const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
 //<--------------------------------GET ALL USERS-------------------------------->
-//GET /auth/users
+//GET /auth/user
 authRouter.get("/user", async (req, res, next) => {
     try {
         const users = await prisma.user.findMany();
-        res.status(200).res.send(users);
+        res.send(users);
     } catch (error) {
         next(error);
     }
@@ -39,7 +38,7 @@ authRouter.post("/signup", async (req, res, next) => {
         });
         delete user.password
         const token = jwt.sign({ id: user.id, username }, process.env.JWT_SECRET);
-        res.status(200).send({ user, token });
+        res.send({ user, token });
     } catch (error) {
         next(error)
     }
@@ -64,7 +63,20 @@ authRouter.post("/login", async (req, res, next) => {
 });
 
 //<--------------------------------GET USER PROFILE-------------------------------->
-//GET /auth/user/:id
+//GET /auth/user/account
+authRouter.get("/account", requireUser, async (req, res, next) => {
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                id: req.user.id
+            }
+        });
+        delete user.password
+        res.send(user);
+    } catch (error) {
+        next(error)
+    }
+});
 
 //<--------------------------------DELETE USER-------------------------------->
 //NOTE: ONLY FOR ADMIN

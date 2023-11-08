@@ -2,7 +2,7 @@
 const express = require('express');
 const apiRouter = express.Router();
 
-const requireUser = require('../auth/utils');
+const { requireUser } = require('../auth/utils');
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
@@ -38,7 +38,7 @@ apiRouter.get("/equipment/:id", async (req, res, next) => {
 apiRouter.get("/review", async (req, res, next) => {
     try {
         const review = await prisma.post.findMany();
-        res.status(200).res.send(review);
+        res.send(review);
     } catch (error) {
         next(error);
     }
@@ -53,7 +53,7 @@ apiRouter.get("/review/:id", async (req, res, next) => {
                 id: Number(req.params.id)
             }
         });
-        res.status(200).res.send(review);
+        res.send(review);
     } catch (error) {
         next(error);
     }
@@ -63,19 +63,19 @@ apiRouter.get("/review/:id", async (req, res, next) => {
 //POST /api/review
 //NOTE: Need to have requireUser added. 
 //Prisma error will be: arguement user is missing
-apiRouter.post("/review", requireUser, async(req, res, next) => {
-    try{
-const { title, content, rating, equipment } = req.body;
-const newReview = await prisma.post.create({
-    data: {
-        title,
-        content, 
-        rating, 
-        equipment,
-    }
-})
-res.status(200).res.send(newReview)
-    }catch (error){
+apiRouter.post("/review", requireUser, async (req, res, next) => {
+    try {
+        const { title, content, rating, equipment } = req.body;
+        const newReview = await prisma.post.create({
+            data: {
+                title,
+                content,
+                rating,
+                equipment,
+            }
+        })
+        res.status(200).res.send(newReview)
+    } catch (error) {
         next(error)
     }
 });
@@ -83,24 +83,24 @@ res.status(200).res.send(newReview)
 //<--------------------------------UPDATE REVIEW-------------------------------->
 //PATCH /api/review/:id
 //NOTE: Need to have requireUser added
-apiRouter.patch("/review/:id", async (req, res, next) => {
-   try {
-    const { title, content, rating, equipment } = req.body;
-    const updatedReview = await prisma.post.update({
-        where: {
-            id: Number(req.params.id)
-        },
-        data: {
-            title, 
-            content, 
-            rating,
-            equipment
-        }
-    })
-    res.status(200).res.send(updatedReview)
-   } catch(error){
-    next(error);
-   }
+apiRouter.patch("/review/:id", requireUser, async (req, res, next) => {
+    try {
+        const { title, content, rating, equipment } = req.body;
+        const updatedReview = await prisma.post.update({
+            where: {
+                id: Number(req.params.id)
+            },
+            data: {
+                title,
+                content,
+                rating,
+                equipment
+            }
+        })
+        res.send(updatedReview)
+    } catch (error) {
+        next(error);
+    }
 });
 
 //<--------------------------------DELETE REVIEW-------------------------------->
