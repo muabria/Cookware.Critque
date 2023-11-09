@@ -1,8 +1,14 @@
+import RegisterForm from "./components/RegisterForm";
+import LoginForm from "./components/LoginForm";
+import NavBar from "./components/NavBar";
+
 const App = () => {
 
     return (
       <div className="App">
-        Hello world!
+        <NavBar />
+        <RegisterForm />
+        <LoginForm />
       </div>
     );
   }
