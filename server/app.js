@@ -14,14 +14,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '../dist')))
 
+//Authorization middleware (in ./auth/utils)
 app.use(authMiddleware);
 
+//Test route
 app.get("/test", (req, res, next) => {
-  res.send("Test route");
+    res.send("Test route");
 });
 
 app.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
 })
 
 // Backend routes
@@ -31,7 +33,7 @@ app.use("/api", require("./api"));
 // Error handling middleware
 app.use((error, req, res, next) => {
     console.error('SERVER ERROR: ', error);
-    if(res.statusCode < 400) {
+    if (res.statusCode < 400) {
         res.status(500);
     }
     res.send({
@@ -49,6 +51,6 @@ app.get('*', (req, res) => {
         message: 'No route found for the requested URL',
     });
 });
-  
+
 
 module.exports = app;

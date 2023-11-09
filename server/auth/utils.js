@@ -4,16 +4,16 @@ const { JWT_SECRET } = process.env
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
+//<--------------------------------AUTHORIZATION MIDDLEWARE-------------------------------->
 const authMiddleware = async (req, res, next) => {
     const prefix = 'Bearer ';
     const auth = req.header('Authorization');
-  
+
     if (!auth) {
       // nothing to see here
       next();
     } else if (auth.startsWith(prefix)) {
       const token = auth.slice(prefix.length);
-  
       try {
         const { id } = jwt.verify(token, JWT_SECRET);
   
@@ -40,7 +40,9 @@ const authMiddleware = async (req, res, next) => {
       });
     }
   };
-  
+
+//<--------------------------------NO USER ERROR-------------------------------->
+//If there is no user in a required user action, send error.
 const requireUser = (req, res, next) => {
     if(!req.user) {
         res.status(401).send("Sorry, you need an account to do that.")

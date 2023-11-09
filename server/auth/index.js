@@ -2,7 +2,7 @@
 const express = require('express');
 const authRouter = express.Router();
 
-const { requireUser } = require("./utils")
+const { requireUser, authMiddleware } = require("./utils")
 const jwt = require("jsonwebtoken")
 const { JWT_SECRET } = process.env
 
@@ -13,10 +13,13 @@ const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
 //<--------------------------------GET ALL USERS-------------------------------->
-//GET /auth/user
-authRouter.get("/user", async (req, res, next) => {
+//GET /auth/users
+authRouter.get("/users", async (req, res, next) => {
     try {
-        const users = await prisma.user.findMany();
+        const user = prisma.user
+        const users = await user.findMany();
+
+        delete user.password
         res.send(users);
     } catch (error) {
         next(error);
@@ -51,10 +54,12 @@ authRouter.post("/login", async (req, res, next) => {
         const { username, password } = req.body;
         const user = await prisma.user.findUnique({
             where: {
-                username: username
+                username: username,
             }
         });
+
         delete user.password
+
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
         res.send({ user, token })
     } catch (error) {
@@ -64,7 +69,7 @@ authRouter.post("/login", async (req, res, next) => {
 
 //<--------------------------------GET USER PROFILE-------------------------------->
 //GET /auth/user/account
-authRouter.get("/account", requireUser, async (req, res, next) => {
+authRouter.get("/account", authMiddleware, async (req, res, next) => {
     try {
         const user = await prisma.user.findUnique({
             where: {

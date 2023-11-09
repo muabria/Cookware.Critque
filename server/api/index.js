@@ -35,7 +35,7 @@ apiRouter.get("/equipment/:id", async (req, res, next) => {
 
 //<--------------------------------GET ALL REVIEWS-------------------------------->
 //GET /api/review
-apiRouter.get("/review", async (req, res, next) => {
+apiRouter.get("/reviews", async (req, res, next) => {
     try {
         const review = await prisma.post.findMany();
         res.send(review);
@@ -48,6 +48,11 @@ apiRouter.get("/review", async (req, res, next) => {
 //GET /api/review/:id
 apiRouter.get("/review/:id", async (req, res, next) => {
     try {
+        const user = await prisma.user.findUnique({
+            where: {
+                id: req.user.id
+            }
+        });
         const review = await prisma.post.findUnique({
             where: {
                 id: Number(req.params.id)
@@ -65,18 +70,19 @@ apiRouter.get("/review/:id", async (req, res, next) => {
 //Prisma error will be: arguement user is missing
 apiRouter.post("/review", requireUser, async (req, res, next) => {
     try {
-        const { title, content, rating, equipment } = req.body;
+        const { title, content, rating, equipment } = req.body
         const newReview = await prisma.post.create({
             data: {
-                title,
-                content,
-                rating,
-                equipment,
-            }
-        })
-        res.status(200).res.send(newReview)
+                title, 
+                content, 
+                rating, 
+                equipment, 
+                user: { connect: { id: req.user.id } }
+            },
+        });
+        res.status(201).send(newReview);
     } catch (error) {
-        next(error)
+        next(error);
     }
 });
 
