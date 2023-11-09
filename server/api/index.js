@@ -64,22 +64,29 @@ apiRouter.get("/review/:id", async (req, res, next) => {
     }
 });
 
+//<--------------------------------ADD NEW EQUIPMENT-------------------------------->
+//POST /api/equipment/:id
+
+
 //<--------------------------------MAKE NEW REVIEW-------------------------------->
 //POST /api/review
 //NOTE: Need to have requireUser added. 
 //Prisma error will be: arguement user is missing
 apiRouter.post("/review", requireUser, async (req, res, next) => {
     try {
-        const { title, content, rating, equipment } = req.body
+
+        const { title, content, rating, equipment, name, description, image, category, brand, purchaseLink, priceRating } = req.body
         const newReview = await prisma.post.create({
             data: {
-                title, 
-                content, 
-                rating, 
-                equipment, 
-                user: { connect: { id: req.user.id } }
+                user: { connect: { id: req.user.id } },
+                title,
+                content,
+                rating,
+                equipment: { connect: { name: req.equipment.name } }
             },
         });
+
+
         res.status(201).send(newReview);
     } catch (error) {
         next(error);
