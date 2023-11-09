@@ -49,23 +49,30 @@ authRouter.post("/signup", async (req, res, next) => {
 
 //<--------------------------------LOGIN USERS-------------------------------->
 //POST /auth/login
-authRouter.post("/login", async (req, res, next) => {
-    try {
-        const { username, password } = req.body;
-        const user = await prisma.user.findUnique({
-            where: {
-                username: username,
+authRouter.post("/login", authMiddleware, async (req, res, next) => {
+    
+        try {
+            const user = await prisma.user.findUnique({
+                where: { username: req.body.username },
+            });
+
+            const validPassword = await bcrypt.compare(
+                req.body.password,
+                user?.password ?? ""
+            );
+
+            //Check user
+            if (!user || !validPassword) {
+                return res.status(401).send("Invalid login credentials.");
             }
-        });
 
-        delete user.password
-
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
-        res.send({ user, token })
-    } catch (error) {
-        next(error)
-    }
-});
+            //Create token
+            const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
+            res.send({ user, token });
+        } catch (error) {
+            next(error);
+        }
+    })
 
 //<--------------------------------GET USER PROFILE-------------------------------->
 //GET /auth/user/account
