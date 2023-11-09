@@ -64,9 +64,11 @@ authRouter.post("/login", authMiddleware, async (req, res, next) => {
             user?.password ?? ""
         );
 
-        //Check user
-        if (!user || !validPassword) {
-            return res.status(401).send("Invalid login credentials.");
+        //Check user and password
+        if (!user) {
+            return res.status(401).send("There is no user with that username.");
+        } else if ( !validPassword) {
+            return res.status(401).send("Incorrect password.");
         }
 
         //Create token
