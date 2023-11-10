@@ -98,12 +98,16 @@ apiRouter.post("/review", requireUser, async (req, res, next) => {
         const { title, content, rating, equipment } = req.body
         const newReview = await prisma.post.create({
             data: {
+                user: { connect: { id: req.user.id } },
                 title,
                 content,
                 rating,
                 equipment: { connect: { id: equipment.id } },
             },
-            include: { equipment: true } 
+            include: { 
+                user: true, 
+                equipment: true
+            } 
         });
         res.status(201).send(newReview);
     } catch (error) {
