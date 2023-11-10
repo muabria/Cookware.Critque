@@ -1,6 +1,8 @@
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
+const { authMiddleware } = require("./auth/utils");
+
 const app = express();
 
 // Logging middleware
@@ -12,20 +14,26 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '../dist')))
 
+//Authorization middleware (in ./auth/utils)
+app.use(authMiddleware);
+
+//Test route
 app.get("/test", (req, res, next) => {
-  res.send("Test route");
+    res.send("Test route");
 });
 
 app.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
 })
 
-// TODO: Add your routers here
+// Backend routes
+app.use("/auth", require("./auth"));
+app.use("/api", require("./api"));
 
 // Error handling middleware
 app.use((error, req, res, next) => {
     console.error('SERVER ERROR: ', error);
-    if(res.statusCode < 400) {
+    if (res.statusCode < 400) {
         res.status(500);
     }
     res.send({
@@ -43,6 +51,6 @@ app.get('*', (req, res) => {
         message: 'No route found for the requested URL',
     });
 });
-  
+
 
 module.exports = app;
