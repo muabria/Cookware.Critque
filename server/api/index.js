@@ -102,7 +102,7 @@ apiRouter.post("/review", requireUser, async (req, res, next) => {
                 title,
                 content,
                 rating,
-                equipment: { connect: { id: equipment.id } },
+                equipment: { connect: { name: equipment.name } },
             },
             include: { 
                 user: true, 
