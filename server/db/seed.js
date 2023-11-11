@@ -3,16 +3,20 @@ const prisma = require("./client");
 const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
-async function hash(pass) {
-    const hashedPassword = await bcrypt.hash(pass, SALT_COUNT);
-    return hashedPassword;
+let mvPass = "";
+let bmPass = "";
+let hmPass = "";
+let kcPass = "";
+
+async function hash() {
+    mvPass = await bcrypt.hash("MyF@vor1te", SALT_COUNT);
+    bmPass = await bcrypt.hash("F@ncySh0es", SALT_COUNT);
+    hmPass = await bcrypt.hash("Ded1c@tion", SALT_COUNT);
+    kcPass = await bcrypt.hash("De$ignCentra1", SALT_COUNT);
+    return (mvPass, bmPass, hmPass, kcPass);
 }
 
-//fill these in
-const mvPass = hash("MyF@vor1te");
-const bmPass = hash("F@ncySh0es");
-const hmPass = hash("Ded1c@tion");
-const kcPass = hash("De$ignCentra1");
+hash();
 
 async function seed() {
     console.log("Seeding the database.");
@@ -92,7 +96,7 @@ async function seed() {
             data: {
                 username: 'mvandell',
                 email: 'marisavandellos@gmail.com',
-                password: mvPass.toString(),
+                password: mvPass,
                 isAdmin: true,
             },
 
