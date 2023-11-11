@@ -111,6 +111,31 @@ apiRouter.post("/review", requireUser, async (req, res, next) => {
     }
 });
 
+//<--------------------------------MAKE NEW COMMENT----------------------------->
+//POST /api/comment
+//NOTE: Need to have requireUser added. 
+apiRouter.post("/comment", requireUser, async (req, res, next) => {
+    try {
+        const { content, post } = req.body
+        const newComment = await prisma.comment.create({
+            data: {
+                user: {connect: {id: req.user.id}},
+                content,
+                post: {connect: {id: post.id}},
+            },
+            include: {
+                user: true,
+                post: true
+            }
+        });
+        res.status(201).send(newComment);
+    } catch (error) {
+        next(error);
+    }
+})
+
+
+
 //<--------------------------------UPDATE REVIEW-------------------------------->
 //PATCH /api/review/:id
 //NOTE: Need to have requireUser added
