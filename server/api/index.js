@@ -180,5 +180,22 @@ apiRouter.delete("/review/:id", requireUser, async (req, res, next) => {
     }
 })
 
+//<--------------------------------DELETE COMMENT-------------------------------->
+//NOTE: FOR INDIVIDUAL USER AND ADMIN
+//DELETE /api/comment/:id
+apiRouter.delete("/comment/:id", requireUser, async (req, res, next) => {
+    try {
+        const deletedComment = await prisma.comment.delete({
+            where: {id: +req.params.id},
+        });
+        if (deletedComment.userId !== req.user.id || !deletedComment) {
+            return res.status(404).send("Comment not found.");
+        }
+        res.send(deletedComment);
+    } catch (error) {
+        next(error);
+    }
+})
+
 
 module.exports = apiRouter;
