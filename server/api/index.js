@@ -163,6 +163,28 @@ apiRouter.patch("/review/:id", requireUser, async (req, res, next) => {
     }
 });
 
+
+//<--------------------------------UPDATE COMMENT-------------------------------->
+//PATCH /api/comment/:id
+//NOTE: Need to have requireUser added
+apiRouter.patch("/comment/:id", requireUser, async (req, res, next) => {
+    try {
+        const { content } = req.body;
+        const updatedComment = await prisma.comment.update({
+            where: {
+                id: Number(req.params.id)
+            },
+            data: {
+                content
+            }
+        })
+        res.send(updatedComment)
+    } catch (error) {
+        next(error);
+    }
+});
+
+
 //<--------------------------------DELETE REVIEW-------------------------------->
 //NOTE: FOR INDIVIDUAL USER AND ADMIN
 //DELETE /api/review/:id
@@ -175,6 +197,23 @@ apiRouter.delete("/review/:id", requireUser, async (req, res, next) => {
             return res.status(404).send("Review not found.");
         }
         res.send(deletedPost);
+    } catch (error) {
+        next(error);
+    }
+})
+
+//<--------------------------------DELETE COMMENT-------------------------------->
+//NOTE: FOR INDIVIDUAL USER AND ADMIN
+//DELETE /api/comment/:id
+apiRouter.delete("/comment/:id", requireUser, async (req, res, next) => {
+    try {
+        const deletedComment = await prisma.comment.delete({
+            where: {id: +req.params.id},
+        });
+        if (deletedComment.userId !== req.user.id || !deletedComment) {
+            return res.status(404).send("Comment not found.");
+        }
+        res.send(deletedComment);
     } catch (error) {
         next(error);
     }
