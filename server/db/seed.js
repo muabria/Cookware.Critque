@@ -9,10 +9,10 @@ let hmPass = "";
 let kcPass = "";
 
 async function hash() {
-    mvPass = await bcrypt.hash("MyF@vor1te", SALT_COUNT);
-    bmPass = await bcrypt.hash("F@ncySh0es", SALT_COUNT);
-    hmPass = await bcrypt.hash("Ded1c@tion", SALT_COUNT);
-    kcPass = await bcrypt.hash("De$ignCentra1", SALT_COUNT);
+    mvPass = await bcrypt.hashSync("MyF@vor1te", SALT_COUNT);
+    bmPass = await bcrypt.hashSync("F@ncySh0es", SALT_COUNT);
+    hmPass = await bcrypt.hashSync("Ded1c@tion", SALT_COUNT);
+    kcPass = await bcrypt.hashSync("De$ignCentra1", SALT_COUNT);
     return (mvPass, bmPass, hmPass, kcPass);
 }
 
