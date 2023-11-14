@@ -1,13 +1,14 @@
 import NavBar from "./NavBar"
+import Dashboard from "./UserDashboard/Dashboard"
 
 /*
 -NavBar
 
 */
 const HomePage = () => {
-    return(
+    return (
         <>
-    
+            <Dashboard />
         </>
     )
 }
