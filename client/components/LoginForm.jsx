@@ -10,20 +10,20 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
 
-// import { useRegisterMutation } from "../redux/api";
-// import { useSelector } from 'react-redux';
+import { useLoginMutation } from "../redux/api";
+import { useSelector } from 'react-redux';
 
 const LoginForm = () => {
-    // const [register] = useRegisterMutation();
-    // const token = useSelector((state) => state.token);
+    const [login] = useLoginMutation();
+    const token = useSelector((state) => state.auth.token);
     
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = async (event) => {
-        // event.preventDefault();
-        // register({ username, password, name, location }), 
-        // // console.log(token)
+        event.preventDefault();
+        await login({ username, password });
+        console.log("Success!")
     }
 
     return (
