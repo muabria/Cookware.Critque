@@ -3,10 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
+import store from './redux/store.js'
+
+import { Routes, Route } from "react-router-dom";
 // import Home from "./components/Home";
 // import Profile from "./components/Profile";
 // import Login from "./components/Login";
-// import Register from "./components/Register";
+import RegisterForm from "./components/RegisterForm.jsx";
+
 // import Equipment from "./components/Equipment";
 
 // TODO: Add React Router

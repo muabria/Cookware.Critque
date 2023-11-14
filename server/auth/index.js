@@ -98,4 +98,5 @@ authRouter.get("/account", authMiddleware, async (req, res, next) => {
 //<--------------------------------DELETE USER-------------------------------->
 //NOTE: ONLY FOR ADMIN
 //DELETE /auth/user/:id
+
 module.exports = authRouter;
