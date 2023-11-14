@@ -1,4 +1,5 @@
 import NavBar from "./NavBar"
+import SearchBar from "./SearchBard"
 import Dashboard from "./UserDashboard/Dashboard"
 
 /*
@@ -8,7 +9,7 @@ import Dashboard from "./UserDashboard/Dashboard"
 const HomePage = () => {
     return (
         <>
-            <Dashboard />
+           <SearchBar/>
         </>
     )
 }
