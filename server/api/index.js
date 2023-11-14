@@ -70,10 +70,10 @@ apiRouter.get("/review/:id", async (req, res, next) => {
 apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
     try {
         const comments = await prisma.comment.findMany({
-            where: {
-                userId: Number(req.params.id)
-            }
-        })
+            where: {userId: req.user.id},
+            include: {user: true}
+        });
+        res.send(comments);
     } catch (error) {
         next(error);
     }
