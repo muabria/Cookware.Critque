@@ -11,9 +11,18 @@ const SearchBar = ({ onSubmit }) => {
         return <div> Loading... </div>;
     }
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div>Error:{error.message}</div>;
+    } else {
+        // console.log(searchEquipment);
+        // console.log(data);
     }
-    console.log(data);
+
+    const filteredEquipment = () => data.filter((equipment) =>
+    equipment.name.toLowerCase().includes(searchEquipment.toLowerCase())
+  );
+  console.log(filteredEquipment(searchEquipment));
+  
+
 
     return (
         <>
