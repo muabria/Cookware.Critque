@@ -20,7 +20,7 @@ const NavBar = () => {
 
     return (
         <>
-            <AppBar position="static" sx={{ p: 1, backgroundColor: "#EFEFEF" }}>
+            <AppBar position="static" sx={{ p: 1, backgroundColor: "transparent" }}>
                 <Stack direction="row" useFlexGap flexWrap="wrap">
                     {/*-----------------------------------App title--------------------------------------------- */}
                     <Typography variant="h3" sx={{ color: "#000000", flexGrow: 1 }}>
