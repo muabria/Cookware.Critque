@@ -1,15 +1,9 @@
-import NavBar from "./NavBar"
-import SearchBar from "./SearchBard"
-import Dashboard from "./UserDashboard/Dashboard"
+import SearchCard from "./SearchEquipment/SearchCard"
 
-/*
--NavBar
-
-*/
 const HomePage = () => {
     return (
         <>
-           <SearchBar/>
+           <SearchCard />
         </>
     )
 }

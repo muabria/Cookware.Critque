@@ -34,6 +34,13 @@ const api = createApi({
                 body: user,
             }),
         }),
+          //<------------------------------GET EQUIPMENT BY ID------------------------------->
+          getEquipment: builder.query({
+            query: () => ({
+                url: `/api/equipment`,
+                method: 'GET'
+            }),
+        }),
 
     }),
 })
@@ -43,4 +50,5 @@ export default api;
 export const {
     useRegisterMutation,
     useLoginMutation,
+    useGetEquipmentQuery,
 } = api

@@ -1,23 +1,23 @@
 import { TextField, Button, Typography, Card, Fab, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
-//import { use???Query } from '???';
+import { useGetEquipmentQuery } from '../../redux/api';
 
 const SearchBar = ({ onSubmit }) => {
-    //data
-    //   const { data, error, isLoading } = use???Query();
+    const { data, error, isLoading } = useGetEquipmentQuery();
     const [searchEquipment, setSearchEquipment] = useState('');
 
-    // if (isLoading) {
-    //     return <div> Loading... </div>;
-    // }
-    // if (error) {
-    //     return <div>Error: {error.message}</div>;
-    // }
+    if (isLoading) {
+        return <div> Loading... </div>;
+    }
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+    console.log(data);
 
     return (
         <>
-            {/*-----------------------------------------TEXT FIELD--------------------------------------- */}
+            {/*----------------------------------TEXT FIELD-------------------------------- */}
             <TextField
                 type="text"
                 label="Find Equipment by Name"
@@ -28,10 +28,10 @@ const SearchBar = ({ onSubmit }) => {
                     backgroundColor: 'white',
                 }}
             />
-            {/*-----------------------------------------SUBMIT BUTTON--------------------------------------- */}
+            {/*----------------------------------SUBMIT BUTTON-------------------------------- */}
             <Button
                 onClick={() => onSubmit(searchEquipment)}
-                sx={{ color: "#5C7658", backgroundColor: "#EE8972", mx: 1 }}>
+                sx={{ color: "#5C7658", backgroundColor: "transparent", mx: 1 }}>
                 <SearchIcon />
             </Button>
         </>

@@ -20,19 +20,25 @@ const NavBar = () => {
 
     return (
         <>
-            <Box>
+            <Box sx={{ backgroundColor: "white", mb: 5, p: 2 }}>
                 <Stack direction="row" useFlexGap flexWrap="wrap">
                     {/*-----------------------------------App title--------------------------------------------- */}
-                    <Typography variant="h3" sx={{ color: "#000000", flexGrow: 1 }}>
+                    <Typography variant="h3" sx={{ color: "#5C7658", flexGrow: 1 }}>
                         Title Placeholder
                     </Typography>
                     {/*-----------------------------------Account Menu--------------------------------------------- */}
+                    <Button sx={{ backgroundColor: "#EFB495", color: "#5C7658" }}>
+                        Explore New Equipment
+                    </Button>
+                    <Button sx={{ color: "#5C7658" }}>
+                        Add a Review
+                    </Button>
                     <Button
                         aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}>
-                        <AccountCircleIcon sx={{ color: "#000000", minWidth: 70, minHeight: 35 }} />
+                        <AccountCircleIcon sx={{ color: "#5C7658", minWidth: 70, minHeight: 35 }} />
                     </Button>
 
                     <Menu
