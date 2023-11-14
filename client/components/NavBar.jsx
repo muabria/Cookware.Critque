@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import Button from "@mui/material/Button"
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -20,11 +20,11 @@ const NavBar = () => {
 
     return (
         <>
-            <AppBar position="static" sx={{ p: 1, backgroundColor: "transparent" }}>
+            <Box>
                 <Stack direction="row" useFlexGap flexWrap="wrap">
                     {/*-----------------------------------App title--------------------------------------------- */}
                     <Typography variant="h3" sx={{ color: "#000000", flexGrow: 1 }}>
-                       Title Placeholder
+                        Title Placeholder
                     </Typography>
                     {/*-----------------------------------Account Menu--------------------------------------------- */}
                     <Button
@@ -48,9 +48,7 @@ const NavBar = () => {
                         </MenuItem>
                     </Menu>
                 </Stack>
-            </AppBar>
-
-
+            </Box>
         </>
     )
 }
