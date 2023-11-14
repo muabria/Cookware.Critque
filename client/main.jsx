@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import store from './redux/store.js'
 
 import { Routes, Route } from "react-router-dom";
-// import Home from "./components/Home";
+import HomePage from "./components/HomePage";
 // import Profile from "./components/Profile";
 // import Login from "./components/Login";
 import RegisterForm from "./components/RegisterForm.jsx";
@@ -17,12 +17,12 @@ import RegisterForm from "./components/RegisterForm.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-    {/* <Route path="/" element={<Home />}>
-          <Route path="Profile" element={<Profile />} />
+      <Routes path="/" element={<HomePage />}>
+        {/* <Route path="Profile" element={<Profile />} />
           <Route path="Login" element={<Login />} />
           <Route path="Register" element={<Register />} />
-          <Route path="Equipment" element={<Equipment />} />
-        </Route> */}
+          <Route path="Equipment" element={<Equipment />} /> */}
+      </Routes>
       <App />
     </BrowserRouter>
   </React.StrictMode>
