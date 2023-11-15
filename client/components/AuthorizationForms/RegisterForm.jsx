@@ -81,7 +81,7 @@ const RegisterForm = () => {
                                     <Alert severity="error"> Passwords do not match </Alert> : null
                             }
                         />
-                        <Button type="submit" sx={{ color: "#000000", backgroundColor: "#FC9918", p: 1, my: 1 }}>
+                        <Button type="submit" sx={{ color: "#205375", backgroundColor: "#D3CEDF", p: 1, my: 1 }}>
                             Start Your Cooking Journey
                         </Button>
                         <Typography sx={{ mt: 2, textAlign: "center" }}>

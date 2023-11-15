@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
 
-import { useLoginMutation } from "../redux/api";
+import { useLoginMutation } from "../../redux/api";
 import { useSelector } from 'react-redux';
 
 const LoginForm = () => {
@@ -56,7 +56,7 @@ const LoginForm = () => {
                                     : null
                             }
                         />                  
-                        <Button type="submit" sx={{ color: "#000000", backgroundColor: "#FC9918", p: 1 }}>
+                        <Button type="submit" sx={{ color: "#205375", backgroundColor: "#D3CEDF", p: 1 }}>
                             Login
                         </Button>
                         <Typography sx={{ mt: 2, textAlign: "center" }}>
