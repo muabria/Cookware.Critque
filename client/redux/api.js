@@ -36,8 +36,8 @@ const api = createApi({
         }),
           //<------------------------------GET EQUIPMENT BY ID------------------------------->
           getEquipment: builder.query({
-            query: () => ({
-                url: `/api/equipment`,
+            query: (search) => ({
+                url: `/api/equipment/${search ? "?search="+search :""}`,
                 method: 'GET'
             }),
         }),

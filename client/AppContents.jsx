@@ -10,9 +10,11 @@ const  AppContents= () => {
   console.log(token)
 
   return (
+    <div className='gradient_background'>
       <div className="App">
         <NavBar />
         <HomePage />
+      </div>
       </div>
   );
 }

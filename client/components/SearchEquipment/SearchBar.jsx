@@ -18,18 +18,16 @@ const SearchBar = ({ onSubmit }) => {
     }
 
     const filteredEquipment = () => data.filter((equipment) =>
-    equipment.name.toLowerCase().includes(searchEquipment.toLowerCase())
-  );
-  console.log(filteredEquipment(searchEquipment));
-  
-
+        equipment.name.toLowerCase().includes(searchEquipment.toLowerCase())
+    );
+    console.log(filteredEquipment(searchEquipment));
 
     return (
         <>
             {/*----------------------------------TEXT FIELD-------------------------------- */}
             <TextField
                 type="text"
-                label="Find Equipment by Name"
+                label="Equipment Name"
                 size="small"
                 value={searchEquipment}
                 onChange={(event) => setSearchEquipment(event.target.value)}

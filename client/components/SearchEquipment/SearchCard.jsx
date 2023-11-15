@@ -8,9 +8,9 @@ const SearchCard = () => {
     return (
         <>
             <Grid container>
-                <Grid xs={6}>
+                <Grid xs={4}>
                     <Stack direction="column">
-                        <Button sx={{ color: "#5C7658", backgroundColor: "#EFB495", mx: 1 }}>
+                        <Button sx={{ color: "#205375", backgroundColor: "#D3CEDF", mx: 1 }}>
                             Explore New Equipment
                         </Button>
                         <SearchBar />

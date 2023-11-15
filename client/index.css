@@ -1,4 +1,5 @@
-/* Put your CSS in here! */
-html{
-    background-color: #fff1df;
-}
+.gradient_background {
+    background: linear-gradient(white,#F9FBE7, #D3CEDF, #9CB4CC);
+    height: 100vh;
+    width: 100vw;
+  }
