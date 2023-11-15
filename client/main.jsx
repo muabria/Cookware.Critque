@@ -3,22 +3,26 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Equipment from "./components/Equipment";
+import store from './redux/store.js'
+
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./components/HomePage";
+// import Profile from "./components/Profile";
+// import Login from "./components/Login";
+import RegisterForm from "./components/RegisterForm.jsx";
+
+// import Equipment from "./components/Equipment";
 
 // TODO: Add React Router
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-    <Route path="/" element={<Home />}>
-          <Route path="Profile" element={<Profile />} />
+      <Routes path="/" element={<HomePage />}>
+        {/* <Route path="Profile" element={<Profile />} />
           <Route path="Login" element={<Login />} />
           <Route path="Register" element={<Register />} />
-          <Route path="Equipment" element={<Equipment />} />
-        </Route>
+          <Route path="Equipment" element={<Equipment />} /> */}
+      </Routes>
       <App />
     </BrowserRouter>
   </React.StrictMode>
