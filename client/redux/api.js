@@ -41,6 +41,14 @@ const api = createApi({
                 method: 'GET'
             }),
         }),
+           //<------------------------------MAKE POST------------------------------->
+           postEquipment: builder.mutation({
+            query: (equipment) => ({
+                url: `/api/equipment/`, 
+                method: 'POST',
+                body: equipment,
+            }),
+        }),
 
     }),
 })
@@ -51,4 +59,5 @@ export const {
     useRegisterMutation,
     useLoginMutation,
     useGetEquipmentQuery,
+    usePostEquipmentMutation,
 } = api

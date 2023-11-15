@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { Link } from "react-router-dom"
+import { usePostEquipmentMutation } from "../redux/api";
 
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
@@ -10,6 +11,7 @@ import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
+import SearchBar from "./SearchEquipment/SearchBar";
 
 const NewPostForm = () => {
 
@@ -42,12 +44,21 @@ const NewPostForm = () => {
 
     return (
         <>
-            <Card sx={{ p: 5 }}>
+            <Card sx={{ p: 5, maxWidth: 500 }}>
                 <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
-                    New Post:
+                    Make a Kitchen Equipment Critique:
                 </Typography>
+
                 <form onSubmit={handleSubmit}>
                     <Stack direction="column">
+                        <TextField
+                            label="Equipment Name"
+                            value={equipment}
+                            onChange={(event) => setEquipment(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ m: 1 }}
+                        />
                         <TextField
                             label="Title"
                             value={title}
