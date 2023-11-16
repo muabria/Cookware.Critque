@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-
 import Card from "@mui/material/Card";
 import Stack from '@mui/material/Stack'
 import Typography from "@mui/material/Typography";
@@ -8,12 +5,18 @@ import Grid from "@mui/material/Grid";
 import Avatar from '@mui/material/Avatar';
 
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import AssignmentIcon from '@mui/icons-material/Assignment';
 import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
 import MapPosts from "./MapPosts";
 import MapComments from "./MapComments";
+import { useGetUserQuery } from "../../redux/api";
 
 const Dashboard = () => {
+    const { data: me } = useGetUserQuery()
+
+    // if (error) {
+    //     <div> Error: {error.message} </div>;
+    // } else
+        console.log(me);
     return (
         <>
             <Grid container spacing={1}>
@@ -31,7 +34,7 @@ const Dashboard = () => {
                     <Stack direction="row">
                         <Avatar sx={{ mx: 3 }} />
                         <Typography variant="h4">
-                            Hello, Name
+                            Hello, {me};
                         </Typography>
                     </Stack>
                     <Card sx={{ backgroundColor: "#D3E0E2" }}>
