@@ -9,6 +9,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home';
+
 import SearchMenu from './SearchEquipment/SearchMenu';
 
 
@@ -31,6 +33,12 @@ const NavBar = () => {
                         Title Placeholder
                     </Typography>
                     {/*-----------------------------------Account Menu--------------------------------------------- */}
+                    <Link to="/">
+                        <Button sx={{ color: "#205375" }}>
+                            <HomeIcon />
+                            Go to Home
+                        </Button>
+                    </Link>
                     <SearchMenu />
                     <Button sx={{ color: "#205375" }}>
                         Add a Review
@@ -48,12 +56,12 @@ const NavBar = () => {
                         anchorEl={anchorEl}
                         open={open}
                         onClose={handleClose}>
-                        <MenuItem onClick="TO DO">
+                        <MenuItem>
                             <Link to="/login">
                                 Login
                             </Link>
                         </MenuItem>
-                        <MenuItem onClick="TO DO">
+                        <MenuItem>
                             <Link to="/register">
                                 Sign Up
                             </Link>

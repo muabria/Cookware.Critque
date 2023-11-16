@@ -11,12 +11,12 @@ import MapComments from "./MapComments";
 import { useGetUserQuery } from "../../redux/api";
 
 const Dashboard = () => {
-    const { data: me } = useGetUserQuery()
+    const { data, error } = useGetUserQuery()
 
-    // if (error) {
-    //     <div> Error: {error.message} </div>;
-    // } else
-        console.log(me);
+    if (error) {
+        <div> Error: {error.message} </div>;
+    } else
+        console.log(data);
     return (
         <>
             <Grid container spacing={1}>
@@ -34,7 +34,7 @@ const Dashboard = () => {
                     <Stack direction="row">
                         <Avatar sx={{ mx: 3 }} />
                         <Typography variant="h4">
-                            Hello, {me};
+                            Hello, {data};
                         </Typography>
                     </Stack>
                     <Card sx={{ backgroundColor: "#D3E0E2" }}>

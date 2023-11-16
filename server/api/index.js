@@ -32,6 +32,32 @@ apiRouter.get("/equipment/:id", async (req, res, next) => {
         next(error);
     }
 });
+//<--------------------------------GET ALL CATEGORIES-------------------------------->
+//GET /api/equipment
+apiRouter.get("/categories", async (req, res, next) => {
+    try {
+        const categories = await prisma.category.findMany();
+        res.send(categories);
+    } catch (error) {
+        next(error);
+    }
+});
+
+//<--------------------------------GET SINGLE CATEGORY-------------------------------->
+//GET /api/equipment/:id
+apiRouter.get("/category/:id", async (req, res, next) => {
+    try {
+        const category = await prisma.category.findUnique({
+            where: {
+                id: Number(req.params.id)
+            },
+        });
+
+        res.send(category);
+    } catch (error) {
+        next(error);
+    }
+});
 
 //<--------------------------------GET ALL REVIEWS-------------------------------->
 //GET /api/review
