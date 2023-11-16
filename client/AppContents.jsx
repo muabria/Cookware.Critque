@@ -1,5 +1,5 @@
-import RegisterForm from "./components/RegisterForm";
-import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/AuthorizationForms/RegisterForm";
+import LoginForm from "./components/AuthorizationForms/LoginForm";
 import HomePage from "./components/HomePage";
 import NavBar from "./components/NavBar";
 import { useSelector } from "react-redux";
@@ -10,9 +10,11 @@ const  AppContents= () => {
   console.log(token)
 
   return (
+    <div className='gradient_background'>
       <div className="App">
         <NavBar />
         <HomePage />
+      </div>
       </div>
   );
 }

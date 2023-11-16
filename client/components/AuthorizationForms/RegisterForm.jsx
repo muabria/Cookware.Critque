@@ -10,12 +10,12 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
 
-// import { useRegisterMutation } from "../redux/api";
-// import { useSelector } from 'react-redux';
+import { useRegisterMutation } from "../redux/api";
+import { useSelector } from 'react-redux';
 
 const RegisterForm = () => {
-    // const [register] = useRegisterMutation();
-    // const token = useSelector((state) => state.token);
+    const [register] = useRegisterMutation();
+    const token = useSelector((state) => state.token);
     
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -23,9 +23,9 @@ const RegisterForm = () => {
     const [email, setEmail] = useState("");
 
     const handleSubmit = async (event) => {
-        // event.preventDefault();
-        // register({ username, password, name, location }), 
-        // // console.log(token)
+        event.preventDefault();
+        register({ username, email, password, secondPassword}), 
+        console.log("Success!")
     }
 
     return (
@@ -81,7 +81,7 @@ const RegisterForm = () => {
                                     <Alert severity="error"> Passwords do not match </Alert> : null
                             }
                         />
-                        <Button type="submit" sx={{ color: "#000000", backgroundColor: "#FC9918", p: 1, my: 1 }}>
+                        <Button type="submit" sx={{ color: "#205375", backgroundColor: "#D3CEDF", p: 1, my: 1 }}>
                             Start Your Cooking Journey
                         </Button>
                         <Typography sx={{ mt: 2, textAlign: "center" }}>
