@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 
 import HomePage from "./components/HomePage";
+import LoginForm from "./components/AuthorizationForms/LoginForm";
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
         <AppContents />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/auth/login" element={<LoginForm/>} />
         </Routes>
       </BrowserRouter>
     </Provider>
