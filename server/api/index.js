@@ -64,6 +64,22 @@ apiRouter.get("/review/:id", async (req, res, next) => {
     }
 });
 
+//<--------------------------------GET COMMENTS BY USER----------------------------->
+//GET /api/:user/comments
+//NOTE: Need to have requireUser added. 
+apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
+    try {
+        const comments = await prisma.comment.findMany({
+            where: {userId: req.user.id},
+            include: {user: true}
+        });
+        res.send(comments);
+    } catch (error) {
+        next(error);
+    }
+});
+
+
 //<--------------------------------ADD NEW EQUIPMENT-------------------------------->
 //POST /api/equipment/:id
 apiRouter.post("/equipment/", requireUser, async (req, res, next) => {
