@@ -27,7 +27,7 @@ authRouter.get("/users", async (req, res, next) => {
 });
 //<--------------------------------REGISTER USER-------------------------------->
 // POST /auth/signup
-authRouter.post("/signup", async (req, res, next) => {
+authRouter.post("/register", async (req, res, next) => {
     try {
         const { username, email, password, } = req.body
         const hashedPassword = await bcrypt.hash(password, SALT_COUNT)
