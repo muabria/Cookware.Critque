@@ -22,13 +22,13 @@ app.get("/test", (req, res, next) => {
     res.send("Test route");
 });
 
-app.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
-})
-
 // Backend routes
 app.use("/auth", require("./auth"));
 app.use("/api", require("./api"));
+
+app.get('*', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+})
 
 // Error handling middleware
 app.use((error, req, res, next) => {
