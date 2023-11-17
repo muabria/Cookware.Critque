@@ -7,7 +7,7 @@ import HomePage from "./components/HomePage";
 import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import Dashboard from "./components/UserDashboard/Dashboard";
-import NewPostForm from "./components/NewPostForm";
+import NewPostForm from "./components/AddNewPost/NewPostForm";
 
 const AppContents = () => {
 

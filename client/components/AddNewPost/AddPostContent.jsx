@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 import { Link } from "react-router-dom"
-import { usePostEquipmentMutation } from "../redux/api";
+import { usePostEquipmentMutation } from "../../redux/api";
 
-import { usePostReviewMutation } from "../redux/api";
+import { usePostReviewMutation } from "../../redux/api";
 
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
@@ -13,9 +13,8 @@ import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
-import SearchBar from "./SearchEquipment/SearchBar";
 
-const NewPostForm = () => {
+const AddPostContent = () => {
 
     //<-----------------TEXTFIELD STATE ------------------->
     const [title, setTitle] = useState("");
@@ -112,4 +111,4 @@ const NewPostForm = () => {
         </>
     )
 }
-export default NewPostForm
+export default AddPostContent
