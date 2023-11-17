@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom"
 import { usePostEquipmentMutation } from "../redux/api";
 
+import { usePostReviewMutation } from "../redux/api";
+
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
 import TextField from "@mui/material/TextField";
@@ -101,8 +103,8 @@ const NewPostForm = () => {
                             )}
                         </Stack>
                         {/* <---------------------------SUBMIT BUTTON-----------------------------> */}
-                        <Button type="submit" sx={{ color: "#205375", backgroundColor: "#D3CEDF", p: 1, my: 1 }}>
-                            Create Your Post!
+                        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                            Create Your Critique!
                         </Button>
                     </Stack>
                 </form>

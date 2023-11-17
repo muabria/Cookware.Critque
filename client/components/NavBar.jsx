@@ -11,6 +11,7 @@ import Stack from "@mui/material/Stack";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 
+// import logo from "./images/cookingEquipmentLogo.jpg"
 import SearchMenu from './SearchEquipment/SearchMenu';
 
 
@@ -29,6 +30,7 @@ const NavBar = () => {
             <Box sx={{ backgroundColor: "white", mb: 5, p: 2 }}>
                 <Stack direction="row" useFlexGap flexWrap="wrap">
                     {/*-----------------------------------App title--------------------------------------------- */}
+                    {/* <img src={logo} /> */}
                     <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
                         Title Placeholder
                     </Typography>

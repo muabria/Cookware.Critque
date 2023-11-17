@@ -41,6 +41,14 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
+           //<------------------------------ADD NEW REVIEW------------------------------->
+           postReview: builder.mutation({
+            query: (post) => ({
+                url: `/api/review`, 
+                method: 'POST',
+                body: post,
+            }),
+        }),
           //<------------------------------GET EQUIPMENT BY ID------------------------------->
           getEquipment: builder.query({
             query: (search) => ({
@@ -48,7 +56,7 @@ const api = createApi({
                 method: 'GET'
             }),
         }),
-           //<------------------------------MAKE POST------------------------------->
+           //<------------------------------ADD NEW EQUIPMENT------------------------------->
            postEquipment: builder.mutation({
             query: (equipment) => ({
                 url: `/api/equipment/`, 
@@ -65,6 +73,7 @@ export const {
     useRegisterMutation,
     useLoginMutation,
     useGetUserQuery,
+    usePostReviewMutation,
     useGetEquipmentQuery,
     usePostEquipmentMutation,
 } = api
