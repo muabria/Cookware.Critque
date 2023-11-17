@@ -1,6 +1,8 @@
-import LoginForm from "./AuthorizationForms/LoginForm"
+// import LoginForm from "./AuthorizationForms/LoginForm"
 import NewPostForm from "./NewPostForm"
-import SearchCard from "./SearchEquipment/SearchCard"
+// import Review from "./Review"
+// import SearchCard from "./SearchEquipment/SearchCard"
+
 
 const HomePage = () => {
     return (
