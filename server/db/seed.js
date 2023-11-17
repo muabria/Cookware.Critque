@@ -153,6 +153,22 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
+        const post2 = await prisma.post.create({
+            data: {
+                title: "Works even better!",
+                content: `I love this more than Post 1's!`,
+                rating: 5,
+                user: { connect: { id: kat.id } },
+                equipment: { connect: { id: dobie.id } },
+                comments: {
+                    create: {
+                        content: 'Keeps my counter from getting water stains from my water pitcher',
+                        user: { connect: { id: kat.id } },
+                    }
+                }
+            },
+            include: { user: true, equipment: true }
+        })
 
 
         delete mvPass, bmPass, hmPass, kcPass;

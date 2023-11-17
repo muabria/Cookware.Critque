@@ -41,6 +41,13 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
+          //<------------------------------ALL POST------------------------------->
+          getReviews: builder.query({
+            query: () => ({
+                url: `/api/reviews`,
+                method: 'GET',
+            }),
+        }),
            //<------------------------------ADD NEW REVIEW------------------------------->
            postReview: builder.mutation({
             query: (post) => ({
@@ -73,6 +80,7 @@ export const {
     useRegisterMutation,
     useLoginMutation,
     useGetUserQuery,
+    useGetReviewsQuery,
     usePostReviewMutation,
     useGetEquipmentQuery,
     usePostEquipmentMutation,
