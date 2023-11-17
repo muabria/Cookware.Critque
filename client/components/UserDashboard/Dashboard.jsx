@@ -12,9 +12,11 @@ import { useGetUserQuery } from "../../redux/api";
 
 const Dashboard = () => {
     const { data, error } = useGetUserQuery()
-
+    if(!data) {
+        return <div>Loading...</div>
+    }
     if (error) {
-        <div> Error: {error.message} </div>;
+        return <div> Error: {error.message} </div>;
     } else
         console.log(data);
     return (
@@ -34,7 +36,7 @@ const Dashboard = () => {
                     <Stack direction="row">
                         <Avatar sx={{ mx: 3 }} />
                         <Typography variant="h4">
-                            Hello, {data};
+                            Hello, {data.username}
                         </Typography>
                     </Stack>
                     <Card sx={{ backgroundColor: "#D3E0E2" }}>
