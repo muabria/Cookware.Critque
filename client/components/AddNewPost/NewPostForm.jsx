@@ -9,7 +9,7 @@ const NewPostForm = () => {
 
     return (
         <>
-        <Stack direction="row">
+        <Stack direction="row" spacing={5}>
             <AddEquipment />
             <AddPostContent />
             </Stack>

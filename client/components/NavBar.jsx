@@ -42,9 +42,11 @@ const NavBar = () => {
                         </Button>
                     </Link>
                     <SearchMenu />
+                    <Link to="/new_review">
                     <Button sx={{ color: "#205375" }}>
                         Add a Review
                     </Button>
+                    </Link>
                     <Button
                         aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
