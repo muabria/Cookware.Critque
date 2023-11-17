@@ -41,13 +41,6 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
-          //<------------------------------ALL POST------------------------------->
-          getReviews: builder.query({
-            query: () => ({
-                url: `/api/reviews`,
-                method: 'GET',
-            }),
-        }),
            //<------------------------------ADD NEW REVIEW------------------------------->
            postReview: builder.mutation({
             query: (post) => ({
@@ -63,6 +56,21 @@ const api = createApi({
                 method: 'GET'
             }),
         }),
+             //<------------------------------COMMENT------------------------------->
+             postComment: builder.mutation({
+                query: (comment) => ({
+                    url: `/api/comment/`,
+                    method: 'POST',
+                    body: comment,
+                }),
+            }),
+               //<------------------------------ALL POST------------------------------->
+               getReviews: builder.query({
+                query: () => ({
+                    url: `/api/reviews/`,
+                    method: 'GET',
+                }),
+            }),
            //<------------------------------ADD NEW EQUIPMENT------------------------------->
            postEquipment: builder.mutation({
             query: (equipment) => ({
@@ -80,8 +88,9 @@ export const {
     useRegisterMutation,
     useLoginMutation,
     useGetUserQuery,
-    useGetReviewsQuery,
     usePostReviewMutation,
     useGetEquipmentQuery,
+    usePostCommentMutation,
+    useGetReviewsQuery,
     usePostEquipmentMutation,
 } = api
