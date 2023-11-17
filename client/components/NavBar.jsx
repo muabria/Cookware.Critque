@@ -9,6 +9,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home';
+
+// import logo from "./images/cookingEquipmentLogo.jpg"
 import SearchMenu from './SearchEquipment/SearchMenu';
 
 
@@ -27,14 +30,23 @@ const NavBar = () => {
             <Box sx={{ backgroundColor: "white", mb: 5, p: 2 }}>
                 <Stack direction="row" useFlexGap flexWrap="wrap">
                     {/*-----------------------------------App title--------------------------------------------- */}
+                    {/* <img src={logo} /> */}
                     <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
                         Title Placeholder
                     </Typography>
                     {/*-----------------------------------Account Menu--------------------------------------------- */}
+                    <Link to="/">
+                        <Button sx={{ color: "#205375" }}>
+                            <HomeIcon />
+                            Go to Home
+                        </Button>
+                    </Link>
                     <SearchMenu />
+                    <Link to="/new_review">
                     <Button sx={{ color: "#205375" }}>
                         Add a Review
                     </Button>
+                    </Link>
                     <Button
                         aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
@@ -48,12 +60,12 @@ const NavBar = () => {
                         anchorEl={anchorEl}
                         open={open}
                         onClose={handleClose}>
-                        <MenuItem onClick="TO DO">
+                        <MenuItem>
                             <Link to="/login">
                                 Login
                             </Link>
                         </MenuItem>
-                        <MenuItem onClick="TO DO">
+                        <MenuItem>
                             <Link to="/register">
                                 Sign Up
                             </Link>

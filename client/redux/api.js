@@ -9,9 +9,9 @@ const api = createApi({
         baseUrl: backendURL,
         
         prepareHeaders: (headers, { getState }) => {
-            const token = getState().token
+            const token = getState().auth.token
             if (token) {
-                headers.set('authorization', `Bearer ${token}`)
+                headers.set('Authorization', `Bearer ${token}`)
             }
             return headers
         },
@@ -34,6 +34,28 @@ const api = createApi({
                 body: user,
             }),
         }),
+         //<------------------------------GET USER------------------------------->
+         getUser: builder.query({
+            query: () => ({
+                url: `/auth/account`, 
+                method: 'GET',
+            }),
+        }),
+          //<------------------------------ALL POST------------------------------->
+          getReviews: builder.query({
+            query: () => ({
+                url: `/api/reviews`,
+                method: 'GET',
+            }),
+        }),
+           //<------------------------------ADD NEW REVIEW------------------------------->
+           postReview: builder.mutation({
+            query: (post) => ({
+                url: `/api/review`, 
+                method: 'POST',
+                body: post,
+            }),
+        }),
           //<------------------------------GET EQUIPMENT BY ID------------------------------->
           getEquipment: builder.query({
             query: (search) => ({
@@ -41,7 +63,7 @@ const api = createApi({
                 method: 'GET'
             }),
         }),
-           //<------------------------------MAKE POST------------------------------->
+           //<------------------------------ADD NEW EQUIPMENT------------------------------->
            postEquipment: builder.mutation({
             query: (equipment) => ({
                 url: `/api/equipment/`, 
@@ -49,7 +71,6 @@ const api = createApi({
                 body: equipment,
             }),
         }),
-
     }),
 })
 
@@ -58,6 +79,9 @@ export default api;
 export const {
     useRegisterMutation,
     useLoginMutation,
+    useGetUserQuery,
+    useGetReviewsQuery,
+    usePostReviewMutation,
     useGetEquipmentQuery,
     usePostEquipmentMutation,
 } = api

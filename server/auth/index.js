@@ -80,7 +80,7 @@ authRouter.post("/login", authMiddleware, async (req, res, next) => {
 })
 
 //<--------------------------------GET USER PROFILE-------------------------------->
-//GET /auth/user/account
+//GET /auth/account
 authRouter.get("/account", authMiddleware, async (req, res, next) => {
     try {
         const user = await prisma.user.findUnique({
