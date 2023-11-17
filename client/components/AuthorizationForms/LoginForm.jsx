@@ -10,27 +10,34 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
 
+import { useNavigate } from "react-router-dom";
+
 import { useLoginMutation } from "../../redux/api";
 import { useSelector } from 'react-redux';
 
 const LoginForm = () => {
-    const [login] = useLoginMutation();
-    const token = useSelector((state) => state.auth.token);
-    
+    const [login, { data, error, }] = useLoginMutation();
+    const navigate = useNavigate();
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        await login({ username, password });
-        console.log("Success!")
+        try {
+            event.preventDefault();
+           const result = await login({ username, password })
+                console.log(result)
+            navigate("/account")
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
         <>
             <Card sx={{ p: 5, backgroundColor: "#FEF1E6" }}>
                 <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
-                   Login:
+                    Login:
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     <Stack direction="column">
@@ -55,7 +62,7 @@ const LoginForm = () => {
                                     ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
                                     : null
                             }
-                        />                  
+                        />
                         <Button type="submit" sx={{ color: "#205375", backgroundColor: "#D3CEDF", p: 1 }}>
                             Login
                         </Button>
@@ -63,10 +70,10 @@ const LoginForm = () => {
                             Don't have an account?
                         </Typography>
                         {/* <Link to="/login"> */}
-                            <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
-                                Sign up!
-                                <LoginIcon sx={{ ml: 2 }} />
-                            </Button>
+                        <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
+                            Sign up!
+                            <LoginIcon sx={{ ml: 2 }} />
+                        </Button>
                         {/* </Link> */}
                     </Stack>
                 </form>

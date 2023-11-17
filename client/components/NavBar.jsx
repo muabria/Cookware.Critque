@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import Box from '@mui/material/Box';
 import Button from "@mui/material/Button"
 import Menu from '@mui/material/Menu';
@@ -25,7 +27,7 @@ const NavBar = () => {
             <Box sx={{ backgroundColor: "white", mb: 5, p: 2 }}>
                 <Stack direction="row" useFlexGap flexWrap="wrap">
                     {/*-----------------------------------App title--------------------------------------------- */}
-                    <Typography variant="h3" sx={{  color: "#205375", flexGrow: 1 }}>
+                    <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
                         Title Placeholder
                     </Typography>
                     {/*-----------------------------------Account Menu--------------------------------------------- */}
@@ -38,7 +40,7 @@ const NavBar = () => {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}>
-                        <AccountCircleIcon sx={{  color: "#205375", minWidth: 70, minHeight: 35 }} />
+                        <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
                     </Button>
 
                     <Menu
@@ -47,10 +49,14 @@ const NavBar = () => {
                         open={open}
                         onClose={handleClose}>
                         <MenuItem onClick="TO DO">
-                            Login
+                            <Link to="/login">
+                                Login
+                            </Link>
                         </MenuItem>
                         <MenuItem onClick="TO DO">
-                            Sign Up
+                            <Link to="/register">
+                                Sign Up
+                            </Link>
                         </MenuItem>
                     </Menu>
                 </Stack>

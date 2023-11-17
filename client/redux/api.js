@@ -21,7 +21,7 @@ const api = createApi({
         //<------------------------------REGISTER ACCOUNT ENDPOINT------------------------------->
         register: builder.mutation({
             query: (user) => ({
-                url: `/auth/signup`, 
+                url: `/auth/register`, 
                 method: 'POST',
                 body: user,
             }),

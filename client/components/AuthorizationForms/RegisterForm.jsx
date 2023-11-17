@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import { Link } from "react-router-dom"
-
 import Alert from "@mui/material/Alert"
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
@@ -10,29 +8,36 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
 
-import { useRegisterMutation } from "../redux/api";
+import { useNavigate } from "react-router-dom";
+
+import { useRegisterMutation } from "../../redux/api";
 import { useSelector } from 'react-redux';
 
 const RegisterForm = () => {
     const [register] = useRegisterMutation();
-    const token = useSelector((state) => state.token);
-    
+    const navigate = useNavigate();
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [secondPassword, setSecondPassword] = useState("");
     const [email, setEmail] = useState("");
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        register({ username, email, password, secondPassword}), 
-        console.log("Success!")
+        try {
+            event.preventDefault();
+            await register({ username, email, password, secondPassword }),
+                console.log("Success!")
+                navigate("/account")
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
         <>
             <Card sx={{ p: 5, backgroundColor: "#FEF1E6" }}>
                 <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
-                   Sign Up:
+                    Sign Up:
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     <Stack direction="column">
@@ -44,7 +49,7 @@ const RegisterForm = () => {
                             variant="filled"
                             sx={{ m: 1 }}
                         />
-                           <TextField
+                        <TextField
                             label="Enter E-mail"
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
@@ -88,10 +93,10 @@ const RegisterForm = () => {
                             Already have an account?
                         </Typography>
                         {/* <Link to="/login"> */}
-                            <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
-                                Login to your account
-                                <LoginIcon sx={{ ml: 2 }} />
-                            </Button>
+                        <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
+                            Login to your account
+                            <LoginIcon sx={{ ml: 2 }} />
+                        </Button>
                         {/* </Link> */}
                     </Stack>
                 </form>

@@ -1,22 +1,31 @@
-import RegisterForm from "./components/AuthorizationForms/RegisterForm";
-import LoginForm from "./components/AuthorizationForms/LoginForm";
-import HomePage from "./components/HomePage";
 import NavBar from "./components/NavBar";
 import { useSelector } from "react-redux";
 
-const  AppContents= () => {
+import { Routes, Route } from "react-router-dom";
 
-  const token = useSelector( (state) => state.auth.token)
+import HomePage from "./components/HomePage";
+import LoginForm from "./components/AuthorizationForms/LoginForm";
+import RegisterForm from "./components/AuthorizationForms/RegisterForm";
+import Dashboard from "./components/UserDashboard/Dashboard";
+
+const AppContents = () => {
+
+  const token = useSelector((state) => state.auth.token)
   console.log(token)
 
   return (
     <div className='gradient_background'>
       <div className="App">
         <NavBar />
-        <HomePage />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/account" element={<Dashboard />} />
+        </Routes>
       </div>
-      </div>
+    </div>
   );
 }
 
-export default AppContents ;
+export default AppContents;
