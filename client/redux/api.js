@@ -9,9 +9,9 @@ const api = createApi({
         baseUrl: backendURL,
         
         prepareHeaders: (headers, { getState }) => {
-            const token = getState().token
+            const token = getState().auth.token
             if (token) {
-                headers.set('authorization', `Bearer ${token}`)
+                headers.set('Authorization', `Bearer ${token}`)
             }
             return headers
         },
@@ -34,11 +34,25 @@ const api = createApi({
                 body: user,
             }),
         }),
+
         //<------------------------------GET EQUIPMENT------------------------------->
         getEquipment: builder.query({
             query: () => ({
                 url: `/api/equipment`,
                 method: 'GET'
+         //<------------------------------GET USER------------------------------->
+         getUser: builder.query({
+            query: () => ({
+                url: `/auth/account`, 
+                method: 'GET',
+            }),
+        }),
+           //<------------------------------ADD NEW REVIEW------------------------------->
+           postReview: builder.mutation({
+            query: (post) => ({
+                url: `/api/review`, 
+                method: 'POST',
+                body: post,
             }),
         }),
           //<------------------------------GET EQUIPMENT BY ID------------------------------->
@@ -48,7 +62,22 @@ const api = createApi({
                 method: 'GET'
             }),
         }),
-           //<------------------------------MAKE POST------------------------------->
+             //<------------------------------COMMENT------------------------------->
+             postComment: builder.mutation({
+                query: (comment) => ({
+                    url: `/api/comment/`,
+                    method: 'POST',
+                    body: comment,
+                }),
+            }),
+               //<------------------------------ALL POST------------------------------->
+               getReviews: builder.query({
+                query: () => ({
+                    url: `/api/reviews/`,
+                    method: 'GET',
+                }),
+            }),
+           //<------------------------------ADD NEW EQUIPMENT------------------------------->
            postEquipment: builder.mutation({
             query: (equipment) => ({
                 url: `/api/equipment/`, 
@@ -56,7 +85,6 @@ const api = createApi({
                 body: equipment,
             }),
         }),
-
     }),
 })
 
@@ -65,7 +93,11 @@ export default api;
 export const {
     useRegisterMutation,
     useLoginMutation,
+    useGetUserQuery,
+    usePostReviewMutation,
     useGetEquipmentQuery,
     useGetSingleEquipmentQuery,
+    usePostCommentMutation,
+    useGetReviewsQuery,
     usePostEquipmentMutation,
 } = api

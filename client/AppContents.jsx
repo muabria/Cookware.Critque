@@ -7,7 +7,11 @@ import HomePage from "./components/HomePage";
 import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import Dashboard from "./components/UserDashboard/Dashboard";
+
 import Equipment from "./components/Equipment";
+
+import NewPostForm from "./components/AddNewPost/NewPostForm";
+
 
 const AppContents = () => {
 
@@ -24,6 +28,7 @@ const AppContents = () => {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/account" element={<Dashboard />} />
+          <Route path="/new_review" element={<NewPostForm />} />
         </Routes>
       </div>
     </div>
