@@ -35,7 +35,7 @@ const LoginForm = () => {
 
     return (
         <>
-            <Card sx={{ p: 5, backgroundColor: "#FEF1E6" }}>
+            <Card sx={{ p: 5, backgroundColor: "#FEF1E6", maxWidth: 600 }}>
                 <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
                     Login:
                 </Typography>
@@ -63,7 +63,7 @@ const LoginForm = () => {
                                     : null
                             }
                         />
-                        <Button type="submit" sx={{ color: "#205375", backgroundColor: "#D3CEDF", p: 1 }}>
+                        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1 }}>
                             Login
                         </Button>
                         <Typography sx={{ mt: 2, textAlign: "center" }}>

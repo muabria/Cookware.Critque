@@ -35,7 +35,7 @@ const RegisterForm = () => {
 
     return (
         <>
-            <Card sx={{ p: 5, backgroundColor: "#FEF1E6" }}>
+            <Card sx={{ p: 5, backgroundColor: "white", maxWidth:600 }}>
                 <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
                     Sign Up:
                 </Typography>
@@ -86,7 +86,7 @@ const RegisterForm = () => {
                                     <Alert severity="error"> Passwords do not match </Alert> : null
                             }
                         />
-                        <Button type="submit" sx={{ color: "#205375", backgroundColor: "#D3CEDF", p: 1, my: 1 }}>
+                        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1 }}>
                             Start Your Cooking Journey
                         </Button>
                         <Typography sx={{ mt: 2, textAlign: "center" }}>
