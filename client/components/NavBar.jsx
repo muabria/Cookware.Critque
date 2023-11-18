@@ -35,6 +35,11 @@ const NavBar = () => {
                     <Button sx={{ color: "#205375" }}>
                         Add a Review
                     </Button>
+                    <Link to="/commentform">
+                    <Button>
+                        Make new comment
+                    </Button>
+                    </Link>
                     <Button
                         aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
