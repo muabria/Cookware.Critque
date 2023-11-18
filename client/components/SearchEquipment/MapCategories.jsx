@@ -1,19 +1,8 @@
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
 
 import { useGetCategoriesQuery } from "../../redux/api"
+import { Avatar, Typography } from '@mui/material';
 
 const MapCategories = () => {
     const { data, error, isLoading } = useGetCategoriesQuery();
@@ -31,8 +20,12 @@ const MapCategories = () => {
     return (
         <>
             {data && data.map((category) => (
-                <Box key={category.id} sx={{ mx: 5 }}>
-                    <Button>{category.category}</Button>
+                <Box key={category.id} sx={{ m: 5 }}>
+                    <Avatar sx={{ p: 5 }} >
+                        <Typography>
+                            {category.category}
+                        </Typography>
+                    </Avatar>
                 </Box>
             ))
             }

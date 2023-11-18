@@ -21,34 +21,7 @@ const SearchMenu = () => {
                     id="panel1a-header">
                     <Typography variant="h6" sx={{ color: "#205375" }}>Explore New Equipment</Typography>
                 </AccordionSummary>
-
                 <SearchBar />
-
-                <Typography variant="h6" sx={{ color: "#205375", p: 2 }}>
-                    Not sure what you are looking for? Explore by Category:
-                </Typography>
-                <Stack direction="row">
-                    <MapCategories />
-                    {/* <Button>
-                        Cooking Equipment
-                    </Button>
-                    <Typography variant="h6">|</Typography>
-                    <Button>
-                        Kitchen Cleaning Supplies
-                    </Button>
-                    <Typography variant="h6">|</Typography>
-                    <Button>
-                        Kitchen Storage
-                    </Button>
-                    <Typography variant="h6">|</Typography>
-                    <Button>
-                        Kitchen Gadgets
-                    </Button>
-                    <Typography variant="h6">|</Typography>
-                    <Button>
-                        Miscellaneous
-                    </Button> */}
-                </Stack>
             </Accordion>
         </>
     )

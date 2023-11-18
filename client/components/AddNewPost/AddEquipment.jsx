@@ -16,7 +16,7 @@ const AddEquipment = () => {
     const [category, setCategory] = useState("");
     const [brand, setBrand] = useState("");
     const [purchaseLink, setPurchaseLink] = useState("");
-    const [priceRating, setPriceRating] = useState(null);
+    const [priceRating, setPriceRating] = useState(0);
     //<----------------------RATING---------------------->
     const rating = [
         { value: 0, label: '$10' },
@@ -27,7 +27,7 @@ const AddEquipment = () => {
         { value: 100, label: '$100' },
         { value: 150, label: '$150' },
     ];
-
+console.log(priceRating);
     function ratingValue(value) {
         return `${value}`;
     }
@@ -76,7 +76,8 @@ const AddEquipment = () => {
                         <Box sx={{ textAlign: "center" }}>
                             <Slider
                                 aria-label="Custom marks"
-                                defaultValue={0}
+                                defaultValue={priceRating}
+                                onChange={(event) => setPriceRating(event.target.value)}
                                 getAriaValueText={ratingValue}
                                 step={5}
                                 valueLabelDisplay="auto"
