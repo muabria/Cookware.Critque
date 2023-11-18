@@ -1,4 +1,4 @@
-import { TextField, Button, Typography, Card, Fab, Stack } from '@mui/material';
+import { TextField, Button, Grid, Typography, Card, Fab, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import { useGetEquipmentQuery } from '../../redux/api';
@@ -7,6 +7,7 @@ import SearchResults from './SearchResults';
 const SearchBar = ({ onSubmit }) => {
     const { data, error, isLoading } = useGetEquipmentQuery();
     const [searchEquipment, setSearchEquipment] = useState("");
+    const [showResult, setShowResult] = useState(false);
 
     if (isLoading) {
         return <div> Loading... </div>;
@@ -27,23 +28,28 @@ const SearchBar = ({ onSubmit }) => {
     return (
         <>
             {/*----------------------------------TEXT FIELD-------------------------------- */}
-            <TextField
-                type="text"
-                label="Equipment Name"
-                size="small"
-                value={searchEquipment}
-                onChange={(event) => setSearchEquipment(event.target.value)}
-                sx={{
-                    backgroundColor: 'white',
-                }}
-            />
-            {/*----------------------------------SUBMIT BUTTON-------------------------------- */}
-            <Button
-                onClick={() => onSubmit(searchEquipment)}
-                sx={{ color: "#5C7658", backgroundColor: "transparent", mx: 1 }}>
-                <SearchIcon />
-            </Button>
-            <SearchResults results={filteredSearch} />
+            <Grid container>
+                <Grid xs={12}>
+                    <TextField
+                        type="text"
+                        label="Equipment Name"
+                        size="small"
+                        value={searchEquipment}
+                        onChange={(event) => setSearchEquipment(event.target.value)}
+                        sx={{
+                            backgroundColor: 'white',
+                        }}
+                    />
+                    {/*----------------------------------SUBMIT BUTTON-------------------------------- */}
+                    <Button
+                        onClick={() => onSubmit(searchEquipment && setShowResult(true) )}
+                        sx={{ color: "#5C7658", backgroundColor: "transparent", mx: 1, mb: 5 }}>
+                        <SearchIcon />
+                    </Button>
+                </Grid>
+                {showResult &&
+                    <SearchResults results={filteredSearch} />}
+            </Grid>
         </>
     );
 };

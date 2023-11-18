@@ -27,25 +27,24 @@ const NavBar = () => {
 
     return (
         <>
-            <Box sx={{ backgroundColor: "white", mb: 5, p: 2 }}>
+            <Box sx={{ backgroundColor: "white", p: 2 }}>
                 <Stack direction="row" useFlexGap flexWrap="wrap">
-                    {/*-----------------------------------App title--------------------------------------------- */}
+                    {/*-----------------------------------APP TITLE--------------------------------------------- */}
                     {/* <img src={logo} /> */}
                     <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
                         Title Placeholder
                     </Typography>
-                    {/*-----------------------------------Account Menu--------------------------------------------- */}
+                    {/*-----------------------------------MENU--------------------------------------------- */}
                     <Link to="/">
                         <Button sx={{ color: "#205375" }}>
                             <HomeIcon />
                             Go to Home
                         </Button>
                     </Link>
-                    <SearchMenu />
                     <Link to="/new_review">
-                    <Button sx={{ color: "#205375" }}>
-                        Add a Review
-                    </Button>
+                        <Button sx={{ color: "#205375" }}>
+                            Add a Review
+                        </Button>
                     </Link>
                     <Button
                         aria-controls={open ? 'account-menu' : undefined}
@@ -72,6 +71,10 @@ const NavBar = () => {
                         </MenuItem>
                     </Menu>
                 </Stack>
+            </Box>
+            {/*-----------------------------------------------SECOND ROW--------------------------------------------------------- */}
+            <Box sx={{ backgroundColor: "transparent", mb: 5, p: 2 }}>
+                <SearchMenu />
             </Box>
         </>
     )
