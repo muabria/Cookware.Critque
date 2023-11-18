@@ -34,6 +34,12 @@ const api = createApi({
                 body: user,
             }),
         }),
+
+        //<------------------------------GET EQUIPMENT------------------------------->
+        getEquipment: builder.query({
+            query: () => ({
+                url: `/api/equipment`,
+                method: 'GET'
          //<------------------------------GET USER------------------------------->
          getUser: builder.query({
             query: () => ({
@@ -50,7 +56,7 @@ const api = createApi({
             }),
         }),
           //<------------------------------GET EQUIPMENT BY ID------------------------------->
-          getEquipment: builder.query({
+          getSingleEquipment: builder.query({
             query: (search) => ({
                 url: `/api/equipment/${search ? "?search="+search :""}`,
                 method: 'GET'
@@ -90,6 +96,7 @@ export const {
     useGetUserQuery,
     usePostReviewMutation,
     useGetEquipmentQuery,
+    useGetSingleEquipmentQuery,
     usePostCommentMutation,
     useGetReviewsQuery,
     usePostEquipmentMutation,

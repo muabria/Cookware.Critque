@@ -7,7 +7,11 @@ import HomePage from "./components/HomePage";
 import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import Dashboard from "./components/UserDashboard/Dashboard";
+
+import Equipment from "./components/Equipment";
+
 import NewPostForm from "./components/AddNewPost/NewPostForm";
+
 
 const AppContents = () => {
 
@@ -18,6 +22,7 @@ const AppContents = () => {
     <div className='gradient_background'>
       <div className="App">
         <NavBar />
+        <Equipment/>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginForm />} />
