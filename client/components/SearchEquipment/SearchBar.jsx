@@ -1,11 +1,11 @@
 import { TextField, Button, Grid, Typography, Card, Fab, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
-import { useGetEquipmentQuery } from '../../redux/api';
+import { useGetS, useGetSingleEquipmentQuery } from '../../redux/api';
 import SearchResults from './SearchResults';
 
 const SearchBar = ({ onSubmit }) => {
-    const { data, error, isLoading } = useGetEquipmentQuery();
+    const { data, error, isLoading } = useGetSingleEquipmentQuery();
     const [searchEquipment, setSearchEquipment] = useState("");
     const [showResult, setShowResult] = useState(false);
 

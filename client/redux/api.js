@@ -7,7 +7,7 @@ const api = createApi({
 
     baseQuery: fetchBaseQuery({
         baseUrl: backendURL,
-        
+
         prepareHeaders: (headers, { getState }) => {
             const token = getState().auth.token
             if (token) {
@@ -21,7 +21,7 @@ const api = createApi({
         //<------------------------------REGISTER ACCOUNT ENDPOINT------------------------------->
         register: builder.mutation({
             query: (user) => ({
-                url: `/auth/register`, 
+                url: `/auth/register`,
                 method: 'POST',
                 body: user,
             }),
@@ -29,52 +29,59 @@ const api = createApi({
         //<------------------------------LOGIN ACCOUNT ENDPOINT------------------------------->
         login: builder.mutation({
             query: (user) => ({
-                url: `/auth/login`, 
+                url: `/auth/login`,
                 method: 'POST',
                 body: user,
             }),
         }),
-         //<------------------------------GET USER------------------------------->
-         getUser: builder.query({
+        //<------------------------------GET USER------------------------------->
+        getUser: builder.query({
             query: () => ({
-                url: `/auth/account`, 
+                url: `/auth/account`,
                 method: 'GET',
             }),
         }),
-           //<------------------------------ADD NEW REVIEW------------------------------->
-           postReview: builder.mutation({
+        //<------------------------------GET ALL CATEGORIES------------------------------->
+        getCategories: builder.query({
+            query: () => ({
+                url: `/api/categories`,
+                method: 'GET',
+            }),
+        }),
+        //<------------------------------ADD NEW REVIEW------------------------------->
+        postReview: builder.mutation({
             query: (post) => ({
-                url: `/api/review`, 
+                url: `/api/review`,
                 method: 'POST',
                 body: post,
             }),
         }),
-          //<------------------------------GET EQUIPMENT BY ID------------------------------->
-          getEquipment: builder.query({
+        //<------------------------------GET SINGLE EQUIPMENT BY ID------------------------------->
+        getSingleEquipment: builder.query({
             query: (search) => ({
-                url: `/api/equipment/${search ? "?search="+search :""}`,
+                url: `/api/equipment/${search ? "?search=" + search : ""}`,
                 method: 'GET'
             }),
         }),
-             //<------------------------------COMMENT------------------------------->
-             postComment: builder.mutation({
-                query: (comment) => ({
-                    url: `/api/comment/`,
-                    method: 'POST',
-                    body: comment,
-                }),
+        //<------------------------------COMMENT------------------------------->
+        postComment: builder.mutation({
+            query: (comment) => ({
+                url: `/api/comment/`,
+                method: 'POST',
+                body: comment,
             }),
-               //<------------------------------ALL POST------------------------------->
-               getReviews: builder.query({
-                query: () => ({
-                    url: `/api/reviews/`,
-                    method: 'GET',
-                }),
+        }),
+        //<------------------------------ALL POST------------------------------->
+        getReviews: builder.query({
+            query: () => ({
+                url: `/api/reviews/`,
+                method: 'GET',
             }),
-           //<------------------------------ADD NEW EQUIPMENT------------------------------->
-           postEquipment: builder.mutation({
+        }),
+        //<------------------------------ADD NEW EQUIPMENT------------------------------->
+        postEquipment: builder.mutation({
             query: (equipment) => ({
-                url: `/api/equipment/`, 
+                url: `/api/equipment/`,
                 method: 'POST',
                 body: equipment,
             }),
@@ -89,7 +96,8 @@ export const {
     useLoginMutation,
     useGetUserQuery,
     usePostReviewMutation,
-    useGetEquipmentQuery,
+    useGetSingleEquipmentQuery,
+    useGetCategoriesQuery,
     usePostCommentMutation,
     useGetReviewsQuery,
     usePostEquipmentMutation,

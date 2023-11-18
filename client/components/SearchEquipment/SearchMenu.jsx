@@ -8,6 +8,7 @@ import Stack from "@mui/material/Stack";
 import BlenderIcon from '@mui/icons-material/Blender';
 
 import SearchBar from "./SearchBar";
+import MapCategories from "./MapCategories";
 
 
 const SearchMenu = () => {
@@ -27,7 +28,8 @@ const SearchMenu = () => {
                     Not sure what you are looking for? Explore by Category:
                 </Typography>
                 <Stack direction="row">
-                    <Button>
+                    <MapCategories />
+                    {/* <Button>
                         Cooking Equipment
                     </Button>
                     <Typography variant="h6">|</Typography>
@@ -45,7 +47,7 @@ const SearchMenu = () => {
                     <Typography variant="h6">|</Typography>
                     <Button>
                         Miscellaneous
-                    </Button>
+                    </Button> */}
                 </Stack>
             </Accordion>
         </>
