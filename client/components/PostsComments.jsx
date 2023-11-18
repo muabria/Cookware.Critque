@@ -1,0 +1,1 @@
+import {useGetReviewsQuery} from '../redux/api';

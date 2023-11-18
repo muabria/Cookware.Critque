@@ -79,6 +79,20 @@ apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
     }
 });
 
+//<--------------------------------GET REVIEWS BY EQUIPMENT----------------------------->
+//GET /api/equipment/review/:id
+apiRouter.get("equipment/review/:id", async (req, res, next) => {
+    try {
+        const reviews = await prisma.post.findMany({
+            where: {
+                equipmentId: Number(req.params.id)
+            }
+        });
+        res.send(reviews);
+    } catch (error) {
+        next(error);
+    }
+});
 
 //<--------------------------------ADD NEW EQUIPMENT-------------------------------->
 //POST /api/equipment/:id

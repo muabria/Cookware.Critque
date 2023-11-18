@@ -41,7 +41,7 @@ const api = createApi({
                 method: 'GET'
             }),
         }),
-        //<------------------------------COMMENT------------------------------->
+        //<------------------------------NEW COMMENT------------------------------->
         postComment: builder.mutation({
             query: (comment) => ({
                 url: `/api/comment/`,
