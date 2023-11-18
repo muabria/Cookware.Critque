@@ -1,9 +1,18 @@
- 
- 
- const SearchResults = (search) =>{
-    const { data, error, isLoading } = useGetEquipmentQuery(search);
+import Card from "@mui/material/Card";
+import Typography from "@mui/material/Typography";
+const SearchResults = ({ results }) => {
+    return (
+        <>
+            {results.map((equipment) => (
+                <Card key={equipment.id}>
+                    <Typography>
+                        {equipment.name}
+                    </Typography>
+                </Card>
+            ))
+            }
+        </>
+    )
+}
 
-    //filter on front: prop with search term and load on frontend, OR return array of objects (map)
-    //backend look at search params in URL (better performance, but more complex)
-        //query parameters
- }
+export default SearchResults;

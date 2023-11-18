@@ -2,10 +2,11 @@ import { TextField, Button, Typography, Card, Fab, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import { useGetEquipmentQuery } from '../../redux/api';
+import SearchResults from './SearchResults';
 
 const SearchBar = ({ onSubmit }) => {
     const { data, error, isLoading } = useGetEquipmentQuery();
-    const [searchEquipment, setSearchEquipment] = useState('');
+    const [searchEquipment, setSearchEquipment] = useState("");
 
     if (isLoading) {
         return <div> Loading... </div>;
@@ -20,6 +21,7 @@ const SearchBar = ({ onSubmit }) => {
     const filteredEquipment = () => data.filter((equipment) =>
         equipment.name.toLowerCase().includes(searchEquipment.toLowerCase())
     );
+    const filteredSearch = filteredEquipment(searchEquipment)
     console.log(filteredEquipment(searchEquipment));
 
     return (
@@ -41,6 +43,7 @@ const SearchBar = ({ onSubmit }) => {
                 sx={{ color: "#5C7658", backgroundColor: "transparent", mx: 1 }}>
                 <SearchIcon />
             </Button>
+            <SearchResults results={filteredSearch} />
         </>
     );
 };
