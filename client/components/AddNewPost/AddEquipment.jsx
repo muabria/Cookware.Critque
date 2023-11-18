@@ -8,6 +8,10 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import ArrowForwardIosTwoToneIcon from '@mui/icons-material/ArrowForwardIosTwoTone';
+import MapCategories from "../SearchEquipment/MapCategories";
+
+import { useGetCategoriesQuery } from "../../redux/api";
+import { usePostEquipmentMutation } from "../../redux/api";
 
 const AddEquipment = () => {
     const [equipment, setEquipment] = useState("");
@@ -17,6 +21,8 @@ const AddEquipment = () => {
     const [brand, setBrand] = useState("");
     const [purchaseLink, setPurchaseLink] = useState("");
     const [priceRating, setPriceRating] = useState(0);
+
+    const { data, error, isLoading } = useGetCategoriesQuery();
     //<----------------------RATING---------------------->
     const rating = [
         { value: 0, label: '$10' },
@@ -27,18 +33,26 @@ const AddEquipment = () => {
         { value: 100, label: '$100' },
         { value: 150, label: '$150' },
     ];
-console.log(priceRating);
     function ratingValue(value) {
         return `${value}`;
     }
     //<----------------------SUBMIT FORM---------------------->
-    const handleSubmit = async (event) => {
-        //TO DO
-    }
+    const [newEquipmentInfo] = usePostEquipmentMutation();
 
+    const handleSubmit = async (event) => {
+        try {
+            event.preventDefault();
+            const result = await newEquipmentInfo({ name, description, image, category, brand, purchaseLink })
+            console.log(result)
+            navigate("/account")
+        } catch (error) {
+            console.error(error)
+        }
+    }
+console.log(category)
     return (
         <>
-            <Card sx={{ p: 5, maxWidth: 500 }}>
+            <Card sx={{ p: 5, maxWidth: 600 }}>
                 <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
                     What equipment are you critiquing?
                 </Typography>
@@ -53,10 +67,21 @@ console.log(priceRating);
                             variant="filled"
                             sx={{ m: 1 }}
                         />
+                        <Stack direction="row">
+                            {data && data.map((category) => (
+                                <Box key={category.id}>
+                                    <Button 
+                                    onClick={() => setCategory(category.id)}>
+                                        {category.category}
+                                    </Button>
+                                </Box>
+                            ))
+                            }
+                        </Stack>
                         <TextField
                             label="Description"
                             value={description}
-                            onChange={(event) => setTitle(event.target.value)}
+                            onChange={(event) => setDescription(event.target.value)}
                             size="small"
                             variant="filled"
                             sx={{ m: 1 }}
@@ -64,7 +89,7 @@ console.log(priceRating);
                         <TextField
                             label="Image URL"
                             value={image}
-                            onChange={(event) => setContent(event.target.value)}
+                            onChange={(event) => setImage(event.target.value)}
                             size="small"
                             variant="filled"
                             sx={{ m: 1 }}
@@ -89,7 +114,7 @@ console.log(priceRating);
                         <TextField
                             label="Brand Name"
                             value={brand}
-                            onChange={(event) => setContent(event.target.value)}
+                            onChange={(event) => setBrand(event.target.value)}
                             size="small"
                             variant="filled"
                             sx={{ m: 1 }}
@@ -98,7 +123,7 @@ console.log(priceRating);
                         <TextField
                             label="Link to Seller"
                             value={purchaseLink}
-                            onChange={(event) => setContent(event.target.value)}
+                            onChange={(event) => setPurchaseLink(event.target.value)}
                             size="small"
                             variant="filled"
                             sx={{ m: 1 }}

@@ -6,10 +6,10 @@ import MapCategories from "./SearchEquipment/MapCategories"
 const HomePage = () => {
     return (
         <>
-        <Stack direction="row">
-        <MapCategories/>
-        </Stack>
-          <AllPost />
+            <Stack direction="row">
+                <MapCategories />
+            </Stack>
+            <AllPost />
         </>
     )
 }
