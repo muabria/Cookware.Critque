@@ -10,6 +10,8 @@ const PostsComments = () => {
     console.log(data);
 
     //need to only show reviews for current equipment
+        //keep current equipment in store or session storage
+        //OR backend route
     return (
         <>
             {data && data.filter().map((review) => (

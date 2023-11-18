@@ -86,7 +86,8 @@ apiRouter.get("equipment/review/:id", async (req, res, next) => {
         const reviews = await prisma.post.findMany({
             where: {
                 equipmentId: Number(req.params.id)
-            }
+            },
+            include: {equipment: true}
         });
         res.send(reviews);
     } catch (error) {
