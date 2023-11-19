@@ -7,7 +7,7 @@ import NewPostForm from "./NewPostForm"
 const HomePage = () => {
     return (
         <>
-            <NewPostForm />
+            {/* <NewPostForm /> */}
         </>
     )
 }

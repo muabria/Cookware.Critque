@@ -1,35 +1,27 @@
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 
-import { useGetReviewsQuery } from '../redux/api';
+import { useReviewByEquipmentQuery } from '../redux/api';
 
 const PostsComments = () => {
-    const { data, error, isLoading } = useGetReviewsQuery();
+    const { data, error, isLoading } = useReviewByEquipmentQuery();
     if (isLoading) { return <div> Please Wait.. Still Loading</div> }
     if (error) { return <div> {error.message} </div> }
     console.log(data);
 
-    //need to only show reviews for current equipment
-        //keep current equipment in store or session storage
-        //OR backend route
     return (
         <>
-            {data && data.filter().map((review) => (
+            {data && data.map((review) => (
                 <>
                     <Card key={review.id}>
                         <Typography>
                             {review.title}
                         </Typography>
                     </Card>
-                    {data.comments.map((comment) => (
-                        <Card key={comment.id}>
-                            <Typography>
-                                {comment.content}
-                            </Typography>
-                        </Card>
-                    ))}
                 </>
             ))}
         </>
     )
 }
+
+export default PostsComments

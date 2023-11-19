@@ -81,12 +81,10 @@ apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
 
 //<--------------------------------GET REVIEWS BY EQUIPMENT----------------------------->
 //GET /api/equipment/review/:id
-apiRouter.get("equipment/review/:id", async (req, res, next) => {
+apiRouter.get("/equipment/review/:id", async (req, res, next) => {
     try {
         const reviews = await prisma.post.findMany({
-            where: {
-                equipmentId: Number(req.params.id)
-            },
+            where: {equipmentId: Number(req.params.id)},
             include: {equipment: true}
         });
         res.send(reviews);

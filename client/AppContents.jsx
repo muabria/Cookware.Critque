@@ -9,6 +9,7 @@ import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import Dashboard from "./components/UserDashboard/Dashboard";
 import CommentForm from "./components/CommentForm";
 import AllPost from "./components/AllPost";
+import PostsComments from "./components/PostsComments";
 
 const AppContents = () => {
 
@@ -19,8 +20,9 @@ const AppContents = () => {
     <div className='gradient_background'>
       <div className="App">
         <NavBar />
+        <PostsComments />
         {/* <CommentForm /> */}
-        <AllPost />
+        {/* <AllPost /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginForm />} />
