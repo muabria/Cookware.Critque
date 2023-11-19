@@ -73,7 +73,7 @@ const NavBar = () => {
                 </Stack>
             </Box>
             {/*-----------------------------------------------SECOND ROW--------------------------------------------------------- */}
-            <Box sx={{ backgroundColor: "transparent", mb: 5, p: 2 }}>
+            <Box sx={{ backgroundColor: "transparent", mb: 2, p: 2 }}>
                 <SearchMenu />
             </Box>
         </>

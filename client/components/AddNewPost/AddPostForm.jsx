@@ -46,6 +46,9 @@ const AddPostContent = () => {
     return (
         <>
             <Card sx={{ p: 5, maxWidth: 500 }}>
+            <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
+                    Step: 1
+                </Typography>
                 <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
                     Make a Kitchen Equipment Critique:
                 </Typography>
