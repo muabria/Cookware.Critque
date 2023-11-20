@@ -61,12 +61,16 @@ const NavBar = () => {
                         onClose={handleClose}>
                         <MenuItem>
                             <Link to="/login">
-                                Login
+                                <Button>
+                                    Login
+                                </Button>
                             </Link>
                         </MenuItem>
                         <MenuItem>
                             <Link to="/register">
-                                Sign Up
+                                <Button>
+                                    Sign Up
+                                </Button>
                             </Link>
                         </MenuItem>
                     </Menu>

@@ -1,7 +1,11 @@
-import { TextField, Button, Grid, Typography, Card, Fab, Stack } from '@mui/material';
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 import SearchIcon from '@mui/icons-material/Search';
+
 import { useState } from 'react';
-import { useGetS, useGetSingleEquipmentQuery } from '../../redux/api';
+import { useGetSingleEquipmentQuery } from '../../redux/api';
+
 import SearchResults from './SearchResults';
 
 const SearchBar = ({ onSubmit }) => {
@@ -9,14 +13,14 @@ const SearchBar = ({ onSubmit }) => {
     const [searchEquipment, setSearchEquipment] = useState("");
     const [showResult, setShowResult] = useState(false);
 
+    if(!data){
+        return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
+    }
     if (isLoading) {
         return <div> Loading... </div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;
-    } else {
-        // console.log(searchEquipment);
-        // console.log(data);
     }
 
     const filteredEquipment = () => data.filter((equipment) =>
