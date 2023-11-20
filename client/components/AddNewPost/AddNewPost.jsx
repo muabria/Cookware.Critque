@@ -64,100 +64,100 @@ const AddNewPost = () => {
     return (
         <>
             <Stack direction="row">
-                <Card sx={{ p: 5, mx: 2, maxWidth: 650 }}>
-                    <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
-                        Step 1:
-                    </Typography>
-                    <Typography variant="h5" sx={{ textAlign: "center", p: 1 }}>
-                        What equipment are you critiquing?
-                    </Typography>
-                    <form onSubmit={handleSubmit}>
-                        <Stack direction="column">
-                            <TextField
-                                label="Equipment Name"
-                                value={equipment}
-                                onChange={(event) => setEquipment(event.target.value)}
-                                size="small"
-                                variant="filled"
-                                sx={{ m: 1 }}
-                            />
-                            <Typography>
-                                Category:
-                            </Typography>
-                            <Stack direction="row">
-                                {data && data.map((category) => (
-                                    <Box key={category.id}>
-                                        <Button
-                                            onClick={() => setCategory(category.id)}
-                                            sx={{ mx:1, backgroundColor:"#9BCDD2" }}>
-                                            {category.category}
-                                        </Button>
-                                    </Box>
-                                ))
-                                }
-                            </Stack>
-                            <TextField
-                                label="Description"
-                                value={description}
-                                onChange={(event) => setDescription(event.target.value)}
-                                size="small"
-                                variant="filled"
-                                sx={{ m: 1 }}
-                            />
-                            <TextField
-                                label="Image URL"
-                                value={image}
-                                onChange={(event) => setImage(event.target.value)}
-                                size="small"
-                                variant="filled"
-                                sx={{ m: 1 }}
-                                multiline
-                            />
-                            <Typography>
-                                Price:
-                            </Typography>
-                            <Box sx={{ textAlign: "center" }}>
-                                <Slider
-                                    aria-label="Custom marks"
-                                    defaultValue={priceRating}
-                                    onChange={(event) => setPriceRating(event.target.value)}
-                                    getAriaValueText={ratingValue}
-                                    step={5}
-                                    valueLabelDisplay="auto"
-                                    marks={rating}
+                    <Card sx={{ p: 5, mx: 2, maxWidth: 650 }}>
+                        <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
+                            Step 1:
+                        </Typography>
+                        <Typography variant="h5" sx={{ textAlign: "center", p: 1 }}>
+                            What equipment are you critiquing?
+                        </Typography>
+                        <form onSubmit={handleSubmit}>
+                            <Stack direction="column">
+                                <TextField
+                                    label="Equipment Name"
+                                    value={equipment}
+                                    onChange={(event) => setEquipment(event.target.value)}
+                                    size="small"
+                                    variant="filled"
+                                    sx={{ m: 1 }}
                                 />
-                            </Box>
-                            <TextField
-                                label="Brand Name"
-                                value={brand}
-                                onChange={(event) => setBrand(event.target.value)}
-                                size="small"
-                                variant="filled"
-                                sx={{ m: 1 }}
-                                multiline
-                            />
-                            <TextField
-                                label="Link to Seller"
-                                value={purchaseLink}
-                                onChange={(event) => setPurchaseLink(event.target.value)}
-                                size="small"
-                                variant="filled"
-                                sx={{ m: 1 }}
-                                multiline
-                            />
-
-                            {/* <---------------------------SUBMIT BUTTON-----------------------------> */}
-                            <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
-                                <Typography variant="h6">
-                                    Next
+                                <Typography>
+                                    Category:
                                 </Typography>
-                                <ArrowForwardIosTwoToneIcon />
-                                <ArrowForwardIosTwoToneIcon />
-                                <ArrowForwardIosTwoToneIcon />
-                            </Button>
-                        </Stack>
-                    </form>
-                </Card>
+                                <Stack direction="row">
+                                    {data && data.map((category) => (
+                                        <Box key={category.id}>
+                                            <Button
+                                                onClick={() => setCategory(category.id)}
+                                                sx={{ mx: 1, backgroundColor: "#9BCDD2" }}>
+                                                {category.category}
+                                            </Button>
+                                        </Box>
+                                    ))
+                                    }
+                                </Stack>
+                                <TextField
+                                    label="Description"
+                                    value={description}
+                                    onChange={(event) => setDescription(event.target.value)}
+                                    size="small"
+                                    variant="filled"
+                                    sx={{ m: 1 }}
+                                />
+                                <TextField
+                                    label="Image URL"
+                                    value={image}
+                                    onChange={(event) => setImage(event.target.value)}
+                                    size="small"
+                                    variant="filled"
+                                    sx={{ m: 1 }}
+                                    multiline
+                                />
+                                <Typography>
+                                    Price:
+                                </Typography>
+                                <Box sx={{ textAlign: "center" }}>
+                                    <Slider
+                                        aria-label="Custom marks"
+                                        defaultValue={priceRating}
+                                        onChange={(event) => setPriceRating(event.target.value)}
+                                        getAriaValueText={ratingValue}
+                                        step={5}
+                                        valueLabelDisplay="auto"
+                                        marks={rating}
+                                    />
+                                </Box>
+                                <TextField
+                                    label="Brand Name"
+                                    value={brand}
+                                    onChange={(event) => setBrand(event.target.value)}
+                                    size="small"
+                                    variant="filled"
+                                    sx={{ m: 1 }}
+                                    multiline
+                                />
+                                <TextField
+                                    label="Link to Seller"
+                                    value={purchaseLink}
+                                    onChange={(event) => setPurchaseLink(event.target.value)}
+                                    size="small"
+                                    variant="filled"
+                                    sx={{ m: 1 }}
+                                    multiline
+                                />
+
+                                {/* <---------------------------SUBMIT BUTTON-----------------------------> */}
+                                <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                                    <Typography variant="h6">
+                                        Next
+                                    </Typography>
+                                    <ArrowForwardIosTwoToneIcon />
+                                    <ArrowForwardIosTwoToneIcon />
+                                    <ArrowForwardIosTwoToneIcon />
+                                </Button>
+                            </Stack>
+                        </form>
+                    </Card>
                 {/* <---------------------------POST CARD-----------------------------> */}
                 <motion.div
                     variants={variants}
