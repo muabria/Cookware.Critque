@@ -13,7 +13,6 @@ import LoginIcon from '@mui/icons-material/Login';
 import { useNavigate } from "react-router-dom";
 
 import { useLoginMutation } from "../../redux/api";
-import { useSelector } from 'react-redux';
 
 const LoginForm = () => {
     const [login, { data, error, }] = useLoginMutation();

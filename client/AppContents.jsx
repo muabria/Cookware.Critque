@@ -1,4 +1,3 @@
-import NavBar from "./components/NavBar";
 import { useSelector } from "react-redux";
 
 import { Routes, Route } from "react-router-dom";
@@ -8,6 +7,7 @@ import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import Dashboard from "./components/UserDashboard/Dashboard";
 import AddNewPost from "./components/AddNewPost/AddNewPost";
+import NavBar from "./components/NavBar";
 
 const AppContents = () => {
 
@@ -23,7 +23,7 @@ const AppContents = () => {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/account" element={<Dashboard />} />
-          <Route path="/new_review" element={<AddNewPost/>} />
+          <Route path="/new_review" element={<AddNewPost />} />
         </Routes>
       </div>
     </div>
