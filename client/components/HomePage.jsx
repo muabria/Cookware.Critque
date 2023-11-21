@@ -1,13 +1,17 @@
-// import LoginForm from "./AuthorizationForms/LoginForm"
-import NewPostForm from "./NewPostForm"
-// import Review from "./Review"
-// import SearchCard from "./SearchEquipment/SearchCard"
 
+import Stack from "@mui/material/Stack";
+
+import AllPost from "../AllPosts"
+import MapCategories from "./SearchEquipment/MapCategories"
+import { Typography } from "@mui/material";
 
 const HomePage = () => {
     return (
         <>
-            {/* <NewPostForm /> */}
+            <Stack direction="row">
+                <MapCategories />
+            </Stack>
+            <AllPost />
         </>
     )
 }

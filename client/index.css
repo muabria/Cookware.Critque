@@ -1,5 +1,6 @@
 .gradient_background {
-    background: linear-gradient(white, white, #F9FBE7, #D3CEDF, #9CB4CC);
+    background: linear-gradient( white, white, white, #F9FBE7, #F9FBE7, #89c7c3, #088395);
     height: 100vh;
     width: 100vw;
   }
+  

@@ -1,4 +1,3 @@
-import NavBar from "./components/NavBar";
 import { useSelector } from "react-redux";
 
 import { Routes, Route } from "react-router-dom";
@@ -10,6 +9,8 @@ import Dashboard from "./components/UserDashboard/Dashboard";
 import CommentForm from "./components/CommentForm";
 import AllPost from "./components/AllPost";
 import PostsComments from "./components/PostsComments";
+import AddNewPost from "./components/AddNewPost/AddNewPost";
+import NavBar from "./components/NavBar";
 
 const AppContents = () => {
 
@@ -30,6 +31,7 @@ const AppContents = () => {
           <Route path="/account" element={<Dashboard />} />
           <Route path="/commentform" element={<CommentForm />} />
           <Route path="/equipment/:id/review" element={<PostsComments />} />
+          <Route path="/new_review" element={<AddNewPost />} />
         </Routes>
       </div>
     </div>

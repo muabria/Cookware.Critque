@@ -8,10 +8,6 @@ import Stack from '@mui/material/Stack';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import { usePostCommentMutation } from '../redux/api';
 
-
-
-
-
 const CommentForm = () => {
 const [comment,setComment] = useState(" ");
   //<-----------------TEXTFIELD STATE ------------------->
@@ -50,13 +46,9 @@ console.log(error);
         />
         <Button type="submit" sx={{backgroundColor:"purple", color:"white"}}><AddCommentIcon /> Submit comment</Button>
         </Stack>
-      
-
        </Card>
       </form>
-
-    </div>
-    
+    </div>  
   );
 }
 

@@ -9,6 +9,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home';
+
+// import logo from "./images/cookingEquipmentLogo.jpg"
 import SearchMenu from './SearchEquipment/SearchMenu';
 
 
@@ -24,21 +27,24 @@ const NavBar = () => {
 
     return (
         <>
-            <Box sx={{ backgroundColor: "white", mb: 5, p: 2 }}>
+            <Box sx={{ backgroundColor: "white", p: 2 }}>
                 <Stack direction="row" useFlexGap flexWrap="wrap">
-                    {/*-----------------------------------App title--------------------------------------------- */}
+                    {/*-----------------------------------APP TITLE--------------------------------------------- */}
+                    {/* <img src={logo} /> */}
                     <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
                         Title Placeholder
                     </Typography>
-                    {/*-----------------------------------Account Menu--------------------------------------------- */}
-                    <SearchMenu />
-                    <Button sx={{ color: "#205375" }}>
-                        Add a Review
-                    </Button>
-                    <Link to="/commentform">
-                    <Button>
-                        Make new comment
-                    </Button>
+                    {/*-----------------------------------MENU--------------------------------------------- */}
+                    <Link to="/">
+                        <Button sx={{ color: "#205375" }}>
+                            <HomeIcon />
+                            Go to Home
+                        </Button>
+                    </Link>
+                    <Link to="/new_review">
+                        <Button sx={{ color: "#205375" }}>
+                            Add a Review
+                        </Button>
                     </Link>
                     <Button
                         aria-controls={open ? 'account-menu' : undefined}
@@ -53,18 +59,26 @@ const NavBar = () => {
                         anchorEl={anchorEl}
                         open={open}
                         onClose={handleClose}>
-                        <MenuItem onClick="TO DO">
+                        <MenuItem>
                             <Link to="/login">
-                                Login
+                                <Button>
+                                    Login
+                                </Button>
                             </Link>
                         </MenuItem>
-                        <MenuItem onClick="TO DO">
+                        <MenuItem>
                             <Link to="/register">
-                                Sign Up
+                                <Button>
+                                    Sign Up
+                                </Button>
                             </Link>
                         </MenuItem>
                     </Menu>
                 </Stack>
+            </Box>
+            {/*-----------------------------------------------SECOND ROW--------------------------------------------------------- */}
+            <Box sx={{ backgroundColor: "transparent", mb: 2, p: 2 }}>
+                <SearchMenu />
             </Box>
         </>
     )

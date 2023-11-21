@@ -32,6 +32,32 @@ apiRouter.get("/equipment/:id", async (req, res, next) => {
         next(error);
     }
 });
+//<--------------------------------GET ALL CATEGORIES-------------------------------->
+//GET /api/equipment
+apiRouter.get("/categories", async (req, res, next) => {
+    try {
+        const categories = await prisma.category.findMany();
+        res.send(categories);
+    } catch (error) {
+        next(error);
+    }
+});
+
+//<--------------------------------GET SINGLE CATEGORY-------------------------------->
+//GET /api/equipment/:id
+apiRouter.get("/category/:id", async (req, res, next) => {
+    try {
+        const category = await prisma.category.findUnique({
+            where: {
+                id: Number(req.params.id)
+            },
+        });
+
+        res.send(category);
+    } catch (error) {
+        next(error);
+    }
+});
 
 //<--------------------------------GET ALL REVIEWS-------------------------------->
 //GET /api/review
@@ -65,8 +91,7 @@ apiRouter.get("/review/:id", async (req, res, next) => {
 });
 
 //<--------------------------------GET COMMENTS BY USER----------------------------->
-//GET /api/:user/comments
-//NOTE: Need to have requireUser added. 
+//GET /api/:user/comments 
 apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
     try {
         const comments = await prisma.comment.findMany({
@@ -134,19 +159,17 @@ res.status(201).send(newEquipment);
 
 //<--------------------------------MAKE NEW REVIEW-------------------------------->
 //POST /api/review
-//NOTE: Need to have requireUser added. 
-//Prisma error will be: arguement user is missing
 apiRouter.post("/review", requireUser, async (req, res, next) => {
     try {
 
-        const { title, content, rating, equipment } = req.body
+        const { title, content, rating, equipmentId } = req.body
         const newReview = await prisma.post.create({
             data: {
                 user: { connect: { id: req.user.id } },
                 title,
                 content,
                 rating,
-                equipment: { connect: { name: equipment.name } },
+                equipment: { connect: { id: equipmentId } },
             },
             include: { 
                 user: true, 
@@ -161,7 +184,6 @@ apiRouter.post("/review", requireUser, async (req, res, next) => {
 
 //<--------------------------------MAKE NEW COMMENT----------------------------->
 //POST /api/comment
-//NOTE: Need to have requireUser added. 
 apiRouter.post("/comment", requireUser, async (req, res, next) => {
     try {
         const { content, post } = req.body
@@ -186,7 +208,6 @@ apiRouter.post("/comment", requireUser, async (req, res, next) => {
 
 //<--------------------------------UPDATE REVIEW-------------------------------->
 //PATCH /api/review/:id
-//NOTE: Need to have requireUser added
 apiRouter.patch("/review/:id", requireUser, async (req, res, next) => {
     try {
         const { title, content, rating, equipment } = req.body;
@@ -210,7 +231,6 @@ apiRouter.patch("/review/:id", requireUser, async (req, res, next) => {
 
 //<--------------------------------UPDATE COMMENT-------------------------------->
 //PATCH /api/comment/:id
-//NOTE: Need to have requireUser added
 apiRouter.patch("/comment/:id", requireUser, async (req, res, next) => {
     try {
         const { content } = req.body;
