@@ -71,10 +71,10 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
-        //<------------------------------GET COMMENTS BY REVIEW------------------------------->
-        commentByReview: builder.query({
-            query: (id) => ({
-                url: `/api/review/${id}/comments`,
+        //<------------------------------GET ALL COMMENTS------------------------------->
+        getComments: builder.query({
+            query: () => ({
+                url: `/api/comments`,
                 method: 'GET',
             }),
         }),
@@ -91,5 +91,5 @@ export const {
     useGetReviewsQuery,
     usePostEquipmentMutation,
     useReviewByEquipmentQuery,
-    useCommentByReviewQuery
+    useGetCommentsQuery
 } = api

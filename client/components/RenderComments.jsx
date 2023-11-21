@@ -1,18 +1,16 @@
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 
-import {useCommentsByReviewQuery} from '../redux/api';
-import { useParams } from 'react-router';
+import {useGetCommentsQuery} from '../redux/api';
 
 const RenderComments = ({reviewId}) => {
-    const {reviewId} = useParams();
-    const {data, error} = useCommentsByReviewQuery(reviewId);
+    const {data, error} = useGetCommentsQuery();
     if (error) { return <div> {error.message} </div> }
     console.log(data);
 
     return (
         <>
-            {data && data.map((comment) => (
+            {data && data.filter(item => item.id === reviewId).map((comment) => (
                 <Card key={comment.id}>
                     <Typography>
                         {comment.content}

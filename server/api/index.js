@@ -79,9 +79,9 @@ apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
     }
 });
 
-//<--------------------------------GET COMMENTS BY REVIEW----------------------------->
+//<--------------------------------GET ALL COMMENTS----------------------------->
 //GET /api/review/:review/comments
-apiRouter.get("/review/:review/comments", async (req, res, next) => {
+apiRouter.get("/comments", async (req, res, next) => {
     try {
         const comments = await prisma.comment.findMany({
             where: {postId: req.params.id},
