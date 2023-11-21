@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import { Link } from "react-router-dom"
-import { usePostEquipmentMutation } from "../../redux/api";
 
 import { usePostReviewMutation } from "../../redux/api";
 
@@ -22,11 +21,14 @@ const AddPostContent = () => {
     const [equipment, setEquipment] = useState("");
 
     const handleSubmit = async (event) => {
-        // event.preventDefault();
-        // register({ username, password, name, location }), 
-        // // console.log(token)
+        try {
+            event.preventDefault();
+            const result = await usePostReviewMutation({ equipment, title, content, rating })
+            console.log(result)
+        } catch (error) {
+            console.error(error)
+        }
     }
-
     //<-----------------STAR RATING STATE ------------------->
     const [rating, setRating] = useState("");
     const [hover, setHover] = useState(-1);
@@ -43,9 +45,13 @@ const AddPostContent = () => {
         5: `Excellent: Truely egg-ceptional!`,
     };
 
+    console.log(rating)
     return (
         <>
             <Card sx={{ p: 5, maxWidth: 500 }}>
+            <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
+                    Step: 2
+                </Typography>
                 <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
                     Make a Kitchen Equipment Critique:
                 </Typography>
@@ -80,16 +86,11 @@ const AddPostContent = () => {
                         {/* <---------------------------RATING STARS-----------------------------> */}
                         <Stack direction="row">
                             <Rating
-                                name="hover-feedback"
+                                name="Equipment Rating"
                                 value={rating}
                                 precision={1}
                                 getLabelText={getLabelText}
-                                onChange={(event, newValue) => {
-                                    setRating(newValue);
-                                }}
-                                onChangeActive={(event, newHover) => {
-                                    setHover(newHover);
-                                }}
+                                onChange={(event) => setRating(event.target.value)}
                                 emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                             />
                             {/* <---------------------------RENDED RATING TEXT-----------------------------> */}

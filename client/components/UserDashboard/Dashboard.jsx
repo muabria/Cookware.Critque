@@ -29,7 +29,8 @@ const Dashboard = () => {
                 <Grid item xs={2}>
                     <Stack direction="column">
                         <Typography variant="h6" sx={{ my: 5 }}>
-                            <ManageAccountsIcon /> My Account
+                            <ManageAccountsIcon /> 
+                            Account Information
                         </Typography>
                         <Typography variant="h6" sx={{ my: 5 }}>
                             <LogoutSharpIcon /> Logout

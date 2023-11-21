@@ -47,8 +47,6 @@ const CommentForm = () => {
                         />
                         <Button type="submit" sx={{ backgroundColor: "purple", color: "white" }}><AddCommentIcon /> Submit comment</Button>
                     </Stack>
-
-
                 </Card>
             </form>
 
