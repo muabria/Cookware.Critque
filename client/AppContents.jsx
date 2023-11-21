@@ -37,3 +37,5 @@ const AppContents = () => {
 }
 
 export default AppContents;
+
+//for Windows, run server:dev & dev concurrently in different terminals
