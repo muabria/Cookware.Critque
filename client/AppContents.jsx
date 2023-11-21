@@ -20,7 +20,7 @@ const AppContents = () => {
     <div className='gradient_background'>
       <div className="App">
         <NavBar />
-        <PostsComments />
+        
         {/* <CommentForm /> */}
         {/* <AllPost /> */}
         <Routes>
@@ -29,7 +29,7 @@ const AppContents = () => {
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/account" element={<Dashboard />} />
           <Route path="/commentform" element={<CommentForm />} />
-       
+          <Route path="/equipment/:id/review" element={<PostsComments />} />
         </Routes>
       </div>
     </div>

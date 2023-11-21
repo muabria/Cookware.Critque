@@ -66,8 +66,8 @@ const api = createApi({
         }),
         //<------------------------------GET REVIEW BY EQUIPMENT------------------------------->
         reviewByEquipment: builder.query({
-            query: () => ({
-                url: `/api/equipment/review/:id`,
+            query: (id) => ({
+                url: `/api/equipment/review/${id}`,
                 method: 'GET',
             }),
         }),

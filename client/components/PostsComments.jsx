@@ -1,10 +1,12 @@
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
+import { useParams } from 'react-router'
 
 import { useReviewByEquipmentQuery } from '../redux/api';
 
 const PostsComments = () => {
-    const { data, error, isLoading } = useReviewByEquipmentQuery();
+    const { id } = useParams();
+    const { data, error, isLoading } = useReviewByEquipmentQuery(id);
     if (isLoading) { return <div> Please Wait.. Still Loading</div> }
     if (error) { return <div> {error.message} </div> }
     console.log(data);
@@ -12,13 +14,11 @@ const PostsComments = () => {
     return (
         <>
             {data && data.map((review) => (
-                <>
-                    <Card key={review.id}>
-                        <Typography>
-                            {review.title}
-                        </Typography>
-                    </Card>
-                </>
+                <Card key={review.id}>
+                    <Typography>
+                        {review.title}
+                    </Typography>
+                </Card>
             ))}
         </>
     )
