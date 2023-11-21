@@ -43,11 +43,21 @@ const api = createApi({
         }),
         //<------------------------------GET ALL CATEGORIES------------------------------->
         getCategories: builder.query({
-            query: () => ({
+         query: () => ({
                 url: `/api/categories`,
                 method: 'GET',
             }),
         }),
+
+        //<------------------------------GET EQUIPMENT------------------------------->
+        getEquipment: builder.query({
+            query: () => ({
+                url: `/api/equipment`,
+                method: 'GET',
+            }),
+        }),
+       
+        
         //<------------------------------ADD NEW REVIEW------------------------------->
         postReview: builder.mutation({
             query: (post) => ({
@@ -56,8 +66,8 @@ const api = createApi({
                 body: post,
             }),
         }),
-        //<------------------------------GET SINGLE EQUIPMENT BY ID------------------------------->
-        getSingleEquipment: builder.query({
+          //<------------------------------GET EQUIPMENT BY ID------------------------------->
+          getSingleEquipment: builder.query({
             query: (search) => ({
                 url: `/api/equipment/${search ? "?search=" + search : ""}`,
                 method: 'GET'
@@ -93,12 +103,13 @@ export default api;
 
 export const {
     useRegisterMutation,
-    useLoginMutation,
-    useGetUserQuery,
-    usePostReviewMutation,
-    useGetSingleEquipmentQuery,
-    useGetCategoriesQuery,
-    usePostCommentMutation,
+    useLoginMutation, 
+    useGetUserQuery, 
+    useGetCategoriesQuery, 
+    useGetEquipmentQuery, 
+    usePostReviewMutation, 
+    useGetSingleEquipmentQuery, 
+    usePostCommentMutation, 
     useGetReviewsQuery,
     usePostEquipmentMutation,
 } = api

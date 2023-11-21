@@ -9,6 +9,7 @@ import Dashboard from "./components/UserDashboard/Dashboard";
 import AddNewPost from "./components/AddNewPost/AddNewPost";
 import NavBar from "./components/NavBar";
 
+
 const AppContents = () => {
 
   const token = useSelector((state) => state.auth.token)
@@ -18,6 +19,7 @@ const AppContents = () => {
     <div className='gradient_background'>
       <div className="App">
         <NavBar />
+        <Equipment/>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginForm />} />
