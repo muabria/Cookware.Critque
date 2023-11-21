@@ -5,9 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 
-import { useParams } from 'react-router'
+import { useParams } from 'react-router';
+import {useState} from 'react';
 
 import { useReviewByEquipmentQuery } from '../redux/api';
+import RenderComments from './RenderComments'
 
 const PostsComments = () => {
     const { id } = useParams();
@@ -15,6 +17,7 @@ const PostsComments = () => {
     if (isLoading) { return <div> Please Wait.. Still Loading</div> }
     if (error) { return <div> {error.message} </div> }
     console.log(data);
+    const [reviewId, setReviewId] = useState(null);
 
     return (
         <>
@@ -37,7 +40,8 @@ const PostsComments = () => {
                             </Stack>
                         </CardContent>
                     </Card>
-                    
+                    {setReviewId(review.id)}
+                    <RenderComments reviewId={reviewId} />
                 </>
             ))}
         </>
