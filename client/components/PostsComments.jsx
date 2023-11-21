@@ -9,7 +9,7 @@ import { useParams } from 'react-router';
 import {useState} from 'react';
 
 import { useReviewByEquipmentQuery } from '../redux/api';
-import RenderComments from './RenderComments'
+import {RenderComments} from './RenderComments'
 
 const PostsComments = () => {
     const { id } = useParams();

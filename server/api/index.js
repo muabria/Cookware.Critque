@@ -79,6 +79,20 @@ apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
     }
 });
 
+//<--------------------------------GET COMMENTS BY REVIEW----------------------------->
+//GET /api/review/:review/comments
+apiRouter.get("/review/:review/comments", async (req, res, next) => {
+    try {
+        const comments = await prisma.comment.findMany({
+            where: {postId: req.params.id},
+            include: {post: true}
+        });
+        res.send(comments);
+    } catch (error) {
+        next(error);
+    }
+});
+
 //<--------------------------------GET REVIEWS BY EQUIPMENT----------------------------->
 //GET /api/equipment/review/:id
 apiRouter.get("/equipment/review/:id", async (req, res, next) => {
