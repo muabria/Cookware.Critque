@@ -104,6 +104,34 @@ apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
     }
 });
 
+//<--------------------------------GET ALL COMMENTS----------------------------->
+//GET /api/review/:review/comments
+apiRouter.get("/comments", async (req, res, next) => {
+    try {
+        const comments = await prisma.comment.findMany({
+            where: {postId: req.params.id},
+            include: {post: true}
+        });
+        res.send(comments);
+    } catch (error) {
+        next(error);
+    }
+});
+
+//<--------------------------------GET REVIEWS BY EQUIPMENT----------------------------->
+//GET /api/equipment/review/:id
+apiRouter.get("/equipment/review/:id", async (req, res, next) => {
+    console.log(req.params)
+    try {
+        const reviews = await prisma.post.findMany({
+            where: {equipmentId: Number(req.params.id)},
+            include: {equipment: true}
+        });
+        res.send(reviews);
+    } catch (error) {
+        next(error);
+    }
+});
 
 //<--------------------------------ADD NEW EQUIPMENT-------------------------------->
 //POST /api/equipment/:id
