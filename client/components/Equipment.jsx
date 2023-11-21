@@ -19,7 +19,6 @@ const Equipment = () => {
                     </Typography>
                 </Card>
             ))
-
             }
 
         </>

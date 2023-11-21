@@ -1,172 +1,137 @@
 import { useState } from "react";
 
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
+import { usePostReviewMutation } from "../../redux/api";
+import { useGetEquipmentQuery } from "../../redux/api";
+
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import ArrowForwardIosTwoToneIcon from '@mui/icons-material/ArrowForwardIosTwoTone';
-import MapCategories from "../SearchEquipment/MapCategories";
+import Rating from "@mui/material/Rating";
+import Box from '@mui/material/Box';
+import StarIcon from '@mui/icons-material/Star';
 
-import AddPostForm from "./AddPostForm";
+const AddPostContent = () => {
 
-import { motion, useAnimationControls } from "framer-motion";
+    const { data, error, isLoading } = useGetEquipmentQuery();
+    const [postReview, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostReviewMutation();
 
-import { useGetCategoriesQuery } from "../../redux/api";
-import { usePostEquipmentMutation } from "../../redux/api";
-
-const AddNewPost = () => {
+    //<-----------------TEXTFIELD STATE------------------->
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
     const [equipment, setEquipment] = useState("");
-    const [description, setDescription] = useState("");
-    const [image, setImage] = useState("");
-    const [category, setCategory] = useState("");
-    const [brand, setBrand] = useState("");
-    const [purchaseLink, setPurchaseLink] = useState("");
-    const [priceRating, setPriceRating] = useState(0);
+    const [rating, setRating] = useState(null);
 
-    const { data, error, isLoading } = useGetCategoriesQuery();
-
-    //<----------------------ANIMATIONS---------------------->
-    const controls = useAnimationControls();
-    const variants = {
-        visible: { opacity: 1 },
-        hidden: { opacity: 0 },
-    }
-    //<----------------------RATING---------------------->
-    const rating = [
-        { value: 0, label: '$10' },
-        { value: 20, label: '$20' },
-        { value: 40, label: '$40' },
-        { value: 60, label: '$60' },
-        { value: 80, label: '$80' },
-        { value: 100, label: '$100' },
-        { value: 150, label: '$150' },
-    ];
-    function ratingValue(value) {
-        return `${value}`;
-    }
-    //<----------------------SUBMIT FORM---------------------->
-    const [newEquipmentInfo] = usePostEquipmentMutation();
-
+    //<-----------------SUBMIT FORM HELPER FUNCTION------------------->
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            const result = await newEquipmentInfo({ name, description, image, category, priceRating, brand, purchaseLink })
+            const result = await postReview({ equipmentId: equipment, title, content, rating: Number(rating) })
             console.log(result)
-            controls.start("visible")
         } catch (error) {
             console.error(error)
         }
     }
-    console.log(category)
+    //<-----------------STAR RATING STATE ------------------->
+    const [hover, setHover] = useState(-1);
+
+    function getLabelText(value) {
+        return `${rating} Star${rating !== 1 ? 's' : ''}, ${labels[value]}`;
+    }
+
+    const labels = {
+        1: `Useless: Just doesn't cut it`,
+        2: `Poor: Not exactly what I whisked for`,
+        3: `Ok: Decent when everything else is dirty`,
+        4: `Good: A-peeling and good in a kitchen`,
+        5: `Excellent: Truely egg-ceptional!`,
+    };
+
+    console.log(equipment);
+    console.log(title);
+    console.log(content);
+    console.log(rating);
+
     return (
         <>
-            <Stack direction="row">
-                    <Card sx={{ p: 5, mx: 2, maxWidth: 650 }}>
-                        <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
-                            Step 1:
-                        </Typography>
-                        <Typography variant="h5" sx={{ textAlign: "center", p: 1 }}>
-                            What equipment are you critiquing?
-                        </Typography>
-                        <form onSubmit={handleSubmit}>
-                            <Stack direction="column">
-                                <TextField
-                                    label="Equipment Name"
-                                    value={equipment}
-                                    onChange={(event) => setEquipment(event.target.value)}
-                                    size="small"
-                                    variant="filled"
-                                    sx={{ m: 1 }}
-                                />
-                                <Typography>
-                                    Category:
-                                </Typography>
-                                <Stack direction="row">
-                                    {data && data.map((category) => (
-                                        <Box key={category.id}>
-                                            <Button
-                                                onClick={() => setCategory(category.id)}
-                                                sx={{ mx: 1, backgroundColor: "#9BCDD2" }}>
-                                                {category.category}
-                                            </Button>
-                                        </Box>
-                                    ))
-                                    }
-                                </Stack>
-                                <TextField
-                                    label="Description"
-                                    value={description}
-                                    onChange={(event) => setDescription(event.target.value)}
-                                    size="small"
-                                    variant="filled"
-                                    sx={{ m: 1 }}
-                                />
-                                <TextField
-                                    label="Image URL"
-                                    value={image}
-                                    onChange={(event) => setImage(event.target.value)}
-                                    size="small"
-                                    variant="filled"
-                                    sx={{ m: 1 }}
-                                    multiline
-                                />
-                                <Typography>
-                                    Price:
-                                </Typography>
-                                <Box sx={{ textAlign: "center" }}>
-                                    <Slider
-                                        aria-label="Custom marks"
-                                        defaultValue={priceRating}
-                                        onChange={(event) => setPriceRating(event.target.value)}
-                                        getAriaValueText={ratingValue}
-                                        step={5}
-                                        valueLabelDisplay="auto"
-                                        marks={rating}
-                                    />
-                                </Box>
-                                <TextField
-                                    label="Brand Name"
-                                    value={brand}
-                                    onChange={(event) => setBrand(event.target.value)}
-                                    size="small"
-                                    variant="filled"
-                                    sx={{ m: 1 }}
-                                    multiline
-                                />
-                                <TextField
-                                    label="Link to Seller"
-                                    value={purchaseLink}
-                                    onChange={(event) => setPurchaseLink(event.target.value)}
-                                    size="small"
-                                    variant="filled"
-                                    sx={{ m: 1 }}
-                                    multiline
-                                />
+            <Card sx={{ p: 5, maxWidth: 500 }}>
 
-                                {/* <---------------------------SUBMIT BUTTON-----------------------------> */}
-                                <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
-                                    <Typography variant="h6">
-                                        Next
+                <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
+                    Make a Kitchen Equipment Critique:
+                </Typography>
+
+                <form onSubmit={handleSubmit}>
+
+                    <Stack direction="column">
+                        {/* <---------------------------SELECT EQUIPMENT-----------------------------> */}
+                        {data && data.map((equipment) => (
+                            <Card key={equipment.id}
+                                sx={{ m: 1, p: 1, maxWidth: 200 }}>
+                                <Stack direction="row">
+                                    <Typography variant="h6" sx={{ m: 1 }}>
+                                        {equipment.name}
                                     </Typography>
-                                    <ArrowForwardIosTwoToneIcon />
-                                    <ArrowForwardIosTwoToneIcon />
-                                    <ArrowForwardIosTwoToneIcon />
-                                </Button>
-                            </Stack>
-                        </form>
-                    </Card>
-                {/* <---------------------------POST CARD-----------------------------> */}
-                <motion.div
-                    variants={variants}
-                    initial="hidden"
-                    animate={controls}>
-                    <AddPostForm />
-                </motion.div>
-            </Stack>
+                                    <img
+                                        src={equipment.image}
+                                        alt={`${equipment.name} image`}
+                                        width="50"
+                                        height="50" />
+                                    <Button
+                                        onClick={() => setEquipment(equipment.id)}
+                                        sx={{ m: 1 }}>
+                                        Select
+                                    </Button>
+                                </Stack>
+                            </Card>
+                        ))
+                        }
+                        {/* <---------------------------TITLE TEXTFIELD-----------------------------> */}
+                        <TextField
+                            label="Title"
+                            value={title}
+                            onChange={(event) => setTitle(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ m: 1 }}
+                        />
+                        {/* <---------------------------CONTENT TEXTFIELD-----------------------------> */}
+                        <TextField
+                            label="Content"
+                            value={content}
+                            onChange={(event) => setContent(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ m: 1 }}
+                            multiline
+                        />
+                        {/* <---------------------------RATING STARS-----------------------------> */}
+                        <Stack direction="row">
+                            <Rating
+                                name="Equipment Rating"
+                                value={rating}
+                                precision={1}
+                                getLabelText={getLabelText}
+                                onChange={(event) => setRating(event.target.value)}
+                                emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+                            />
+                            {/* <---------------------------RENDED RATING TEXT-----------------------------> */}
+                            {rating !== null && (
+                                <Box sx={{ mx: 2 }}>
+                                    <Typography>
+                                        {labels[hover !== -1 ? hover : rating]}
+                                    </Typography>
+                                </Box>
+                            )}
+                        </Stack>
+                        {/* <---------------------------SUBMIT BUTTON-----------------------------> */}
+                        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                            Create Your Critique!
+                        </Button>
+                    </Stack>
+                </form>
+            </Card>
         </>
     )
 }
-export default AddNewPost
+export default AddPostContent
