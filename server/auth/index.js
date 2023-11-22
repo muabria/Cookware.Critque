@@ -2,7 +2,7 @@
 const express = require('express');
 const authRouter = express.Router();
 
-const { requireUser, authMiddleware } = require("./utils")
+const { requireUser } = require("./utils")
 const jwt = require("jsonwebtoken")
 const { JWT_SECRET } = process.env
 
@@ -13,6 +13,7 @@ const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
 //<--------------------------------GET ALL USERS-------------------------------->
+//ADMIN 
 //GET /auth/users
 authRouter.get("/users", async (req, res, next) => {
     try {
@@ -49,7 +50,7 @@ authRouter.post("/register", async (req, res, next) => {
 
 //<--------------------------------LOGIN USERS-------------------------------->
 //POST /auth/login
-authRouter.post("/login", authMiddleware, async (req, res, next) => {
+authRouter.post("/login", requireUser, async (req, res, next) => {
 
     try {
         const { username, password } = req.body
@@ -81,7 +82,7 @@ authRouter.post("/login", authMiddleware, async (req, res, next) => {
 
 //<--------------------------------GET USER PROFILE-------------------------------->
 //GET /auth/account
-authRouter.get("/account", authMiddleware, async (req, res, next) => {
+authRouter.get("/account", requireUser, async (req, res, next) => {
     try {
         const user = await prisma.user.findUnique({
             where: {
@@ -96,6 +97,7 @@ authRouter.get("/account", authMiddleware, async (req, res, next) => {
 });
 
 //<--------------------------------DELETE USER-------------------------------->
+//To add two types of authorization use an array [ requireUser, requireAdmin ]
 //NOTE: ONLY FOR ADMIN
 //DELETE /auth/user/:id
 

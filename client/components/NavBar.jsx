@@ -10,9 +10,11 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 
-// import logo from "./images/cookingEquipmentLogo.jpg"
+import logo from "./images/cookingEquipmentLogo.png"
 import SearchMenu from './SearchEquipment/SearchMenu';
+import SearchBar from './SearchEquipment/SearchBar';
 
 
 const NavBar = () => {
@@ -27,25 +29,17 @@ const NavBar = () => {
 
     return (
         <>
-            <Box sx={{ backgroundColor: "white", p: 2 }}>
-                <Stack direction="row" useFlexGap flexWrap="wrap">
-                    {/*-----------------------------------APP TITLE--------------------------------------------- */}
-                    {/* <img src={logo} /> */}
+            <Box sx={{ p: 2, borderBottom: "solid #7C99AC 7px" }}>
+                {/*-----------------------------------APP TITLE--------------------------------------------- */}
+                <Stack direction="row">
+                    <img
+                        src={logo}
+                        width="100"
+                        height="100" />
                     <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
                         Title Placeholder
                     </Typography>
-                    {/*-----------------------------------MENU--------------------------------------------- */}
-                    <Link to="/">
-                        <Button sx={{ color: "#205375" }}>
-                            <HomeIcon />
-                            Go to Home
-                        </Button>
-                    </Link>
-                    <Link to="/new_review">
-                        <Button sx={{ color: "#205375" }}>
-                            Add a Review
-                        </Button>
-                    </Link>
+                    {/*-----------------------------------ACCOUNT MENU--------------------------------------------- */}
                     <Button
                         aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
@@ -76,9 +70,25 @@ const NavBar = () => {
                     </Menu>
                 </Stack>
             </Box>
-            {/*-----------------------------------------------SECOND ROW--------------------------------------------------------- */}
-            <Box sx={{ backgroundColor: "transparent", mb: 2, p: 2 }}>
-                <SearchMenu />
+              {/*-----------------------------------NAVIGATION BUTTONS--------------------------------------------- */}
+            <Box sx={{ textAlign: "center", borderBottom: "solid #7C99AC 7px", mb: 5 }}>
+                <Link to="/">
+                    <Button sx={{ color: "#205375", mx: 5 }}>
+                        <HomeIcon />
+                        Go to Home
+                    </Button>
+                </Link>
+                <Link to="/posts">
+                    <Button sx={{ color: "#205375", mx: 5  }}>
+                       Find Your Kitchen Addition
+                    </Button>
+                </Link>
+                <Link to="/new_review">
+                    <Button sx={{ color: "#205375", mx: 5  }}>
+                        <RateReviewIcon /> Add a Review
+                    </Button>
+                </Link>
+
             </Box>
         </>
     )

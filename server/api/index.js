@@ -134,6 +134,7 @@ apiRouter.get("/equipment/review/:id", async (req, res, next) => {
 });
 
 //<--------------------------------ADD NEW EQUIPMENT-------------------------------->
+//ADMIN ONLY
 //POST /api/equipment/:id
 apiRouter.post("/equipment/", requireUser, async (req, res, next) => {
     try{

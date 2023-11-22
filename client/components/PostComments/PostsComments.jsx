@@ -8,7 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 
 import { useParams } from 'react-router';
 
-import { useReviewByEquipmentQuery } from '../redux/api';
+import { useReviewByEquipmentQuery } from '../../redux/api';
 import RenderComments from './RenderComments';
 
 const PostsComments = () => {

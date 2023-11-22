@@ -1,6 +1,21 @@
 .gradient_background {
-    background: linear-gradient( white, white, white, #F9FBE7, #F9FBE7, #89c7c3, #088395);
-    height: 100vh;
-    width: 100vw;
+    background: linear-gradient( #89c7c3, #F9FBE7, #F9FBE7, white, white, white );
+  
+    background-size: cover;
+  }
+  .App{
+    overflow-y: scroll;
+  }
+
+  .inner-carousel{
+    display: flex;
+    background-color:#89c7c3; 
+    border-radius: 20px;
+  }
+  .carousel{
+    cursor: grab;
+    overflow: hidden;
+    background: #088395;
+    border-radius: 20px;
   }
   

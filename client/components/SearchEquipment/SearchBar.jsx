@@ -13,7 +13,7 @@ const SearchBar = ({ onSubmit }) => {
     const [searchEquipment, setSearchEquipment] = useState("");
     const [showResult, setShowResult] = useState(false);
 
-    if(!data){
+    if (!data) {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
@@ -39,14 +39,19 @@ const SearchBar = ({ onSubmit }) => {
                         label="Equipment Name"
                         size="small"
                         value={searchEquipment}
-                        onChange={(event) => setSearchEquipment(event.target.value)}
+                        onChange={(event) => {
+                            if (showResult === true) {
+                                setShowResult(false);
+                            }
+                            setSearchEquipment(event.target.value)
+                        }}
                         sx={{
                             backgroundColor: 'white',
                         }}
                     />
                     {/*----------------------------------SUBMIT BUTTON-------------------------------- */}
                     <Button
-                        onClick={() => onSubmit(searchEquipment && setShowResult(true) )}
+                        onClick={() => setShowResult(true)}
                         sx={{ color: "#5C7658", backgroundColor: "transparent", mx: 1, mb: 5 }}>
                         <SearchIcon />
                     </Button>

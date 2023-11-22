@@ -1,7 +1,7 @@
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 
-import {useGetCommentsQuery} from '../redux/api';
+import {useGetCommentsQuery} from '../../redux/api';
 
 const RenderComments = ({reviewId}) => {
     const {data, error} = useGetCommentsQuery();

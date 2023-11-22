@@ -20,6 +20,7 @@ const authSlice = createSlice({
         // Handle the 'login' API call success
         builder.addMatcher(
             api.endpoints.login.matchFulfilled, storeToken);
+        //store user/token (parse to json stringify  jason.parse.payload.user)
     }
 });
 
