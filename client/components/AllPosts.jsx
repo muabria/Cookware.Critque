@@ -15,6 +15,7 @@ import Button from '@mui/material/Button';
 
 import { motion } from 'framer-motion';
 import { useGetReviewsQuery } from '../redux/api';
+import SearchBar from './SearchEquipment/SearchBar';
 
 const AllPost = () => {
     const { data } = useGetReviewsQuery()
@@ -22,11 +23,16 @@ const AllPost = () => {
 
     return (
         <>
-        <Typography variant="h3" sx={{ textAlign:"center" }}>
-            Explore Trusted Reviews
-        </Typography>
+            <Box sx={{ borderBottom: "solid #7C99AC 7px", borderTop: "solid #7C99AC 7px", mb: 3 }}>
+                <Typography variant="h3" sx={{ textAlign: "center", color: "#205375" }}>
+                    Explore Trusted Critiques Made from Real Users
+                </Typography>
+            </Box>
+            <Box sx={{ mx: 10, mb: 1 }}>
+                <SearchBar />
+            </Box>
             <Box sx={{ mx: 5 }}>
-                <motion.div className="carousel">
+                <div className="carousel">
                     <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -300 }}>
                         <Stack direction="row">
                             {data && data.map((review) => (
@@ -64,7 +70,7 @@ const AllPost = () => {
                             }
                         </Stack>
                     </motion.div>
-                </motion.div>
+                </div>
             </Box>
         </>
     );

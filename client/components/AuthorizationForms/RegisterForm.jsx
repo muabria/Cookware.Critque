@@ -11,13 +11,12 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
 
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useRegisterMutation } from "../../redux/api";
 
 const RegisterForm = () => {
     const [register] = useRegisterMutation();
-    const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -102,12 +101,12 @@ const RegisterForm = () => {
                                     <Typography sx={{ mt: 2, textAlign: "center" }}>
                                         Already have an account?
                                     </Typography>
-                                    {/* <Link to="/login"> */}
+                                    <Link to="/login">
                                     <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
                                         Login to your account
                                         <LoginIcon sx={{ ml: 2 }} />
                                     </Button>
-                                    {/* </Link> */}
+                                    </Link>
                                 </Stack>
                             </form>
                         </Card>

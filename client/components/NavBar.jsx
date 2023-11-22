@@ -13,7 +13,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 
 import logo from "./images/cookingEquipmentLogo.png"
-import SearchMenu from './SearchEquipment/SearchMenu';
 import SearchBar from './SearchEquipment/SearchBar';
 
 

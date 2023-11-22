@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
+import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 
@@ -8,9 +8,14 @@ const SearchResults = ({ results }) => {
         <>
             <Stack direction="row">
                 {results.map((equipment) => (
-                    <Card key={equipment.id} sx={{ p: 5 }}>
+                    <Avatar key={equipment.id} 
+                    sx={{ backgroundColor: "white", 
+                    border: "solid #D29D2B 5px", 
+                    p: 5, 
+                    minWidth: 200,  
+                    minHeight: 200 }}>
                         <Stack direction="column">
-                            <Typography variant="h6" sx={{ textAlign: "center", mb: 2 }}>
+                            <Typography variant="h6" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
                                 {equipment.name}
                             </Typography>
                             <img
@@ -22,7 +27,7 @@ const SearchResults = ({ results }) => {
                                 See the {equipment.name}'s Review
                             </Button>
                         </Stack>
-                    </Card>
+                    </Avatar>
                 ))
                 }
             </Stack>
