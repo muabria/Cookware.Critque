@@ -99,6 +99,18 @@ authRouter.get("/account", requireUser, async (req, res, next) => {
 //<--------------------------------DELETE USER-------------------------------->
 //NOTE: ONLY FOR ADMIN
 //DELETE /auth/user/:id
-authRouter.delete("")
+authRouter.delete("/user/:id", async (req, res, next) => {
+    try {
+        const deletedUser = await prisma.user.delete({
+            where: {id: +req.params.id},
+        });
+        if (!deletedUser) {
+            return res.status(404).send("User not found");
+        }
+        res.send(deletedUser);
+    } catch (error) {
+        next(error)
+    }
+})
 
 module.exports = authRouter;
