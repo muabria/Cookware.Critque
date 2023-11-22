@@ -2,7 +2,7 @@
 const express = require('express');
 const authRouter = express.Router();
 
-const { requireAdmin } = require("./utils")
+const { requireAdmin, requireUser } = require("./utils")
 const jwt = require("jsonwebtoken")
 const { JWT_SECRET } = process.env
 
@@ -82,7 +82,7 @@ authRouter.post("/login", async (req, res, next) => {
 
 //<--------------------------------GET USER PROFILE-------------------------------->
 //GET /auth/account
-authRouter.get("/account", async (req, res, next) => {
+authRouter.get("/account", requireUser, async (req, res, next) => {
     try {
         const user = await prisma.user.findUnique({
             where: {
@@ -99,5 +99,6 @@ authRouter.get("/account", async (req, res, next) => {
 //<--------------------------------DELETE USER-------------------------------->
 //NOTE: ONLY FOR ADMIN
 //DELETE /auth/user/:id
+authRouter.delete("")
 
 module.exports = authRouter;
