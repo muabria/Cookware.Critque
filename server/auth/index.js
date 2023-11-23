@@ -3,6 +3,8 @@ const express = require('express');
 const authRouter = express.Router();
 
 const { requireUser } = require("./utils")
+const { requireAdmin } = require("./utils")
+
 const jwt = require("jsonwebtoken")
 const { JWT_SECRET } = process.env
 
@@ -15,7 +17,7 @@ const SALT_COUNT = 10;
 //<--------------------------------GET ALL USERS-------------------------------->
 //ADMIN 
 //GET /auth/users
-authRouter.get("/users", async (req, res, next) => {
+authRouter.get("/users",[requireUser, requireAdmin], async (req, res, next) => {
     try {
         const user = prisma.user
         const users = await user.findMany();
@@ -50,7 +52,7 @@ authRouter.post("/register", async (req, res, next) => {
 
 //<--------------------------------LOGIN USERS-------------------------------->
 //POST /auth/login
-authRouter.post("/login", requireUser, async (req, res, next) => {
+authRouter.post("/login", async (req, res, next) => {
 
     try {
         const { username, password } = req.body

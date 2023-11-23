@@ -23,7 +23,7 @@ const AllPost = () => {
 
     return (
         <>
-            <Box sx={{ borderBottom: "solid #7C99AC 7px", borderTop: "solid #7C99AC 7px", mb: 3 }}>
+            <Box sx={{ maxHeight: "60px", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", borderRadius: "50px", mb: 3 }}>
                 <Typography variant="h3" sx={{ textAlign: "center", color: "#205375" }}>
                     Explore Trusted Critiques Made from Real Users
                 </Typography>
@@ -38,8 +38,17 @@ const AllPost = () => {
                             {data && data.map((review) => (
                                 <Grid container>
                                     <Grid xs={8}>
-                                        <Card key={review.id} sx={{ minWidth: 400, minHeight: 400, m: 5, p: 2 }}>
-                                            <CardHeader sx={{ textAlign: "center" }}
+                                        <Card key={review.id}
+                                            sx={{
+                                                backgroundColor:"#F9FBE7",
+                                                border: "solid #D29D2B 5px",
+                                                borderRadius: 100,
+                                                minWidth: 300,
+                                                minHeight: 300,
+                                                m: 5,
+                                                p: 5,
+                                            }}>
+                                            <CardHeader sx={{ textAlign: "center", color: "#205375" }}
                                                 title={review.title}
                                             // subheader="TO DO"
                                             />
@@ -50,7 +59,7 @@ const AllPost = () => {
                                                 alt="Equipment Picture"
                                             /> */}
                                             <CardContent>
-                                                <Typography variant="body2" color="text.secondary">
+                                                <Typography variant="body2" sx={{ color: "#205375" }}>
                                                     {review.content}
                                                 </Typography>
                                             </CardContent>

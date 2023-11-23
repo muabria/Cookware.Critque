@@ -5,6 +5,10 @@ function storeToken(state, { payload }) {
     state.token = payload.token;
     window.sessionStorage.setItem("token", payload.token);
 }
+//admin permission
+function storeAdminPermission(state, { payload }) {
+    state.isAdmin = payload.user.isAdmin
+}
 // Create a Redux slice for authentication
 const authSlice = createSlice({
     name: "auth",

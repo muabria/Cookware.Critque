@@ -95,7 +95,7 @@ const AddPostContent = () => {
                                             key={equipment.id}
                                             className="select-equipment"
                                             onClick={() => setEquipment(equipment.id)}
-                                            sx={{ m: 1, minWidth: 300, maxWidth: 300 }}>
+                                            sx={{ m: 1, minWidth: 300, maxWidth: 300, border: "solid #D29D2B 5px", borderRadius:100 }}>
                                             <Box sx={{ backgroundColor: "#EACD65" }}>
                                                 <Typography variant="h5" sx={{ color: "#205375", m: 1, textAlign: "center" }}>
                                                     {equipment.name}
