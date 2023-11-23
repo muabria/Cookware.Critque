@@ -2,8 +2,7 @@
 const express = require('express');
 const authRouter = express.Router();
 
-const { requireUser } = require("./utils")
-const { requireAdmin } = require("./utils")
+const { requireAdmin, requireUser } = require("./utils")
 
 const jwt = require("jsonwebtoken")
 const { JWT_SECRET } = process.env
@@ -15,7 +14,7 @@ const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
 //<--------------------------------GET ALL USERS-------------------------------->
-//ADMIN 
+//NOTE: ONLY FOR ADMIN
 //GET /auth/users
 authRouter.get("/users",[requireUser, requireAdmin], async (req, res, next) => {
     try {
@@ -102,5 +101,18 @@ authRouter.get("/account", requireUser, async (req, res, next) => {
 //To add two types of authorization use an array [ requireUser, requireAdmin ]
 //NOTE: ONLY FOR ADMIN
 //DELETE /auth/user/:id
+authRouter.delete("/user/:id", requireAdmin, async (req, res, next) => {
+    try {
+        const deletedUser = await prisma.user.delete({
+            where: {id: +req.params.id},
+        });
+        if (!deletedUser) {
+            return res.status(404).send("User not found");
+        }
+        res.send(deletedUser);
+    } catch (error) {
+        next(error)
+    }
+})
 
 module.exports = authRouter;
