@@ -99,7 +99,7 @@ authRouter.get("/account", requireUser, async (req, res, next) => {
 //<--------------------------------DELETE USER-------------------------------->
 //NOTE: ONLY FOR ADMIN
 //DELETE /auth/user/:id
-authRouter.delete("/user/:id", async (req, res, next) => {
+authRouter.delete("/user/:id", requireAdmin, async (req, res, next) => {
     try {
         const deletedUser = await prisma.user.delete({
             where: {id: +req.params.id},
