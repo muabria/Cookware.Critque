@@ -1,18 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import api from './api';
+import store from './store';
 
 function storeToken(state, { payload }) {
     state.token = payload.token;
     window.sessionStorage.setItem("token", payload.token);
-}
-//admin permission
-function storeAdminPermission(state, { payload }) {
-    state.isAdmin = payload.user.isAdmin
+    if(payload.isAdmin){
+        window.sessionStorage.setItem("admin", true)
+    }
 }
 // Create a Redux slice for authentication
 const authSlice = createSlice({
     name: "auth",
-    initialState: { token: window.sessionStorage.getItem("token") ?? null },
+    initialState: { 
+        token: window.sessionStorage.getItem("token") ?? null, 
+        admin: window.sessionStorage.getItem("admin") ?? false},
     reducers: {
         logout: (_state) => ({ token: null, user: null })
     },

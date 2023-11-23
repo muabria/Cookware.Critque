@@ -83,6 +83,20 @@ const NavBar = () => {
                                     </Button>
                                 </Link>
                             </MenuItem>
+                            <MenuItem>
+                                <Link to="/admin_dashboard">
+                                    <Button>
+                                        admin
+                                    </Button>
+                                </Link>
+                            </MenuItem>
+                            <MenuItem>
+                                <Link to="/account">
+                                    <Button>
+                                        user dashboard
+                                    </Button>
+                                </Link>
+                            </MenuItem>
                         </Menu>
                     </Box>
                 </Stack>

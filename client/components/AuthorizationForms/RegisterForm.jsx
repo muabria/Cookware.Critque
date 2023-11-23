@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useRegisterMutation } from "../../redux/api";
 
@@ -23,6 +23,7 @@ const RegisterForm = () => {
     const [secondPassword, setSecondPassword] = useState("");
     const [email, setEmail] = useState("");
 
+    const navigate = useNavigate();
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
