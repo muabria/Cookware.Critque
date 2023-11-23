@@ -18,7 +18,7 @@ const api = createApi({
     }),
 
     endpoints: (builder) => ({
-        //<------------------------------REGISTER ACCOUNT ENDPOINT------------------------------->
+        //<--------------------REGISTER ACCOUNT ENDPOINT--------------------->
         register: builder.mutation({
             query: (user) => ({
                 url: `/auth/register`,
@@ -26,7 +26,7 @@ const api = createApi({
                 body: user,
             }),
         }),
-        //<------------------------------LOGIN ACCOUNT ENDPOINT------------------------------->
+        //<--------------------LOGIN ACCOUNT ENDPOINT--------------------->
         login: builder.mutation({
             query: (user) => ({
                 url: `/auth/login`,
@@ -35,14 +35,14 @@ const api = createApi({
             }),
         }),
 
-        //<------------------------------GET USER------------------------------->
+        //<-------------------GET USER--------------------->
         getUser: builder.query({
             query: () => ({
                 url: `/auth/account`,
                 method: 'GET',
             }),
         }),
-        //<------------------------------GET ALL CATEGORIES------------------------------->
+        //<------------------GET ALL CATEGORIES-------------------->
         getCategories: builder.query({
          query: () => ({
                 url: `/api/categories`,
@@ -50,14 +50,14 @@ const api = createApi({
             }),
         }),
 
-        //<------------------------------GET EQUIPMENT------------------------------->
+        //<--------------------GET EQUIPMENT--------------------->
         getEquipment: builder.query({
             query: () => ({
                 url: `/api/equipment`,
                 method: 'GET',
             }),
         }), 
-        //<------------------------------ADD NEW REVIEW------------------------------->
+        //<--------------------ADD NEW REVIEW---------------------->
         postReview: builder.mutation({
             query: (post) => ({
                 url: `/api/review`,
@@ -65,14 +65,14 @@ const api = createApi({
                 body: post,
             }),
         }),
-          //<------------------------------GET EQUIPMENT BY ID------------------------------->
+          //<--------------------GET EQUIPMENT BY ID--------------------->
           getSingleEquipment: builder.query({
             query: (search) => ({
                 url: `/api/equipment/${search ? "?search=" + search : ""}`,
                 method: 'GET'
             }),
         }),
-        //<------------------------------COMMENT------------------------------->
+        //<--------------------COMMENT----------------------->
         postComment: builder.mutation({
             query: (comment) => ({
                 url: `/api/comment/`,
@@ -80,14 +80,14 @@ const api = createApi({
                 body: comment,
             }),
         }),
-        //<------------------------------ALL POST------------------------------->
+        //<----------------------ALL POST--------------------->
         getReviews: builder.query({
             query: () => ({
                 url: `/api/reviews/`,
                 method: 'GET',
             }),
         }),
-        //<------------------------------ADD NEW EQUIPMENT------------------------------->
+        //<--------------------ADD NEW EQUIPMENT--------------------->
         postEquipment: builder.mutation({
             query: (equipment) => ({
                 url: `/api/equipment/`,
@@ -95,17 +95,28 @@ const api = createApi({
                 body: equipment,
             }),
         }),
-        //<------------------------------GET REVIEW BY EQUIPMENT------------------------------->
+        //<-------------------GET REVIEW BY EQUIPMENT--------------------->
         reviewByEquipment: builder.query({
             query: (id) => ({
                 url: `/api/equipment/review/${id}`,
                 method: 'GET',
             }),
         }),
-        //<------------------------------GET ALL COMMENTS------------------------------->
+        //<--------------------GET ALL COMMENTS-------------------->
         getComments: builder.query({
             query: () => ({
                 url: `/api/comments`,
+                method: 'GET',
+            }),
+        }),
+
+
+        //<--------------------------------------ADMIN ONLY BACKENDS----------------------------------------->
+        
+        //<--------------------GET ALL COMMENTS--------------------->
+          getAllUsers: builder.query({
+            query: () => ({
+                url: `/auth/users`,
                 method: 'GET',
             }),
         }),
@@ -127,5 +138,6 @@ export const {
     useGetReviewsQuery,
     usePostEquipmentMutation, 
     useReviewByEquipmentQuery,
-    useGetCommentsQuery
+    useGetCommentsQuery,
+    useGetAllUsersQuery,
 } = api

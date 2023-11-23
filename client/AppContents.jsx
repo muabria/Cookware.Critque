@@ -5,33 +5,32 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
-import Dashboard from "./components/UserDashboard/Dashboard";
-import CommentForm from "./components/CommentForm";
-import AllPost from "./components/AllPost";
-import PostsComments from "./components/PostsComments";
+import UserDashboard from "./components/Dashboards/UserDashboard";
+import AdminDashboard from "./components/Dashboards/adminDashboard";
+import CommentForm from "./components/PostComments/CommentForm";
+import AllPosts from "./components/AllPosts"
+import PostsComments from "./components/PostComments/PostsComments";
 import AddNewPost from "./components/AddNewPost/AddNewPost";
 import NavBar from "./components/NavBar";
 
 const AppContents = () => {
 
   const token = useSelector((state) => state.auth.token)
-  console.log(token)
 
   return (
     <div className='gradient_background'>
       <div className="App">
         <NavBar />
-        
-        {/* <CommentForm /> */}
-        {/* <AllPost /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
-          <Route path="/account" element={<Dashboard />} />
+          <Route path="/account" element={<UserDashboard />} />
+          <Route path="/admin_dashboard" element={<AdminDashboard/>} />
           <Route path="/commentform" element={<CommentForm />} />
           <Route path="/equipment/:id/review" element={<PostsComments />} />
           <Route path="/new_review" element={<AddNewPost />} />
+          <Route path="/posts" element={<AllPosts/>} />
         </Routes>
       </div>
     </div>

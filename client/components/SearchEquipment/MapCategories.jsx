@@ -20,9 +20,9 @@ const MapCategories = () => {
     return (
         <>
             {data && data.map((category) => (
-                <Box key={category.id} sx={{ m: 5 }}>
-                    <Avatar sx={{ p: 5 }} >
-                        <Typography>
+                <Box key={category.id} sx={{ m: 2 }}>
+                    <Avatar sx={{ p: 5, color:"#3C1B1F", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", }} >
+                        <Typography> 
                             {category.category}
                         </Typography>
                     </Avatar>

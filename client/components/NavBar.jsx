@@ -10,9 +10,10 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 
-// import logo from "./images/cookingEquipmentLogo.jpg"
-import SearchMenu from './SearchEquipment/SearchMenu';
+import logo from "./images/cookingEquipmentLogo.png"
+import SearchBar from './SearchEquipment/SearchBar';
 
 
 const NavBar = () => {
@@ -27,59 +28,81 @@ const NavBar = () => {
 
     return (
         <>
-            <Box sx={{ backgroundColor: "white", p: 2 }}>
-                <Stack direction="row" useFlexGap flexWrap="wrap">
-                    {/*-----------------------------------APP TITLE--------------------------------------------- */}
-                    {/* <img src={logo} /> */}
+            <Box sx={{ p: 2, mb: 5 }}>
+                {/*-----------------------------------APP TITLE--------------------------------------------- */}
+                <Stack direction="row">
+                    <img
+                        src={logo}
+                        width="100"
+                        height="100" />
                     <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
                         Title Placeholder
                     </Typography>
-                    {/*-----------------------------------MENU--------------------------------------------- */}
-                    <Link to="/">
-                        <Button sx={{ color: "#205375" }}>
-                            <HomeIcon />
-                            Go to Home
+                    {/*-----------------------------------ACCOUNT MENU--------------------------------------------- */}
+                    <Box sx={{ maxHeight:"50px", backgroundColor:"#F9FBE7", borderRadius:"50px"}}>
+                        <Link to="/">
+                            <Button sx={{ color: "#205375", mx: 5 }}>
+                                <HomeIcon />
+                                Home
+                            </Button>
+                        </Link>
+                        <Link to="/posts">
+                            <Button sx={{ color: "#205375", mx: 5 }}>
+                                Find New Kitchen Equipment
+                            </Button>
+                        </Link>
+                        <Link to="/new_review">
+                            <Button sx={{ color: "#205375", mx: 5 }}>
+                                <RateReviewIcon /> Add a Review
+                            </Button>
+                        </Link>
+                        <Button
+                            aria-controls={open ? 'account-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            onClick={handleClick}>
+                            <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
                         </Button>
-                    </Link>
-                    <Link to="/new_review">
-                        <Button sx={{ color: "#205375" }}>
-                            Add a Review
-                        </Button>
-                    </Link>
-                    <Button
-                        aria-controls={open ? 'account-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}>
-                        <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
-                    </Button>
 
-                    <Menu
-                        id="account-menu"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}>
-                        <MenuItem>
-                            <Link to="/login">
-                                <Button>
-                                    Login
-                                </Button>
-                            </Link>
-                        </MenuItem>
-                        <MenuItem>
-                            <Link to="/register">
-                                <Button>
-                                    Sign Up
-                                </Button>
-                            </Link>
-                        </MenuItem>
-                    </Menu>
+                        <Menu
+                            id="account-menu"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}>
+                            <MenuItem>
+                                <Link to="/login">
+                                    <Button>
+                                        Login
+                                    </Button>
+                                </Link>
+                            </MenuItem>
+                            <MenuItem>
+                                <Link to="/register">
+                                    <Button>
+                                        Sign Up
+                                    </Button>
+                                </Link>
+                            </MenuItem>
+                            <MenuItem>
+                                <Link to="/admin_dashboard">
+                                    <Button>
+                                        admin
+                                    </Button>
+                                </Link>
+                            </MenuItem>
+                            <MenuItem>
+                                <Link to="/account">
+                                    <Button>
+                                        user dashboard
+                                    </Button>
+                                </Link>
+                            </MenuItem>
+                        </Menu>
+                    </Box>
                 </Stack>
             </Box>
-            {/*-----------------------------------------------SECOND ROW--------------------------------------------------------- */}
-            <Box sx={{ backgroundColor: "transparent", mb: 2, p: 2 }}>
-                <SearchMenu />
-            </Box>
+            {/*-----------------------------------NAVIGATION BUTTONS--------------------------------------------- */}
+
         </>
     )
 }

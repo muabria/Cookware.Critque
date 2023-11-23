@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import AddCommentIcon from '@mui/icons-material/AddComment';
-import { usePostCommentMutation } from '../redux/api';
+import { usePostCommentMutation } from '../../redux/api';
 
 const CommentForm = () => {
 const [comment,setComment] = useState(" ");

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -17,11 +17,12 @@ import { useLoginMutation } from "../../redux/api";
 
 const LoginForm = () => {
     const [login, { data, error, }] = useLoginMutation();
-    const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const navigate = useNavigate();
+    
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
@@ -78,12 +79,14 @@ const LoginForm = () => {
                                 <Typography sx={{ mt: 2, textAlign: "center" }}>
                                     Don't have an account?
                                 </Typography>
-                                {/* <Link to="/login"> */}
+
+                                <Link to="/register">
                                 <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
                                     Sign up!
                                     <LoginIcon sx={{ ml: 2 }} />
                                 </Button>
-                                {/* </Link> */}
+                                </Link>
+
                             </Stack>
                         </form>
                     </Card>
