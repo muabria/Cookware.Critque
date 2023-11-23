@@ -95,8 +95,8 @@ apiRouter.get("/review/:id", async (req, res, next) => {
 apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
     try {
         const comments = await prisma.comment.findMany({
-            where: {userId: req.user.id},
-            include: {user: true}
+            where: { userId: req.user.id },
+            include: { user: true }
         });
         res.send(comments);
     } catch (error) {
@@ -108,26 +108,75 @@ apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
 //<--------------------------------ADD NEW EQUIPMENT-------------------------------->
 //POST /api/equipment/:id
 apiRouter.post("/equipment/", requireUser, async (req, res, next) => {
-    try{
-    const { name, description, image, category, brand, purchaseLink, priceRating,} = req.body
-    const newEquipment = await prisma.equipment.create({
-        data: {
-            name, 
-            description, 
-            image, 
-            category: { connect: { id: category.id } },
-            brand,
-            purchaseLink,
-            priceRating,
-        },
-        include: { category: true }    
-    });
-res.status(201).send(newEquipment);
+    try {
+        const { name, description, image, category, brand, purchaseLink, priceRating, } = req.body
+        const newEquipment = await prisma.equipment.create({
+            data: {
+                name,
+                description,
+                image,
+                category: { connect: { id: category.id } },
+                brand,
+                purchaseLink,
+                priceRating,
+            },
+            include: { category: true }
+        });
+        res.status(201).send(newEquipment);
 
-}catch (error) {
-    next(error);
-}
+    } catch (error) {
+        next(error);
+    }
 })
+
+
+//<--------------------------------UPDATE EQUIPMENT-------------------------------->
+//PATCH Update an existing equipment item
+apiRouter.patch("/equipment/:id", requireUser, async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { name, description, image, category, brand, purchaseLink, priceRating } = req.body;
+
+        const updatedEquipmentItem = await prisma.equipment.update({
+            where: { id: Number(req.params.id) },
+            data: {
+                name: name || undefined,
+                description: description || undefined,
+                image: image || undefined,
+                category: category ? { connect: { id: category.id } } : undefined,
+                brand: brand || undefined,
+                purchaseLink: purchaseLink || undefined,
+                priceRating: priceRating || undefined,
+            },
+            include: { category: true },
+        });
+
+        if (!updatedEquipmentItem) {
+            res.status(404).send({ message: "Equipment item not found" });
+        } else {
+            res.status(200).send(updatedEquipmentItem);
+        }
+    } catch (error) {
+        next(error);
+    }
+});
+
+//<--------------------------------DELETE EQUIPMENT-------------------------------->
+
+apiRouter.delete("/equipment/:id", requireUser, async (req, res, next) => {
+    try {
+        const deletedEquipmentItem = await prisma.equipment.delete({
+            where: { id: parseInt(req.params.id) },
+        });
+        if (!deletedEquipmentItem) {
+            res.status(404).send({ message: "Equipment item not found" });
+        } else {
+            res.status(204).send({ message: "Equipment item deleted" });
+        }
+    } catch (error) {
+        next(error);
+    }
+});
 
 //<--------------------------------MAKE NEW REVIEW-------------------------------->
 //POST /api/review
@@ -143,10 +192,10 @@ apiRouter.post("/review", requireUser, async (req, res, next) => {
                 rating,
                 equipment: { connect: { name: equipment.name } },
             },
-            include: { 
-                user: true, 
+            include: {
+                user: true,
                 equipment: true
-            } 
+            }
         });
         res.status(201).send(newReview);
     } catch (error) {
@@ -161,9 +210,9 @@ apiRouter.post("/comment", requireUser, async (req, res, next) => {
         const { content, post } = req.body
         const newComment = await prisma.comment.create({
             data: {
-                user: {connect: {id: req.user.id}},
+                user: { connect: { id: req.user.id } },
                 content,
-                post: {connect: {id: post.id}},
+                post: { connect: { id: post.id } },
             },
             include: {
                 user: true,
@@ -227,7 +276,7 @@ apiRouter.patch("/comment/:id", requireUser, async (req, res, next) => {
 apiRouter.delete("/review/:id", requireUser, async (req, res, next) => {
     try {
         const deletedPost = await prisma.post.delete({
-            where: {id: +req.params.id},
+            where: { id: +req.params.id },
         });
         if (deletedPost.userId !== req.user.id || !deletedPost) {
             return res.status(404).send("Review not found.");
@@ -244,7 +293,7 @@ apiRouter.delete("/review/:id", requireUser, async (req, res, next) => {
 apiRouter.delete("/comment/:id", requireUser, async (req, res, next) => {
     try {
         const deletedComment = await prisma.comment.delete({
-            where: {id: +req.params.id},
+            where: { id: +req.params.id },
         });
         if (deletedComment.userId !== req.user.id || !deletedComment) {
             return res.status(404).send("Comment not found.");
