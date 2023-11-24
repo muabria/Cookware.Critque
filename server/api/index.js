@@ -92,6 +92,20 @@ apiRouter.get("/review/:id", async (req, res, next) => {
 
 //<--------------------------------GET COMMENTS BY USER----------------------------->
 //GET /api/:user/comments 
+apiRouter.get("/:user/reviews", requireUser, async (req, res, next) => {
+    try {
+        const reviews = await prisma.post.findMany({
+            where: {userId: req.user.id},
+            include: {user: true}
+        });
+        res.send(reviews);
+    } catch (error) {
+        next(error);
+    }
+});
+
+//<--------------------------------GET COMMENTS BY USER----------------------------->
+//GET /api/:user/comments 
 apiRouter.get("/:user/comments", requireUser, async (req, res, next) => {
     try {
         const comments = await prisma.comment.findMany({

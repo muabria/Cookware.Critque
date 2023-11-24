@@ -38,16 +38,13 @@ const AdminDashboard = () => {
                             Hello Admin!
                         </Typography>
                     </Stack>
-                    <Card sx={{ backgroundColor: "#D3E0E2" }}>
-                        <Link to="/new_review">
-                            <Button sx={{ backgroundColor: "#088395", color: "white", m: 2 }}>
-                                Make a new Critique
-                            </Button>
-                        </Link>
+                    <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
                         <Stack direction="row">
                             <Grid item xs={6}>
+                                <Typography sx={{ textAlign:"center" }}>View All Users</Typography>
                             </Grid>
                             <Grid item xs={6}>
+                            <Typography sx={{ textAlign:"center" }} >View All Posts</Typography>
                             </Grid>
                         </Stack>
                     </Card>

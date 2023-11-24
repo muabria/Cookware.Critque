@@ -42,9 +42,23 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
+        //<-------------------GET COMMENT BY USER--------------------->
+        getCommentByUser: builder.query({
+            query: (user) => ({
+                url: `/api/${user}/comments/`,
+                method: 'GET',
+            }),
+        }),
+        //<-------------------GET REVIEW BY USER--------------------->
+        getReviewByUser: builder.query({
+            query: (user) => ({
+                url: `/api/${user}/reviews/`,
+                method: 'GET',
+            }),
+        }),
         //<------------------GET ALL CATEGORIES-------------------->
         getCategories: builder.query({
-         query: () => ({
+            query: () => ({
                 url: `/api/categories`,
                 method: 'GET',
             }),
@@ -56,7 +70,7 @@ const api = createApi({
                 url: `/api/equipment`,
                 method: 'GET',
             }),
-        }), 
+        }),
         //<--------------------ADD NEW REVIEW---------------------->
         postReview: builder.mutation({
             query: (post) => ({
@@ -65,8 +79,8 @@ const api = createApi({
                 body: post,
             }),
         }),
-          //<--------------------GET EQUIPMENT BY ID--------------------->
-          getSingleEquipment: builder.query({
+        //<--------------------GET EQUIPMENT BY ID--------------------->
+        getSingleEquipment: builder.query({
             query: (search) => ({
                 url: `/api/equipment/${search ? "?search=" + search : ""}`,
                 method: 'GET'
@@ -112,9 +126,9 @@ const api = createApi({
 
 
         //<--------------------------------------ADMIN ONLY BACKENDS----------------------------------------->
-        
+
         //<--------------------GET ALL COMMENTS--------------------->
-          getAllUsers: builder.query({
+        getAllUsers: builder.query({
             query: () => ({
                 url: `/auth/users`,
                 method: 'GET',
@@ -130,13 +144,15 @@ export const {
     useRegisterMutation,
     useLoginMutation,
     useGetUserQuery,
+    useGetCommentByUserQuery,
+    useGetReviewByUserQuery,
     useGetCategoriesQuery,
     useGetEquipmentQuery,
     usePostReviewMutation,
     useGetSingleEquipmentQuery,
     usePostCommentMutation,
     useGetReviewsQuery,
-    usePostEquipmentMutation, 
+    usePostEquipmentMutation,
     useReviewByEquipmentQuery,
     useGetCommentsQuery,
     useGetAllUsersQuery,
