@@ -15,7 +15,7 @@ const PostsComments = () => {
     const { id } = useParams();
     const { data, error, isLoading } = useReviewByEquipmentQuery(id);
     if (isLoading) { return <div> Please Wait.. Still Loading</div> }
-    if (error) { return <div> {error.message} </div> }
+    if (error) { return <div> Sorry! There's a problem loading the reviews. </div> }
     console.log(data);
 
     return (

@@ -45,7 +45,7 @@ const authMiddleware = async (req, res, next) => {
 //If there is no user in a required user action, send error.
 const requireUser = (req, res, next) => {
   if (!req.user) {
-    res.status(401).send("Sorry, you need an account to do that.")
+    res.status(401).send("Sorry, you need an account to do that. Please sign up first")
   }
   next();
 };
