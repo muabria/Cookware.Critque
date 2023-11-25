@@ -16,7 +16,8 @@ import LoginIcon from '@mui/icons-material/Login';
 import { useLoginMutation } from "../../redux/api";
 
 const LoginForm = () => {
-    const [login, { data, error, }] = useLoginMutation(); //include error handling
+    const [login, { data, error, }] = useLoginMutation();
+    if (error) { return <div>Whoops! Something went wrong logging you in.</div>}
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
