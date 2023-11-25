@@ -14,7 +14,7 @@ const [comment,setComment] = useState(" ");
  const [italic, setItalic] = useState(false);
   const [fontWeight, setFontWeight] = useState('normal');
   const [anchorEl, setAnchorEl] = useState(null);
-  const [postcomment] = usePostCommentMutation();
+  const [postcomment] = usePostCommentMutation(); //include error handling
   console.log(comment);
 
 const handleSubmit = async (event) =>{

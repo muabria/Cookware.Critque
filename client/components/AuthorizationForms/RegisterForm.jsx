@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../../redux/api";
 
 const RegisterForm = () => {
-    const [register] = useRegisterMutation();
+    const [register] = useRegisterMutation(); //include error handling
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

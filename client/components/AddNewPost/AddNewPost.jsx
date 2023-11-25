@@ -20,7 +20,10 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 const AddPostContent = () => {
 
     const { data, error, isLoading } = useGetEquipmentQuery();
-    const [postReview, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostReviewMutation();
+    const [postReview, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostReviewMutation(); //include error handling
+
+    if (isLoading) { return <div> Please Wait.. Still Loading</div> }
+    if (error) { return <div> Sorry! There's a problem loading the equipment. </div> }
 
     //<-----------------TEXTFIELD STATE------------------->
     const [title, setTitle] = useState("");
