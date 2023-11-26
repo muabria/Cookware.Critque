@@ -258,10 +258,15 @@ apiRouter.delete("/review/:id", requireUser, async (req, res, next) => {
         const deletedPost = await prisma.post.delete({
             where: {id: +req.params.id},
         });
+
+        const deletedComments = await prisma.comment.deleteMany({
+            where: {postId: +req.params.id}
+        })
+
         if (deletedPost.userId !== req.user.id || !deletedPost) {
             return res.status(404).send("Review not found.");
         }
-        res.send(deletedPost);
+        res.send(deletedPost, deletedComments);
     } catch (error) {
         next(error);
     }
