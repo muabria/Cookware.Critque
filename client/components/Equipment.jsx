@@ -7,7 +7,7 @@ import { useGetEquipmentQuery } from "../redux/api"
 const Equipment = () => {
     const { data, error, isLoading } = useGetEquipmentQuery();
     if (isLoading) { return <div> Please Wait.. Still Loading</div> }
-    if (error) { return <div> {error.message} </div> }
+    if (error) { return <div> Sorry! There's a problem loading the equipment. </div> }
     console.log(data);
 
 
@@ -15,16 +15,16 @@ const Equipment = () => {
         <>
             {data && data.map((equipment) => (
                 <Card key={equipment.id}>
-                    <Stack direction="column"> 
-                    <Typography>
-                        {equipment.name}
-                    </Typography>
-                    <Typography>
-                        {equipment.brand}
-                    </Typography>
-                    <Typography>
-                        {equipment.description}
-                    </Typography>
+                    <Stack direction="column">
+                        <Typography>
+                            {equipment.name}
+                        </Typography>
+                        <Typography>
+                            {equipment.brand}
+                        </Typography>
+                        <Typography>
+                            {equipment.description}
+                        </Typography>
                     </Stack>
                 </Card>
 
