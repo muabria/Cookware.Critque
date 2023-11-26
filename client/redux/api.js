@@ -63,6 +63,13 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
+         //<------------------GET ALL CATEGORIES-------------------->
+         getSingleCategory: builder.query({
+            query: (id) => ({
+                url: `/api/category/${id}`,
+                method: 'GET',
+            }),
+        }),
 
         //<--------------------GET EQUIPMENT--------------------->
         getEquipment: builder.query({
@@ -163,6 +170,7 @@ export const {
     useGetCommentByUserQuery,
     useGetReviewByUserQuery,
     useGetCategoriesQuery,
+    useGetSingleCategoryQuery,
     useGetEquipmentQuery,
     usePostReviewMutation,
     useGetSingleEquipmentQuery,

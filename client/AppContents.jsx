@@ -12,6 +12,7 @@ import AllPosts from "./components/AllPosts"
 import PostsComments from "./components/PostComments/PostsComments";
 import AddNewPost from "./components/AddNewPost/AddNewPost";
 import NavBar from "./components/NavBar";
+import CategoryPage from "./components/Categories/CategoryPage";
 
 const AppContents = () => {
 
@@ -31,6 +32,7 @@ const AppContents = () => {
           <Route path="/equipment/:id/review" element={<PostsComments />} />
           <Route path="/new_review" element={<AddNewPost />} />
           <Route path="/posts" element={<AllPosts/>} />
+          <Route path="/category/:id" element={<CategoryPage/>} />
         </Routes>
       </div>
     </div>
