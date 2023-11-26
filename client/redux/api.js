@@ -123,11 +123,27 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
+        //<--------------------DELETE REVIEW FOR USER--------------------->
+        deleteReviewForUser: builder.mutation({
+            query: (user, id, review) => ({
+                url: `/review/${id}`,
+                method: 'DELETE',
+                body: review,
+            }),
+        }),
+        //<--------------------DELETE COMMENT FOR USER--------------------->
+        deleteCommentForUser: builder.mutation({
+            query: (user, id, comment) => ({
+                url: `/review/user/${id}/`,
+                method: 'DELETE',
+                body: comment,
+            }),
+        }),
 
 
         //<--------------------------------------ADMIN ONLY BACKENDS----------------------------------------->
 
-        //<--------------------GET ALL COMMENTS--------------------->
+        //<--------------------GET ALL USERS--------------------->
         getAllUsers: builder.query({
             query: () => ({
                 url: `/auth/users`,
@@ -155,5 +171,6 @@ export const {
     usePostEquipmentMutation,
     useReviewByEquipmentQuery,
     useGetCommentsQuery,
+    useDeleteReviewForUserMutation,
     useGetAllUsersQuery,
 } = api

@@ -5,10 +5,10 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Avatar from '@mui/material/Avatar';
 
-import { Link } from "react-router-dom"; 
-
 import { useGetAllUsersQuery } from "../../redux/api"
 
+import MapAllUsers from "./MapAllUsers";
+import AddEquipment from "./AddEquipment";
 
 const AdminDashboard = () => {
     console.log("This is the admin dashboard")
@@ -39,9 +39,10 @@ const AdminDashboard = () => {
                         </Typography>
                     </Stack>
                     <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
+                        <AddEquipment/>
                         <Stack direction="row">
                             <Grid item xs={6}>
-                                <Typography sx={{ textAlign:"center" }}>View All Users</Typography>
+                                <MapAllUsers/>
                             </Grid>
                             <Grid item xs={6}>
                             <Typography sx={{ textAlign:"center" }} >View All Posts</Typography>
