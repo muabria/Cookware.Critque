@@ -18,11 +18,14 @@ import { useGetReviewsQuery } from '../redux/api';
 import SearchBar from './SearchEquipment/SearchBar';
 
 const AllPost = () => {
-    const { data } = useGetReviewsQuery()
+    const { data, error, isLoading } = useGetReviewsQuery()
     console.log(data);
-
-    if (isLoading) { return <div> Please Wait.. Still Loading</div> }
-    if (error) { return <div> Sorry! There's a problem loading the reviews. </div> }
+    if (isLoading) {
+        return <div> Please Wait.. Still Loading</div>
+    }
+    if (error) {
+        return <div> Sorry! There's a problem loading the reviews. </div>
+    }
 
     return (
         <>
@@ -43,7 +46,7 @@ const AllPost = () => {
                                     <Grid xs={8}>
                                         <Card key={review.id}
                                             sx={{
-                                                backgroundColor:"#F9FBE7",
+                                                backgroundColor: "#F9FBE7",
                                                 border: "solid #D29D2B 5px",
                                                 borderRadius: 100,
                                                 minWidth: 300,
