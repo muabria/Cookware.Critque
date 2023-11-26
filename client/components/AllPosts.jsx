@@ -21,6 +21,9 @@ const AllPost = () => {
     const { data } = useGetReviewsQuery()
     console.log(data);
 
+    if (isLoading) { return <div> Please Wait.. Still Loading</div> }
+    if (error) { return <div> Sorry! There's a problem loading the reviews. </div> }
+
     return (
         <>
             <Box sx={{ maxHeight: "60px", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", borderRadius: "50px", mb: 3 }}>

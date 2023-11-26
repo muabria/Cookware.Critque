@@ -4,8 +4,9 @@ import Typography from '@mui/material/Typography';
 import {useGetCommentsQuery} from '../../redux/api';
 
 const RenderComments = ({reviewId}) => {
-    const {data, error} = useGetCommentsQuery();
-    if (error) { return <div> {error.message} </div> }
+    const {data, error, isLoading} = useGetCommentsQuery();
+    if (isLoading) { return <div> Please Wait.. Still Loading</div> }
+    if (error) { return <div> There's a problem loading the comments. </div> }
     console.log(data);
 
     return (

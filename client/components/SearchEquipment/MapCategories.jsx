@@ -13,7 +13,7 @@ const MapCategories = () => {
         return <div> Loading... </div>;
     }
     if (error) {
-        return <div>Error:{error.message}</div>;
+        return <div>Sorry! Something went wrong loading the categories.</div>;
     }
     console.log(data);
 

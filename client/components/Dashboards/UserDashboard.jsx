@@ -23,7 +23,7 @@ const UserDashboard = () => {
         return <div>Loading...</div>
     }
     if (error) {
-        return <div> Error: {error.message} </div>;
+        return <div> Oops! Something went wrong loading the data. </div>;
     } else
         console.log(data);
     return (

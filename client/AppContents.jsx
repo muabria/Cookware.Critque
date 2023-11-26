@@ -6,7 +6,7 @@ import HomePage from "./components/HomePage";
 import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import UserDashboard from "./components/Dashboards/UserDashboard";
-import AdminDashboard from "./components/Dashboards/adminDashboard";
+import AdminDashboard from "./components/Dashboards/AdminDashboard";
 import CommentForm from "./components/PostComments/CommentForm";
 import AllPosts from "./components/AllPosts"
 import PostsComments from "./components/PostComments/PostsComments";
