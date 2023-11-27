@@ -47,7 +47,7 @@ const UserDashboard = () => {
                             Hello, {data.username}
                         </Typography>
                     </Stack>
-                    <Card sx={{ backgroundColor: "#D3E0E2" }}>
+                    <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
                         <Link to="/new_review">
                             <Button sx={{ backgroundColor: "#088395", color: "white", m: 2 }}>
                                 Make a new Critique

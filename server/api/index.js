@@ -75,9 +75,7 @@ apiRouter.get("/reviews", async (req, res, next) => {
 apiRouter.get("/review/:id", async (req, res, next) => {
     try {
         const user = await prisma.user.findUnique({
-            where: {
-                id: req.user.id
-            }
+           
         });
         const review = await prisma.post.findUnique({
             where: {
@@ -85,6 +83,20 @@ apiRouter.get("/review/:id", async (req, res, next) => {
             }
         });
         res.send(review);
+    } catch (error) {
+        next(error);
+    }
+});
+
+//<--------------------------------GET COMMENTS BY USER----------------------------->
+//GET /api/:user/comments 
+apiRouter.get("/:user/reviews", requireUser, async (req, res, next) => {
+    try {
+        const reviews = await prisma.post.findMany({
+            where: {userId: req.user.id},
+            include: {user: true}
+        });
+        res.send(reviews);
     } catch (error) {
         next(error);
     }
@@ -299,7 +311,7 @@ apiRouter.patch("/comment/:id", requireUser, async (req, res, next) => {
 });
 
 
-//<--------------------------------DELETE REVIEW-------------------------------->
+//<--------------------------------DELETE REVIEW FOR USER-------------------------------->
 //NOTE: FOR INDIVIDUAL USER AND ADMIN
 //DELETE /api/review/:id
 apiRouter.delete("/review/:id", requireUser, async (req, res, next) => {
@@ -316,10 +328,10 @@ apiRouter.delete("/review/:id", requireUser, async (req, res, next) => {
     }
 })
 
-//<--------------------------------DELETE COMMENT-------------------------------->
+//<--------------------------------DELETE COMMENT FOR USER-------------------------------->
 //NOTE: FOR INDIVIDUAL USER AND ADMIN
 //DELETE /api/comment/:id
-apiRouter.delete("/comment/:id", requireUser, async (req, res, next) => {
+apiRouter.delete("/comment/user/:id", requireUser, async (req, res, next) => {
     try {
         const deletedComment = await prisma.comment.delete({
             where: { id: +req.params.id },

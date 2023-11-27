@@ -3,17 +3,21 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 
+import { Link } from "react-router-dom";
+
 const SearchResults = ({ results }) => {
     return (
         <>
             <Stack direction="row">
                 {results.map((equipment) => (
-                    <Avatar key={equipment.id} 
-                    sx={{ backgroundColor: "white", 
-                    border: "solid #D29D2B 5px", 
-                    p: 5, 
-                    minWidth: 200,  
-                    minHeight: 200 }}>
+                    <Avatar key={equipment.id}
+                        sx={{
+                            backgroundColor: "white",
+                            border: "solid #D29D2B 5px",
+                            p: 5,
+                            minWidth: 200,
+                            minHeight: 200
+                        }}>
                         <Stack direction="column">
                             <Typography variant="h6" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
                                 {equipment.name}
@@ -23,9 +27,11 @@ const SearchResults = ({ results }) => {
                                 alt={`${equipment.name} image`}
                                 width="200"
                                 height="150" />
-                            <Button>
-                                See the {equipment.name}'s Review
-                            </Button>
+                            <Link to={`/equipment/${equipment.id}/review`} >
+                                <Button>
+                                    See the {equipment.name}'s Review
+                                </Button>
+                            </Link>
                         </Stack>
                     </Avatar>
                 ))

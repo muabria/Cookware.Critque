@@ -22,9 +22,9 @@ const AddPostContent = () => {
     const { data, error, isLoading } = useGetEquipmentQuery();
     const [postReview, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostReviewMutation(); //include error handling
 
-    if (isLoading) { return <div> Please Wait.. Still Loading</div> }
-    if (error) { return <div> Sorry! There's a problem loading the equipment. </div> }
-    if (isMutationError) {return <div>Whoops! Something went wrong posting the review.</div>}
+    // if (isLoading) { return <div> Please Wait.. Still Loading</div> }
+    // if (error) { return <div> Sorry! There's a problem loading the equipment. </div> }
+    // if (isMutationError) {return <div>Whoops! Something went wrong posting the review.</div>}
 
     //<-----------------TEXTFIELD STATE------------------->
     const [title, setTitle] = useState("");
@@ -36,7 +36,7 @@ const AddPostContent = () => {
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            const result = await postReview({ equipmentId: equipment, title, content, rating: Number(rating) })
+            const result = await postReview({ equipmentId: Number(equipment), title, content, rating: Number(rating) })
             console.log(result)
         } catch (error) {
             console.error(error)
@@ -93,32 +93,36 @@ const AddPostContent = () => {
                                     </Typography>
                                 </Stack>
                                 {/* <--------------MAPP EQUIPMENT---------------> */}
-                                <Stack direction="row">
-                                    {data && data.map((equipment) => (
-                                        <Card
-                                            key={equipment.id}
-                                            className="select-equipment"
-                                            onClick={() => setEquipment(equipment.id)}
-                                            sx={{ m: 1, minWidth: 300, maxWidth: 300, border: "solid #D29D2B 5px", borderRadius:100 }}>
-                                            <Box sx={{ backgroundColor: "#EACD65" }}>
-                                                <Typography variant="h5" sx={{ color: "#205375", m: 1, textAlign: "center" }}>
-                                                    {equipment.name}
-                                                </Typography>
-                                                <Typography sx={{ color: "#205375", m: 1, textAlign: "center" }}>
-                                                    by {equipment.brand}
-                                                </Typography>
-                                            </Box>
-                                            <Box textAlign="center">
-                                                <img
-                                                    src={equipment.image}
-                                                    alt={`${equipment.name} image`}
-                                                    width="200"
-                                                    height="200" />
-                                            </Box>
-                                        </Card>
-                                    ))
-                                    }
-                                </Stack>
+                                <div className="carousel">
+                                    <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -2000 }}>
+                                        <Stack direction="row">
+                                            {data && data.map((equipment) => (
+                                                <Card
+                                                    key={equipment.id}
+                                                    className="select-equipment"
+                                                    onClick={() => setEquipment(equipment.id)}
+                                                    sx={{ m: 1, minWidth: 300, maxWidth: 300, border: "solid #D29D2B 5px", borderRadius: 100 }}>
+                                                    <Box sx={{ backgroundColor: "#EACD65" }}>
+                                                        <Typography variant="h5" sx={{ color: "#205375", m: 1, textAlign: "center" }}>
+                                                            {equipment.name}
+                                                        </Typography>
+                                                        <Typography sx={{ color: "#205375", m: 1, textAlign: "center" }}>
+                                                            by {equipment.brand}
+                                                        </Typography>
+                                                    </Box>
+                                                    <Box textAlign="center">
+                                                        <img
+                                                            src={equipment.image}
+                                                            alt={`${equipment.name} image`}
+                                                            width="200"
+                                                            height="200" />
+                                                    </Box>
+                                                </Card>
+                                            ))
+                                            }
+                                        </Stack>
+                                    </motion.div>
+                                </div>
                                 <Button
                                     onClick={() => handelAnimation()}
                                     sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
