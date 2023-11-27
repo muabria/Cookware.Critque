@@ -6,9 +6,9 @@ import Grid from "@mui/material/Grid";
 import Avatar from '@mui/material/Avatar';
 
 import { useGetAllUsersQuery } from "../../redux/api"
-
 import MapAllUsers from "./MapAllUsers";
 import AddEquipment from "./AddEquipment";
+import MapPostsAdmin from "./MapPostsAdmin";
 
 const AdminDashboard = () => {
     console.log("This is the admin dashboard")
@@ -45,7 +45,7 @@ const AdminDashboard = () => {
                                 <MapAllUsers/>
                             </Grid>
                             <Grid item xs={6}>
-                            <Typography sx={{ textAlign:"center" }} >View All Posts</Typography>
+                       <MapPostsAdmin/>    
                             </Grid>
                         </Stack>
                     </Card>

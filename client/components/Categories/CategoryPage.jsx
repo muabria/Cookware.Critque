@@ -1,8 +1,12 @@
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import { useGetEquipmentQuery } from "../../redux/api";
 import { useGetSingleCategoryQuery } from "../../redux/api";
+
+import { Link } from "react-router-dom";
 
 import { motion } from 'framer-motion';
 
@@ -45,18 +49,25 @@ const CategoryPage = () => {
                                 m: 5,
                                 p: 5,
                             }}>
-                            <Typography variant="h5" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
-                                {equipment.name}
-                            </Typography>
-                            <Typography variant="h6" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
-                                {equipment.brand}
-                            </Typography>
-                            <img
-                                src={equipment.image}
-                                alt={`${equipment.name} image`}
-                                width="200"
-                                height="200" 
+                            <Stack direction="column">
+                                <Typography variant="h5" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
+                                    {equipment.name}
+                                </Typography>
+                                <Typography variant="h6" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
+                                    {equipment.brand}
+                                </Typography>
+                                <img
+                                    src={equipment.image}
+                                    alt={`${equipment.name} image`}
+                                    width="200"
+                                    height="200"
                                 />
+                                <Link to={`/equipment/${equipment.id}/review`} >
+                                    <Button sx={{ m: 1 }}>
+                                        See the {equipment.name}'s Review
+                                    </Button>
+                                </Link>
+                            </Stack>
                         </Card>
                     ))}
                 </motion.div>

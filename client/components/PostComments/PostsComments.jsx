@@ -14,8 +14,12 @@ import RenderComments from './RenderComments';
 const PostsComments = () => {
     const { id } = useParams();
     const { data, error, isLoading } = useReviewByEquipmentQuery(id);
-    if (isLoading) { return <div> Please Wait.. Still Loading</div> }
-    if (error) { return <div> Sorry! There's a problem loading the reviews. </div> }
+    if (isLoading) {
+        return <div> Please Wait.. Still Loading</div>
+    }
+    if (error) {
+        return <div> Sorry! There's a problem loading the reviews. </div>
+    }
     console.log(data);
 
     return (
@@ -23,30 +27,32 @@ const PostsComments = () => {
             {data && data.map((review) =>
             (
                 <>
-                {/* Would be nice to include equipment image */}
-                {/* <Card>
+                    {/* Would be nice to include equipment image */}
+                    {/* <Card>
                     <CardMedia 
                          component="img"
                          height="194"
                          image=""
                          alt=""
                     /> */}
-                    <Typography variant="h2">
+                    <Typography variant="h2" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                         {review.equipment.name}
                     </Typography>
-                {/* </Card> */}
+                    {/* </Card> */}
                     <Card key={review.id}>
                         <CardHeader
                             title={review.title}
+                            sx={{ color: "#205375", textAlign: "center", m: 1 }}
                         />
                         <CardContent>
                             <Stack direction="column">
-                                <Typography>
+                                <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                                     {review.content}
                                 </Typography>
                                 <Rating
                                     readOnly="true"
                                     value={review.rating}
+                                    sx={{ alignContent: "center", m: 1 }}
                                 />
                             </Stack>
                         </CardContent>

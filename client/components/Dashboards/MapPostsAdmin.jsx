@@ -11,16 +11,15 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
-import { useGetReviewByUserQuery } from "../../redux/api";
-import { useDeleteReviewForUserMutation } from "../../redux/api";
+import { useGetReviewsQuery } from "../../redux/api";
+// import { useDeleteReviewForUserMutation } from "../../redux/api";
 
 //<-----------------DELETE REVIEW HELPER FUNCTION------------------->
 
-const MapPosts = () => {
+const MapPostsAdmin = () => {
     const [alert, setAlert] = useState(false);
 
-    const [deleteReview, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteReviewForUserMutation();
-    const { data, error, isLoading } = useGetReviewByUserQuery();
+    const { data, error, isLoading } = useGetReviewsQuery();
 
     if (!data) {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
@@ -37,7 +36,7 @@ const MapPosts = () => {
         <>
             <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
                 <Typography variant="h5" sx={{ textAlign: "center" }}>
-                    My Reviews:
+                    All Reviews:
                 </Typography>
                 {data && data.map((review) => (
                     <Card key={review.id} sx={{ m: 1, p: 2 }}>
@@ -98,4 +97,4 @@ const MapPosts = () => {
     )
 }
 
-export default MapPosts
+export default MapPostsAdmin

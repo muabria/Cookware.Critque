@@ -37,7 +37,6 @@ const SearchBar = ({ onSubmit }) => {
                 <TextField
                     type="text"
                     label="Search Equipment By Name"
-                    size="small"
                     fullWidth
                     value={searchEquipment}
                     onChange={(event) => {

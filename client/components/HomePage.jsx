@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import AllPost from "./AllPosts"
+import AllPost from "./Posts/AllPosts";
 import MapCategories from "./SearchEquipment/MapCategories"
 import SearchBar from "./SearchEquipment/SearchBar";
 import background from "./images/kitchenEquipmentBackground.png"

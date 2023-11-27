@@ -6,8 +6,12 @@ import { useGetEquipmentQuery } from "../redux/api"
 
 const Equipment = () => {
     const { data, error, isLoading } = useGetEquipmentQuery();
-    if (isLoading) { return <div> Please Wait.. Still Loading</div> }
-    if (error) { return <div> Sorry! There's a problem loading the equipment. </div> }
+    if (isLoading) { 
+        return <div> Please Wait.. Still Loading</div> 
+    }
+    if (error) { 
+        return <div> Sorry! There's a problem loading the equipment. </div> 
+    }
     console.log(data);
 
 
