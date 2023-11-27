@@ -48,7 +48,7 @@ const AllPost = () => {
                                             sx={{
                                                 backgroundColor: "#F9FBE7",
                                                 border: "solid #D29D2B 5px",
-                                                borderRadius: 100,
+                                                borderRadius: "10px",
                                                 minWidth: 300,
                                                 minHeight: 300,
                                                 m: 5,

@@ -18,18 +18,19 @@ const MapCategories = () => {
         return <div>Sorry! Something went wrong loading the categories.</div>;
     }
     console.log(data);
-   
+
     return (
         <>
             {data && data.map((category) => (
                 <Box key={category.id} sx={{ m: 2 }}>
-                    <Avatar
-                        sx={{ p: 5, color: "#3C1B1F", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", }} >
-                        <Link to={`/category/${category.id}`} >
-                            {category.category}
-                        </Link>
-                    </Avatar>
-
+                    <Link to={`/category/${category.id}`} >
+                        <Avatar
+                            sx={{ p: 3, color: "#3C1B1F", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", }} >
+                            <Typography sx={{ fontSize: "13px" }}>
+                                {category.category}
+                            </Typography>
+                        </Avatar>
+                    </Link>
                 </Box>
             ))
             }
