@@ -63,7 +63,7 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
-         //<------------------GET ALL CATEGORIES-------------------->
+         //<------------------GET SINGLE CATEGORY-------------------->
          getSingleCategory: builder.query({
             query: (id) => ({
                 url: `/api/category/${id}`,

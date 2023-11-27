@@ -65,7 +65,7 @@ const AllPost = () => {
                                                 alt="Equipment Picture"
                                             /> */}
                                             <CardContent>
-                                                <Typography variant="body2" sx={{ color: "#205375" }}>
+                                                <Typography variant="h5" sx={{ color: "#205375" }}>
                                                     {review.content}
                                                 </Typography>
                                             </CardContent>
