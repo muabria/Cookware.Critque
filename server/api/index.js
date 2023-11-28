@@ -150,13 +150,13 @@ apiRouter.get("/equipment/review/:id", async (req, res, next) => {
 //POST /api/equipment/:id
 apiRouter.post("/equipment/", requireUser, async (req, res, next) => {
     try {
-        const { name, description, image, category, brand, purchaseLink, priceRating, } = req.body
+        const { name, description, image, categoryId, brand, purchaseLink, priceRating, } = req.body
         const newEquipment = await prisma.equipment.create({
             data: {
                 name,
                 description,
                 image,
-                category: { connect: { id: category.id } },
+                category: { connect: { id: categoryId } },
                 brand,
                 purchaseLink,
                 priceRating,
@@ -195,7 +195,7 @@ apiRouter.patch("/equipment/:id", requireUser, async (req, res, next) => {
         if (!updatedEquipmentItem) {
             res.status(404).send({ message: "Equipment item not found" });
         } else {
-            res.status(200).send(updatedEquipmentItem);
+            res.send(updatedEquipmentItem);
         }
     } catch (error) {
         next(error);
@@ -212,7 +212,7 @@ apiRouter.delete("/equipment/:id", requireUser, async (req, res, next) => {
         if (!deletedEquipmentItem) {
             res.status(404).send({ message: "Equipment item not found" });
         } else {
-            res.status(204).send({ message: "Equipment item deleted" });
+            res.send(deletedEquipmentItem);
         }
     } catch (error) {
         next(error);
@@ -248,12 +248,12 @@ apiRouter.post("/review", requireUser, async (req, res, next) => {
 //POST /api/comment
 apiRouter.post("/comment", requireUser, async (req, res, next) => {
     try {
-        const { content, post } = req.body
+        const { content, postId } = req.body
         const newComment = await prisma.comment.create({
             data: {
                 user: { connect: { id: req.user.id } },
                 content,
-                post: { connect: { id: post.id } },
+                post: { connect: { id: postId } },
             },
             include: {
                 user: true,
@@ -320,17 +320,10 @@ apiRouter.delete("/review/:id", requireUser, async (req, res, next) => {
             where: { id: +req.params.id },
         });
 
-        // const deletedComments = await prisma.comment.deleteMany({
-        //     where: {postId: +req.params.id},
-        //     include: {post: true}
-        // });
-
-        // const transaction = await prisma.$transaction([deletedPost, deletedComments]);
-
         if (deletedPost.userId !== req.user.id || !deletedPost) {
             return res.status(404).send("Review not found.");
         }
-        res.send(deletedPost, deletedComments);
+        res.send(deletedPost);
     } catch (error) {
         next(error);
     }
