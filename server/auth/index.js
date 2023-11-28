@@ -139,6 +139,18 @@ authRouter.patch("/user/:id", requireUser, async (req, res, next) => {
 
 //<--------------------------------PATCH ADMIN-------------------------------->
 //NOTE: ONLY FOR ADMIN
-//PATCH /auth/admin/
+//PATCH /auth/admin/:id
+authRouter.patch("/admin/:id", [requireUser, requireAdmin], async (req, res, next) => {
+    try {
+        const {isAdmin} = req.body;
+        const adminToggle = await prisma.user.update({
+            where: {id: Number(req.params.id)},
+            data: {isAdmin: isAdmin || undefined}
+        })
+        res.send(adminToggle)
+    } catch (error) {
+        next(error)
+    }
+})
 
 module.exports = authRouter;
