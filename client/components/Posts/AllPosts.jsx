@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Grid from '@mui/material/Grid';
@@ -10,16 +9,25 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
 
 import { motion } from 'framer-motion';
-import { useGetReviewsQuery } from '../redux/api';
-import SearchBar from './SearchEquipment/SearchBar';
 
-const AllPost = () => {
-    const { data } = useGetReviewsQuery()
+import { Link } from 'react-router-dom'; 
+
+import { useGetReviewsQuery } from '../../redux/api';
+
+import SearchBar from '../SearchEquipment/SearchBar';
+
+const AllPosts = () => {
+    const { data, error, isLoading } = useGetReviewsQuery()
     console.log(data);
+    if (isLoading) {
+        return <div> Please Wait.. Still Loading</div>
+    }
+    if (error) {
+        return <div> Sorry! There's a problem loading the reviews. </div>
+    }
 
     return (
         <>
@@ -40,15 +48,14 @@ const AllPost = () => {
                                     <Grid xs={8}>
                                         <Card key={review.id}
                                             sx={{
-                                                backgroundColor:"#F9FBE7",
+                                                backgroundColor: "#F9FBE7",
                                                 border: "solid #D29D2B 5px",
-                                                borderRadius: 100,
+                                                borderRadius: "10px",
                                                 minWidth: 300,
                                                 minHeight: 300,
                                                 m: 5,
-                                                p: 5,
                                             }}>
-                                            <CardHeader sx={{ textAlign: "center", color: "#205375" }}
+                                            <CardHeader sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}
                                                 title={review.title}
                                             // subheader="TO DO"
                                             />
@@ -59,18 +66,22 @@ const AllPost = () => {
                                                 alt="Equipment Picture"
                                             /> */}
                                             <CardContent>
-                                                <Typography variant="body2" sx={{ color: "#205375" }}>
+                                                <Typography variant="h6" sx={{ color: "#205375" }}>
                                                     {review.content}
                                                 </Typography>
                                             </CardContent>
                                             <CardActions disableSpacing>
-                                                <IconButton aria-label="add to favorites">
+                                                {/* <IconButton aria-label="add to favorites">
                                                     <FavoriteIcon />
                                                 </IconButton>
                                                 <IconButton aria-label="share">
                                                     <ShareIcon />
-                                                </IconButton>
-                                                <Button>See more</Button>
+                                                </IconButton> */}
+                                                <Link to={`/equipment/${review.id}/review`} >
+                                                    <Button sx={{ m: 1 }}>
+                                                        See the Full Review
+                                                    </Button>
+                                                </Link>
                                             </CardActions>
                                         </Card>
                                     </Grid>
@@ -84,4 +95,4 @@ const AllPost = () => {
         </>
     );
 }
-export default AllPost
+export default AllPosts

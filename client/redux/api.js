@@ -42,10 +42,31 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
+        //<-------------------GET COMMENT BY USER--------------------->
+        getCommentByUser: builder.query({
+            query: (user) => ({
+                url: `/api/${user}/comments/`,
+                method: 'GET',
+            }),
+        }),
+        //<-------------------GET REVIEW BY USER--------------------->
+        getReviewByUser: builder.query({
+            query: (user) => ({
+                url: `/api/${user}/reviews/`,
+                method: 'GET',
+            }),
+        }),
         //<------------------GET ALL CATEGORIES-------------------->
         getCategories: builder.query({
-         query: () => ({
+            query: () => ({
                 url: `/api/categories`,
+                method: 'GET',
+            }),
+        }),
+         //<------------------GET SINGLE CATEGORY-------------------->
+         getSingleCategory: builder.query({
+            query: (id) => ({
+                url: `/api/category/${id}`,
                 method: 'GET',
             }),
         }),
@@ -56,7 +77,7 @@ const api = createApi({
                 url: `/api/equipment`,
                 method: 'GET',
             }),
-        }), 
+        }),
         //<--------------------ADD NEW REVIEW---------------------->
         postReview: builder.mutation({
             query: (post) => ({
@@ -65,8 +86,8 @@ const api = createApi({
                 body: post,
             }),
         }),
-          //<--------------------GET EQUIPMENT BY ID--------------------->
-          getSingleEquipment: builder.query({
+        //<--------------------GET EQUIPMENT BY ID--------------------->
+        getSingleEquipment: builder.query({
             query: (search) => ({
                 url: `/api/equipment/${search ? "?search=" + search : ""}`,
                 method: 'GET'
@@ -109,12 +130,28 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
+        //<--------------------DELETE REVIEW FOR USER--------------------->
+        deleteReviewForUser: builder.mutation({
+            query: (user, id, review) => ({
+                url: `/review/${id}`,
+                method: 'DELETE',
+                body: review,
+            }),
+        }),
+        //<--------------------DELETE COMMENT FOR USER--------------------->
+        deleteCommentForUser: builder.mutation({
+            query: (user, id, comment) => ({
+                url: `/review/user/${id}/`,
+                method: 'DELETE',
+                body: comment,
+            }),
+        }),
 
 
         //<--------------------------------------ADMIN ONLY BACKENDS----------------------------------------->
-        
-        //<--------------------GET ALL COMMENTS--------------------->
-          getAllUsers: builder.query({
+
+        //<--------------------GET ALL USERS--------------------->
+        getAllUsers: builder.query({
             query: () => ({
                 url: `/auth/users`,
                 method: 'GET',
@@ -130,14 +167,18 @@ export const {
     useRegisterMutation,
     useLoginMutation,
     useGetUserQuery,
+    useGetCommentByUserQuery,
+    useGetReviewByUserQuery,
     useGetCategoriesQuery,
+    useGetSingleCategoryQuery,
     useGetEquipmentQuery,
     usePostReviewMutation,
     useGetSingleEquipmentQuery,
     usePostCommentMutation,
     useGetReviewsQuery,
-    usePostEquipmentMutation, 
+    usePostEquipmentMutation,
     useReviewByEquipmentQuery,
     useGetCommentsQuery,
+    useDeleteReviewForUserMutation,
     useGetAllUsersQuery,
 } = api

@@ -14,8 +14,12 @@ const [comment,setComment] = useState(" ");
  const [italic, setItalic] = useState(false);
   const [fontWeight, setFontWeight] = useState('normal');
   const [anchorEl, setAnchorEl] = useState(null);
-  const [postcomment] = usePostCommentMutation();
+  const [postcomment, error] = usePostCommentMutation();
   console.log(comment);
+
+  if (error) { 
+    return <div>Whoops! Something went wrong posting the comment.</div>
+  }
 
 const handleSubmit = async (event) =>{
 try {
