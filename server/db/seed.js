@@ -281,6 +281,58 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
+        const post3 = await prisma.post.create({
+            data: {
+                title: "Works like a CHARM!",
+                content: `I love this more and more everyday each time I use it!`,
+                rating: 5,
+                user: { connect: { id: brianna.id } },
+                equipment: { connect: { id: handBlender.id } },
+                comments: {
+                    create: {
+                        content: 'Keeps my counter from getting water stains from my water pitcher',
+                        user: { connect: { id: brianna.id } },
+                    }
+                }
+            },
+            include: { user: true, equipment: true }
+        })
+
+        const post4 = await prisma.post.create({
+            data: {
+                title: "Works even better!",
+                content: `I love this more than Post 1's!`,
+                rating: 5,
+                user: { connect: { id: henrietta.id } },
+                equipment: { connect: { id: blender.id } },
+                comments: {
+                    create: {
+                        content: 'Keeps my counter from getting water stains from my water pitcher',
+                        user: { connect: { id: henrietta.id } },
+                    }
+                }
+            },
+            include: { user: true, equipment: true }
+        })
+
+        const post5 = await prisma.post.create({
+            data: {
+                title: "AHHMAZING!",
+                content: `I love this! Great Purchase!`,
+                rating: 5,
+                user: { connect: { id: kat.id } },
+                equipment: { connect: { id: Mandolin.id } },
+                comments: {
+                    create: {
+                        content: 'Using my own Mandolin amd im loving this purchsee!',
+                        user: { connect: { id: kat.id } },
+                    }
+                }
+            },
+            include: { user: true, equipment: true }
+        })
+
+
 
         delete mvPass, bmPass, hmPass, kcPass;
         console.log("Database is seeded.")
