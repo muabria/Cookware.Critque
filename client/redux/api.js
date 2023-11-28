@@ -146,7 +146,7 @@ const api = createApi({
         //<--------------------DELETE COMMENT FOR USER--------------------->
         deleteCommentForUser: builder.mutation({
             query: ( id, comment) => ({
-                url: `/api/review/user/${id}/`,
+                url: `/api/comment/user/${id}/`,
                 method: 'DELETE',
                 body: comment,
             }),
@@ -196,6 +196,7 @@ export const {
     useReviewByEquipmentQuery,
     useGetCommentsQuery,
     useDeleteReviewForUserMutation,
+    useDeleteCommentForUserMutation,
 //ADMIN
     useGetAllUsersQuery,
     useDeleteUserMutation,

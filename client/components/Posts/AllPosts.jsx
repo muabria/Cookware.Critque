@@ -31,7 +31,7 @@ const AllPosts = () => {
 
     return (
         <>
-            <Box sx={{ maxHeight: "60px", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", borderRadius: "50px", mb: 3 }}>
+            <Box sx={{ maxHeight: "60px", mb: 3 }}>
                 <Typography variant="h3" sx={{ textAlign: "center", color: "#205375" }}>
                     Explore Trusted Critiques Made from Real Users
                 </Typography>

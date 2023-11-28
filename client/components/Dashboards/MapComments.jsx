@@ -7,11 +7,14 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
 import { useState } from 'react';
+
 import { useGetCommentByUserQuery } from '../../redux/api';
+import { useDeleteCommentForUserMutation } from "../../redux/api";
 
 const MapComments = () => {
     const [alert, setAlert] = useState(false);
 
+    const [deleteComment, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteCommentForUserMutation();
     const { data, error, isLoading } = useGetCommentByUserQuery();
 
     if (!data) {
@@ -54,25 +57,25 @@ const MapComments = () => {
                                 </Button>
                             </Grid>
                         </Grid>
+                        {alert && <Alert severity="warning">
+                            Are you sure you want to delete this post? Once you do it's gone forever.
+                            <Button
+                                onClick={() => deleteComment(comment.id)}
+                                variant="outlined"
+                                color="error"
+                                sx={{ m: 1 }}>
+                                Yes, delete this review
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                onClick={() => setAlert(false)}
+                                sx={{ m: 1 }}>
+                                No, keep this comment
+                            </Button>
+                        </Alert>
+                        }
                     </Card>
                 ))}
-                {alert && <Alert severity="warning">
-                    Are you sure you want to delete this post? Once you do it's gone forever.
-                    <Button
-                        onClick={console.log("Delete")}
-                        variant="outlined"
-                        color="error"
-                        sx={{ m: 1 }}>
-                        Yes, delete this review
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        onClick={() => setAlert(false)}
-                        sx={{ m: 1 }}>
-                        No, keep this comment
-                    </Button>
-                </Alert>
-                }
             </Card>
 
         </>
