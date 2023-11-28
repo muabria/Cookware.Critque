@@ -18,6 +18,7 @@ import { useDeleteReviewForUserMutation } from "../../redux/api";
 
 const MapPosts = () => {
     const [alert, setAlert] = useState(false);
+    const [edit, setEdit] = useState(false);
 
     const [deleteReview, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteReviewForUserMutation();
     const { data, error, isLoading } = useGetReviewByUserQuery();
@@ -66,6 +67,12 @@ const MapPosts = () => {
                                     </Button>
                                 </Link>
                                 <Button
+                                    onClick={() => setEdit(true)}
+                                    variant="outlined"
+                                    sx={{ m: 1 }} >
+                                    EDIT
+                                </Button>
+                                <Button
                                     onClick={() => setAlert(true)}
                                     variant="outlined"
                                     color="error"
@@ -76,6 +83,13 @@ const MapPosts = () => {
                         </Grid>
                     </Card>
                 ))}
+                {edit && <Card>
+                    <Typography> What would you like to edit? </Typography>
+                    <Button 
+                        onClick={() => setEdit(false)}> 
+                        Opt out 
+                        </Button>
+                </Card>}
                 {alert && <Alert severity="warning">
                     Are you sure you want to delete this post? Once you do it's gone forever.
                     <Button

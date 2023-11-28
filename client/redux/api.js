@@ -63,8 +63,8 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
-         //<------------------GET SINGLE CATEGORY-------------------->
-         getSingleCategory: builder.query({
+        //<------------------GET SINGLE CATEGORY-------------------->
+        getSingleCategory: builder.query({
             query: (id) => ({
                 url: `/api/category/${id}`,
                 method: 'GET',
@@ -130,6 +130,15 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
+        //<--------------------EDIT REVIEW FOR USER--------------------->
+        patchReviewForUser: builder.mutation({
+            query: ( id,review ) => ({
+                url: `/review/${id}`,
+                method: 'PATCH',
+                body: review,
+            }),
+        }),
+
         //<--------------------DELETE REVIEW FOR USER--------------------->
         deleteReviewForUser: builder.mutation({
             query: (user, id, review) => ({
@@ -179,6 +188,7 @@ export const {
     usePostEquipmentMutation,
     useReviewByEquipmentQuery,
     useGetCommentsQuery,
+    usePatchReviewForUserMutation,
     useDeleteReviewForUserMutation,
     useGetAllUsersQuery,
 } = api
