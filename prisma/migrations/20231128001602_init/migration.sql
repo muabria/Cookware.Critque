@@ -39,8 +39,8 @@ CREATE TABLE "Equipment" (
 CREATE TABLE "Comment" (
     "id" SERIAL NOT NULL,
     "content" TEXT NOT NULL,
-    "userId" INTEGER NOT NULL,
-    "postId" INTEGER NOT NULL,
+    "userId" INTEGER,
+    "postId" INTEGER,
 
     CONSTRAINT "Comment_pkey" PRIMARY KEY ("id")
 );
@@ -75,7 +75,7 @@ ALTER TABLE "Post" ADD CONSTRAINT "Post_equipmentId_fkey" FOREIGN KEY ("equipmen
 ALTER TABLE "Equipment" ADD CONSTRAINT "Equipment_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Comment" ADD CONSTRAINT "Comment_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Comment" ADD CONSTRAINT "Comment_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
