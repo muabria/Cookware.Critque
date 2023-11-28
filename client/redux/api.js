@@ -17,6 +17,10 @@ const api = createApi({
         },
     }),
 
+    tagTypes: ["Reviews", "Comments", "Users"],
+    //equipment, reviews, users, comments, add Equipment
+    //unique
+
     endpoints: (builder) => ({
         //<--------------------REGISTER ACCOUNT ENDPOINT--------------------->
         register: builder.mutation({
@@ -55,6 +59,7 @@ const api = createApi({
                 url: `/api/${user}/reviews/`,
                 method: 'GET',
             }),
+            providesTags: ["Reviews"]
         }),
         //<------------------GET ALL CATEGORIES-------------------->
         getCategories: builder.query({
@@ -101,7 +106,7 @@ const api = createApi({
                 body: comment,
             }),
         }),
-        //<----------------------ALL POST--------------------->
+        //<----------------------ALL REVIEWS--------------------->
         getReviews: builder.query({
             query: () => ({
                 url: `/api/reviews/`,
@@ -132,19 +137,20 @@ const api = createApi({
         }),
         //<--------------------DELETE REVIEW FOR USER--------------------->
         deleteReviewForUser: builder.mutation({
-            query: (user, id, review) => ({
-                url: `/review/${id}`,
+            query: (id) => ({
+                url: `/api/review/${id}`,
                 method: 'DELETE',
-                body: review,
             }),
+            invalidatesTags: ["Reviews"]
         }),
         //<--------------------DELETE COMMENT FOR USER--------------------->
         deleteCommentForUser: builder.mutation({
-            query: (user, id, comment) => ({
-                url: `/review/user/${id}/`,
+            query: ( id, comment) => ({
+                url: `/api/review/user/${id}/`,
                 method: 'DELETE',
                 body: comment,
             }),
+            invalidatesTags: ["Comments"]
         }),
 
 
@@ -158,12 +164,22 @@ const api = createApi({
             }),
         }),
 
+        deleteUser: builder.mutation({
+            query: (id, user) => ({
+                url: `/user/${id}`,
+                method: 'DELETE',
+                body: user
+            }),
+            invalidatesTags: ["Users"]
+        }),
+
     }),
 })
 
 export default api;
 
 export const {
+//AUTHORIZATION
     useRegisterMutation,
     useLoginMutation,
     useGetUserQuery,
@@ -180,5 +196,7 @@ export const {
     useReviewByEquipmentQuery,
     useGetCommentsQuery,
     useDeleteReviewForUserMutation,
+//ADMIN
     useGetAllUsersQuery,
+    useDeleteUserMutation,
 } = api
