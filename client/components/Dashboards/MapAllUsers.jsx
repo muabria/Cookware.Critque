@@ -61,30 +61,30 @@ const MapAllUsers = () => {
                             </Grid>
                         </Grid>
                         {alert &&
-                    <Alert severity="warning">
-                        <Stack direction="column">
-                            <Typography>
-                                Are you sure you want to delete user?
-                            </Typography>
-                            <Typography variant="h6" sx={{ color: "maroon", fontStyle: "italic" }}>
-                                All their reviews and comments will also be deleted.
-                            </Typography>
-                            <Button
-                                onClick={() => deleteUser(user.id)}
-                                variant="outlined"
-                                color="error"
-                                sx={{ m: 1 }}>
-                                Yes, delete this user
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                onClick={() => setAlert(false)}
-                                sx={{ m: 1 }}>
-                                No, keep this user active
-                            </Button>
-                        </Stack>
-                    </Alert>
-                }
+                            <Alert severity="warning">
+                                <Stack direction="column">
+                                    <Typography>
+                                        Are you sure you want to delete user?
+                                    </Typography>
+                                    <Typography variant="h6" sx={{ color: "maroon", fontStyle: "italic" }}>
+                                        All their reviews and comments will also be deleted.
+                                    </Typography>
+                                    <Button
+                                        onClick={() => deleteUser(user.id)}
+                                        variant="outlined"
+                                        color="error"
+                                        sx={{ m: 1 }}>
+                                        Yes, delete this user
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        onClick={() => setAlert(false)}
+                                        sx={{ m: 1 }}>
+                                        No, keep this user active
+                                    </Button>
+                                </Stack>
+                            </Alert>
+                        }
                     </Card>
                 ))}
             </Card>
