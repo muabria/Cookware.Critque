@@ -115,4 +115,18 @@ authRouter.delete("/user/:id", requireAdmin, async (req, res, next) => {
     }
 })
 
+//<--------------------------------PATCH USER-------------------------------->
+//PATCH /auth/user/:id
+authRouter.patch("/user/:id", requireUser, async (req, res, next) => {
+    try {
+        const {username, email, password}
+    } catch (error) {
+        next(error)
+    }
+})
+
+//<--------------------------------PATCH ADMIN-------------------------------->
+//NOTE: ONLY FOR ADMIN
+//PATCH /auth/admin/
+
 module.exports = authRouter;
