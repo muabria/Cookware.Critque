@@ -74,25 +74,25 @@ const MapPosts = () => {
                                 </Button>
                             </Grid>
                         </Grid>
+                        {alert && <Alert severity="warning">
+                            Are you sure you want to delete this post? Once you do it's gone forever.
+                            <Button
+                                onClick={() => deleteReview(review.id)}
+                                variant="outlined"
+                                color="error"
+                                sx={{ m: 1 }}>
+                                Yes, delete this review
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                onClick={() => setAlert(false)}
+                                sx={{ m: 1 }}>
+                                No, keep this review
+                            </Button>
+                        </Alert>
+                        }
                     </Card>
                 ))}
-                {alert && <Alert severity="warning">
-                    Are you sure you want to delete this post? Once you do it's gone forever.
-                    <Button
-                        onClick={() => deleteReview()}
-                        variant="outlined"
-                        color="error"
-                        sx={{ m: 1 }}>
-                        Yes, delete this review
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        onClick={() => setAlert(false)}
-                        sx={{ m: 1 }}>
-                        No, keep this review
-                    </Button>
-                </Alert>
-                }
             </Card>
         </>
     )
