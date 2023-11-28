@@ -145,7 +145,7 @@ authRouter.patch("/admin/:id", [requireUser, requireAdmin], async (req, res, nex
         const {isAdmin} = req.body;
         const adminToggle = await prisma.user.update({
             where: {id: Number(req.params.id)},
-            data: {isAdmin: isAdmin || undefined}
+            data: {isAdmin: isAdmin}
         })
         res.send(adminToggle)
     } catch (error) {
