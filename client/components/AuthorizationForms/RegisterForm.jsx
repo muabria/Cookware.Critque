@@ -16,7 +16,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../../redux/api";
 
 const RegisterForm = () => {
-    const [register] = useRegisterMutation();
+    const [register, error] = useRegisterMutation();
+    if (error) {
+        return <div>Whoops! Something went wrong registering you.</div>
+    }
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -103,10 +106,10 @@ const RegisterForm = () => {
                                         Already have an account?
                                     </Typography>
                                     <Link to="/login">
-                                    <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
-                                        Login to your account
-                                        <LoginIcon sx={{ ml: 2 }} />
-                                    </Button>
+                                        <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
+                                            Login to your account
+                                            <LoginIcon sx={{ ml: 2 }} />
+                                        </Button>
                                     </Link>
                                 </Stack>
                             </form>

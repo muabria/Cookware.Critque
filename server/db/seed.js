@@ -232,7 +232,7 @@ async function seed() {
 
         const kat = await prisma.user.create({
             data: {
-                username: 'katc333',
+                username: 'katc336',
                 email: 'email@email.com',
                 password: kcPass.toString(),
                 isAdmin: true,
