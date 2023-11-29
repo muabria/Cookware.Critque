@@ -56,6 +56,22 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
+        //<------------------UPDATE USER-------------------->
+        patchUser: builder.mutation({
+            query: (id) => ({
+                url: `/auth/user/${id}`,
+                method: 'PATCH',
+                body: patch,
+            }),
+        }),
+        //<------------------TOGGLE ADMIN-------------------->
+        patchToggleAdmin: builder.mutation({
+            query: (id) => ({
+                url: `/api/category/${id}`,
+                method: 'PATCH',
+                body: toggle,
+            }),
+        }),
         //<------------------GET ALL CATEGORIES-------------------->
         getCategories: builder.query({
             query: () => ({
@@ -169,6 +185,8 @@ export const {
     useGetUserQuery,
     useGetCommentByUserQuery,
     useGetReviewByUserQuery,
+    usePatchUserMutation,
+    usePatchToggleAdminMutation,
     useGetCategoriesQuery,
     useGetSingleCategoryQuery,
     useGetEquipmentQuery,
