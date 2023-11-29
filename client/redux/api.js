@@ -64,14 +64,6 @@ const api = createApi({
                 body: patch,
             }),
         }),
-        //<------------------TOGGLE ADMIN-------------------->
-        patchToggleAdmin: builder.mutation({
-            query: (id) => ({
-                url: `/api/category/${id}`,
-                method: 'PATCH',
-                body: toggle,
-            }),
-        }),
         //<------------------GET ALL CATEGORIES-------------------->
         getCategories: builder.query({
             query: () => ({
@@ -173,7 +165,14 @@ const api = createApi({
                 method: 'GET',
             }),
         }),
-
+        //<------------------TOGGLE ADMIN-------------------->
+        patchToggleAdmin: builder.mutation({
+            query: (id) => ({
+                url: `/api/category/${id}`,
+                method: 'PATCH',
+                body: toggle,
+            }),
+        }),
     }),
 })
 
@@ -186,7 +185,6 @@ export const {
     useGetCommentByUserQuery,
     useGetReviewByUserQuery,
     usePatchUserMutation,
-    usePatchToggleAdminMutation,
     useGetCategoriesQuery,
     useGetSingleCategoryQuery,
     useGetEquipmentQuery,
@@ -199,4 +197,5 @@ export const {
     useGetCommentsQuery,
     useDeleteReviewForUserMutation,
     useGetAllUsersQuery,
+    usePatchToggleAdminMutation,
 } = api

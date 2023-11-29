@@ -26,6 +26,7 @@ const UserDashboard = () => {
         return <div> Oops! Something went wrong loading the data. </div>;
     } else
         console.log(data);
+        //Patch user
     return (
         <>
             <Grid container spacing={1}>
