@@ -98,7 +98,6 @@ authRouter.get("/account", requireUser, async (req, res, next) => {
 });
 
 //<--------------------------------DELETE USER-------------------------------->
-//To add two types of authorization use an array [ requireUser, requireAdmin ]
 //NOTE: ONLY FOR ADMIN
 //DELETE /auth/user/:id
 authRouter.delete("/user/:id", requireAdmin, async (req, res, next) => {

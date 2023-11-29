@@ -1,9 +1,14 @@
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 
 import { useGetCommentsQuery } from '../../redux/api';
+import { useState } from 'react';
+
+import CommentForm from "./CommentForm";
 
 const RenderComments = ({ reviewId }) => {
+    const [addComment, setAddComment] = useState(false);
     const { data, error, isLoading } = useGetCommentsQuery();
 
     if (isLoading) {
@@ -17,7 +22,7 @@ const RenderComments = ({ reviewId }) => {
     return (
         <>
             <Card sx={{ backgroundColor: "#8da6a9", p: 2 }}>
-                <Typography variant="h5" sx={{ textAlign:"center", color: "#205375"}}>
+                <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                     Comments:
                 </Typography>
                 {data && data.filter(item => item.id === reviewId).map((comment) => (
@@ -28,6 +33,11 @@ const RenderComments = ({ reviewId }) => {
                     </Card>
                 ))}
             </Card>
+            <Button
+                onClick={() => setAddComment(true)}>
+                Add a Comment
+            </Button>
+            {addComment && <CommentForm />}
         </>
     )
 }
