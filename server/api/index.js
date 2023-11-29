@@ -2,7 +2,7 @@
 const express = require('express');
 const apiRouter = express.Router();
 
-const { requireUser } = require('../auth/utils');
+const { requireUser, requireAdmin } = require('../auth/utils');
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
@@ -353,5 +353,21 @@ apiRouter.delete("/comment/user/:id", requireUser, async (req, res, next) => {
     }
 })
 
+//<--------------------------------ADMIN DELETE WITHOUT USER ID-------------------------------->
+apiRouter.delete("/admin/user/:id", [requireUser, requireAdmin], async (req, res, next) => {
+    try {
+      const deletedUser = await prisma.user.delete({
+        where: { id: Number(req.params.id) },
+      });
+  
+      if (!deletedUser) {
+        return res.status(404).send("User not found!");
+      }
+  
+      res.send(deletedUser);
+    } catch (error) {
+      next(error);
+    }
+  });
 
 module.exports = apiRouter;
