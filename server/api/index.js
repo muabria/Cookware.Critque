@@ -324,6 +324,8 @@ apiRouter.delete("/review/:id", requireUser, async (req, res, next) => {
             where: { id: +req.params.id },
         });
 
+
+
         if (deletedPost.userId !== req.user.id || !deletedPost) {
             return res.status(404).send("Review not found.");
         }

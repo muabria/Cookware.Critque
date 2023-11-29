@@ -12,7 +12,7 @@ import { useParams } from 'react-router';
 import { useReviewByEquipmentQuery } from '../../redux/api';
 import RenderComments from './RenderComments';
 
-const PostsComments = () => {
+const PostsWithComments = () => {
     const { id } = useParams();
     const { data, error, isLoading } = useReviewByEquipmentQuery(id);
     if (isLoading) {
@@ -74,4 +74,4 @@ const PostsComments = () => {
     )
 }
 
-export default PostsComments
+export default PostsWithComments

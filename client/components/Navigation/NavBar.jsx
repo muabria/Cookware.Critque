@@ -11,12 +11,20 @@ import Stack from "@mui/material/Stack";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import RateReviewIcon from '@mui/icons-material/RateReview';
+import { createTheme, useMediaQuery, useTheme } from '@mui/material';
 
-import logo from "./images/cookingEquipmentLogo.png"
-import SearchBar from './SearchEquipment/SearchBar';
+import logo from "../images/cookingEquipmentLogo.png"
+import SearchBar from '../SearchEquipment/SearchBar';
+import MobileNavBar from './MobileNavBar';
 
+
+const theme = createTheme();
 
 const NavBar = () => {
+
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -29,7 +37,8 @@ const NavBar = () => {
     return (
         <>
             <Box sx={{ p: 2 }}>
-                {/*-----------------------------------APP TITLE--------------------------------------------- */}
+                {isMobile ? <MobileNavBar/> :
+               
                 <Stack direction="row">
                     <img
                         src={logo}
@@ -38,7 +47,7 @@ const NavBar = () => {
                     <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
                         Title Placeholder
                     </Typography>
-                    {/*-----------------------------------ACCOUNT MENU--------------------------------------------- */}
+
                     <Box sx={{ maxHeight:"50px", backgroundColor:"#F9FBE7", borderRadius:"50px"}}>
                         <Link to="/">
                             <Button sx={{ color: "#205375", mx: 5 }}>
@@ -100,9 +109,8 @@ const NavBar = () => {
                         </Menu>
                     </Box>
                 </Stack>
+                }
             </Box>
-            {/*-----------------------------------NAVIGATION BUTTONS--------------------------------------------- */}
-
         </>
     )
 }
