@@ -11,12 +11,19 @@ import { useState } from 'react';
 
 import { useGetAllUsersQuery } from '../../redux/api';
 import { useDeleteUserMutation } from "../../redux/api";
+import { useGetAllUsersQuery, usePatchToggleAdminMutation } from '../../redux/api';
+
 
 const MapAllUsers = () => {
     const [alert, setAlert] = useState(false);
+    const [adminAlert, setAdminAlert] = useState(false);
 
     const [deleteUser, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteUserMutation();
     const { data, error, isLoading } = useGetAllUsersQuery();
+    const [patchToggleAdmin, {error: adminError}] = usePatchToggleAdminMutation();
+    
+    const [isAdmin, setIsAdmin] = useState("");
+    
     if (!data) {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
@@ -27,7 +34,7 @@ const MapAllUsers = () => {
         return <div>Error:{error.message}</div>;
     }
     console.log(data);
-
+    //Toggle admin
     return (
         <>
             <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
@@ -58,6 +65,13 @@ const MapAllUsers = () => {
                                     sx={{ m: 1 }}>
                                     <DeleteForeverSharpIcon />
                                 </Button>
+                                <Button
+                                    onClick={() => setAdminAlert(true)}
+                                    variant="outlined"
+                                    color="#ff9800"
+                                    sx={{ m: 1 }}>
+                                        Set Admin
+                                </Button>
                             </Grid>
                         </Grid>
                         {alert &&
@@ -87,6 +101,49 @@ const MapAllUsers = () => {
                         }
                     </Card>
                 ))}
+                {alert &&
+                    <Alert severity="warning">
+                        <Stack direction="column">
+                            Are you sure you want to delete user?
+                            <Button
+                                onClick={(console.log("Delete"))}
+                                variant="outlined"
+                                color="error"
+                                sx={{ m: 1 }}>
+                                Yes, delete this user
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                onClick={() => setAlert(false)}
+                                sx={{ m: 1 }}>
+                                No, keep this user active
+                            </Button>
+                        </Stack>
+                    </Alert>
+                }
+                {adminAlert &&
+                    <Alert severity="warning">
+                        <Stack direction="column">
+                            Are you sure you want to promote this user to admin status?
+                            <Button
+                                onClick={setIsAdmin(true)}
+                                variant="outlined"
+                                color="#ff9800"
+                                sx={{ m: 1 }}>
+                                Yes, promote this user
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                onClick={() => {
+                                    setIsAdmin(false)
+                                    setAdminAlert(false)
+                                }}
+                                sx={{ m: 1 }}>
+                                No, keep this user regular
+                            </Button>
+                        </Stack>
+                    </Alert>
+                }
             </Card>
 
         </>

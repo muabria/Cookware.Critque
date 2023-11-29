@@ -99,6 +99,7 @@ const api = createApi({
 
         //<---------------------------GET CATEGORY INFO--------------------------->
         //<--------GET ALL CATEGORIES---------->
+
         getCategories: builder.query({
             query: () => ({
                 url: `/api/categories`,
@@ -212,7 +213,14 @@ const api = createApi({
             }),
             invalidatesTags: ["Equipment"]
         }),
-
+        //<------------------TOGGLE ADMIN-------------------->
+        patchToggleAdmin: builder.mutation({
+            query: (id) => ({
+                url: `/api/category/${id}`,
+                method: 'PATCH',
+                body: toggle,
+            }),
+        }),
     }),
 })
 
@@ -247,5 +255,6 @@ export const {
     //ADMIN
     useGetAllUsersQuery,
     useDeleteUserMutation,
-    useDeleteEquipmentMutation,
+    useDeleteEquipmentMutation
+    usePatchToggleAdminMutation,
 } = api
