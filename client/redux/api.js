@@ -17,7 +17,7 @@ const api = createApi({
         },
     }),
 
-    tagTypes: ["Reviews", "Comments", "Users"],
+    tagTypes: ["Reviews", "Comments", "Users", "Equipment"],
     //equipment, reviews, users, comments, add Equipment
     //unique
 
@@ -190,6 +190,15 @@ const api = createApi({
             }),
             invalidatesTags: ["Users"]
         }),
+          //<----------DELETE EQUIPMENT------------->
+          deleteEquipment: builder.mutation({
+            query: (id, equipment) => ({
+                url: `/api/equipment/${id}`,
+                method: 'DELETE',
+                body: equipment
+            }),
+            invalidatesTags: ["Equipment"]
+        }),
 
     }),
 })
@@ -225,4 +234,5 @@ export const {
     //ADMIN
     useGetAllUsersQuery,
     useDeleteUserMutation,
+    useDeleteEquipmentMutation,
 } = api
