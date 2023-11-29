@@ -9,6 +9,7 @@ import { useGetAllUsersQuery } from "../../redux/api"
 import MapAllUsers from "./MapAllUsers";
 import AddEquipment from "./AddEquipment";
 import MapPostsAdmin from "./MapPostsAdmin";
+import AdminMapEquipment from "./AdminMapEquipment";
 
 const AdminDashboard = () => {
     console.log("This is the admin dashboard")
@@ -40,6 +41,7 @@ const AdminDashboard = () => {
                     </Stack>
                     <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
                         <AddEquipment/>
+                        <AdminMapEquipment/>
                         <Stack direction="row">
                             <Grid item xs={6}>
                                 <MapAllUsers/>
