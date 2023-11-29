@@ -11,7 +11,7 @@ import CommentForm from "./components/PostWithComments/CommentForm";
 import AllPosts from "./components/Posts/AllPosts";
 import PostsWithComments from "./components/PostWithComments/PostsWithComments";
 import AddNewPost from "./components/Posts/AddNewPost";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Navigation/NavBar";
 import CategoryPage from "./components/Categories/CategoryPage";
 
 const AppContents = () => {
