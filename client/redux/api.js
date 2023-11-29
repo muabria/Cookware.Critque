@@ -17,7 +17,7 @@ const api = createApi({
         },
     }),
 
-    tagTypes: ["Reviews", "Comments", "Users", "Equipment"],
+    tagTypes: ["Reviews", "Comments", "Users", "Equipment", "Categories"],
     //equipment, reviews, users, comments, add Equipment
     //unique
 
@@ -48,6 +48,7 @@ const api = createApi({
                 url: `/auth/account`,
                 method: 'GET',
             }),
+            providesTags: ["Users"]
         }),
         //<---------GET COMMENT BY USER------------>
         getCommentByUser: builder.query({
@@ -55,6 +56,7 @@ const api = createApi({
                 url: `/api/${user}/comments/`,
                 method: 'GET',
             }),
+            providesTags: ["Comments"]
         }),
         //<--------GET REVIEW BY USER---------->
         getReviewByUser: builder.query({
@@ -73,6 +75,7 @@ const api = createApi({
                 url: `/api/reviews/`,
                 method: 'GET',
             }),
+            providesTags: ["Reviews"]
         }),
         //<---------GET REVIEW BY EQUIPMENT----------->
         reviewByEquipment: builder.query({
@@ -80,6 +83,7 @@ const api = createApi({
                 url: `/api/equipment/review/${id}`,
                 method: 'GET',
             }),
+            providesTags: ["Reviews"]
         }),
 
         //<---------------------------GET COMMENT INFO--------------------------->
@@ -89,6 +93,7 @@ const api = createApi({
                 url: `/api/comments`,
                 method: 'GET',
             }),
+            providesTags: ["Comments"]
         }),
 
 
@@ -99,6 +104,7 @@ const api = createApi({
                 url: `/api/categories`,
                 method: 'GET',
             }),
+            providesTags: ["Categories"]
         }),
         //<---------GET SINGLE CATEGORY---------->
         getSingleCategory: builder.query({
@@ -106,6 +112,7 @@ const api = createApi({
                 url: `/api/category/${id}`,
                 method: 'GET',
             }),
+            providesTags: ["Categories"]
         }),
 
 
@@ -116,6 +123,7 @@ const api = createApi({
                 url: `/api/equipment`,
                 method: 'GET',
             }),
+            providesTags: ["Equipment"]
         }),
         //<----------GET EQUIPMENT BY ID----------->
         getSingleEquipment: builder.query({
@@ -123,6 +131,7 @@ const api = createApi({
                 url: `/api/equipment/${search ? "?search=" + search : ""}`,
                 method: 'GET'
             }),
+            providesTags: ["Equipment"]
         }),
 
 
@@ -134,6 +143,7 @@ const api = createApi({
                 method: 'POST',
                 body: post,
             }),
+            invalidatesTags: ["Reviews"]
         }),
         //<----------ADD NEW COMMENT------------->
         postComment: builder.mutation({
@@ -142,6 +152,7 @@ const api = createApi({
                 method: 'POST',
                 body: comment,
             }),
+            invalidatesTags: ["Comments"]
         }),
         //<----------ADD NEW EQUIPMENT----------->
         postEquipment: builder.mutation({
@@ -150,6 +161,7 @@ const api = createApi({
                 method: 'POST',
                 body: equipment,
             }),
+            invalidatesTags: ["Equipment"]
         }),
 
  //<---------------------------DELETE--------------------------->
@@ -180,6 +192,7 @@ const api = createApi({
                 url: `/auth/users`,
                 method: 'GET',
             }),
+            providesTags: ["Users"]
         }),
         //<----------DELETE USER------------->
         deleteUser: builder.mutation({

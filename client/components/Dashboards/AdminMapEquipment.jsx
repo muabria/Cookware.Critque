@@ -17,8 +17,10 @@ import { useDeleteEquipmentMutation } from "../../redux/api";
 import { motion } from "framer-motion";
 
 const AdminMapEquipment = () => {
+
     const [alert, setAlert] = useState(false);
     const [deleteEquipment, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteEquipmentMutation();
+
     const { data, error, isLoading } = useGetEquipmentQuery();
     if (!data) {
         return <div>Oops! Couldn't fetch the equipmnet</div>
@@ -43,7 +45,7 @@ const AdminMapEquipment = () => {
                             {data && data.map((equipment) => (
                                 <Card
                                     key={equipment.id}
-                                    sx={{ p: 2, m: 2, minWidth: 200 }}>
+                                    sx={{ p: 2, m: 2, minWidth: 300, maxWidth: 300 }}>
                                     <Stack direction="column">
                                         <Typography variant="h6" sx={{ textAlign: "center" }}>
                                             {equipment.name}
@@ -64,7 +66,6 @@ const AdminMapEquipment = () => {
                                         </Accordion>
                                         <Button
                                             onClick={() => setAlert(true)}
-                                            variant="outlined"
                                             color="error"
                                             sx={{ m: 1 }}>
                                             <DeleteForeverSharpIcon />
