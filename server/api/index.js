@@ -353,18 +353,35 @@ apiRouter.delete("/comment/user/:id", requireUser, async (req, res, next) => {
     }
 })
 
-//<--------------------------------ADMIN DELETE WITHOUT USER ID-------------------------------->
-apiRouter.delete("/admin/user/:id", [requireUser, requireAdmin], async (req, res, next) => {
+//<--------------------------------DELETE REVIEW-------------------------------->
+apiRouter.delete("/admin/post/:id", [requireUser, requireAdmin], async (req, res, next) => {
     try {
-      const deletedUser = await prisma.user.delete({
+      const deletedPost = await prisma.post.delete({
         where: { id: Number(req.params.id) },
       });
   
-      if (!deletedUser) {
-        return res.status(404).send("User not found!");
+      if (!deletedPost) {
+        return res.status(404).send("Post not found!");
       }
   
-      res.send(deletedUser);
+      res.send(deletedPost);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  //<--------------------------------DELETE COMMENT-------------------------------->
+apiRouter.delete("/admin/comment/:id", [requireUser, requireAdmin], async (req, res, next) => {
+    try {
+      const deletedComment = await prisma.comment.delete({
+        where: { id: Number(req.params.id) },
+      });
+  
+      if (!deletedComment) {
+        return res.status(404).send("COMMENT not found!");
+      }
+  
+      res.send(deletedComment);
     } catch (error) {
       next(error);
     }
