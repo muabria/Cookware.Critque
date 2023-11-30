@@ -167,7 +167,7 @@ const api = createApi({
         }),
         //<------------------TOGGLE ADMIN-------------------->
         patchToggleAdmin: builder.mutation({
-            query: (id) => ({
+            query: (id, toggle) => ({
                 url: `/api/category/${id}`,
                 method: 'PATCH',
                 body: toggle,
