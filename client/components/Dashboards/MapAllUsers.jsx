@@ -8,12 +8,17 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
 import { useState } from 'react';
+
+import { useGetAllUsersQuery } from '../../redux/api';
+import { useDeleteUserMutation } from "../../redux/api";
 import { useGetAllUsersQuery, usePatchToggleAdminMutation } from '../../redux/api';
+
 
 const MapAllUsers = () => {
     const [alert, setAlert] = useState(false);
     const [adminAlert, setAdminAlert] = useState(false);
 
+    const [deleteUser, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteUserMutation();
     const { data, error, isLoading } = useGetAllUsersQuery();
     const [patchToggleAdmin, { error: adminError, isLoading: adminIsLoading, data: adminData }] = usePatchToggleAdminMutation();
 
