@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid"
 import Stack from "@mui/material/Stack"
 import Typography from '@mui/material/Typography';
 import PreviewIcon from '@mui/icons-material/Preview';
+import Switch from '@mui/material/Switch'
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
 import { useState } from 'react';
@@ -12,28 +13,28 @@ import { useState } from 'react';
 import { useDeleteUserMutation } from "../../redux/api";
 import { useGetAllUsersQuery, usePatchToggleAdminMutation } from '../../redux/api';
 
-const showAdminAlert = () => {
-    return (
-        <Alert severity="warning">
-            <Stack direction="column">
-                Are you sure you want to delete user?
-                <Button
-                    onClick={(console.log("Delete"))}
-                    variant="outlined"
-                    color="error"
-                    sx={{ m: 1 }}>
-                    Yes, delete this user
-                </Button>
-                <Button
-                    variant="outlined"
-                    onClick={() => setAlert(false)}
-                    sx={{ m: 1 }}>
-                    No, keep this user active
-                </Button>
-            </Stack>
-        </Alert>
-    )
-}
+// const showAdminAlert = () => {
+//     return (
+//         <Alert severity="warning">
+//             <Stack direction="column">
+//                 Are you sure you want to delete user?
+//                 <Button
+//                     onClick={(console.log("Delete"))}
+//                     variant="outlined"
+//                     color="error"
+//                     sx={{ m: 1 }}>
+//                     Yes, delete this user
+//                 </Button>
+//                 <Button
+//                     variant="outlined"
+//                     onClick={() => setAlert(false)}
+//                     sx={{ m: 1 }}>
+//                     No, keep this user active
+//                 </Button>
+//             </Stack>
+//         </Alert>
+//     )
+// }
 
 const MapAllUsers = () => {
     const [alert, setAlert] = useState(false);
@@ -70,6 +71,18 @@ const MapAllUsers = () => {
                                 <Typography>
                                     email: {user.email}
                                 </Typography>
+                                <Typography>
+                                    admin: {user.isAdmin.toString()}
+                                </Typography>
+                            <Stack direction="row">
+                                <Typography>Regular</Typography>
+                                <Switch 
+                                    checked={user.isAdmin}
+                                    //onChange
+                                    //pass value or checked to adminToggle
+                                />
+                                <Typography>Admin</Typography>
+                            </Stack>
                             </Grid>
                             <Grid item={4}>
                                 <Button
@@ -84,13 +97,6 @@ const MapAllUsers = () => {
                                     sx={{ m: 1 }}>
                                     <DeleteForeverSharpIcon />
                                 </Button>
-                                <Button
-                                    onClick={() => showAdminAlert()}
-                                    variant="outlined"
-                                    color="success"
-                                    sx={{ m: 1 }}>
-                                    Set Admin
-                                </Button>
                             </Grid>
                         </Grid>
                         {/* {adminAlert &&
@@ -104,7 +110,7 @@ const MapAllUsers = () => {
                                         variant="outlined"
                                         color="success"
                                         sx={{ m: 1 }}>
-                                        Yes, promote this user
+                                        Make this user an admin
                                     </Button>
                                     <Button
                                         variant="outlined"
@@ -113,7 +119,7 @@ const MapAllUsers = () => {
                                             setAdminAlert(false)
                                         }}
                                         sx={{ m: 1 }}>
-                                        No, keep this user regular
+                                        Make this user regular
                                     </Button>
                                 </Stack>
                             </Alert>
