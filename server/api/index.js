@@ -74,9 +74,6 @@ apiRouter.get("/reviews", async (req, res, next) => {
 //GET /api/review/:id
 apiRouter.get("/review/:id", async (req, res, next) => {
     try {
-        const user = await prisma.user.findUnique({
-           
-        });
         const review = await prisma.post.findUnique({
             where: {
                 id: Number(req.params.id)

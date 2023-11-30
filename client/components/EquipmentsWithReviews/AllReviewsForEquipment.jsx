@@ -5,12 +5,12 @@ import Stack from "@mui/material/Stack";
 import { useParams } from "react-router-dom";
 
 import { useGetSingleEquipmentQuery } from "../../redux/api"
-import { useReviewByEquipmentQuery } from "../../redux/api";
+import { useGetReviewByEquipmentQuery } from "../../redux/api";
 
-const SingleEquipment = () => {
+const AllReviewsForEquipment = () => {
     const { id } = useParams();
     const { data, error, isLoading } = useGetSingleEquipmentQuery(id);
-    const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useReviewByEquipmentQuery(id);
+    const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetReviewByEquipmentQuery(id);
 
     if (isLoading) {
         return <div> Please Wait.. Still Loading</div>
@@ -36,4 +36,4 @@ const SingleEquipment = () => {
     )
 }
 
-export default SingleEquipment
+export default AllReviewsForEquipment

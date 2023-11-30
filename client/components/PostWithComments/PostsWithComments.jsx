@@ -9,12 +9,12 @@ import CardMedia from '@mui/material/CardMedia';
 
 import { useParams } from 'react-router';
 
-import { useReviewByEquipmentQuery } from '../../redux/api';
+import { useGetSingleReviewQuery} from '../../redux/api';
 import RenderComments from './RenderComments';
 
 const PostsWithComments = () => {
     const { id } = useParams();
-    const { data, error, isLoading } = useReviewByEquipmentQuery(id);
+    const { data, error, isLoading } = useGetSingleReviewQuery(id);
     if (isLoading) {
         return <div> Please Wait.. Still Loading</div>
     }
@@ -27,9 +27,6 @@ const PostsWithComments = () => {
         <>
             <Grid container>
 
-                {data && data.map((review) =>
-                (
-                    <>
                         {/* Would be nice to include equipment image */}
                         {/* <Card>
                     <CardMedia 
@@ -41,34 +38,32 @@ const PostsWithComments = () => {
                         <Grid item xs={6}>
                             <Stack direction="row">
                             <Typography variant="h2" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                                {review.equipment.name}
+                                {data.name}
                             </Typography>
                             <Rating
                                 readOnly="true"
-                                value={review.rating}
+                                value={data.rating}
                                 sx={{ alignContent: "center", m: 1 }}
                             />
                             </Stack>
                             {/* </Card> */}
-                            <Card key={review.id}>
+                            <Card key={data.id}>
                                 <CardHeader
-                                    title={review.title}
+                                    title={data.title}
                                     sx={{ color: "#205375", textAlign: "center", m: 1 }}
                                 />
                                 <CardContent>
                                     <Stack direction="column">
                                         <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                                            {review.content}
+                                            {data.content}
                                         </Typography>
                                     </Stack>
                                 </CardContent>
                             </Card>
                         </Grid>
                         <Grid item xs={6}>
-                            <RenderComments reviewId={review.id} />
+                            <RenderComments reviewId={data.id} />
                         </Grid>
-                    </>
-                ))}
             </Grid>
         </>
     )

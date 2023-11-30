@@ -22,6 +22,7 @@ import SearchBar from '../SearchEquipment/SearchBar';
 const AllPosts = () => {
     const { data, error, isLoading } = useGetReviewsQuery()
     console.log(data);
+    
     if (isLoading) {
         return <div> Please Wait.. Still Loading</div>
     }
@@ -77,7 +78,7 @@ const AllPosts = () => {
                                                 <IconButton aria-label="share">
                                                     <ShareIcon />
                                                 </IconButton> */}
-                                                <Link to={`/equipment/${review.id}/review`} >
+                                                <Link to={`/review/${review.id}`} >
                                                     <Button sx={{ m: 1 }}>
                                                         See the Full Review
                                                     </Button>
