@@ -11,8 +11,8 @@ import { motion } from "framer-motion";
 
 import AllPost from "./Posts/AllPosts";
 import MapCategories from "./SearchEquipment/MapCategories"
-import SearchBar from "./SearchEquipment/SearchBar";
 import background from "./images/kitchenEquipmentBackground.png"
+import MapAllEquipment from "./EquipmentsWithReviews/MapAllEquipment";
 
 const HomePage = () => {
     return (
@@ -59,6 +59,7 @@ const HomePage = () => {
                     </Grid>
                 </Box>
             </div>
+            <MapAllEquipment/>
             <AllPost />
         </>
     )
