@@ -50,7 +50,7 @@ const HomePage = () => {
                                 <Link to="/posts">
                                     <Button sx={{ color: "#FAF3F0", backgroundColor: "#D988B9", border: "solid #B0578D 5px", borderRadius: "100px", p: 3 }}>
                                         <Typography variant="h6">
-                                            Explore New Additions to Your Kitchen!
+                                            Explore New Additions to Your Kitchen
                                         </Typography>
                                     </Button>
                                 </Link>

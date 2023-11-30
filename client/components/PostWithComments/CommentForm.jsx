@@ -11,49 +11,49 @@ import { useState } from 'react';
 import { usePostCommentMutation } from '../../redux/api';
 
 const CommentForm = () => {
-const [content,setContent] = useState(" ");
+  const [content, setContent] = useState(" ");
   //<-----------------TEXTFIELD STATE ------------------->
   const [postComment, data, error] = usePostCommentMutation();
 
-  if(!data){
+  if (!data) {
     return <div>Oops! There's something wrong. Please come back later to leave a comment!</div>
   }
-  if (error) { 
+  if (error) {
     return <div>Whoops! Something went wrong posting the comment.</div>
   }
 
-const handleSubmit = async (event) =>{
-try {
-event.preventDefault ();
-await postComment ({ content }) 
-console.log("Succces!");
-}
-catch (error){
-console.log(error);
-}
-}
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      await postComment({ content })
+      console.log("Succces!");
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
-       <Card sx={{p:6}}>
-        <Stack direction="column">
-        <Typography>
-          Add a comment 
-        </Typography>
-        <TextField sx={{my:2}}
-        onChange={(event) => setContent(event.target.value)}
-          value={content} 
-          id="content"
-          label="Add Comment Here"
-          multiline
-          rows={4}
-          defaultValue="Type something"
-        />
-        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}><AddCommentIcon /> Add Comment</Button>
-        </Stack>
-       </Card>
+        <Card sx={{ p: 6 }}>
+          <Stack direction="column">
+            <Typography>
+              Add a comment
+            </Typography>
+            <TextField sx={{ my: 2 }}
+              onChange={(event) => setContent(event.target.value)}
+              value={content}
+              id="content"
+              label="Add Comment Here"
+              multiline
+              rows={4}
+              defaultValue="Type something"
+            />
+            <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}><AddCommentIcon /> Add Comment</Button>
+          </Stack>
+        </Card>
       </form>
-    </div>  
+    </div>
   );
 }
 
