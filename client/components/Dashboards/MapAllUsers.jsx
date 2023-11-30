@@ -9,10 +9,31 @@ import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
 import { useState } from 'react';
 
-import { useGetAllUsersQuery } from '../../redux/api';
 import { useDeleteUserMutation } from "../../redux/api";
 import { useGetAllUsersQuery, usePatchToggleAdminMutation } from '../../redux/api';
 
+const showAdminAlert = () => {
+    return (
+        <Alert severity="warning">
+            <Stack direction="column">
+                Are you sure you want to delete user?
+                <Button
+                    onClick={(console.log("Delete"))}
+                    variant="outlined"
+                    color="error"
+                    sx={{ m: 1 }}>
+                    Yes, delete this user
+                </Button>
+                <Button
+                    variant="outlined"
+                    onClick={() => setAlert(false)}
+                    sx={{ m: 1 }}>
+                    No, keep this user active
+                </Button>
+            </Stack>
+        </Alert>
+    )
+}
 
 const MapAllUsers = () => {
     const [alert, setAlert] = useState(false);
@@ -32,7 +53,7 @@ const MapAllUsers = () => {
         return <div>Error:{error.message}</div>;
     }
     console.log(data);
-    //Toggle admin
+
     return (
         <>
             <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
@@ -64,7 +85,7 @@ const MapAllUsers = () => {
                                     <DeleteForeverSharpIcon />
                                 </Button>
                                 <Button
-                                    onClick={() => setAdminAlert(true)}
+                                    onClick={() => showAdminAlert()}
                                     variant="outlined"
                                     color="success"
                                     sx={{ m: 1 }}>
@@ -72,7 +93,7 @@ const MapAllUsers = () => {
                                 </Button>
                             </Grid>
                         </Grid>
-                        {adminAlert &&
+                        {/* {adminAlert &&
                             <Alert severity="info">
                                 <Stack direction="column">
                                     <Typography>
@@ -96,7 +117,7 @@ const MapAllUsers = () => {
                                     </Button>
                                 </Stack>
                             </Alert>
-                        }
+                        } */}
                         {alert &&
                             <Alert severity="warning">
                                 <Stack direction="column">

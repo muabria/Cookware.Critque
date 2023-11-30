@@ -255,6 +255,6 @@ export const {
     //ADMIN
     useGetAllUsersQuery,
     useDeleteUserMutation,
-    useDeleteEquipmentMutation
+    useDeleteEquipmentMutation,
     usePatchToggleAdminMutation,
 } = api
