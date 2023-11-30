@@ -1,22 +1,23 @@
-import * as React from 'react';
-import { useState } from 'react';
+
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import AddCommentIcon from '@mui/icons-material/AddComment';
+
+import { useState } from 'react';
+
 import { usePostCommentMutation } from '../../redux/api';
 
 const CommentForm = () => {
-const [comment,setComment] = useState(" ");
+const [content,setContent] = useState(" ");
   //<-----------------TEXTFIELD STATE ------------------->
- const [italic, setItalic] = useState(false);
-  const [fontWeight, setFontWeight] = useState('normal');
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [postcomment, error] = usePostCommentMutation();
-  console.log(comment);
+  const [postComment, data, error] = usePostCommentMutation();
 
+  if(!data){
+    return <div>Oops! There's something wrong. Please come back later to leave a comment!</div>
+  }
   if (error) { 
     return <div>Whoops! Something went wrong posting the comment.</div>
   }
@@ -24,8 +25,8 @@ const [comment,setComment] = useState(" ");
 const handleSubmit = async (event) =>{
 try {
 event.preventDefault ();
-await postcomment ({content}) 
-console.log(succes);
+await postComment ({ content }) 
+console.log("Succces!");
 }
 catch (error){
 console.log(error);
@@ -40,15 +41,15 @@ console.log(error);
           Add a comment 
         </Typography>
         <TextField sx={{my:2}}
-        onChange={(event) => setComment(event.target.value)}
-          value={comment} 
-          id="comment"
-          label="Comment"
+        onChange={(event) => setContent(event.target.value)}
+          value={content} 
+          id="content"
+          label="Add Comment Here"
           multiline
           rows={4}
           defaultValue="Type something"
         />
-        <Button type="submit" sx={{backgroundColor:"purple", color:"white"}}><AddCommentIcon /> Submit comment</Button>
+        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}><AddCommentIcon /> Add Comment</Button>
         </Stack>
        </Card>
       </form>

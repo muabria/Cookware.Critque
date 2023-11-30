@@ -36,8 +36,8 @@ authRouter.post("/register", async (req, res, next) => {
 
         const user = await prisma.user.create({
             data: {
-                username,
-                email,
+                username: username,
+                email: email,
                 password: hashedPassword
             }
         });
@@ -98,7 +98,6 @@ authRouter.get("/account", requireUser, async (req, res, next) => {
 });
 
 //<--------------------------------DELETE USER-------------------------------->
-//To add two types of authorization use an array [ requireUser, requireAdmin ]
 //NOTE: ONLY FOR ADMIN
 //DELETE /auth/user/:id
 authRouter.delete("/user/:id", requireAdmin, async (req, res, next) => {
@@ -110,6 +109,44 @@ authRouter.delete("/user/:id", requireAdmin, async (req, res, next) => {
             return res.status(404).send("User not found");
         }
         res.send(deletedUser);
+    } catch (error) {
+        next(error)
+    }
+})
+
+//<--------------------------------PATCH USER-------------------------------->
+//PATCH /auth/user/:id
+authRouter.patch("/user/:id", requireUser, async (req, res, next) => {
+    try {
+        const {username, email, password} = req.body;
+        const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
+        
+        const updatedUser = await prisma.user.update({
+            where: {id: Number(req.params.id)},
+            data: {
+                username: username || undefined,
+                email: email || undefined,
+                password: hashedPassword || undefined
+            }
+        }) 
+        delete updatedUser.password;
+        res.send(updatedUser)
+    } catch (error) {
+        next(error)
+    }
+})
+
+//<--------------------------------PATCH ADMIN-------------------------------->
+//NOTE: ONLY FOR ADMIN
+//PATCH /auth/admin/:id
+authRouter.patch("/admin/:id", [requireUser, requireAdmin], async (req, res, next) => {
+    try {
+        const {isAdmin} = req.body;
+        const adminToggle = await prisma.user.update({
+            where: {id: Number(req.params.id)},
+            data: {isAdmin: isAdmin}
+        })
+        res.send(adminToggle)
     } catch (error) {
         next(error)
     }

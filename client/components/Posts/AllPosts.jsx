@@ -31,7 +31,7 @@ const AllPosts = () => {
 
     return (
         <>
-            <Box sx={{ maxHeight: "60px", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", borderRadius: "50px", mb: 3 }}>
+            <Box sx={{ maxHeight: "60px", mb: 3 }}>
                 <Typography variant="h3" sx={{ textAlign: "center", color: "#205375" }}>
                     Explore Trusted Critiques Made from Real Users
                 </Typography>
@@ -41,7 +41,7 @@ const AllPosts = () => {
             </Box>
             <Box sx={{ mx: 5 }}>
                 <div className="carousel">
-                    <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -300 }}>
+                    <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -3000 }}>
                         <Stack direction="row">
                             {data && data.map((review) => (
                                 <Grid container>

@@ -7,11 +7,11 @@ import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import UserDashboard from "./components/Dashboards/UserDashboard";
 import AdminDashboard from "./components/Dashboards/AdminDashboard";
-import CommentForm from "./components/PostComments/CommentForm";
+import CommentForm from "./components/PostWithComments/CommentForm";
 import AllPosts from "./components/Posts/AllPosts";
-import PostsComments from "./components/PostComments/PostsComments";
+import PostsWithComments from "./components/PostWithComments/PostsWithComments";
 import AddNewPost from "./components/Posts/AddNewPost";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Navigation/NavBar";
 import CategoryPage from "./components/Categories/CategoryPage";
 
 const AppContents = () => {
@@ -29,7 +29,7 @@ const AppContents = () => {
           <Route path="/account" element={<UserDashboard />} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>} />
           <Route path="/commentform" element={<CommentForm />} />
-          <Route path="/equipment/:id/review" element={<PostsComments />} />
+          <Route path="/equipment/:id/review" element={<PostsWithComments />} />
           <Route path="/new_review" element={<AddNewPost />} />
           <Route path="/posts" element={<AllPosts/>} />
           <Route path="/category/:id" element={<CategoryPage/>} />
