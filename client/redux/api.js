@@ -215,11 +215,12 @@ const api = createApi({
         }),
         //<------------------TOGGLE ADMIN-------------------->
         patchToggleAdmin: builder.mutation({
-            query: (id, toggle) => ({
-                url: `/api/category/${id}`,
+            query: ({id, ...patch}) => ({
+                url: `/auth/admin/${id}`,
                 method: 'PATCH',
-                body: toggle,
+                body: patch,
             }),
+            invalidatesTags: ["Users"]
         }),
     }),
 })

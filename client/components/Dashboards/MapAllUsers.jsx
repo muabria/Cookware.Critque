@@ -77,8 +77,14 @@ const MapAllUsers = () => {
                             <Stack direction="row">
                                 <Typography>Regular</Typography>
                                 <Switch 
-                                    checked={user.isAdmin}
-                                    //onChange
+                                    defaultChecked={user.isAdmin}
+                                    onChange={async () => {
+                                        console.log("toggle admin");
+                                        console.log(user)
+                                        const response = await patchToggleAdmin({id: user.id, isAdmin: !user.isAdmin});
+                                        console.log(response)
+                    
+                                    }}
                                     //pass value or checked to adminToggle
                                 />
                                 <Typography>Admin</Typography>
