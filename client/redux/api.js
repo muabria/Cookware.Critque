@@ -220,7 +220,15 @@ const api = createApi({
             }),
             invalidatesTags: ["Equipment"]
         }),
-
+        //<------------------TOGGLE ADMIN-------------------->
+        patchToggleAdmin: builder.mutation({
+            query: ({id, isAdmin}) => ({
+                url: `/auth/admin/${id}`,
+                method: 'PATCH',
+                body: {isAdmin},
+            }),
+            invalidatesTags: ["Users"]
+        }),
     }),
 })
 
@@ -257,4 +265,5 @@ export const {
     useGetAllUsersQuery,
     useDeleteUserMutation,
     useDeleteEquipmentMutation,
+    usePatchToggleAdminMutation,
 } = api
