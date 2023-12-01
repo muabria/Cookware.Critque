@@ -174,10 +174,10 @@ const api = createApi({
  //<---------------------------PATCH--------------------------->
 //PATCH REVIEW
 patchReview: builder.mutation({
-    query: (id, review) => ({
+    query: ({ id, review }) => ({
         url: `/api/review/${id}`,
         method: 'PATCH',
-        body: review,
+        body: { review } ,
     }),
     invalidatesTags: ["Reviews"]
 }),
