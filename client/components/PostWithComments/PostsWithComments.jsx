@@ -46,7 +46,7 @@ const PostsWithComments = () => {
                 <Grid item xs={6}>
                     <Card key={data.id}>
                         <Stack direction="row">
-                            <Typography variant="h2" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+                            <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                                 {data.title}
                             </Typography>
                             <Rating
