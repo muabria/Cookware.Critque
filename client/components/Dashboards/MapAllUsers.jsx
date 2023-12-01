@@ -5,18 +5,45 @@ import Grid from "@mui/material/Grid"
 import Stack from "@mui/material/Stack"
 import Typography from '@mui/material/Typography';
 import PreviewIcon from '@mui/icons-material/Preview';
+import Switch from '@mui/material/Switch'
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
 import { useState } from 'react';
 
-import { useGetAllUsersQuery } from '../../redux/api';
 import { useDeleteUserMutation } from "../../redux/api";
+import { useGetAllUsersQuery, usePatchToggleAdminMutation } from '../../redux/api';
+
+// const showAdminAlert = () => {
+//     return (
+//         <Alert severity="warning">
+//             <Stack direction="column">
+//                 Are you sure you want to delete user?
+//                 <Button
+//                     onClick={(console.log("Delete"))}
+//                     variant="outlined"
+//                     color="error"
+//                     sx={{ m: 1 }}>
+//                     Yes, delete this user
+//                 </Button>
+//                 <Button
+//                     variant="outlined"
+//                     onClick={() => setAlert(false)}
+//                     sx={{ m: 1 }}>
+//                     No, keep this user active
+//                 </Button>
+//             </Stack>
+//         </Alert>
+//     )
+// }
 
 const MapAllUsers = () => {
     const [alert, setAlert] = useState(false);
+    const [adminAlert, setAdminAlert] = useState(false);
 
     const [deleteUser, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteUserMutation();
     const { data, error, isLoading } = useGetAllUsersQuery();
+    const [patchToggleAdmin, { error: adminError, isLoading: adminIsLoading, data: adminData }] = usePatchToggleAdminMutation();
+
     if (!data) {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
@@ -44,6 +71,24 @@ const MapAllUsers = () => {
                                 <Typography>
                                     email: {user.email}
                                 </Typography>
+                                <Typography>
+                                    admin: {user.isAdmin.toString()}
+                                </Typography>
+                            <Stack direction="row">
+                                <Typography>Regular</Typography>
+                                <Switch 
+                                    defaultChecked={user.isAdmin}
+                                    onChange={async () => {
+                                        console.log("toggle admin");
+                                        console.log(user)
+                                        const response = await patchToggleAdmin({id: user.id, isAdmin: !user.isAdmin});
+                                        console.log(response)
+                    
+                                    }}
+                                    //pass value or checked to adminToggle
+                                />
+                                <Typography>Admin</Typography>
+                            </Stack>
                             </Grid>
                             <Grid item={4}>
                                 <Button
@@ -60,17 +105,37 @@ const MapAllUsers = () => {
                                 </Button>
                             </Grid>
                         </Grid>
+                        {/* {adminAlert &&
+                            <Alert severity="info">
+                                <Stack direction="column">
+                                    <Typography>
+                                        Are you sure you want to promote this user to admin status?
+                                    </Typography>
+                                    <Button
+                                        onClick={() => patchToggleAdmin(true)}
+                                        variant="outlined"
+                                        color="success"
+                                        sx={{ m: 1 }}>
+                                        Make this user an admin
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        onClick={() => {
+                                            patchToggleAdmin(false)
+                                            setAdminAlert(false)
+                                        }}
+                                        sx={{ m: 1 }}>
+                                        Make this user regular
+                                    </Button>
+                                </Stack>
+                            </Alert>
+                        } */}
                         {alert &&
                             <Alert severity="warning">
                                 <Stack direction="column">
-                                    <Typography>
-                                        Are you sure you want to delete user?
-                                    </Typography>
-                                    <Typography variant="h6" sx={{ color: "maroon", fontStyle: "italic" }}>
-                                        All their reviews and comments will also be deleted.
-                                    </Typography>
+                                    Are you sure you want to delete user?
                                     <Button
-                                        onClick={() => deleteUser(user.id)}
+                                        onClick={(console.log("Delete"))}
                                         variant="outlined"
                                         color="error"
                                         sx={{ m: 1 }}>
@@ -87,6 +152,7 @@ const MapAllUsers = () => {
                         }
                     </Card>
                 ))}
+
             </Card>
 
         </>
