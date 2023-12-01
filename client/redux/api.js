@@ -22,7 +22,7 @@ const api = createApi({
     //unique
 
     endpoints: (builder) => ({
-        //<---------------------------AUORIZATION--------------------------->
+        //<---------------------------AUTHORIZATION--------------------------->
         //REGISTER ACCOUNT ENDPOINT
         register: builder.mutation({
             query: (user) => ({
