@@ -6,12 +6,20 @@ import Alert from "@mui/material/Alert";
 
 import { useNavigate } from "react-router-dom";
 
-import { usePatchUserMutation } from "../../redux/api";
+import { usePatchUserMutation, useGetUserQuery } from "../../redux/api";
 import { useState } from "react";
 
 const EditUser = () => {
+    const {data: userData, isLoading: userIsLoading, error: userError} = useGetUserQuery();
     const [patchUser, {data, isLoading, error}] = usePatchUserMutation();
-    
+    if (error) {
+        return <div>Error</div>
+    }
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+    console.log(userData);
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [secondPassword, setSecondPassword] = useState("");
@@ -24,7 +32,7 @@ const EditUser = () => {
             event.preventDefault();
             await patchUser({ username, email, password, secondPassword }),
                 console.log("Success!")
-            navigate("/account")
+            //navigate("/account")
         } catch (error) {
             console.error(error)
         }

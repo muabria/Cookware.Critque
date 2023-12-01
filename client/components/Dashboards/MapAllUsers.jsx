@@ -61,7 +61,6 @@ const MapAllUsers = () => {
                                         console.log(response)
                     
                                     }}
-                                    //pass value or checked to adminToggle
                                 />
                                 <Typography>Admin</Typography>
                             </Stack>
