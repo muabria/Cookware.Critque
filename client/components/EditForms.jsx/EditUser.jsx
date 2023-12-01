@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { usePatchUserMutation } from "../../redux/api";
 import { useState } from "react";
@@ -17,6 +17,19 @@ const EditUser = () => {
     const [secondPassword, setSecondPassword] = useState("");
     const [email, setEmail] = useState("");
     
+    const navigate = useNavigate();
+
+    const handleSubmit = async (event) => {
+        try {
+            event.preventDefault();
+            await patchUser({ username, email, password, secondPassword }),
+                console.log("Success!")
+            navigate("/account")
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
         <>
             <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
@@ -71,16 +84,8 @@ const EditUser = () => {
                             }
                         />
                         <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1 }}>
-                            Start Your Cooking Journey
+                            Update Your Account
                         </Button>
-                        <Typography sx={{ mt: 2, textAlign: "center" }}>
-                            Already have an account?
-                        </Typography>
-                        <Link to="/account">
-                            <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
-                                Update your account
-                            </Button>
-                        </Link>
                     </Stack>
                 </form>
             </Card>
