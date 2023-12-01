@@ -23,7 +23,7 @@ const api = createApi({
 
     endpoints: (builder) => ({
         //<---------------------------AUORIZATION--------------------------->
-        //<-----------REGISTER ACCOUNT ENDPOINT----------->
+        //REGISTER ACCOUNT ENDPOINT
         register: builder.mutation({
             query: (user) => ({
                 url: `/auth/register`,
@@ -31,7 +31,7 @@ const api = createApi({
                 body: user,
             }),
         }),
-        //<----------LOGIN ACCOUNT ENDPOINT----------->
+        //LOGIN ACCOUNT ENDPOINT
         login: builder.mutation({
             query: (user) => ({
                 url: `/auth/login`,
@@ -42,7 +42,7 @@ const api = createApi({
 
 
         //<---------------------------GET USER INFO--------------------------->
-        //<---------GET USER----------->
+        //GET USER
         getUser: builder.query({
             query: () => ({
                 url: `/auth/account`,
@@ -50,7 +50,7 @@ const api = createApi({
             }),
             providesTags: ["Users"]
         }),
-        //<---------GET COMMENT BY USER------------>
+        //GET COMMENT BY USER
         getCommentByUser: builder.query({
             query: (user) => ({
                 url: `/api/${user}/comments/`,
@@ -58,7 +58,7 @@ const api = createApi({
             }),
             providesTags: ["Comments"]
         }),
-        //<--------GET REVIEW BY USER---------->
+        //GET REVIEW BY USER
         getReviewByUser: builder.query({
             query: (user) => ({
                 url: `/api/${user}/reviews/`,
@@ -69,7 +69,7 @@ const api = createApi({
 
 
         //<---------------------------GET REVIEW INFO--------------------------->
-        //<------------ALL REVIEWS----------->
+        //ALL REVIEWS
         getReviews: builder.query({
             query: () => ({
                 url: `/api/reviews/`,
@@ -77,17 +77,25 @@ const api = createApi({
             }),
             providesTags: ["Reviews"]
         }),
-        //<---------GET REVIEW BY EQUIPMENT----------->
-        reviewByEquipment: builder.query({
+        //GET REVIEWS BY EQUIPMENT
+        getReviewByEquipment: builder.query({
             query: (id) => ({
                 url: `/api/equipment/review/${id}`,
                 method: 'GET',
             }),
             providesTags: ["Reviews"]
         }),
+        //GET SINGLE REVIEW
+        getSingleReview: builder.query({
+            query: (id) => ({
+                url: `/api/review/${id}`,
+                method: 'GET',
+            }),
+            providesTags: ["Reviews"]
+        }),
 
         //<---------------------------GET COMMENT INFO--------------------------->
-        //<----------GET ALL COMMENTS---------->
+        //GET ALL COMMENTS
         getComments: builder.query({
             query: () => ({
                 url: `/api/comments`,
@@ -98,8 +106,7 @@ const api = createApi({
 
 
         //<---------------------------GET CATEGORY INFO--------------------------->
-        //<--------GET ALL CATEGORIES---------->
-
+        //GET ALL CATEGORIES
         getCategories: builder.query({
             query: () => ({
                 url: `/api/categories`,
@@ -107,7 +114,7 @@ const api = createApi({
             }),
             providesTags: ["Categories"]
         }),
-        //<---------GET SINGLE CATEGORY---------->
+        //GET SINGLE CATEGORY
         getSingleCategory: builder.query({
             query: (id) => ({
                 url: `/api/category/${id}`,
@@ -118,7 +125,7 @@ const api = createApi({
 
 
         //<---------------------------GET EQUIPMENT INFO--------------------------->
-        //<----------GET EQUIPMENT----------->
+        //GET EQUIPMENT
         getEquipment: builder.query({
             query: () => ({
                 url: `/api/equipment`,
@@ -126,7 +133,7 @@ const api = createApi({
             }),
             providesTags: ["Equipment"]
         }),
-        //<----------GET EQUIPMENT BY ID----------->
+        //GET EQUIPMENT BY ID
         getSingleEquipment: builder.query({
             query: (id) => ({
                 url: `/api/equipment/${id}`,
@@ -137,7 +144,7 @@ const api = createApi({
 
 
          //<---------------------------POST--------------------------->
-        //<----------ADD NEW REVIEW------------>
+        //ADD NEW REVIEW
         postReview: builder.mutation({
             query: (post) => ({
                 url: `/api/review`,
@@ -146,7 +153,7 @@ const api = createApi({
             }),
             invalidatesTags: ["Reviews"]
         }),
-        //<----------ADD NEW COMMENT------------->
+        //ADD NEW COMMENT
         postComment: builder.mutation({
             query: (comment) => ({
                 url: `/api/comment/`,
@@ -155,7 +162,7 @@ const api = createApi({
             }),
             invalidatesTags: ["Comments"]
         }),
-        //<----------ADD NEW EQUIPMENT----------->
+        //ADD NEW EQUIPMENT
         postEquipment: builder.mutation({
             query: (equipment) => ({
                 url: `/api/equipment/`,
@@ -166,7 +173,7 @@ const api = createApi({
         }),
 
  //<---------------------------DELETE--------------------------->
-        //<-----------DELETE REVIEW FOR USER----------->
+       //DELETE REVIEW FOR USER
         deleteReviewForUser: builder.mutation({
             query: (id) => ({
                 url: `/api/review/${id}`,
@@ -174,7 +181,7 @@ const api = createApi({
             }),
             invalidatesTags: ["Reviews"]
         }),
-        //<----------DELETE COMMENT FOR USER---------->
+        //DELETE COMMENT FOR USER
         deleteCommentForUser: builder.mutation({
             query: (id, comment) => ({
                 url: `/api/comment/user/${id}/`,
@@ -187,7 +194,7 @@ const api = createApi({
 
         //<--------------------------------------ADMIN ONLY BACKENDS----------------------------------------->
 
-        //<----------GET ALL USERS------------->
+        //GET ALL USERS
         getAllUsers: builder.query({
             query: () => ({
                 url: `/auth/users`,
@@ -195,7 +202,7 @@ const api = createApi({
             }),
             providesTags: ["Users"]
         }),
-        //<----------DELETE USER------------->
+        //DELETE USER
         deleteUser: builder.mutation({
             query: (id, user) => ({
                 url: `/auth/user/${id}`,
@@ -204,7 +211,7 @@ const api = createApi({
             }),
             invalidatesTags: ["Users"]
         }),
-          //<----------DELETE EQUIPMENT------------->
+          //DELETE EQUIPMENT
           deleteEquipment: builder.mutation({
             query: (id, equipment) => ({
                 url: `/api/equipment/${id}`,
@@ -237,7 +244,8 @@ export const {
     useGetReviewByUserQuery,
     //GET REVIEW INFO
     useGetReviewsQuery,
-    useReviewByEquipmentQuery,
+    useGetReviewByEquipmentQuery,
+    useGetSingleReviewQuery,
     //GET COMMENT INFO
     useGetCommentsQuery,
     //GET CATEGORY INFO

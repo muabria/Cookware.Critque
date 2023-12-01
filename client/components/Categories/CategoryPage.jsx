@@ -62,9 +62,9 @@ const CategoryPage = () => {
                                     width="200"
                                     height="200"
                                 />
-                                <Link to={`/equipment/${equipment.id}/review`} >
+                                <Link to={`/equipment/${equipment.id}`} >
                                     <Button sx={{ m: 1 }}>
-                                        See the {equipment.name}'s Review
+                                        See the {equipment.name}'s Reviews
                                     </Button>
                                 </Link>
                             </Stack>
