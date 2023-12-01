@@ -236,7 +236,7 @@ async function seed() {
         //     },
         //     include: { category: true }
         // })
-
+ 
         //<-------------------------------- USERS -------------------------------->
 
         const marisa = await prisma.user.create({
