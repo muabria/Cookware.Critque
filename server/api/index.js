@@ -2,7 +2,7 @@
 const express = require('express');
 const apiRouter = express.Router();
 
-const { requireUser } = require('../auth/utils');
+const { requireUser, requireAdmin } = require('../auth/utils');
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
@@ -352,5 +352,38 @@ apiRouter.delete("/comment/user/:id", requireUser, async (req, res, next) => {
     }
 })
 
+//<--------------------------------DELETE REVIEW-------------------------------->
+apiRouter.delete("/admin/post/:id", [requireUser, requireAdmin], async (req, res, next) => {
+    try {
+      const deletedPost = await prisma.post.delete({
+        where: { id: Number(req.params.id) },
+      });
+  
+      if (!deletedPost) {
+        return res.status(404).send("Post not found!");
+      }
+  
+      res.send(deletedPost);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  //<--------------------------------DELETE COMMENT-------------------------------->
+apiRouter.delete("/admin/comment/:id", [requireUser, requireAdmin], async (req, res, next) => {
+    try {
+      const deletedComment = await prisma.comment.delete({
+        where: { id: Number(req.params.id) },
+      });
+  
+      if (!deletedComment) {
+        return res.status(404).send("COMMENT not found!");
+      }
+  
+      res.send(deletedComment);
+    } catch (error) {
+      next(error);
+    }
+  });
 
 module.exports = apiRouter;
