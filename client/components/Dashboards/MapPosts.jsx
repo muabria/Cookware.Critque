@@ -6,6 +6,7 @@ import Rating from "@mui/material/Rating"
 import Typography from '@mui/material/Typography';
 import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
+import EditNoteIcon from '@mui/icons-material/EditNote';
 
 import { Link } from "react-router-dom";
 
@@ -18,6 +19,7 @@ import { useDeleteReviewForUserMutation } from "../../redux/api";
 
 const MapPosts = () => {
     const [alert, setAlert] = useState(false);
+    const [editForm, setEditForm] = useState(false);
 
     const [deleteReview, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteReviewForUserMutation();
     const { data, error, isLoading } = useGetReviewByUserQuery();
@@ -58,6 +60,7 @@ const MapPosts = () => {
                                 </Typography>
                             </Grid>
                             <Grid item={4}>
+
                                 <Link to={`/equipment/${review.id}/review`}>
                                     <Button
                                         variant="outlined"
@@ -65,6 +68,14 @@ const MapPosts = () => {
                                         <PreviewIcon />
                                     </Button>
                                 </Link>
+
+                                    <Button
+                                        onClick={() => setEditForm(true)}
+                                        variant="outlined"
+                                        sx={{ m: 1 }}>
+                                        <EditNoteIcon />
+                                    </Button>
+
                                 <Button
                                     onClick={() => setAlert(true)}
                                     variant="outlined"
@@ -72,22 +83,47 @@ const MapPosts = () => {
                                     sx={{ m: 1 }}>
                                     <DeleteForeverSharpIcon />
                                 </Button>
+
                             </Grid>
                         </Grid>
                         {alert && <Alert severity="warning">
                             Are you sure you want to delete this post? Once you do it's gone forever.
+                           
                             <Button
                                 onClick={() => deleteReview(review.id)}
                                 variant="outlined"
                                 color="error"
                                 sx={{ m: 1 }}>
-                                Yes, delete this review
+                                Yes, I want to delete this review
                             </Button>
+
                             <Button
                                 variant="outlined"
                                 onClick={() => setAlert(false)}
                                 sx={{ m: 1 }}>
-                                No, keep this review
+                                No, keep this review 
+                            </Button>
+                        </Alert>
+                        }
+
+                        {editForm && <Alert severity="warning">
+                            Are you sure you want to edit this post?
+
+                            <Link to={`/edit_review/${review.id}`}>
+                            <Button
+                                onClick={console.log("Working!")}
+                                variant="outlined"
+                                color="error"
+                                sx={{ m: 1 }}>
+                                Yes, I want to edit this review
+                            </Button>
+                            </Link>
+
+                            <Button
+                                variant="outlined"
+                                onClick={() => setAlert(false)}
+                                sx={{ m: 1 }}>
+                                No, I don't need to edit this review
                             </Button>
                         </Alert>
                         }

@@ -278,11 +278,7 @@ apiRouter.patch("/review/:id", requireUser, async (req, res, next) => {
                 title: title || undefined,
                 content: content || undefined,
                 rating: rating || undefined,
-                equipment: equipmentId ? { connect: { id: equipmentId } } : undefined
             },
-            include: {
-                equipment: true
-            }
         })
         res.send(updatedReview)
     } catch (error) {
