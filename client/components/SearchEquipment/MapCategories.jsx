@@ -23,7 +23,8 @@ const MapCategories = () => {
         <>
             {data && data.map((category) => (
                 <Box key={category.id} sx={{ m: 2 }}>
-                    <Link to={`/category/${category.id}`} >
+                    <Link to={`/category/${category.id}`} 
+                    style={{ textDecoration: "none" }}>
                         <Avatar
                             sx={{ p: 3, color: "#3C1B1F", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", }} >
                             <Typography sx={{ fontSize: "13px" }}>
