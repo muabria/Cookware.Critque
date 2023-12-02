@@ -11,22 +11,16 @@ import { usePatchUserMutation, useGetUserQuery } from "../../redux/api";
 import { useState } from "react";
 
 const EditUser = () => {
-    const {id} = useParams();
-    const {data: userData, isLoading: userIsLoading, error: userError} = useGetUserQuery();
-    const [patchUser, {data, isLoading, error}] = usePatchUserMutation(id);
-    if (error) {
-        return <div>Error</div>
-    }
-    if (isLoading) {
-        return <div>Loading...</div>
-    }
-    console.log(userData);
+    const { id } = useParams();
+    const { data: userData, isLoading: userIsLoading, error: userError } = useGetUserQuery();
+    const [patchUser, { data, isLoading, error }] = usePatchUserMutation(id);
+
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [secondPassword, setSecondPassword] = useState("");
-    
+
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -39,7 +33,13 @@ const EditUser = () => {
             console.error(error)
         }
     }
-
+    if (error) {
+        return <div>Error</div>
+    }
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+    console.log(userData);
     return userData && (
         <>
             <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
