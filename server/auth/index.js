@@ -119,7 +119,7 @@ authRouter.delete("/user/:id", requireAdmin, async (req, res, next) => {
 authRouter.patch("/account/:id/edit", requireUser, async (req, res, next) => {
     try {
         const {username, email, password} = req.body;
-        const hashedPassword = ""
+        const hashedPassword = "";
         if (password !== undefined) {
             hashedPassword = await bcrypt.hash(password, SALT_COUNT);
             return hashedPassword;
