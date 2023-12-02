@@ -36,6 +36,11 @@ const UserDashboard = () => {
                             <ManageAccountsIcon /> 
                             Account Information
                         </Typography>
+                        <Link to="/account/edit">
+                            <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
+                                Update Your Account
+                            </Button>
+                        </Link>
                         <Typography variant="h6" sx={{ my: 5 }}>
                             <LogoutSharpIcon /> Logout
                         </Typography>

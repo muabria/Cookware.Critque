@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 import { useNavigate } from "react-router-dom";
 
@@ -20,25 +21,25 @@ const EditUser = () => {
     }
     console.log(userData);
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [secondPassword, setSecondPassword] = useState("");
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState(userData.username);
+    const [email, setEmail] = useState(userData.email);
+    const [password, setPassword] = useState(userData.password);
+    const [secondPassword, setSecondPassword] = useState(userData.password);
     
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            await patchUser({ username, email, password, secondPassword }),
+            await patchUser({ username, email, password }),
                 console.log("Success!")
-            //navigate("/account")
+            navigate("/account")
         } catch (error) {
             console.error(error)
         }
     }
 
-    return (
+    return userData && (
         <>
             <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
                 <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
@@ -47,23 +48,25 @@ const EditUser = () => {
                 <form onSubmit={handleSubmit}>
                     <Stack direction="column">
                         <TextField
-                            label="Enter Username"
+                            label="Update Username"
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
                             size="small"
                             variant="filled"
+                            placeholder={userData.username}
                             sx={{ m: 1 }}
                         />
                         <TextField
-                            label="Enter E-mail"
+                            label="Update E-mail"
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
                             size="small"
                             variant="filled"
+                            placeholder={userData.email}
                             sx={{ m: 1 }}
                         />
                         <TextField
-                            label="Enter Password"
+                            label="Update Password"
                             value={password}
                             type="password"
                             onChange={(event) => setPassword(event.target.value)}
@@ -77,7 +80,7 @@ const EditUser = () => {
                             }
                         />
                         <TextField
-                            label="Re-enter Password"
+                            label="Re-enter updated Password"
                             value={secondPassword}
                             type="password"
                             onChange={(event) => setSecondPassword(event.target.value)}

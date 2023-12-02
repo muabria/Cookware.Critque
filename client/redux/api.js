@@ -184,7 +184,7 @@ patchReview: builder.mutation({
 //PATCH USER
 patchUser: builder.mutation({
     query: ({ id, user }) => ({
-        url: `/api/user/${id}`,
+        url: `/auth/account/edit`,
         method: 'PATCH',
         body: { user } ,
     }),
