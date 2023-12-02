@@ -21,18 +21,18 @@ const EditUser = () => {
     }
     console.log(userData);
 
-    const [username, setUsername] = useState(userData.username);
-    const [email, setEmail] = useState(userData.email);
-    const [password, setPassword] = useState(userData.password);
-    const [secondPassword, setSecondPassword] = useState(userData.password);
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [secondPassword, setSecondPassword] = useState("");
     
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            await patchUser({ username, email, password }),
-                console.log("Success!")
+            const response = await patchUser({ username, email, password, secondPassword })
+            console.log(response)
             navigate("/account")
         } catch (error) {
             console.error(error)
@@ -49,20 +49,20 @@ const EditUser = () => {
                     <Stack direction="column">
                         <TextField
                             label="Update Username"
+                            placeholder={userData.username}
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
                             size="small"
                             variant="filled"
-                            placeholder={userData.username}
                             sx={{ m: 1 }}
                         />
                         <TextField
                             label="Update E-mail"
+                            placeholder={userData.email}
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
                             size="small"
                             variant="filled"
-                            placeholder={userData.email}
                             sx={{ m: 1 }}
                         />
                         <TextField
