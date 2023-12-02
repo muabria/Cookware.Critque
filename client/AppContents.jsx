@@ -32,7 +32,7 @@ const AppContents = () => {
           
           <Route path="/account" element={<UserDashboard />} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>} />
-          <Route path="/account/edit" element={<EditUser/>} />
+          <Route path="/account/:id/edit" element={<EditUser/>} />
 
           <Route path="/new_review" element={<AddNewPost />} />
           <Route path="/edit_review/:id" element={<EditReviews/>} />

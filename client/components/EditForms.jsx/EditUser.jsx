@@ -5,14 +5,15 @@ import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { usePatchUserMutation, useGetUserQuery } from "../../redux/api";
 import { useState } from "react";
 
 const EditUser = () => {
+    const {id} = useParams();
     const {data: userData, isLoading: userIsLoading, error: userError} = useGetUserQuery();
-    const [patchUser, {data, isLoading, error}] = usePatchUserMutation();
+    const [patchUser, {data, isLoading, error}] = usePatchUserMutation(id);
     if (error) {
         return <div>Error</div>
     }

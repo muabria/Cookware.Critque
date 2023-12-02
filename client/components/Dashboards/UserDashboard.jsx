@@ -36,7 +36,7 @@ const UserDashboard = () => {
                             <ManageAccountsIcon /> 
                             Account Information
                         </Typography>
-                        <Link to="/account/edit">
+                        <Link to={`/account/${data.id}/edit`}>
                             <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
                                 Update Your Account
                             </Button>

@@ -183,10 +183,10 @@ patchReview: builder.mutation({
 }),
 //PATCH USER
 patchUser: builder.mutation({
-    query: ({ user }) => ({
-        url: `/auth/account/edit`,
+    query: ({ id, user }) => ({
+        url: `/auth/account/${id}/edit`,
         method: 'PATCH',
-        body: { user } ,
+        body: { id, user } ,
     }),
     invalidatesTags: ["Users"]
 }),
