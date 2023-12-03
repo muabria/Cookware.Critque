@@ -124,6 +124,7 @@ const AddEquipment = () => {
                                     value={image}
                                     onChange={(event) => setImage(event.target.value)}
                                     size="small"
+                                    type="url"
                                     required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
@@ -158,6 +159,7 @@ const AddEquipment = () => {
                                     value={purchaseLink}
                                     onChange={(event) => setPurchaseLink(event.target.value)}
                                     size="small"
+                                    type="url"
                                     required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}

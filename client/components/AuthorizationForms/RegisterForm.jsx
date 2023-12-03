@@ -68,6 +68,7 @@ const RegisterForm = () => {
                                         value={email}
                                         onChange={(event) => setEmail(event.target.value)}
                                         size="small"
+                                        type="email"
                                         required = {true}
                                         variant="filled"
                                         sx={{ m: 1 }}
