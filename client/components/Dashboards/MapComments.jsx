@@ -42,7 +42,7 @@ const MapComments = () => {
                                     {comment.content}
                                 </Typography>
                             </Grid>
-                            <Grid item={4}>
+                            <Grid item xs={4}>
                                 <Button
                                     variant="outlined"
                                     sx={{ m: 1 }}>

@@ -52,7 +52,7 @@ const MapPosts = () => {
                                     {review.equipment}
                                 </Typography>
                                 <Rating
-                                    readOnly="true"
+                                    readOnly={true}
                                     value={review.rating}
                                 />
                                 <Typography>
@@ -69,12 +69,13 @@ const MapPosts = () => {
                                     </Button>
                                 </Link>
 
+                                <Link to={`/edit_review/${review.id}`}>
                                     <Button
-                                        onClick={() => setEditForm(true)}
                                         variant="outlined"
                                         sx={{ m: 1 }}>
                                         <EditNoteIcon />
                                     </Button>
+                                </Link>
 
                                 <Button
                                     onClick={() => setAlert(true)}
@@ -102,28 +103,6 @@ const MapPosts = () => {
                                 onClick={() => setAlert(false)}
                                 sx={{ m: 1 }}>
                                 No, keep this review 
-                            </Button>
-                        </Alert>
-                        }
-
-                        {editForm && <Alert severity="warning">
-                            Are you sure you want to edit this post?
-
-                            <Link to={`/edit_review/${review.id}`}>
-                            <Button
-                                onClick={console.log("Working!")}
-                                variant="outlined"
-                                color="error"
-                                sx={{ m: 1 }}>
-                                Yes, I want to edit this review
-                            </Button>
-                            </Link>
-
-                            <Button
-                                variant="outlined"
-                                onClick={() => setAlert(false)}
-                                sx={{ m: 1 }}>
-                                No, I don't need to edit this review
                             </Button>
                         </Alert>
                         }
