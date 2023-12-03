@@ -135,8 +135,8 @@ const api = createApi({
         }),
         //GET EQUIPMENT BY ID
         getSingleEquipment: builder.query({
-            query: (id) => ({
-                url: `/api/equipment/${id}`,
+            query: (id, search) => ({
+                url: `/api/equipment/${search ? "?search=" + search : id }`,
                 method: 'GET'
             }),
             providesTags: ["Equipment"]
