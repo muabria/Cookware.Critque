@@ -63,6 +63,7 @@ const EditUser = () => {
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
                             size="small"
+                            type="email"
                             variant="filled"
                             sx={{ m: 1 }}
                         />
