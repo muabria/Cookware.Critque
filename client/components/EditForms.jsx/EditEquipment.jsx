@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import Card  from '@mui/material/Card';
 
 const UpdateEquipmentForm = ({ id, equipment }) => {
-  const [name, setName] = useState(equipment.name);
-  const [description, setDescription] = useState(equipment.description);
-  const [image, setImage] = useState(equipment.image);
-  const [categoryId, setCategoryId] = useState(equipment.category.id);
-  const [brand, setBrand] = useState(equipment.brand);
-  const [purchaseLink, setPurchaseLink] = useState(equipment.purchaseLink);
-  const [priceRating, setPriceRating] = useState(equipment.priceRating);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  const [brand, setBrand] = useState("");
+  const [purchaseLink, setPurchaseLink] = useState("");
+  const [priceRating, setPriceRating] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
