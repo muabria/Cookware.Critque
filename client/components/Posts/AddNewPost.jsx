@@ -16,6 +16,7 @@ import Rating from "@mui/material/Rating";
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Alert from "@mui/material/Alert";
 
 const AddPostContent = () => {
 
@@ -34,6 +35,11 @@ const AddPostContent = () => {
 
     //<-----------------SUBMIT FORM HELPER FUNCTION------------------->
     const handleSubmit = async (event) => {
+        if (rating === null) {
+            return (
+                <Alert></Alert>
+            )
+        }
         try {
             event.preventDefault();
             const result = await postReview({ equipmentId: Number(equipment), title, content, rating: Number(rating) })
@@ -153,6 +159,7 @@ const AddPostContent = () => {
                                             value={title}
                                             onChange={(event) => setTitle(event.target.value)}
                                             size="small"
+                                            required = "true"
                                             sx={{ m: 1, backgroundColor: "white" }}
                                         />
                                         {/* <-----------------CONTENT TEXTFIELD-------------------> */}
@@ -161,6 +168,7 @@ const AddPostContent = () => {
                                             value={content}
                                             onChange={(event) => setContent(event.target.value)}
                                             size="small"
+                                            required = "true"
                                             sx={{ m: 1, backgroundColor: "white" }}
                                             multiline
                                         />
