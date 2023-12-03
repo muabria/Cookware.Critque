@@ -36,7 +36,9 @@ const AddPostContent = () => {
     //<-----------------SUBMIT FORM HELPER FUNCTION------------------->
     const handleSubmit = async (event) => {
         if (!rating) {
-            alert("Please add a rating.")
+            event.preventDefault();
+            alert("Please add a rating.");
+            return
         }
         try {
             event.preventDefault();
@@ -96,7 +98,7 @@ const AddPostContent = () => {
                                         Click on the Equipment You're Reviewing:
                                     </Typography>
                                 </Stack>
-                                {/* <--------------MAPP EQUIPMENT---------------> */}
+                                {/* <--------------MAP EQUIPMENT---------------> */}
                                 <div className="carousel">
                                     <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -2000 }}>
                                         <Stack direction="row">
@@ -157,7 +159,7 @@ const AddPostContent = () => {
                                             value={title}
                                             onChange={(event) => setTitle(event.target.value)}
                                             size="small"
-                                            required = "true"
+                                            required = {true}
                                             sx={{ m: 1, backgroundColor: "white" }}
                                         />
                                         {/* <-----------------CONTENT TEXTFIELD-------------------> */}
@@ -166,7 +168,7 @@ const AddPostContent = () => {
                                             value={content}
                                             onChange={(event) => setContent(event.target.value)}
                                             size="small"
-                                            required = "true"
+                                            required = {true}
                                             sx={{ m: 1, backgroundColor: "white" }}
                                             multiline
                                         />
