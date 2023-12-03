@@ -15,6 +15,7 @@ import CategoryPage from "./components/Categories/CategoryPage";
 import AllReviewsForEquipment from "./components/EquipmentsWithReviews/AllReviewsForEquipment";
 import EditReviews from "./components/EditForms.jsx/EditReviews";
 import EditUser from "./components/EditForms.jsx/EditUser";
+import EditEquipment from "./components/EditForms.jsx/EditEquipment";
 
 const AppContents = () => {
 
@@ -43,6 +44,7 @@ const AppContents = () => {
           <Route path="/category/:id" element={<CategoryPage/>} />
           
           <Route path="/equipment/:id" element={<AllReviewsForEquipment/>} />
+          <Route path="/edit_equipment/:id" element={<EditEquipment/>} />
         </Routes>
       </div>
     </div>

@@ -59,8 +59,8 @@ const HomePage = () => {
                     </Grid>
                 </Box>
             </div>
-            <MapAllEquipment/>
-            <AllPost />
+            {/* <MapAllEquipment/> */}
+            {/* <AllPost /> */}
         </>
     )
 }
