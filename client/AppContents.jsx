@@ -13,7 +13,7 @@ import AddNewPost from "./components/Posts/AddNewPost";
 import NavBar from "./components/Navigation/NavBar";
 import CategoryPage from "./components/Categories/CategoryPage";
 import AllReviewsForEquipment from "./components/EquipmentsWithReviews/AllReviewsForEquipment";
-import EditReviews from "./components/EditForms.jsx/EditReviews";
+import EditReviews from "./components/EditForms/EditReviews";
 
 const AppContents = () => {
 
