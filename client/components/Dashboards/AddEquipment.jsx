@@ -11,6 +11,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import { useGetCategoriesQuery } from "../../redux/api";
 import { usePostEquipmentMutation } from "../../redux/api";
@@ -27,7 +28,7 @@ const AddEquipment = () => {
     const [newEquipmentInfo, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostEquipmentMutation();
 
     const { data, error, isLoading } = useGetCategoriesQuery();
-    
+
     if (!data) {
         return <div>No data</div>
     }
@@ -69,7 +70,7 @@ const AddEquipment = () => {
             <Accordion sx={{ m: 2 }}>
                 <AccordionSummary>
                     <Typography variant="h5" sx={{ textAlign: "center", p: 1 }}>
-                        Add New Equipment <ExpandCircleDownIcon/>
+                        Add New Equipment <ExpandCircleDownIcon />
                     </Typography>
                 </AccordionSummary>
                 <Card sx={{ px: 10, py: 2 }}>
@@ -107,15 +108,6 @@ const AddEquipment = () => {
                                     variant="filled"
                                     sx={{ m: 1 }}
                                 />
-                                <TextField
-                                    label="Image URL"
-                                    value={image}
-                                    onChange={(event) => setImage(event.target.value)}
-                                    size="small"
-                                    variant="filled"
-                                    sx={{ m: 1 }}
-                                    multiline
-                                />
                                 <Typography>
                                     Price Rating:
                                 </Typography>
@@ -148,6 +140,32 @@ const AddEquipment = () => {
                                     sx={{ m: 1 }}
                                     multiline
                                 />
+                                <TextField
+                                    label="Image URL"
+                                    value={image}
+                                    onChange={(event) => setImage(event.target.value)}
+                                    size="small"
+                                    variant="filled"
+                                    sx={{ m: 1 }}
+                                    multiline
+                                />
+                                {/* <---------------------------UPLOAD FILE BUTTON-----------------------------> */}
+                                <input
+                                    type="file"
+                                    onChange={(event) => setImage(event.target.files[0])}
+                                    // accept="image/*"
+                                    style={{ display: 'none' }}
+                                    id="fileInput"
+                                    // multiple 
+                                />
+                                <label htmlFor="fileInput">
+                                    <Button component="span" startIcon={<CloudUploadIcon />}>
+                                        <Typography variant="h7">
+                                            Upload File
+                                        </Typography>
+                                    </Button>
+                                </label>
+                                {image && <p>Selected file: {image.name}</p>}
 
                                 {/* <---------------------------SUBMIT BUTTON-----------------------------> */}
                                 <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
