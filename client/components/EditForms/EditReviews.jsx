@@ -23,19 +23,19 @@ const EditReviews = () => {
 
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetSingleReviewQuery(id);
 
-    const [patchReview, { data, error, isLoading }] = usePatchReviewMutation(id);
+    const [patchReview, { data, error, isLoading }] = usePatchReviewMutation();
     if (error) {
         return <div>Error</div>
     }
     if (isLoading) {
         return <div>is loading..</div>
     }
-    console.log(reviewData);
+    // console.log(reviewData);
 
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            const result = await patchReview({ id: reviewData.id, title, content, rating: Number(rating) })
+            const result = await patchReview({ id, title, content, rating: Number(rating) })
             console.log(result)
         } catch (error) {
             console.error(error)

@@ -140,7 +140,7 @@ const api = createApi({
             }),
         }),
 
-         //<---------------------------POST--------------------------->
+        //<---------------------------POST--------------------------->
         //ADD NEW REVIEW
         postReview: builder.mutation({
             query: (post) => ({
@@ -168,18 +168,18 @@ const api = createApi({
             }),
             invalidatesTags: ["Equipment"]
         }),
- //<---------------------------PATCH--------------------------->
-//PATCH REVIEW
-patchReview: builder.mutation({
-    query: ({ id, review }) => ({
-        url: `/api/review/${id}`,
-        method: 'PATCH',
-        body: { review } ,
-    }),
-    invalidatesTags: ["Reviews"]
-}),
- //<---------------------------DELETE--------------------------->
-       //DELETE REVIEW FOR USER
+        //<---------------------------PATCH--------------------------->
+        //PATCH REVIEW
+        patchReview: builder.mutation({
+            query: ({ id, post }) => ({
+                url: `/api/review/${id}`,
+                method: 'PATCH',
+                body: { post },
+            }),
+            invalidatesTags: ["Reviews"]
+        }),
+        //<---------------------------DELETE--------------------------->
+        //DELETE REVIEW FOR USER
         deleteReviewForUser: builder.mutation({
             query: (id) => ({
                 url: `/api/review/${id}`,
@@ -217,8 +217,8 @@ patchReview: builder.mutation({
             }),
             invalidatesTags: ["Users"]
         }),
-          //DELETE EQUIPMENT
-          deleteEquipment: builder.mutation({
+        //DELETE EQUIPMENT
+        deleteEquipment: builder.mutation({
             query: (id, equipment) => ({
                 url: `/api/equipment/${id}`,
                 method: 'DELETE',
@@ -228,10 +228,10 @@ patchReview: builder.mutation({
         }),
         //<------------------TOGGLE ADMIN-------------------->
         patchToggleAdmin: builder.mutation({
-            query: ({id, isAdmin}) => ({
+            query: ({ id, isAdmin }) => ({
                 url: `/auth/admin/${id}`,
                 method: 'PATCH',
-                body: {isAdmin},
+                body: { isAdmin },
             }),
             invalidatesTags: ["Users"]
         }),
