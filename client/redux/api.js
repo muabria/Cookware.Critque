@@ -133,17 +133,14 @@ const api = createApi({
             }),
             providesTags: ["Equipment"]
         }),
-        //GET EQUIPMENT BY ID
         getSingleEquipment: builder.query({
-            query: (id) => ({
-                url: `/api/equipment/${id}`,
+            query: (search) => ({
+                url: `/api/equipment/${search ? "?search=" + search : ""}`,
                 method: 'GET'
             }),
-            providesTags: ["Equipment"]
         }),
 
-
-         //<---------------------------POST--------------------------->
+        //<---------------------------POST--------------------------->
         //ADD NEW REVIEW
         postReview: builder.mutation({
             query: (post) => ({
@@ -171,9 +168,18 @@ const api = createApi({
             }),
             invalidatesTags: ["Equipment"]
         }),
-
- //<---------------------------DELETE--------------------------->
-       //DELETE REVIEW FOR USER
+        //<---------------------------PATCH--------------------------->
+        //PATCH REVIEW
+        patchReview: builder.mutation({
+            query: ({ id, post }) => ({
+                url: `/api/review/${id}`,
+                method: 'PATCH',
+                body: { post },
+            }),
+            invalidatesTags: ["Reviews"]
+        }),
+        //<---------------------------DELETE--------------------------->
+        //DELETE REVIEW FOR USER
         deleteReviewForUser: builder.mutation({
             query: (id) => ({
                 url: `/api/review/${id}`,
@@ -211,8 +217,8 @@ const api = createApi({
             }),
             invalidatesTags: ["Users"]
         }),
-          //DELETE EQUIPMENT
-          deleteEquipment: builder.mutation({
+        //DELETE EQUIPMENT
+        deleteEquipment: builder.mutation({
             query: (id, equipment) => ({
                 url: `/api/equipment/${id}`,
                 method: 'DELETE',
@@ -222,10 +228,10 @@ const api = createApi({
         }),
         //<------------------TOGGLE ADMIN-------------------->
         patchToggleAdmin: builder.mutation({
-            query: ({id, isAdmin}) => ({
+            query: ({ id, isAdmin }) => ({
                 url: `/auth/admin/${id}`,
                 method: 'PATCH',
-                body: {isAdmin},
+                body: { isAdmin },
             }),
             invalidatesTags: ["Users"]
         }),
@@ -258,6 +264,8 @@ export const {
     usePostReviewMutation,
     usePostCommentMutation,
     usePostEquipmentMutation,
+    //PATCH
+    usePatchReviewMutation,
     //DELETE
     useDeleteReviewForUserMutation,
     useDeleteCommentForUserMutation,

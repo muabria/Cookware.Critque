@@ -45,8 +45,8 @@ const AllPosts = () => {
                     <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -3000 }}>
                         <Stack direction="row">
                             {data && data.map((review) => (
-                                <Grid container>
-                                    <Grid xs={8}>
+                                <Grid container key={review.id}>
+                                    <Grid item xs={8}>
                                         <Card key={review.id}
                                             sx={{
                                                 backgroundColor: "#F9FBE7",

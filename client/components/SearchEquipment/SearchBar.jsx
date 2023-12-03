@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
 
 import { useState } from 'react';
-import { useGetSingleEquipmentQuery } from '../../redux/api';
+import { useGetSingleEquipmentQuery } from "../../redux/api";
 
 import SearchResults from './SearchResults';
 

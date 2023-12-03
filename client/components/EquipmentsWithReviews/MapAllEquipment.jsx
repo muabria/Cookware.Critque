@@ -23,8 +23,7 @@ const MapAllEquipment = () => {
         <>
             <Grid container >
                 {data && data.map((equipment) => (
-                    <Stack direction="row">
-
+                    <Stack direction="row" key={equipment.id}>
                         <Card sx={{ p: 2, m: 2 }} key={equipment.id}>
                             <Stack direction="column">
                                 <Typography>

@@ -269,7 +269,7 @@ apiRouter.post("/comment", requireUser, async (req, res, next) => {
 //PATCH /api/review/:id
 apiRouter.patch("/review/:id", requireUser, async (req, res, next) => {
     try {
-        const { title, content, rating, equipmentId } = req.body;
+        const { title, content, rating } = req.body;
         const updatedReview = await prisma.post.update({
             where: {
                 id: Number(req.params.id)
@@ -278,11 +278,7 @@ apiRouter.patch("/review/:id", requireUser, async (req, res, next) => {
                 title: title || undefined,
                 content: content || undefined,
                 rating: rating || undefined,
-                equipment: equipmentId ? { connect: { id: equipmentId } } : undefined
             },
-            include: {
-                equipment: true
-            }
         })
         res.send(updatedReview)
     } catch (error) {

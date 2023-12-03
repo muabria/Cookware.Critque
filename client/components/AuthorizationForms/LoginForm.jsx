@@ -40,10 +40,10 @@ const LoginForm = () => {
     return (
         <>
             <Grid container>
-                <Grid xs={4}>
+                <Grid item xs={2}>
 
                 </Grid>
-                <Grid xs={4}>
+                <Grid item xs={8}>
                     <motion.div
                         initial={{ x: "100vw" }}
                         animate={{ x: 0 }}
@@ -95,7 +95,7 @@ const LoginForm = () => {
                         </Card>
                     </motion.div>
                 </Grid>
-                <Grid xs={4}>
+                <Grid item xs={2}>
 
                 </Grid>
             </Grid>
