@@ -35,10 +35,8 @@ const AddPostContent = () => {
 
     //<-----------------SUBMIT FORM HELPER FUNCTION------------------->
     const handleSubmit = async (event) => {
-        if (rating === null) {
-            return (
-                <Alert></Alert>
-            )
+        if (!rating) {
+            alert("Please add a rating.")
         }
         try {
             event.preventDefault();
