@@ -17,19 +17,21 @@ const EditReviews = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [rating, setRating] = useState(null);
-    const [hover, setHover] = useState(-1);
+   
+     //<-----------------STAR RATING STATE ------------------->
+     const [hover, setHover] = useState(-1);
 
-    function getLabelText(value) {
-        return `${rating} Star${rating !== 1 ? 's' : ''}, ${starLabels[value]}`;
-    }
-    const starLabels = {
-        1: `Useless: Just doesn't cut it`,
-        2: `Poor: Not exactly what I whisked for`,
-        3: `Ok: Decent when everything else is dirty`,
-        4: `Good: A-peeling and good in a kitchen`,
-        5: `Excellent: Truely egg-ceptional!`,
-    };
-
+     function getLabelText(value) {
+         return `${rating} Star${rating !== 1 ? 's' : ''}, ${starLabels[value]}`;
+     }
+     const starLabels = {
+         1: `Useless: Just doesn't cut it`,
+         2: `Poor: Not exactly what I whisked for`,
+         3: `Ok: Decent when everything else is dirty`,
+         4: `Good: A-peeling and good in a kitchen`,
+         5: `Excellent: Truely egg-ceptional!`,
+     };
+     
     const { id } = useParams();
 
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetSingleReviewQuery(id);
@@ -93,7 +95,7 @@ const EditReviews = () => {
                                 onChange={(event) => setRating(event.target.value)}
                                 emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                             />
-
+                            {/* <-----------------RENDED RATING TEXT-------------------> */}
                             {rating !== null && (
                                 <Box sx={{ mx: 2 }}>
                                     <Typography> {starLabels[hover !== -1 ? hover : rating]} </Typography>
