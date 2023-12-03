@@ -59,6 +59,7 @@ const RegisterForm = () => {
                                         value={username}
                                         onChange={(event) => setUsername(event.target.value)}
                                         size="small"
+                                        required = {true}
                                         variant="filled"
                                         sx={{ m: 1 }}
                                     />
@@ -67,6 +68,7 @@ const RegisterForm = () => {
                                         value={email}
                                         onChange={(event) => setEmail(event.target.value)}
                                         size="small"
+                                        required = {true}
                                         variant="filled"
                                         sx={{ m: 1 }}
                                     />
@@ -76,6 +78,7 @@ const RegisterForm = () => {
                                         type="password"
                                         onChange={(event) => setPassword(event.target.value)}
                                         size="small"
+                                        required = {true}
                                         variant="filled"
                                         sx={{ m: 1 }}
                                         helperText={
