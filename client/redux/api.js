@@ -190,6 +190,15 @@ patchUser: builder.mutation({
     }),
     invalidatesTags: ["Users"]
 }),
+//PATCH EQUIPMENT 
+patchEquipment: builder.mutation({
+    query: ({ id, equipment }) => ({
+        url: `/api/equipment/${id}`,
+        method: 'PATCH',
+        body: { equipment } ,
+    }),
+    invalidatesTags: ["Equipments"]
+}),
  //<---------------------------DELETE--------------------------->
        //DELETE REVIEW FOR USER
         deleteReviewForUser: builder.mutation({
@@ -279,6 +288,7 @@ export const {
     //PATCH
     usePatchReviewMutation,
     usePatchUserMutation,
+    usePatchEquipmentMutation,
     //DELETE
     useDeleteReviewForUserMutation,
     useDeleteCommentForUserMutation,

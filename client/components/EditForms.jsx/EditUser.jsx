@@ -21,10 +21,10 @@ const EditUser = () => {
     }
     console.log(userData);
 
-    const [username, setUsername] = useState(userData.username);
-    const [email, setEmail] = useState(userData.email);
-    const [password, setPassword] = useState(userData.password);
-    const [secondPassword, setSecondPassword] = useState(userData.password);
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [secondPassword, setSecondPassword] = useState("");
     
     const navigate = useNavigate();
 
