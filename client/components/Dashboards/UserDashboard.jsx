@@ -32,19 +32,41 @@ const UserDashboard = () => {
             <Grid container spacing={1}>
                 <Grid item xs={2}>
                     <Stack direction="column">
-                        <Typography variant="h6" sx={{ my: 5 }}>
+                        <Typography sx={{ 
+                            my: 5,
+                            fontSize: {
+                                xs: "11px",
+                                sm: "12px",
+                                md: "16px",
+                                lg: "16px",
+                            }}}>
                             <ManageAccountsIcon /> 
                             Account Information
                         </Typography>
-                        <Typography variant="h6" sx={{ my: 5 }}>
+                        <Typography sx={{ 
+                            my: 5,
+                            fontSize: {
+                                xs: "11px",
+                                sm: "12px",
+                                md: "16px",
+                                lg: "16px",
+                            } }}>
                             <LogoutSharpIcon /> Logout
                         </Typography>
                     </Stack>
+
                 </Grid>
                 <Grid item xs={10}>
                     <Stack direction="row">
                         <Avatar sx={{ mx: 3 }} />
-                        <Typography variant="h4">
+                        <Typography sx={{
+                             fontSize: {
+                                xs: "16px",
+                                sm: "18px",
+                                md: "20px",
+                                lg: "24px",
+                            }
+                        }}>
                             Hello, {data.username}
                         </Typography>
                     </Stack>

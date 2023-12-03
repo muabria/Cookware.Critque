@@ -31,14 +31,32 @@ const MapComments = () => {
     return (
         <>
             <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
-                <Typography variant="h5" sx={{ textAlign: "center" }}>
+                <Typography
+                    sx={{
+                        textAlign: "center",
+                        fontSize: {
+                            xs: "16px",
+                            sm: "18px",
+                            md: "20px",
+                            lg: "24px",
+                        }
+                    }}>
                     My Comments:
                 </Typography>
                 {data && data.map((comment) => (
                     <Card key={comment.id} sx={{ m: 1, p: 2 }}>
                         <Grid container>
                             <Grid item xs={8}>
-                                <Typography>
+                                <Typography 
+                                 sx={{
+                                    textAlign: "center",
+                                    fontSize: {
+                                        xs: "10px",
+                                        sm: "12px",
+                                        md: "14px",
+                                        lg: "16px",
+                                    }
+                                }}>
                                     {comment.content}
                                 </Typography>
                             </Grid>
