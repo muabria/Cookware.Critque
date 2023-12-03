@@ -41,9 +41,9 @@ const RegisterForm = () => {
     return (
         <>
             <Grid container>
-                <Grid item xs={4}>
+                <Grid item xs={2}>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={8}>
                     <motion.div
                         initial={{ x: "100vw" }}
                         animate={{ x: 0 }}
@@ -116,7 +116,7 @@ const RegisterForm = () => {
                         </Card>
                     </motion.div>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={2}>
                 </Grid>
             </Grid>
         </>

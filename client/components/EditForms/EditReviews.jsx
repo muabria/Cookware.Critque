@@ -45,11 +45,11 @@ const EditReviews = () => {
     return reviewData && (
         <>
             <Grid container>
-                <Grid item xs={4}>
+                <Grid item xs={2}>
 
                 </Grid>
 
-                <Grid item xs={4}>
+                <Grid item xs={8}>
                     <form onSubmit={handleSubmit}>
                         <Card sx={{ backgroundColor: "#D9E4DD", p: 5 }}>
                             <Stack direction="row">
@@ -95,7 +95,7 @@ const EditReviews = () => {
                     </form>
                 </Grid>
 
-                <Grid item xs={4}>
+                <Grid item xs={2}>
 
                 </Grid>
             </Grid>
