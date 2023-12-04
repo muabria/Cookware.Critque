@@ -13,6 +13,8 @@ import AddNewPost from "./components/Posts/AddNewPost";
 import NavBar from "./components/Navigation/NavBar";
 import CategoryPage from "./components/Categories/CategoryPage";
 import AllReviewsForEquipment from "./components/EquipmentsWithReviews/AllReviewsForEquipment";
+import EditReviews from "./components/EditForms.jsx/EditReviews";
+import EditUser from "./components/EditForms.jsx/EditUser";
 
 const AppContents = () => {
 
@@ -30,8 +32,10 @@ const AppContents = () => {
           
           <Route path="/account" element={<UserDashboard />} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>} />
+          <Route path="/account/:id/edit" element={<EditUser/>} />
 
           <Route path="/new_review" element={<AddNewPost />} />
+          <Route path="/edit_review/:id" element={<EditReviews/>} />
 
           <Route path="/review/:id" element={<PostsWithComments />} />
         

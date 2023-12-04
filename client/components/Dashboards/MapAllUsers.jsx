@@ -13,32 +13,8 @@ import { useState } from 'react';
 import { useDeleteUserMutation } from "../../redux/api";
 import { useGetAllUsersQuery, usePatchToggleAdminMutation } from '../../redux/api';
 
-// const showAdminAlert = () => {
-//     return (
-//         <Alert severity="warning">
-//             <Stack direction="column">
-//                 Are you sure you want to delete user?
-//                 <Button
-//                     onClick={(console.log("Delete"))}
-//                     variant="outlined"
-//                     color="error"
-//                     sx={{ m: 1 }}>
-//                     Yes, delete this user
-//                 </Button>
-//                 <Button
-//                     variant="outlined"
-//                     onClick={() => setAlert(false)}
-//                     sx={{ m: 1 }}>
-//                     No, keep this user active
-//                 </Button>
-//             </Stack>
-//         </Alert>
-//     )
-// }
-
 const MapAllUsers = () => {
     const [alert, setAlert] = useState(false);
-    const [adminAlert, setAdminAlert] = useState(false);
 
     const [deleteUser, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteUserMutation();
     const { data, error, isLoading } = useGetAllUsersQuery();
@@ -85,7 +61,6 @@ const MapAllUsers = () => {
                                         console.log(response)
                     
                                     }}
-                                    //pass value or checked to adminToggle
                                 />
                                 <Typography>Admin</Typography>
                             </Stack>
@@ -105,31 +80,6 @@ const MapAllUsers = () => {
                                 </Button>
                             </Grid>
                         </Grid>
-                        {/* {adminAlert &&
-                            <Alert severity="info">
-                                <Stack direction="column">
-                                    <Typography>
-                                        Are you sure you want to promote this user to admin status?
-                                    </Typography>
-                                    <Button
-                                        onClick={() => patchToggleAdmin(true)}
-                                        variant="outlined"
-                                        color="success"
-                                        sx={{ m: 1 }}>
-                                        Make this user an admin
-                                    </Button>
-                                    <Button
-                                        variant="outlined"
-                                        onClick={() => {
-                                            patchToggleAdmin(false)
-                                            setAdminAlert(false)
-                                        }}
-                                        sx={{ m: 1 }}>
-                                        Make this user regular
-                                    </Button>
-                                </Stack>
-                            </Alert>
-                        } */}
                         {alert &&
                             <Alert severity="warning">
                                 <Stack direction="column">

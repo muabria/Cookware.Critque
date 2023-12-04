@@ -115,14 +115,18 @@ authRouter.delete("/user/:id", requireAdmin, async (req, res, next) => {
 })
 
 //<--------------------------------PATCH USER-------------------------------->
-//PATCH /auth/user/:id
-authRouter.patch("/user/:id", requireUser, async (req, res, next) => {
+//PATCH /auth/account/:id/edit
+authRouter.patch("/account/:id/edit", requireUser, async (req, res, next) => {
     try {
         const {username, email, password} = req.body;
-        const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
+        const hashedPassword = "";
+        if (password !== undefined) {
+            hashedPassword = await bcrypt.hash(password, SALT_COUNT);
+            return hashedPassword;
+        }
         
         const updatedUser = await prisma.user.update({
-            where: {id: Number(req.params.id)},
+            where: {id: req.user.id},
             data: {
                 username: username || undefined,
                 email: email || undefined,

@@ -22,7 +22,7 @@ const api = createApi({
     //unique
 
     endpoints: (builder) => ({
-        //<---------------------------AUORIZATION--------------------------->
+        //<---------------------------AUTHORIZATION--------------------------->
         //REGISTER ACCOUNT ENDPOINT
         register: builder.mutation({
             query: (user) => ({
@@ -171,7 +171,25 @@ const api = createApi({
             }),
             invalidatesTags: ["Equipment"]
         }),
-
+ //<---------------------------PATCH--------------------------->
+//PATCH REVIEW
+patchReview: builder.mutation({
+    query: ({ id, review }) => ({
+        url: `/api/review/${id}`,
+        method: 'PATCH',
+        body: { review } ,
+    }),
+    invalidatesTags: ["Reviews"]
+}),
+//PATCH USER
+patchUser: builder.mutation({
+    query: ({ id, user }) => ({
+        url: `/auth/account/${id}/edit`,
+        method: 'PATCH',
+        body: { id, user } ,
+    }),
+    invalidatesTags: ["Users"]
+}),
  //<---------------------------DELETE--------------------------->
        //DELETE REVIEW FOR USER
         deleteReviewForUser: builder.mutation({
@@ -258,6 +276,9 @@ export const {
     usePostReviewMutation,
     usePostCommentMutation,
     usePostEquipmentMutation,
+    //PATCH
+    usePatchReviewMutation,
+    usePatchUserMutation,
     //DELETE
     useDeleteReviewForUserMutation,
     useDeleteCommentForUserMutation,
