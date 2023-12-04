@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -76,10 +75,10 @@ const AddEquipment = () => {
     console.log(category)
     return (
         <>
-            <Accordion sx={{ m: 2 }}>
+            <Accordion sx={{ m: 2, backgroundColor: "#D9E4DD" }}>
                 <AccordionSummary>
-                    <Typography variant="h5" sx={{ textAlign: "center", p: 1 }}>
-                        Add New Equipment <ExpandCircleDownIcon/>
+                    <Typography variant="h5" sx={{ textAlign: "center",color: "#205375", p: 1 }}>
+                        Add New Equipment <ExpandCircleDownIcon sx={{ color: "#205375" }}/>
                     </Typography>
                 </AccordionSummary>
                 <Card sx={{ px: 10, py: 2 }}>

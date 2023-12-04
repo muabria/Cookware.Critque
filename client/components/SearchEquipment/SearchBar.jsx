@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
 
 import { useState } from 'react';
-import { useGetSingleEquipmentQuery } from '../../redux/api';
+import { useGetSingleEquipmentQuery } from "../../redux/api";
 
 import SearchResults from './SearchResults';
 
@@ -52,7 +52,12 @@ const SearchBar = ({ onSubmit }) => {
                 {/*----------------------------------SUBMIT BUTTON-------------------------------- */}
                 <Button
                     onClick={() => setShowResult(true)}
-                    sx={{ color: "#5C7658", backgroundColor: "transparent", mx: 1, mb: 5 }}>
+                    sx={{
+                        mx: .5,
+                        boxShadow: 3,
+                        color: "#3C1B1F",
+                        backgroundColor: "#89c7c3",
+                    }}>
                     <SearchIcon />
                 </Button>
                 </Stack>
