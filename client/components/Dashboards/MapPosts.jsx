@@ -8,6 +8,8 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 
+import { useMediaQuery, useTheme } from '@mui/material';
+
 import { Link } from "react-router-dom";
 
 import { useState } from "react";
@@ -20,6 +22,9 @@ import { useDeleteReviewForUserMutation } from "../../redux/api";
 const MapPosts = () => {
     const [alert, setAlert] = useState(false);
     const [editForm, setEditForm] = useState(false);
+
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const [deleteReview, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteReviewForUserMutation();
     const { data, error, isLoading } = useGetReviewByUserQuery();
@@ -53,20 +58,20 @@ const MapPosts = () => {
                 {data && data.map((review) => (
                     <Card key={review.id} sx={{ m: 1, p: 2 }}>
                         <Grid container>
-                            <Grid item xs={8}>
+                            <Grid item xs={12}>
                                 <Typography
                                     sx={{
                                         textAlign: "center",
                                         fontSize: {
-                                            xs: "12px",
-                                            sm: "14px",
-                                            md: "16px",
-                                            lg: "18px",
+                                            xs: "16px",
+                                            sm: "18px",
+                                            md: "20px",
+                                            lg: "24px",
                                         }
                                     }}>
                                     {review.title}
                                 </Typography>
-                                <Typography 
+                                <Typography
                                     sx={{
                                         textAlign: "center",
                                         fontSize: {
@@ -83,43 +88,65 @@ const MapPosts = () => {
                                     value={review.rating}
                                 />
                                 <Typography
-                                 sx={{
-                                    textAlign: "center",
-                                    fontSize: {
-                                        xs: "10px",
-                                        sm: "12px",
-                                        md: "14px",
-                                        lg: "16px",
-                                    }
-                                }}>
+                                    sx={{
+                                        textAlign: "center",
+                                        fontSize: {
+                                            xs: "10px",
+                                            sm: "12px",
+                                            md: "14px",
+                                            lg: "16px",
+                                        }
+                                    }}>
                                     {review.content}
                                 </Typography>
                             </Grid>
-                            <Grid item={4}>
+                            <Grid item xs={12}>
+                                {isMobile ?
+                                    <div>
+                                        <Link to={`/equipment/${review.id}/review`}>
+                                            <Button>
+                                                <PreviewIcon />
+                                            </Button>
+                                        </Link>
 
-                                <Link to={`/equipment/${review.id}/review`}>
-                                    <Button
-                                        variant="outlined"
-                                        sx={{ m: 1 }}>
-                                        <PreviewIcon />
-                                    </Button>
-                                </Link>
+                                        <Link to={`/edit_review/${review.id}`}>
+                                            <Button>
+                                                <EditNoteIcon />
+                                            </Button>
+                                        </Link>
+                                        <Button
+                                            onClick={() => setAlert(true)}
+                                            color="error">
+                                            <DeleteForeverSharpIcon />
+                                        </Button>
+                                    </div> 
+                                    : //If NOT mobile...
+                                    <div>
+                                        <Link to={`/equipment/${review.id}/review`}>
+                                            <Button
+                                                variant="outlined"
+                                                sx={{ m: 1 }}>
+                                                <PreviewIcon />
+                                            </Button>
+                                        </Link>
+                                        <Link to={`/edit_review/${review.id}`}>
+                                            <Button
+                                                variant="outlined"
+                                                sx={{ m: 1 }}>
+                                                <EditNoteIcon />
+                                            </Button>
+                                        </Link>
 
-                                <Link to={`/edit_review/${review.id}`}>
-                                    <Button
-                                        variant="outlined"
-                                        sx={{ m: 1 }}>
-                                        <EditNoteIcon />
-                                    </Button>
-                                </Link>
+                                        <Button
+                                            onClick={() => setAlert(true)}
+                                            variant="outlined"
+                                            color="error"
+                                            sx={{ m: 1 }}>
+                                            <DeleteForeverSharpIcon />
+                                        </Button>
+                                    </div>
 
-                                <Button
-                                    onClick={() => setAlert(true)}
-                                    variant="outlined"
-                                    color="error"
-                                    sx={{ m: 1 }}>
-                                    <DeleteForeverSharpIcon />
-                                </Button>
+                                }
 
                             </Grid>
                         </Grid>

@@ -50,7 +50,7 @@ const PostsWithComments = () => {
                                 {data.title}
                             </Typography>
                             <Rating
-                                readOnly="true"
+                                readOnly={true}
                                 value={data.rating}
                                 sx={{ alignContent: "center", m: 1 }}
                             />
