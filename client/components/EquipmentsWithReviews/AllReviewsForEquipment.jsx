@@ -1,6 +1,7 @@
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import Rating from "@mui/material/Rating";
 
 import { useParams } from "react-router-dom";
 
@@ -12,9 +13,6 @@ const AllReviewsForEquipment = () => {
     const { data, error, isLoading } = useGetSingleEquipmentQuery(id);
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetReviewByEquipmentQuery(id);
 
-    const avgRating = () => {
-        
-    }
 
     if (isLoading) {
         return <div> Please Wait.. Still Loading</div>
@@ -22,56 +20,69 @@ const AllReviewsForEquipment = () => {
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }
+    //const ratings = reviewData.map(item => item.rating);
+
+    // let sum = 0;
+    // for (let i=0; i < reviewData.length; i++) {
+    //     sum = sum + reviewData[i].rating;
+    // };
+    // let avgRating = sum/(reviewData.length);
+
     console.log(data);
-    console.log(reviewData);
+    console.log("reviewData:", reviewData);
+    //console.log("ratings", ratings)
     console.log(reviewError);
     return (
         <>
             <Typography variant="h2">
                 {data.name}
             </Typography>
-            <Rating
+            {/* <Rating
                 readOnly="true"
-                value={data.rating}
+                //value={avgRating}
                 sx={{ alignContent: "center", m: 1 }}
-            />
-            <Card>
-                <Stack direction="row">
-                    <img src={data.image} alt={data.name} />
-                    <Stack direction="column">
-                        <Typography>
-                            Brand: {data.brand}
-                        </Typography>
-                        <Typography>
-                            Price: ${data.priceRating}
-                        </Typography>
-                    </Stack>
-                    <Typography>
-                        <a href={data.purchaseLink} target="_blank">Buy it here</a>
-                    </Typography>
-                    <Typography>
-                        {data.description}
-                    </Typography>
-                </Stack>
-            </Card>
-            {reviewData && reviewData.map((review) => (
+            /> */}
+            <Stack direction="row">
                 <Card>
-                    <Stack direction="row">
-                        <Typography variant="h4">
-                            {review.title}
-                        </Typography>
-                        <Rating
-                            readOnly="true"
-                            value={review.rating}
-                            sx={{ alignContent: "center", m: 1 }}
-                        />
+                    <Stack direction="column">
+                        <img
+                            src={data.image}
+                            alt={data.name}
+                            width="250" />
+                        <Stack direction="row">
+                            <Typography>
+                                Brand: {data.brand}
+                            </Typography>
+                            <Typography>
+                                Price: ${data.priceRating}
+                            </Typography>
+                        </Stack>
                         <Typography>
-                            {review.content}
+                            <a href={data.purchaseLink} target="_blank">Buy it here</a>
+                        </Typography>
+                        <Typography>
+                            Description: {data.description}
                         </Typography>
                     </Stack>
                 </Card>
-            ))}
-
+                {reviewData && reviewData.map((review) => (
+                    <Card>
+                        <Stack direction="column">
+                            <Typography variant="h5">
+                                {review.title}
+                            </Typography>
+                            <Rating
+                                readOnly="true"
+                                value={review.rating}
+                                sx={{ alignContent: "center", m: 1 }}
+                            />
+                            <Typography>
+                                {review.content}
+                            </Typography>
+                        </Stack>
+                    </Card>
+                ))}
+            </Stack>
         </>
     )
 }
