@@ -34,7 +34,11 @@ const MapCategories = () => {
                         <Box key={category.id} sx={{ m: .15 }}>
                             <Link to={`/category/${category.id}`}
                                 style={{ textDecoration: "none" }}>
-                                <Card sx={{ color: "#3C1B1F", backgroundColor: "#E7B10A", border: "solid #D29D2B 2px", }} >
+                                <Card sx={{ 
+                                    boxShadow: 3,
+                                    color: "#3C1B1F", 
+                                    backgroundColor: "#E7B10A", 
+                                    border: "solid #D29D2B 2px", }} >
                                     <Typography sx={{ fontSize: "10px" }}>
                                         {category.category}
                                     </Typography>
@@ -51,7 +55,13 @@ const MapCategories = () => {
                             <Link to={`/category/${category.id}`}
                                 style={{ textDecoration: "none" }}>
                                 <Avatar
-                                    sx={{ p: 3, color: "#3C1B1F", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", }} >
+                                    sx={{
+                                        boxShadow: 3,
+                                        p: 3,
+                                        color: "#3C1B1F",
+                                        backgroundColor: "#E7B10A",
+                                        border: "solid #D29D2B 2px"
+                                    }}>
                                     <Typography sx={{ fontSize: "13px" }}>
                                         {category.category}
                                     </Typography>

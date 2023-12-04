@@ -2,6 +2,7 @@ import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid"
+import Stack  from "@mui/material/Stack"
 import Typography from '@mui/material/Typography';
 import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
@@ -39,7 +40,7 @@ const MapComments = () => {
                 <div>
                     <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
                         <Typography
-                         sx={{ textAlign: "center" }}>
+                            sx={{ textAlign: "center" }}>
                             My Comments:
                         </Typography>
                         {data && data.map((comment) => (
@@ -87,32 +88,34 @@ const MapComments = () => {
                 <div>
                     <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
                         <Typography
-                        variant="h5"
-                         sx={{ textAlign: "center" }}>
+                            variant="h5"
+                            sx={{ textAlign: "center" }}>
                             My Comments:
                         </Typography>
                         {data && data.map((comment) => (
                             <Card key={comment.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
-                                    <Grid item xs={8}>
+                                    <Grid item xs={10.5}>
                                         <Typography
                                             sx={{ textAlign: "center" }}>
                                             {comment.content}
                                         </Typography>
                                     </Grid>
-                                    <Grid item xs={4}>
-                                        <Button
-                                            variant="outlined"
-                                            sx={{ m: 1 }}>
-                                            <PreviewIcon />
-                                        </Button>
-                                        <Button
-                                            onClick={() => setAlert(true)}
-                                            variant="outlined"
-                                            color="error"
-                                            sx={{ m: 1 }}>
-                                            <DeleteForeverSharpIcon />
-                                        </Button>
+                                    <Grid item xs={1.5}>
+                                        <Stack direction="column">
+                                            <Button
+                                                variant="outlined"
+                                                sx={{ m: 1 }}>
+                                                <PreviewIcon />
+                                            </Button>
+                                            <Button
+                                                onClick={() => setAlert(true)}
+                                                variant="outlined"
+                                                color="error"
+                                                sx={{ m: 1 }}>
+                                                <DeleteForeverSharpIcon />
+                                            </Button>
+                                        </Stack>
                                     </Grid>
                                 </Grid>
                                 {alert && <Alert severity="warning">

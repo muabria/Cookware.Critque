@@ -58,8 +58,7 @@ const AllPosts = () => {
                                             <Grid item xs={8}>
                                                 <Card key={review.id}
                                                     sx={{
-                                                        backgroundColor: "#F9FBE7",
-                                                        border: "solid #D29D2B 5px",
+                                                        border: "solid #D29D2B 2px",
                                                         borderRadius: "10px",
                                                         minWidth: 200,
                                                         minHeight: 200,

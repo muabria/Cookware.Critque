@@ -139,7 +139,7 @@ const MapPosts = () => {
                             <Card key={review.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
 
-                                    <Grid item xs={10}>
+                                    <Grid item xs={10.5}>
                                         <Stack direction="row">
                                             <Typography variant="h5" sx={{ textAlign: "center" }}>
                                                 {review.title}
@@ -156,7 +156,7 @@ const MapPosts = () => {
                                             </Typography>
                                         </Stack>
                                     </Grid>
-                                    <Grid item xs={2}>
+                                    <Grid item xs={1.5}>
                                         <Stack direction="column">
                                             <Link to={`/equipment/${review.id}/review`}>
                                                 <Button

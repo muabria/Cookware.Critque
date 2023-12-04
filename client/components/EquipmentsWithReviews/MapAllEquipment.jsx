@@ -35,24 +35,24 @@ const MapAllEquipment = () => {
                 <div>
                     <Accordion sx={{ backgroundColor: "#D9E4DD" }}>
                         <AccordionSummary sx={{ pb: 2, mt: 10 }}>
-                            <Typography 
-                            variant="h6"
-                            sx={{ color: "#205375" }}>
-                                See All Equipment <ArrowDropDownCircleIcon sx={{ color: "#205375", mt: 2 }}/>
+                            <Typography
+                                variant="h6"
+                                sx={{ color: "#205375" }}>
+                                See All Equipment <ArrowDropDownCircleIcon sx={{ color: "#205375", mt: 2 }} />
                             </Typography>
                         </AccordionSummary>
                         <Grid container >
                             {data && data.map((equipment) => (
                                 <Stack direction="row" key={equipment.id}>
-                                    <Card sx={{ m: 2,  color: "#205375", border: "solid #D29D2B 2px" }} key={equipment.id}>
+                                    <Card sx={{ m: 2, color: "#205375", border: "solid #D29D2B 2px" }} key={equipment.id}>
                                         <Stack direction="column">
                                             <Typography
-                                            variant="h6"
-                                            sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}>
+                                                variant="h6"
+                                                sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}>
                                                 {equipment.name}
                                             </Typography>
                                             <Typography
-                                             sx={{ textAlign: "center" }}>
+                                                sx={{ textAlign: "center" }}>
                                                 from {equipment.brand}
                                             </Typography>
                                             <Typography sx={{ px: 2 }}>
@@ -72,30 +72,60 @@ const MapAllEquipment = () => {
                 </div>
                 ://is NOT mobile..
                 <div>
-                    <Grid container >
-                        {data && data.map((equipment) => (
-                            <Stack direction="row" key={equipment.id}>
-                                <Card sx={{ p: 2, m: 2 }} key={equipment.id}>
+                    <Accordion sx={{ backgroundColor: "#D9E4DD" }}>
+                        <AccordionSummary sx={{ pb: 2, mt: 10 }}>
+                            <Typography
+                                variant="h6"
+                                sx={{ color: "#205375" }}>
+                                See All Equipment <ArrowDropDownCircleIcon sx={{ color: "#205375", mt: 2 }} />
+                            </Typography>
+                        </AccordionSummary>
+                        <Grid container >
+                            {data && data.map((equipment) => (
+                                <Card
+                                    key={equipment.id}
+                                    sx={{
+                                        maxWidth: 300,
+                                        minWidth: 300,
+                                        maxHeight: 300,
+                                        minHeight: 300,
+                                        m: 2,
+                                        color: "#205375",
+                                        border: "solid #D29D2B 2px"
+                                    }}>
                                     <Stack direction="column">
-                                        <Typography>
+                                        <Typography
+                                            variant="h6"
+                                            sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}>
                                             {equipment.name}
                                         </Typography>
-                                        <Typography>
-                                            {equipment.brand}
+                                        <Typography
+                                            sx={{ textAlign: "center" }}>
+                                            from {equipment.brand}
                                         </Typography>
-                                        <Typography>
+                                        <Typography sx={{ px: 2 }}>
                                             {equipment.description}
                                         </Typography>
+
                                         <Link to={`/equipment/${equipment.id}`}>
-                                            <Button>
-                                                See the {equipment.name}'s Reviews
+                                            <Button
+                                                sx={{
+                                                    mt: 2,
+                                                    ml: 8, 
+                                                    boxShadow: 3,
+                                                    color: "#3C1B1F",
+                                                    backgroundColor: "#EACD65",
+                                                    border: "solid #D29D2B 2px"
+                                                }}>
+                                                See All Reviews
                                             </Button>
                                         </Link>
+
                                     </Stack>
                                 </Card>
-                            </Stack>
-                        ))}
-                    </Grid>
+                            ))}
+                        </Grid>
+                    </Accordion>
                 </div>}
         </>
     )
