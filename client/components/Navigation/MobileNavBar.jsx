@@ -19,6 +19,8 @@ import logo from "../images/cookingEquipmentLogo.png"
 
 import { Link } from "react-router-dom";
 
+import LogoutButton from "../AuthorizationForms/LogoutButton";
+
 const MobileNavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -123,6 +125,9 @@ const MobileNavBar = () => {
                                     user dashboard
                                 </Button>
                             </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <LogoutButton />
                         </MenuItem>
                     </Menu>
                 </Grid>
