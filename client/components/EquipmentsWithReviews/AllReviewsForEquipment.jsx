@@ -23,9 +23,28 @@ const AllReviewsForEquipment = () => {
     console.log(reviewError);
     return (
         <>
-            <Typography>
+            <Typography variant="h2">
                 {data.name}
             </Typography>
+            <Card>
+                <Stack direction="row">
+                    <img src={data.image} alt={data.name} />
+                    <Stack direction="column">
+                        <Typography>
+                            Brand: {data.brand}
+                        </Typography>
+                        <Typography>
+                            Price: ${data.priceRating}
+                        </Typography>
+                    </Stack>
+                    <Typography>
+                        <a href={data.purchaseLink} target="_blank">Buy it here</a>
+                    </Typography>
+                    <Typography>
+                        {data.description}
+                    </Typography>
+                </Stack>
+            </Card>
             {reviewData && reviewData.map((review) => (
                 <Typography>
                     {review.title}
