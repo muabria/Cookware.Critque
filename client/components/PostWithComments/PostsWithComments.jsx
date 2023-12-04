@@ -89,7 +89,11 @@ const PostsWithComments = () => {
                 <div>
                     <Grid container>
                         <Grid item xs={6}>
-                            <Card key={data.id}>
+                            <Card 
+                            key={data.id}
+                            sx={{ 
+                                mx: 2
+                            }}>
                                 <Stack direction="row">
                                     <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                                         {data.title}
@@ -111,10 +115,22 @@ const PostsWithComments = () => {
                         </Grid>
 
                         <Grid item xs={6}>
-                            <Card sx={{ backgroundColor: "#b6d6d4", p: 2 }}>
+                            <Card sx={{ 
+                                mx: 2, 
+                                backgroundColor: "#b6d6d4", p: 
+                                2 }}>
                                 <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                     Comments:
                                 </Typography>
+                                <Button
+                                sx={{ 
+                                    ml: 67,
+                                    color: "#205375" 
+                                }}
+                                    onClick={() => setAddComment(true)}>
+                                    <RateReviewIcon /> Add a Comment
+                                </Button>
+                                {addComment && <CommentForm />}
                                 {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
                                     <Card key={comment.id} sx={{ p: 2 }}>
                                         <Typography>
@@ -123,12 +139,6 @@ const PostsWithComments = () => {
                                     </Card>
                                 ))}
                             </Card>
-                            <Button
-                                onClick={() => setAddComment(true)}>
-                                <RateReviewIcon /> Add a Comment
-                            </Button>
-                            {addComment && <CommentForm />}
-
                         </Grid>
                     </Grid>
                 </div>}

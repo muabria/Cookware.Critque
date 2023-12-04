@@ -16,8 +16,6 @@ import { Link } from "react-router-dom";
 
 import { useGetUserQuery } from "../../redux/api";
 
-import MobileUser from "./MobileUser";
-
 const UserDashboard = () => {
 
     const theme = useTheme();
@@ -38,8 +36,39 @@ const UserDashboard = () => {
     return (
         <>
             <Box>
-                {isMobile ? <MobileUser /> :
+                {isMobile ?
+                <div>
+                     <Grid container spacing={1}>
+                <Grid item xs={1}>
+                </Grid>
 
+                <Grid item xs={10}>
+                        <Typography variant="h5">
+                            Hello, {data.username}
+                        </Typography>
+                    <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
+                        <Link to="/new_review">
+                            <Button sx={{ backgroundColor: "#088395", color: "white", m: 1 }}>
+                                Make a new Critique
+                            </Button>
+                        </Link>
+                        <Stack direction="column">
+                            <Grid item xs={12}>
+                                <MapPosts />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <MapComments />
+                            </Grid>
+                        </Stack>
+                    </Card>
+                </Grid>
+
+                <Grid item xs={1}>
+                </Grid>
+            </Grid>
+                </div>
+                
+                ://is NOT mobile...
                     <Grid container spacing={1}>
                         <Grid item xs={2}>
                             <Stack direction="column">

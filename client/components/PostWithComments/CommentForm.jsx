@@ -14,10 +14,10 @@ import { useGetSingleReviewQuery, usePostCommentMutation } from '../../redux/api
 
 const CommentForm = () => {
   const [content, setContent] = useState(" ");
-  
+
   const { id } = useParams();
 
-  const {data: postData, error: postError, isLoading: postIsLoading } = useGetSingleReviewQuery(id);
+  const { data: postData, error: postError, isLoading: postIsLoading } = useGetSingleReviewQuery(id);
   const [postComment, data, error] = usePostCommentMutation();
 
   if (!data) {
@@ -42,9 +42,6 @@ const CommentForm = () => {
       <form onSubmit={handleSubmit}>
         <Card sx={{ p: 6 }}>
           <Stack direction="column">
-            <Typography>
-              Add a comment
-            </Typography>
             <TextField sx={{ my: 2 }}
               onChange={(event) => setContent(event.target.value)}
               value={content}
@@ -54,7 +51,16 @@ const CommentForm = () => {
               rows={4}
               defaultValue="Type something"
             />
-            <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}><AddCommentIcon /> Add Comment</Button>
+            <Button
+              type="submit"
+              sx={{
+                backgroundColor: "#088395",
+                color: "white",
+                m: 2,
+                p: 1
+              }}>
+              <AddCommentIcon /> Add Comment
+            </Button>
           </Stack>
         </Card>
       </form>
