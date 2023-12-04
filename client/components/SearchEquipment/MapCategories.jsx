@@ -1,12 +1,19 @@
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card"
+import Typography from "@mui/material/Typography";
 
-import { Link } from 'react-router-dom';
+import { useMediaQuery, useTheme } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import { useGetCategoriesQuery } from "../../redux/api"
-import { Avatar, Typography } from '@mui/material';
 
 const MapCategories = () => {
+
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
     const { data, error, isLoading } = useGetCategoriesQuery();
     if (!data) {
         return <div>Error 404: Data not found. Maybe it's hiding in the pantry...</div>
@@ -21,20 +28,41 @@ const MapCategories = () => {
 
     return (
         <>
-            {data && data.map((category) => (
-                <Box key={category.id} sx={{ m: 2 }}>
-                    <Link to={`/category/${category.id}`} 
-                    style={{ textDecoration: "none" }}>
-                        <Avatar
-                            sx={{ p: 3, color: "#3C1B1F", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", }} >
-                            <Typography sx={{ fontSize: "13px" }}>
-                                {category.category}
-                            </Typography>
-                        </Avatar>
-                    </Link>
-                </Box>
-            ))
+            {isMobile ?
+                <>
+                    {data && data.map((category) => (
+                        <Box key={category.id} sx={{ m: .15 }}>
+                            <Link to={`/category/${category.id}`}
+                                style={{ textDecoration: "none" }}>
+                                <Card sx={{ color: "#3C1B1F", backgroundColor: "#E7B10A", border: "solid #D29D2B 2px", }} >
+                                    <Typography sx={{ fontSize: "10px" }}>
+                                        {category.category}
+                                    </Typography>
+                                </Card>
+                            </Link>
+                        </Box>
+                    ))
+                    }
+                </>
+                : //is NOT mobile...
+                <>
+                    {data && data.map((category) => (
+                        <Box key={category.id} sx={{ m: 2 }}>
+                            <Link to={`/category/${category.id}`}
+                                style={{ textDecoration: "none" }}>
+                                <Avatar
+                                    sx={{ p: 3, color: "#3C1B1F", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px", }} >
+                                    <Typography sx={{ fontSize: "13px" }}>
+                                        {category.category}
+                                    </Typography>
+                                </Avatar>
+                            </Link>
+                        </Box>
+                    ))
+                    }
+                </>
             }
+
         </>
     )
 }

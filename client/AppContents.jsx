@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import { Routes, Route } from "react-router-dom";
 
-import HomePage from "./components/HomePage";
+import HomePage from "./components/HomePage/HomePage";
 import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import UserDashboard from "./components/Dashboards/UserDashboard";

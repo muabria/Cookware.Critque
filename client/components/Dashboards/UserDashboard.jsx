@@ -4,7 +4,6 @@ import Card from "@mui/material/Card";
 import Stack from '@mui/material/Stack'
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Avatar from '@mui/material/Avatar';
 
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
@@ -16,6 +15,7 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import { Link } from "react-router-dom";
 
 import { useGetUserQuery } from "../../redux/api";
+
 import MobileUser from "./MobileUser";
 
 const UserDashboard = () => {
@@ -71,7 +71,6 @@ const UserDashboard = () => {
                         </Grid>
                         <Grid item xs={10}>
                             <Stack direction="row">
-                                <Avatar sx={{ mx: 3 }} />
                                 <Typography variant="h3">
                                     Hello, {data.username}
                                 </Typography>
