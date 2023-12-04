@@ -4,11 +4,16 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import { useMediaQuery, useTheme } from "@mui/material";
+
 import { Link } from "react-router-dom";
 
 import { useGetEquipmentQuery } from "../../redux/api"
 
 const MapAllEquipment = () => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
     const { data, error, isLoading } = useGetEquipmentQuery();
     if (isLoading) {
         return <div> Please Wait.. Still Loading</div>

@@ -31,31 +31,38 @@ const MobileHomePage = () => {
             }}>
                 <Box>
                     <Grid container>
-                        <Grid item xs={2}>
+                        <Grid item xs={6}>
                         </Grid>
-                        <Grid item xs={10} sx={{ mb: 25 }}>
+                        <Grid item xs={6}>
+                            <Box sx={{ mt: 11 }}>
+                                <Button sx={{
+                                    color: "#FAF3F0",
+                                    backgroundColor: "#D988B9",
+                                    border: "solid #B0578D 5px",
+                                    borderRadius: "100px",
+                                    fontSize: "11px",
+                                    m: 1
+                                }}>
+                                    Find New Equipment
+                                </Button>
+                            </Box>
+                        </Grid>
+
+                        <Grid item xs={4}>
+                        </Grid>
+
+                    </Grid>
+                    <Link to="/posts">
+                        <Grid item xs={10} sx={{ mt: 10 }}>
                             <Stack direction="row">
                                 <MapCategories />
                             </Stack>
                         </Grid>
-                    </Grid>
-                    <Link to="/posts">
-                        <Button sx={{
-                            color: "#FAF3F0",
-                            backgroundColor: "#D988B9",
-                            border: "solid #B0578D 5px",
-                            borderRadius: "100px",
-                            fontSize: "12px",
-                            p: 2,
-                            m: 2
-                        }}>
-                            Explore New Additions to Your Kitchen
-                        </Button>
                     </Link>
                 </Box>
+                <MapAllEquipment />
+                <AllPost />
             </div>
-            <MapAllEquipment />
-            <AllPost />
         </>
     )
 }
