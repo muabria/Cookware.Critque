@@ -46,10 +46,19 @@ const AllPosts = () => {
                             Explore Trusted Critiques Made from Real Users
                         </Typography>
                     </Box>
-                    <Box sx={{ mx: 10, mb: 1 }}>
+                    <Box sx={{ mb: 1 }}>
                         <SearchBar />
                     </Box>
                     <Box sx={{ mx: 5 }}>
+                    <Typography
+                        variant="h6"
+                        sx={{
+                            textAlign: "center",
+                            color: "#205375",
+                            my: 1,
+                        }}>
+                        See All Reviews
+                    </Typography>
                         <div className="carousel">
                             <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -1500 }}>
                                 <Stack direction="row">
@@ -65,18 +74,24 @@ const AllPosts = () => {
                                                         m: 2
                                                     }}>
                                                     <Typography
-                                                        variant="h5"
+                                                        variant="h6"
                                                         sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}>
                                                         {review.title}
                                                     </Typography>
                                                     <Box sx={{ p: 1 }}>
-                                                        <Typography variant="h6" sx={{ color: "#205375" }}>
+                                                        <Typography variant="h8" sx={{ color: "#205375", fontFamily: "arial" }}>
                                                             {review.content}
                                                         </Typography>
                                                     </Box>
                                                     <CardActions disableSpacing>
                                                         <Link to={`/review/${review.id}`} >
-                                                            <Button sx={{ mx: 3 }}>
+                                                            <Button sx={{
+                                                                mx: 3,
+                                                                boxShadow: 3,
+                                                                color: "#3C1B1F",
+                                                                backgroundColor: "#EACD65",
+                                                                border: "solid #D29D2B 2px"
+                                                            }}>
                                                                 Full Review
                                                             </Button>
                                                         </Link>
@@ -91,6 +106,7 @@ const AllPosts = () => {
                         </div>
                     </Box>
                 </div>
+
                 : //is NOT mobile...
                 <div>
                     <Box sx={{ maxHeight: "60px", mb: 3 }}>
@@ -101,6 +117,15 @@ const AllPosts = () => {
                     <Box sx={{ mx: 10, mb: 1 }}>
                         <SearchBar />
                     </Box>
+                    <Typography
+                        variant="h4"
+                        sx={{
+                            textAlign: "center",
+                            color: "#205375",
+                            my: 2,
+                        }}>
+                        See All Reviews
+                    </Typography>
                     <Box sx={{ mx: 5 }}>
                         <div className="carousel">
                             <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -3000 }}>
@@ -110,8 +135,9 @@ const AllPosts = () => {
                                             <Grid item xs={8}>
                                                 <Card key={review.id}
                                                     sx={{
+                                                        boxShadow: 3,
                                                         backgroundColor: "#F9FBE7",
-                                                        border: "solid #D29D2B 5px",
+                                                        border: "solid #D29D2B 2px",
                                                         borderRadius: "10px",
                                                         minWidth: 300,
                                                         minHeight: 300,
@@ -127,7 +153,14 @@ const AllPosts = () => {
                                                     </CardContent>
                                                     <CardActions disableSpacing>
                                                         <Link to={`/review/${review.id}`} >
-                                                            <Button sx={{ m: 1 }}>
+                                                            <Button sx={{
+                                                                mt: 2,
+                                                                ml: 7,
+                                                                boxShadow: 3,
+                                                                color: "#3C1B1F",
+                                                                backgroundColor: "#EACD65",
+                                                                border: "solid #D29D2B 2px"
+                                                            }}>
                                                                 See the Full Review
                                                             </Button>
                                                         </Link>

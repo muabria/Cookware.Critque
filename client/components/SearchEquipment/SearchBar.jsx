@@ -52,7 +52,12 @@ const SearchBar = ({ onSubmit }) => {
                 {/*----------------------------------SUBMIT BUTTON-------------------------------- */}
                 <Button
                     onClick={() => setShowResult(true)}
-                    sx={{ color: "#5C7658", backgroundColor: "transparent", mx: 1, mb: 5 }}>
+                    sx={{
+                        mx: .5,
+                        boxShadow: 3,
+                        color: "#3C1B1F",
+                        backgroundColor: "#89c7c3",
+                    }}>
                     <SearchIcon />
                 </Button>
                 </Stack>
