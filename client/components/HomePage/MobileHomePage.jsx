@@ -23,10 +23,15 @@ const MobileHomePage = () => {
             <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                 Home to honest critiques for all types of kitchen equipment from food prep to clean up.
             </Typography>
+            <Link to="/posts">
+                <Stack direction="row">
+                    <MapCategories />
+                </Stack>
+            </Link>
             <div style={{
                 backgroundImage: `url(${background})`,
                 backgroundSize: "contain",
-                height: "700px",
+                height: "800px",
                 backgroundRepeat: "no-repeat"
             }}>
                 <Box>
@@ -35,16 +40,18 @@ const MobileHomePage = () => {
                         </Grid>
                         <Grid item xs={6}>
                             <Box sx={{ mt: 11 }}>
-                                <Button sx={{
-                                    color: "#FAF3F0",
-                                    backgroundColor: "#D988B9",
-                                    border: "solid #B0578D 5px",
-                                    borderRadius: "100px",
-                                    fontSize: "11px",
-                                    m: 1
-                                }}>
-                                    Find New Equipment
-                                </Button>
+                                <Link to="/posts">
+                                    <Button sx={{
+                                        color: "#FAF3F0",
+                                        backgroundColor: "#D988B9",
+                                        border: "solid #B0578D 2px",
+                                        borderRadius: "100px",
+                                        fontSize: "11px",
+                                        m: 1
+                                    }}>
+                                        Find New Equipment
+                                    </Button>
+                                </Link>
                             </Box>
                         </Grid>
 
@@ -52,16 +59,8 @@ const MobileHomePage = () => {
                         </Grid>
 
                     </Grid>
-                    <Link to="/posts">
-                        <Grid item xs={10} sx={{ mt: 10 }}>
-                            <Stack direction="row">
-                                <MapCategories />
-                            </Stack>
-                        </Grid>
-                    </Link>
                 </Box>
                 <MapAllEquipment />
-                <AllPost />
             </div>
         </>
     )
