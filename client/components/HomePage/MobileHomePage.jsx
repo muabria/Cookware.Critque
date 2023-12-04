@@ -16,17 +16,13 @@ import MapAllEquipment from "../EquipmentsWithReviews/MapAllEquipment";
 const MobileHomePage = () => {
     return (
         <>
-            <motion.div
-                initial={{ x: "100vw" }}
-                animate={{ x: "0vw" }}
-                transition={{ type: "spring", delay: (0.5) }}>
-                <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                    Welcome to "TITLE PLACEHOLDER".
-                </Typography>
-                <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                    Home to honest critiques for all types of kitchen equipment from food prep to clean up.
-                </Typography>
-            </motion.div>
+
+            <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+                Welcome to "TITLE PLACEHOLDER".
+            </Typography>
+            <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+                Home to honest critiques for all types of kitchen equipment from food prep to clean up.
+            </Typography>
             <div style={{
                 backgroundImage: `url(${background})`,
                 backgroundSize: "contain",
@@ -53,7 +49,7 @@ const MobileHomePage = () => {
                             p: 2,
                             m: 2
                         }}>
-                                Explore New Additions to Your Kitchen
+                            Explore New Additions to Your Kitchen
                         </Button>
                     </Link>
                 </Box>

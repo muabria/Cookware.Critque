@@ -30,17 +30,12 @@ const HomePage = () => {
                 </>
                 :
                 <>
-                    <motion.div
-                        initial={{ x: "100vw" }}
-                        animate={{ x: "0vw" }}
-                        transition={{ type: "spring", delay: (0.5) }}>
-                        <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                            Welcome to "TITLE PLACEHOLDER".
-                        </Typography>
-                        <Typography variant="h5" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                            Home to honest critiques for all types of kitchen equipment from food prep to clean up.
-                        </Typography>
-                    </motion.div>
+                    <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+                        Welcome to "TITLE PLACEHOLDER".
+                    </Typography>
+                    <Typography variant="h5" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+                        Home to honest critiques for all types of kitchen equipment from food prep to clean up.
+                    </Typography>
                     <div style={{
                         backgroundImage: `url(${background})`,
                         backgroundSize: "contain",
