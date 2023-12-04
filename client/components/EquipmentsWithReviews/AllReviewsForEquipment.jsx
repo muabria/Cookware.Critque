@@ -71,9 +71,11 @@ const AllReviewsForEquipment = () => {
                             <Typography variant="h5">
                                 {review.title}
                             </Typography>
+                            
                             <Rating
                                 readOnly="true"
                                 value={review.rating}
+                                size="small"
                                 sx={{ alignContent: "center", m: 1 }}
                             />
                             <Typography>
