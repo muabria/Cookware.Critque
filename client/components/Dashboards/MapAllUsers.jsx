@@ -90,7 +90,7 @@ const MapAllUsers = () => {
                                 <Typography>Admin</Typography>
                             </Stack>
                             </Grid>
-                            <Grid item={4}>
+                            <Grid item xs={4}>
                                 <Button
                                     variant="outlined"
                                     sx={{ m: 1 }}>

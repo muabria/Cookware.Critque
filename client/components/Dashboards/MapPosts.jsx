@@ -61,14 +61,14 @@ const MapPosts = () => {
                                             {review.equipment}
                                         </Typography>
                                         <Rating
-                                            readOnly="true"
+                                            readOnly={true}
                                             value={review.rating}
                                         />
                                         <Typography>
                                             {review.content}
                                         </Typography>
                                     </Grid>
-                                    <Grid item={4}>
+                                    <Grid item xs={4}>
                                         <Link to={`/equipment/${review.id}/review`}>
                                             <Button>
                                                 <PreviewIcon />
@@ -156,7 +156,7 @@ const MapPosts = () => {
                                             </Typography>
                                         </Stack>
                                     </Grid>
-                                    <Grid item={2}>
+                                    <Grid item xs={2}>
                                         <Stack direction="column">
                                             <Link to={`/equipment/${review.id}/review`}>
                                                 <Button
