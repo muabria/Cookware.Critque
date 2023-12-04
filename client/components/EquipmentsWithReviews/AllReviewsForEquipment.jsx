@@ -12,6 +12,10 @@ const AllReviewsForEquipment = () => {
     const { data, error, isLoading } = useGetSingleEquipmentQuery(id);
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetReviewByEquipmentQuery(id);
 
+    const avgRating = () => {
+        
+    }
+
     if (isLoading) {
         return <div> Please Wait.. Still Loading</div>
     }
@@ -26,6 +30,11 @@ const AllReviewsForEquipment = () => {
             <Typography variant="h2">
                 {data.name}
             </Typography>
+            <Rating
+                readOnly="true"
+                value={data.rating}
+                sx={{ alignContent: "center", m: 1 }}
+            />
             <Card>
                 <Stack direction="row">
                     <img src={data.image} alt={data.name} />
@@ -46,9 +55,21 @@ const AllReviewsForEquipment = () => {
                 </Stack>
             </Card>
             {reviewData && reviewData.map((review) => (
-                <Typography>
-                    {review.title}
-                </Typography>
+                <Card>
+                    <Stack direction="row">
+                        <Typography variant="h4">
+                            {review.title}
+                        </Typography>
+                        <Rating
+                            readOnly="true"
+                            value={review.rating}
+                            sx={{ alignContent: "center", m: 1 }}
+                        />
+                        <Typography>
+                            {review.content}
+                        </Typography>
+                    </Stack>
+                </Card>
             ))}
 
         </>
