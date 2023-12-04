@@ -47,6 +47,7 @@ const CommentForm = () => {
               value={content}
               id="content"
               label="Add Comment Here"
+              required = {true}
               multiline
               rows={4}
               defaultValue="Type something"

@@ -169,7 +169,6 @@ const MapPostsAdmin = () => {
                     </Card>
                 </div>
             }
-
         </>
     )
 }

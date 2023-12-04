@@ -16,6 +16,7 @@ import Rating from "@mui/material/Rating";
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Alert from "@mui/material/Alert";
 
 import { useMediaQuery, useTheme } from "@mui/material";
 import MobileNewPost from "./MobileNewPost";
@@ -63,6 +64,11 @@ const AddPostContent = () => {
 
     //<-----------------SUBMIT FORM HELPER FUNCTION------------------->
     const handleSubmit = async (event) => {
+        if (!rating) {
+            event.preventDefault();
+            alert("Please add a rating.");
+            return
+        }
         try {
             event.preventDefault();
             const result = await postReview({ equipmentId: Number(equipment), title, content, rating: Number(rating) })
@@ -106,12 +112,12 @@ const AddPostContent = () => {
                                                 1
                                             </Avatar>
                                             <Typography v
-                                                ariant="h5"
+                                                variant="h5"
                                                 sx={{ color: "#205375", p: 1 }}>
                                                 Click on the Equipment You're Reviewing:
                                             </Typography>
                                         </Stack>
-                                        {/* <--------------MAPP EQUIPMENT---------------> */}
+                                        {/* <--------------MAP EQUIPMENT---------------> */}
                                         <div className="carousel">
                                             <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -2000 }}>
                                                 <Stack direction="row">
@@ -170,6 +176,7 @@ const AddPostContent = () => {
                                                     value={title}
                                                     onChange={(event) => setTitle(event.target.value)}
                                                     size="small"
+                                            required = {true}
                                                     sx={{ m: 1, backgroundColor: "white" }}
                                                 />
                                                 {/* <-----------------CONTENT TEXTFIELD-------------------> */}
@@ -178,6 +185,7 @@ const AddPostContent = () => {
                                                     value={content}
                                                     onChange={(event) => setContent(event.target.value)}
                                                     size="small"
+                                            required = {true}
                                                     sx={{ m: 1, backgroundColor: "white" }}
                                                     multiline
                                                 />

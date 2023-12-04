@@ -55,6 +55,16 @@ const AddEquipment = () => {
 
     const handleSubmit = async (event) => {
         try {
+            if (!category) {
+                event.preventDefault();
+                alert("Please select a category.");
+                return
+            }
+            else if (priceRating === 0) {
+                event.preventDefault();
+                alert("Please select a price.");
+                return
+            }
             event.preventDefault();
             const result = await newEquipmentInfo({ name, description, image, categoryId: category, priceRating: Number(priceRating), brand, purchaseLink })
             console.log(result)
@@ -80,6 +90,7 @@ const AddEquipment = () => {
                                     value={equipment}
                                     onChange={(event) => setEquipment(event.target.value)}
                                     size="small"
+                                    required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                 />
@@ -103,6 +114,7 @@ const AddEquipment = () => {
                                     value={description}
                                     onChange={(event) => setDescription(event.target.value)}
                                     size="small"
+                                    required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                 />
@@ -111,6 +123,8 @@ const AddEquipment = () => {
                                     value={image}
                                     onChange={(event) => setImage(event.target.value)}
                                     size="small"
+                                    type="url"
+                                    required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                     multiline
@@ -134,6 +148,7 @@ const AddEquipment = () => {
                                     value={brand}
                                     onChange={(event) => setBrand(event.target.value)}
                                     size="small"
+                                    required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                     multiline
@@ -143,6 +158,8 @@ const AddEquipment = () => {
                                     value={purchaseLink}
                                     onChange={(event) => setPurchaseLink(event.target.value)}
                                     size="small"
+                                    type="url"
+                                    required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                     multiline
