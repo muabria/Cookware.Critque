@@ -27,13 +27,13 @@ const AddPostContent = () => {
     const [equipment, setEquipment] = useState("");
     const [rating, setRating] = useState(null);
 
-     //<-----------------STAR RATING STATE ------------------->
-     const [hover, setHover] = useState(-1);
+    //<-----------------STAR RATING STATE ------------------->
+    const [hover, setHover] = useState(-1);
 
-     function getLabelText(value) {
-         return `${rating} Star${rating !== 1 ? 's' : ''}, ${starLabels[value]}`;
-     }
-     
+    function getLabelText(value) {
+        return `${rating} Star${rating !== 1 ? 's' : ''}, ${starLabels[value]}`;
+    }
+
     //<----------------------ANIMATIONS---------------------->
     const controls = useAnimationControls();
     const variants = {
@@ -91,7 +91,9 @@ const AddPostContent = () => {
                         </Grid>
                         <Grid item xs={8}>
                             <Box sx={{ backgroundColor: "#89c7c3" }}>
-                                <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", p: 1 }}>
+                                <Typography
+                                    variant="h4"
+                                    sx={{ color: "#205375", textAlign: "center", p: 1 }}>
                                     Make a Kitchen Equipment Critique:
                                 </Typography>
                             </Box>
@@ -103,7 +105,9 @@ const AddPostContent = () => {
                                             <Avatar sx={{ color: "#205375", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px" }}>
                                                 1
                                             </Avatar>
-                                            <Typography variant="h5" sx={{ color: "#205375", p: 1 }}>
+                                            <Typography v
+                                                ariant="h5"
+                                                sx={{ color: "#205375", p: 1 }}>
                                                 Click on the Equipment You're Reviewing:
                                             </Typography>
                                         </Stack>
@@ -118,7 +122,9 @@ const AddPostContent = () => {
                                                             onClick={() => setEquipment(equipment.id)}
                                                             sx={{ m: 1, minWidth: 300, maxWidth: 300, border: "solid #D29D2B 5px", borderRadius: 100 }}>
                                                             <Box sx={{ backgroundColor: "#EACD65" }}>
-                                                                <Typography variant="h5" sx={{ color: "#205375", m: 1, textAlign: "center" }}>
+                                                                <Typography
+                                                                    variant="h5"
+                                                                    sx={{ color: "#205375", m: 1, textAlign: "center" }}>
                                                                     {equipment.name}
                                                                 </Typography>
                                                                 <Typography sx={{ color: "#205375", m: 1, textAlign: "center" }}>
