@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -59,6 +58,16 @@ const AddEquipment = () => {
 
     const handleSubmit = async (event) => {
         try {
+            if (!category) {
+                event.preventDefault();
+                alert("Please select a category.");
+                return
+            }
+            else if (priceRating === 0) {
+                event.preventDefault();
+                alert("Please select a price.");
+                return
+            }
             event.preventDefault();
             const result = await newEquipmentInfo({ name, description, image, categoryId: category, priceRating: Number(priceRating), brand, purchaseLink })
             console.log(result)
@@ -69,10 +78,10 @@ const AddEquipment = () => {
     console.log(category)
     return (
         <>
-            <Accordion sx={{ m: 2 }}>
+            <Accordion sx={{ m: 2, backgroundColor: "#D9E4DD" }}>
                 <AccordionSummary>
-                    <Typography variant="h5" sx={{ textAlign: "center", p: 1 }}>
-                        Add New Equipment <ExpandCircleDownIcon />
+                    <Typography variant="h5" sx={{ textAlign: "center",color: "#205375", p: 1 }}>
+                        Add New Equipment <ExpandCircleDownIcon sx={{ color: "#205375" }}/>
                     </Typography>
                 </AccordionSummary>
                 <Card sx={{ px: 10, py: 2 }}>
@@ -84,6 +93,7 @@ const AddEquipment = () => {
                                     value={equipment}
                                     onChange={(event) => setEquipment(event.target.value)}
                                     size="small"
+                                    required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                 />
@@ -107,8 +117,20 @@ const AddEquipment = () => {
                                     value={description}
                                     onChange={(event) => setDescription(event.target.value)}
                                     size="small"
+                                    required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
+                                />
+                                <TextField
+                                    label="Image URL"
+                                    value={image}
+                                    onChange={(event) => setImage(event.target.value)}
+                                    size="small"
+                                    type="url"
+                                    required = {true}
+                                    variant="filled"
+                                    sx={{ m: 1 }}
+                                    multiline
                                 />
                                 <Typography>
                                     Price Rating:
@@ -129,6 +151,7 @@ const AddEquipment = () => {
                                     value={brand}
                                     onChange={(event) => setBrand(event.target.value)}
                                     size="small"
+                                    required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                     multiline
@@ -138,6 +161,8 @@ const AddEquipment = () => {
                                     value={purchaseLink}
                                     onChange={(event) => setPurchaseLink(event.target.value)}
                                     size="small"
+                                    type="url"
+                                    required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                     multiline
@@ -147,27 +172,12 @@ const AddEquipment = () => {
                                     value={image}
                                     onChange={(event) => setImage(event.target.value)}
                                     size="small"
+                                    type="url"
+                                    required = {true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                     multiline
                                 />
-                                {/* <---------------------------UPLOAD FILE BUTTON-----------------------------> */}
-                                <input
-                                    type="file"
-                                    onChange={(event) => setImage(event.target.files[0])}
-                                    // accept="image/*"
-                                    style={{ display: 'none' }}
-                                    id="fileInput"
-                                    // multiple 
-                                />
-                                <label htmlFor="fileInput">
-                                    <Button component="span" startIcon={<CloudUploadIcon />}>
-                                        <Typography variant="h7">
-                                            Upload File
-                                        </Typography>
-                                    </Button>
-                                </label>
-                                {image && <p>Selected file: {image.name}</p>}
 
                                 {/* <---------------------------SUBMIT BUTTON-----------------------------> */}
                                 <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>

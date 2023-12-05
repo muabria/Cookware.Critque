@@ -22,7 +22,7 @@ const api = createApi({
     //unique
 
     endpoints: (builder) => ({
-        //<---------------------------AUORIZATION--------------------------->
+        //<---------------------------AUTHORIZATION--------------------------->
         //REGISTER ACCOUNT ENDPOINT
         register: builder.mutation({
             query: (user) => ({
@@ -30,17 +30,24 @@ const api = createApi({
                 method: 'POST',
                 body: user,
             }),
+            providesTags: ["Users"]
         }),
-        //LOGIN ACCOUNT ENDPOINT
+        //LOGIN ACCOUNT 
         login: builder.mutation({
             query: (user) => ({
                 url: `/auth/login`,
                 method: 'POST',
                 body: user,
             }),
+            providesTags: ["Users"]
         }),
-
-
+        //LOGOUT ACCOUNT
+        logout: builder.mutation({
+            query: () => ({ 
+                data: {} 
+            }),
+            invalidatesTags: ["Users"]
+        }),
         //<---------------------------GET USER INFO--------------------------->
         //GET USER
         getUser: builder.query({
@@ -168,16 +175,25 @@ const api = createApi({
             }),
             invalidatesTags: ["Equipment"]
         }),
-        //<---------------------------PATCH--------------------------->
-        //PATCH REVIEW
-        patchReview: builder.mutation({
-            query: ({ id, post }) => ({
-                url: `/api/review/${id}`,
-                method: 'PATCH',
-                body: { post },
-            }),
-            invalidatesTags: ["Reviews"]
-        }),
+ //<---------------------------PATCH--------------------------->
+//PATCH REVIEW
+patchReview: builder.mutation({
+    query: ({ id, review }) => ({
+        url: `/api/review/${id}`,
+        method: 'PATCH',
+        body: { review } ,
+    }),
+    invalidatesTags: ["Reviews"]
+}),
+//PATCH USER
+patchUser: builder.mutation({
+    query: ({ id, username, email, password }) => ({
+        url: `/auth/account/${id}/edit`,
+        method: 'PATCH',
+        body: { username, email, password } ,
+    }),
+    invalidatesTags: ["Users"]
+}),
         //PATCH COMMENT
         patchComment: builder.mutation({
             query: ({ id, content }) => ({
@@ -187,8 +203,8 @@ const api = createApi({
             }),
             invalidatesTags: ["Comments"]
         }),
-        //<---------------------------DELETE--------------------------->
-        //DELETE REVIEW FOR USER
+ //<---------------------------DELETE--------------------------->
+       //DELETE REVIEW FOR USER
         deleteReviewForUser: builder.mutation({
             query: (id) => ({
                 url: `/api/review/${id}`,
@@ -253,6 +269,7 @@ export const {
     //AUTHORIZATION
     useRegisterMutation,
     useLoginMutation,
+    useLogoutMutation,
     //GET USER'S INFO
     useGetUserQuery,
     useGetCommentByUserQuery,
@@ -275,6 +292,7 @@ export const {
     usePostEquipmentMutation,
     //PATCH
     usePatchReviewMutation,
+    usePatchUserMutation,
     usePatchCommentMutation,
     //DELETE
     useDeleteReviewForUserMutation,
