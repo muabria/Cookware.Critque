@@ -44,7 +44,7 @@ const NavBar = () => {
                             width="100"
                             height="100" />
                         <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
-                            Kitchen Kritique
+                            Title Placeholder
                         </Typography>
 
                         <Box sx={{ maxHeight: "50px", backgroundColor: "#F9FBE7", borderRadius: "50px" }}>
