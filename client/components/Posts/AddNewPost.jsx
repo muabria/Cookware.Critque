@@ -85,7 +85,7 @@ const AddPostContent = () => {
         4: `Good: A-peeling and good in a kitchen`,
         5: `Excellent: Truely egg-ceptional!`,
     };
-    console.log(equipment);
+  
     return (
         <>
             {isMobile ?
