@@ -54,6 +54,8 @@ const AddEquipment = () => {
         return `${value}`;
     }
     //<----------------------SUBMIT FORM---------------------->
+    // const myJSON = JSON.stringify(obj/string?);
+    // console.log(myJSON);
 
     const handleSubmit = async (event) => {
         try {

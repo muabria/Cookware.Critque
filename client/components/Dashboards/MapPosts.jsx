@@ -95,7 +95,7 @@ const MapPosts = () => {
                                     {review.content}
                                 </Typography>
                             </Grid>
-                            <Grid item={4}>
+                            <Grid item xs={4}>
 
                                 <Link to={`/equipment/${review.id}/review`}>
                                     <Button
