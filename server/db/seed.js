@@ -211,19 +211,176 @@ async function seed() {
             include: { category: true }
         })
 
-        // const test4 = await prisma.equipment.create({
-        //     data: {
-        //         name: "",
-        //         description: "",
-        //         image: "",
-        //         category: { connect: { id: gadgets.id } },
-        //         brand: "Ninja",
-        //         purchaseLink: "",
-        //         priceRating: 2
-        //     },
-        //     include: { category: true }
-        // })
+        const chefKnife = await prisma.equipment.create({
+            data: {
+                name: "Bon Ami, Powder Cleanser",
+                description: "Bon Ami - All Natural Powder Cleanser Kitchen & Bath",
+                image: "https://m.media-amazon.com/images/I/61Zmt9jQX+L._AC_SL1000_.jpg",
+                category: { connect: { id: cleaning.id } },
+                brand: "Ninja",
+                purchaseLink: "https://www.amazon.com/Bon-Ami-Natural-Cleanser-Kitchen/dp/B07VC36NMC/ref=sr_1_1?crid=3A6SDLV1RQVIX&keywords=bon+ami&qid=1700679177&sprefix=bon+ami%2Caps%2C164&sr=8-1",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
 
+        const cuttingBoard = await prisma.equipment.create({
+            data: {
+                name: "Cutting Board",
+                description: "",
+                image: "",
+                category: { connect: { id: basic.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+
+        const mixingBowl = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: basic.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+        const measuringCups = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: basic.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+
+        const dishSoap = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: cleaning.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+        const dishSponge = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: cleaning.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+        const dishTowel = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: cleaning.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+        const rubberGloves = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: cleaning.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+        const trashCan = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: cleaning.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+        const airtightContainer = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: storage.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+        const zipTopBags = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: storage.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+        const aluminum = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: gadgets.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
+
+        const aluminumFoil = await prisma.equipment.create({
+            data: {
+                name: "",
+                description: "",
+                image: "",
+                category: { connect: { id: gadgets.id } },
+                brand: "Ninja",
+                purchaseLink: "",
+                priceRating: 2
+            },
+            include: { category: true }
+        })
         // const test5 = await prisma.equipment.create({
         //     data: {
         //         name: "",

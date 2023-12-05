@@ -195,7 +195,7 @@ patchEquipment: builder.mutation({
     query: ({ id, equipment }) => ({
         url: `/api/equipment/${id}`,
         method: 'PATCH',
-        body: { equipment } ,
+        body: equipment  ,
     }),
     invalidatesTags: ["Equipments"]
 }),

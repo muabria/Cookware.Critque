@@ -18,7 +18,7 @@ import { usePatchEquipmentMutation } from "../../redux/api";
 
 
 const EditEquipment = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
@@ -60,7 +60,10 @@ const EditEquipment = () => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const result = await patchEquipment({ name, description, image, categoryId: category, priceRating: Number(priceRating), brand, purchaseLink })
+      const result = await patchEquipment({
+        id,
+        equipment: { name, description, image, categoryId: category, priceRating: Number(priceRating), brand, purchaseLink }
+      })
       console.log(result)
     } catch (error) {
       console.error(error)
