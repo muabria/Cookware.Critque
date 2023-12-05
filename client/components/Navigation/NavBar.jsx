@@ -44,7 +44,7 @@ const NavBar = () => {
                             width="100"
                             height="100" />
                         <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
-                            Title Placeholder
+                            Kitchen Kritique
                         </Typography>
 
                         <Box sx={{ maxHeight: "50px", backgroundColor: "#F9FBE7", borderRadius: "50px" }}>
@@ -92,13 +92,6 @@ const NavBar = () => {
                                     </Link>
                                 </MenuItem>
                                 <MenuItem>
-                                    <Link to="/admin_dashboard">
-                                        <Button>
-                                            admin
-                                        </Button>
-                                    </Link>
-                                </MenuItem>
-                                <MenuItem>
                                     <Link to="/account">
                                         <Button>
                                             user dashboard
@@ -109,7 +102,7 @@ const NavBar = () => {
                                 <MenuItem>
                                     <LogoutButton />
                                 </MenuItem>
-                                
+
                             </Menu>
                         </Box>
                     </Stack>

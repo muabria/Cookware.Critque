@@ -17,8 +17,6 @@ const AdminDashboard = () => {
 
     const { data, error, isLoading } = useGetAllUsersQuery();
 
-    console.log(data);
-    console.log(error);
     if (!data) {
         return <div>No data</div>
     }
@@ -28,7 +26,7 @@ const AdminDashboard = () => {
     if (error) {
         return <div> Oops! Something went wrong loading the data. </div>;
     } else
-        console.log(data);
+      
     return (
         <>
             {isMobile ?

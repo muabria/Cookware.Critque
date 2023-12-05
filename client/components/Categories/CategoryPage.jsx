@@ -28,8 +28,6 @@ const CategoryPage = () => {
     if (error) {
         return <div>Sorry! Something went wrong loading the categories.</div>;
     }
-    console.log(data);
-    console.log(equipmentData);
 
     return (
         <>

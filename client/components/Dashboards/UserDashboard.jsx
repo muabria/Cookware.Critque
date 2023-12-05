@@ -37,38 +37,53 @@ const UserDashboard = () => {
         <>
             <Box>
                 {isMobile ?
-                <div>
-                     <Grid container spacing={1}>
-                <Grid item xs={1}>
-                </Grid>
-
-                <Grid item xs={10}>
-                        <Typography variant="h5">
-                            Hello, {data.username}
-                        </Typography>
-                    <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
-                        <Link to="/new_review">
-                            <Button sx={{ backgroundColor: "#088395", color: "white", m: 1 }}>
-                                Make a new Critique
-                            </Button>
-                        </Link>
-                        <Stack direction="column">
-                            <Grid item xs={12}>
-                                <MapPosts />
+                    <div>
+                        <Grid container spacing={1}>
+                            <Grid item xs={1}>
                             </Grid>
-                            <Grid item xs={12}>
-                                <MapComments />
-                            </Grid>
-                        </Stack>
-                    </Card>
-                </Grid>
 
-                <Grid item xs={1}>
-                </Grid>
-            </Grid>
-                </div>
-                
-                ://is NOT mobile...
+                            <Grid item xs={10}>
+                                <Typography variant="h5">
+                                    Hello, {data.username}
+                                </Typography>
+                                <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
+                                    {data.isAdmin === true ?
+                                        <Link to="/admin_dashboard">
+                                            <Button sx={{
+                                                m: 1,
+                                                boxShadow: 3,
+                                                color: "#205375",
+                                                backgroundColor: "#E7B10A",
+                                                border: "solid #D29D2B 2px"
+                                            }}>
+                                                View Admin Dashboard
+                                            </Button>
+                                        </Link>
+                                        : //If not admin, return nothing
+                                        <>
+                                        </>}
+                                    <Link to="/new_review">
+                                        <Button sx={{ backgroundColor: "#088395", color: "white", m: 1 }}>
+                                            Make a new Critique
+                                        </Button>
+                                    </Link>
+                                    <Stack direction="column">
+                                        <Grid item xs={12}>
+                                            <MapPosts />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <MapComments />
+                                        </Grid>
+                                    </Stack>
+                                </Card>
+                            </Grid>
+
+                            <Grid item xs={1}>
+                            </Grid>
+                        </Grid>
+                    </div>
+
+                    ://is NOT mobile...
                     <Grid container spacing={1}>
                         <Grid item xs={2}>
                             <Stack direction="column">
@@ -105,6 +120,21 @@ const UserDashboard = () => {
                                 </Typography>
                             </Stack>
                             <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
+                                {data.isAdmin === true ?
+                                    <Link to="/admin_dashboard">
+                                        <Button sx={{
+                                            m: 1,
+                                            boxShadow: 3,
+                                            color: "#205375",
+                                            backgroundColor: "#E7B10A",
+                                            border: "solid #D29D2B 2px"
+                                        }}>
+                                            View Admin Dashboard
+                                        </Button>
+                                    </Link>
+                                    : //If not admin, return nothing
+                                    <>
+                                    </>}
                                 <Link to="/new_review">
                                     <Button sx={{ backgroundColor: "#088395", color: "white", m: 2 }}>
                                         Make a new Critique

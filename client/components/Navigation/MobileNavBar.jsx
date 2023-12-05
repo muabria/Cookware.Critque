@@ -45,8 +45,6 @@ const MobileNavBar = () => {
                         </Typography>
                     </Stack>
                 </AccordionSummary>
-
-
                 <AccordionDetails>
                     <Link to="/">
                         <Box sx={{ borderBottom: 2, color: "#205375" }}>
@@ -57,9 +55,6 @@ const MobileNavBar = () => {
                         </Box>
                     </Link>
                 </AccordionDetails>
-
-
-
                 <AccordionDetails>
                     <Link to="/posts">
                         <Box sx={{ borderBottom: 2, color: "#205375" }}>
@@ -109,13 +104,6 @@ const MobileNavBar = () => {
                             <Link to="/register">
                                 <Button>
                                     Sign Up
-                                </Button>
-                            </Link>
-                        </MenuItem>
-                        <MenuItem>
-                            <Link to="/admin_dashboard">
-                                <Button>
-                                    admin
                                 </Button>
                             </Link>
                         </MenuItem>
