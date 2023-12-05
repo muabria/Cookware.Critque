@@ -15,6 +15,7 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import { Link } from "react-router-dom";
 
 import { useGetUserQuery } from "../../redux/api";
+import LoginForm from "../AuthorizationForms/LoginForm"
 
 const UserDashboard = () => {
 
@@ -23,13 +24,19 @@ const UserDashboard = () => {
 
     const { data, error, isLoading } = useGetUserQuery()
     if (!data) {
-        return <div>No data</div>
+        return (
+            <div>
+                <Typography variant="h3" sx={{ textAlign: "center", color: "#205375", m: 1 }}>
+                    You need to be logged in to see your account
+                </Typography>
+                <LoginForm />
+            </div>)
     }
     if (isLoading) {
         return <div>Loading...</div>
     }
     if (error) {
-        return <div> Oops! Something went wrong loading the data. </div>;
+        return <div> Oops! Something went wrong loading your data. </div>;
     } else
         console.log(data);
     //Patch user

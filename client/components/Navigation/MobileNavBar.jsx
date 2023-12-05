@@ -110,7 +110,7 @@ const MobileNavBar = () => {
                         <MenuItem>
                             <Link to="/account">
                                 <Button>
-                                    user dashboard
+                                    My Account
                                 </Button>
                             </Link>
                         </MenuItem>

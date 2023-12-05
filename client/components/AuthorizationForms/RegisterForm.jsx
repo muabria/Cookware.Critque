@@ -45,7 +45,7 @@ const RegisterForm = () => {
                 </Grid>
                 <Grid item xs={8}>
                     <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
-                        <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
+                        <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
                             Sign Up:
                         </Typography>
                         <form onSubmit={handleSubmit}>
@@ -95,16 +95,16 @@ const RegisterForm = () => {
                                             <Alert severity="error"> Passwords do not match </Alert> : null
                                     }
                                 />
-                                <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1 }}>
+                                <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1, mx: 20 }}>
                                     Start Your Cooking Journey
                                 </Button>
-                                <Typography sx={{ mt: 2, textAlign: "center" }}>
+                                <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
                                     Already have an account?
                                 </Typography>
                                 <Link to="/login">
-                                    <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
+                                    <Button sx={{ color: "#205375", backgroundColor: "transparent", my: 1 }}>
                                         Login to your account
-                                        <LoginIcon sx={{ ml: 2 }} />
+                                        <LoginIcon sx={{ ml: 2, color: "#205375" }} />
                                     </Button>
                                 </Link>
                             </Stack>
