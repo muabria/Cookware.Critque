@@ -36,7 +36,7 @@ const UserDashboard = () => {
                             <ManageAccountsIcon /> 
                             Account Information
                         </Typography>
-                        <Link to={`/account/${data.id}/edit`}>
+                        <Link to={`/account/edit`}>
                             <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
                                 Update Your Account
                             </Button>
@@ -51,6 +51,9 @@ const UserDashboard = () => {
                         <Avatar sx={{ mx: 3 }} />
                         <Typography variant="h4">
                             Hello, {data.username}
+                        </Typography>
+                        <Typography>
+                            Email: {data.email}
                         </Typography>
                     </Stack>
                     <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
