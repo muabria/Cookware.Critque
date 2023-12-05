@@ -6,7 +6,6 @@ import { Link, useParams } from "react-router-dom";
 
 import { useGetSingleEquipmentQuery } from "../../redux/api"
 import { useGetReviewByEquipmentQuery } from "../../redux/api";
-import UpdateEquipmentForm from "../EditForms.jsx/EditEquipment";
 import  Button  from "@mui/material/Button";
 
 const AllReviewsForEquipment = () => {
