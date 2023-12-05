@@ -5,6 +5,9 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Menu from "@mui/material/Menu"
+import MenuItem from "@mui/material/MenuItem"
 import Stack from "@mui/material/Stack"
 import Typography from '@mui/material/Typography';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -16,7 +19,17 @@ import logo from "../images/cookingEquipmentLogo.png"
 
 import { Link } from "react-router-dom";
 
+import LogoutButton from "../AuthorizationForms/LogoutButton";
+
 const MobileNavBar = () => {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     return (
         <div>
             <Accordion sx={{ backgroundColor: "transparent" }}>
@@ -66,9 +79,59 @@ const MobileNavBar = () => {
                         </Box>
                     </Link>
                 </AccordionDetails>
-
             </Accordion>
 
+            <Grid container>
+                <Grid item xs={10}>
+
+                </Grid>
+                <Grid item xs={2}>
+                    <Button
+                        aria-controls={open ? 'account-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}>
+                        <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
+                    </Button>
+                    <Menu
+                        id="account-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}>
+                        <MenuItem>
+                            <Link to="/login">
+                                <Button>
+                                    Login
+                                </Button>
+                            </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link to="/register">
+                                <Button>
+                                    Sign Up
+                                </Button>
+                            </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link to="/admin_dashboard">
+                                <Button>
+                                    admin
+                                </Button>
+                            </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link to="/account">
+                                <Button>
+                                    user dashboard
+                                </Button>
+                            </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <LogoutButton />
+                        </MenuItem>
+                    </Menu>
+                </Grid>
+            </Grid>
         </div>
     )
 }

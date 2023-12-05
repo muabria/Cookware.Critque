@@ -46,7 +46,7 @@ const AllPosts = () => {
                         <Stack direction="row">
                             {data && data.map((review) => (
                                 <Grid container>
-                                    <Grid xs={8}>
+                                    <Grid item xs={8}>
                                         <Card key={review.id}
                                             sx={{
                                                 backgroundColor: "#F9FBE7",

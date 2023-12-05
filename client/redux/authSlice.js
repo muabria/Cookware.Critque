@@ -15,18 +15,19 @@ const authSlice = createSlice({
     initialState: { 
         token: window.sessionStorage.getItem("token") ?? null, 
         admin: window.sessionStorage.getItem("admin") ?? false},
-    reducers: {
-        logout: (_state) => ({ token: null, user: null })
-    },
+    reducers: {},
 
-    // Handle the 'register' API call success
     extraReducers: (builder) => {
         builder.addMatcher(
             api.endpoints.register.matchFulfilled, storeToken);
-        // Handle the 'login' API call success
+       
         builder.addMatcher(
             api.endpoints.login.matchFulfilled, storeToken);
-        //store user/token (parse to json stringify  jason.parse.payload.user)
+      
+        builder.addMatcher(api.endpoints.logout.matchFulfilled, (state) => {
+            state.token = null;
+            window.sessionStorage.removeItem("token");
+          });
     }
 });
 

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import { Routes, Route } from "react-router-dom";
 
-import HomePage from "./components/HomePage";
+import HomePage from "./components/HomePage/HomePage";
 import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import UserDashboard from "./components/Dashboards/UserDashboard";
@@ -13,8 +13,8 @@ import AddNewPost from "./components/Posts/AddNewPost";
 import NavBar from "./components/Navigation/NavBar";
 import CategoryPage from "./components/Categories/CategoryPage";
 import AllReviewsForEquipment from "./components/EquipmentsWithReviews/AllReviewsForEquipment";
-import EditReviews from "./components/EditForms.jsx/EditReviews";
-import EditUser from "./components/EditForms.jsx/EditUser";
+import EditReviews from "./components/EditForms/EditReviews";
+import EditUser from "./components/EditForms/EditUser";
 
 const AppContents = () => {
 

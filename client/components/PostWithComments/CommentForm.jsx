@@ -6,13 +6,18 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 
+import { useParams } from "react-router-dom"
+
 import { useState } from 'react';
 
-import { usePostCommentMutation } from '../../redux/api';
+import { useGetSingleReviewQuery, usePostCommentMutation } from '../../redux/api';
 
 const CommentForm = () => {
   const [content, setContent] = useState(" ");
-  //<-----------------TEXTFIELD STATE ------------------->
+
+  const { id } = useParams();
+
+  const { data: postData, error: postError, isLoading: postIsLoading } = useGetSingleReviewQuery(id);
   const [postComment, data, error] = usePostCommentMutation();
 
   if (!data) {
@@ -25,7 +30,7 @@ const CommentForm = () => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      await postComment({ content })
+      await postComment({ postId: postData.id, content })
       console.log("Succces!");
     }
     catch (error) {
@@ -37,19 +42,26 @@ const CommentForm = () => {
       <form onSubmit={handleSubmit}>
         <Card sx={{ p: 6 }}>
           <Stack direction="column">
-            <Typography>
-              Add a comment
-            </Typography>
             <TextField sx={{ my: 2 }}
               onChange={(event) => setContent(event.target.value)}
               value={content}
               id="content"
               label="Add Comment Here"
+              required = {true}
               multiline
               rows={4}
               defaultValue="Type something"
             />
-            <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}><AddCommentIcon /> Add Comment</Button>
+            <Button
+              type="submit"
+              sx={{
+                backgroundColor: "#088395",
+                color: "white",
+                m: 2,
+                p: 1
+              }}>
+              <AddCommentIcon /> Add Comment
+            </Button>
           </Stack>
         </Card>
       </form>
