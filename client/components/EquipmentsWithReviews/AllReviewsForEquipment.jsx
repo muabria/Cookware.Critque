@@ -2,10 +2,12 @@ import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { useGetSingleEquipmentQuery } from "../../redux/api"
 import { useGetReviewByEquipmentQuery } from "../../redux/api";
+import UpdateEquipmentForm from "../EditForms.jsx/EditEquipment";
+import  Button  from "@mui/material/Button";
 
 const AllReviewsForEquipment = () => {
     const { id } = useParams();
@@ -26,6 +28,9 @@ const AllReviewsForEquipment = () => {
             <Typography>
                 {data.name}
             </Typography>
+            <Link to={`/edit_equipment/${data.id}`} >
+                <Button> Update Equipment </Button>
+            </Link>
             {reviewData && reviewData.map((review) => (
                 <Typography>
                     {review.title}

@@ -172,7 +172,7 @@ apiRouter.post("/equipment/", requireUser, async (req, res, next) => {
 //PATCH Update an existing equipment item
 apiRouter.patch("/equipment/:id", requireUser, async (req, res, next) => {
     try {
-        const { id } = req.params;
+        // const { id } = req.params;
         const { name, description, image, categoryId, brand, purchaseLink, priceRating } = req.body;
 
         const updatedEquipmentItem = await prisma.equipment.update({
