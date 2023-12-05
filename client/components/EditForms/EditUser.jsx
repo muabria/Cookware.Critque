@@ -5,14 +5,34 @@ import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { usePatchUserMutation, useGetUserQuery } from "../../redux/api";
 import { useState } from "react";
 
 const EditUser = () => {
-    const {data: userData, isLoading: userIsLoading, error: userError} = useGetUserQuery();
-    const [patchUser, {data, isLoading, error}] = usePatchUserMutation();
+    const {id} = useParams();
+    
+    const { data: userData, isLoading: userIsLoading, error: userError } = useGetUserQuery(id);
+    const [patchUser, { data, isLoading, error }] = usePatchUserMutation();
+
+    const [username, setUsername] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [secondPassword, setSecondPassword] = useState(null);
+
+    const navigate = useNavigate();
+
+    const handleSubmit = async (event) => {
+        try {
+            event.preventDefault();
+            const response = await patchUser({ id, username, email, password })
+            console.log(response)
+            navigate("/account")
+        } catch (error) {
+            console.error(error)
+        }
+    }
     if (error) {
         return <div>Error</div>
     }
@@ -20,25 +40,6 @@ const EditUser = () => {
         return <div>Loading...</div>
     }
     console.log(userData);
-
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [secondPassword, setSecondPassword] = useState("");
-    
-    const navigate = useNavigate();
-
-    const handleSubmit = async (event) => {
-        try {
-            event.preventDefault();
-            await patchUser({ username, email, password }),
-                console.log("Success!")
-            navigate("/account")
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
     return userData && (
         <>
             <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
@@ -49,20 +50,21 @@ const EditUser = () => {
                     <Stack direction="column">
                         <TextField
                             label="Update Username"
+                            placeholder={userData.username}
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
                             size="small"
                             variant="filled"
-                            placeholder={userData.username}
                             sx={{ m: 1 }}
                         />
                         <TextField
                             label="Update E-mail"
+                            placeholder={userData.email}
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
                             size="small"
+                            type="email"
                             variant="filled"
-                            placeholder={userData.email}
                             sx={{ m: 1 }}
                         />
                         <TextField
