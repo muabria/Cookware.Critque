@@ -5,6 +5,8 @@ import Grid from "@mui/material/Grid"
 import Stack  from "@mui/material/Stack"
 import Typography from '@mui/material/Typography';
 import PreviewIcon from '@mui/icons-material/Preview';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 
 import { useMediaQuery, useTheme } from '@mui/material';
@@ -13,6 +15,7 @@ import { useState } from 'react';
 
 import { useGetCommentByUserQuery } from '../../redux/api';
 import { useDeleteCommentForUserMutation } from "../../redux/api";
+import { usePatchCommentMutation } from "../../redux/api";
 
 const MapComments = () => {
     const [alert, setAlert] = useState(false);
@@ -21,6 +24,7 @@ const MapComments = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const [deleteComment, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteCommentForUserMutation();
+    const [patchComment, { isLoading: patchIsLoading, Error: patchError, data: patchData }] = usePatchCommentMutation();
     const { data, error, isLoading } = useGetCommentByUserQuery();
 
     if (!data) {
@@ -33,6 +37,7 @@ const MapComments = () => {
         return <div>Error:{error.message}</div>;
     }
     console.log(data);
+    
 
     return (
         <>

@@ -10,6 +10,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import { useGetCategoriesQuery } from "../../redux/api";
 import { usePostEquipmentMutation } from "../../redux/api";
@@ -26,7 +27,7 @@ const AddEquipment = () => {
     const [newEquipmentInfo, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostEquipmentMutation();
 
     const { data, error, isLoading } = useGetCategoriesQuery();
-    
+
     if (!data) {
         return <div>No data</div>
     }
@@ -52,6 +53,8 @@ const AddEquipment = () => {
         return `${value}`;
     }
     //<----------------------SUBMIT FORM---------------------->
+    // const myJSON = JSON.stringify(obj/string?);
+    // console.log(myJSON);
 
     const handleSubmit = async (event) => {
         try {
@@ -157,6 +160,17 @@ const AddEquipment = () => {
                                     label="Link to Seller"
                                     value={purchaseLink}
                                     onChange={(event) => setPurchaseLink(event.target.value)}
+                                    size="small"
+                                    type="url"
+                                    required = {true}
+                                    variant="filled"
+                                    sx={{ m: 1 }}
+                                    multiline
+                                />
+                                <TextField
+                                    label="Image URL"
+                                    value={image}
+                                    onChange={(event) => setImage(event.target.value)}
                                     size="small"
                                     type="url"
                                     required = {true}

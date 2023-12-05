@@ -194,6 +194,15 @@ patchUser: builder.mutation({
     }),
     invalidatesTags: ["Users"]
 }),
+        //PATCH COMMENT
+        patchComment: builder.mutation({
+            query: ({ id, content }) => ({
+                url: `/api/comment/${id}`,
+                method: 'PATCH',
+                body: { content },
+            }),
+            invalidatesTags: ["Comments"]
+        }),
  //<---------------------------DELETE--------------------------->
        //DELETE REVIEW FOR USER
         deleteReviewForUser: builder.mutation({
@@ -284,6 +293,7 @@ export const {
     //PATCH
     usePatchReviewMutation,
     usePatchUserMutation,
+    usePatchCommentMutation,
     //DELETE
     useDeleteReviewForUserMutation,
     useDeleteCommentForUserMutation,
