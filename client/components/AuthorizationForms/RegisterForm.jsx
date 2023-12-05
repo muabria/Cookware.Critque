@@ -29,6 +29,16 @@ const RegisterForm = () => {
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
         try {
+            if (password.length < 8) {
+                event.preventDefault();
+                alert("Password is too short.");
+                return
+            }
+            else if (password.length > 16) {
+                event.preventDefault();
+                alert("Password is too long.");
+                return
+            }
             event.preventDefault();
             await register({ username, email, password, secondPassword }),
                 console.log("Success!")
@@ -77,6 +87,7 @@ const RegisterForm = () => {
                                     helperText={
                                         password && password.length < 8
                                             ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
+                                            : password.length > 16 ? <Alert severity="error"> Your password cannot be more than 16 characters long </Alert>
                                             : null
                                     }
                                 />
