@@ -43,7 +43,7 @@ const UserDashboard = () => {
                             </Grid>
 
                             <Grid item xs={10}>
-                                <Typography variant="h5">
+                                <Typography variant="h5" sx={{ color: "#205375" }}>
                                     Hello, {data.username}
                                 </Typography>
                                 <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
@@ -87,35 +87,18 @@ const UserDashboard = () => {
                     <Grid container spacing={1}>
                         <Grid item xs={2}>
                             <Stack direction="column">
-                                <Typography sx={{
-                                    my: 5,
-                                    fontSize: {
-                                        xs: "11px",
-                                        sm: "12px",
-                                        md: "16px",
-                                        lg: "16px",
-                                    }
-                                }}>
-                                    <ManageAccountsIcon />
+                                <Typography sx={{ color: "#205375", my: 5 }}>
+                                    <ManageAccountsIcon sx={{ color: "#205375" }} />
                                     Account Information
                                 </Typography>
-                                <Typography sx={{
-                                    my: 5,
-                                    fontSize: {
-                                        xs: "11px",
-                                        sm: "12px",
-                                        md: "16px",
-                                        lg: "16px",
-                                    }
-                                }}>
-                                    <LogoutSharpIcon /> Logout
+                                <Typography sx={{ my: 5, color: "#205375" }}>
+                                    <LogoutSharpIcon sx={{ color: "#205375" }} /> Logout
                                 </Typography>
                             </Stack>
-
                         </Grid>
                         <Grid item xs={10}>
                             <Stack direction="row">
-                                <Typography variant="h3">
+                                <Typography variant="h3" sx={{ color: "#205375" }}>
                                     Hello, {data.username}
                                 </Typography>
                             </Stack>
