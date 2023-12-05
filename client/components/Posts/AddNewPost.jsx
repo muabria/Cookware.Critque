@@ -2,9 +2,11 @@ import { useState } from "react";
 
 import { usePostReviewMutation } from "../../redux/api";
 import { useGetEquipmentQuery } from "../../redux/api";
+import { useGetUserQuery } from "../../redux/api";
 
 import { motion, useAnimationControls } from "framer-motion";
 
+import Alert from "@mui/material/Alert";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
@@ -16,10 +18,11 @@ import Rating from "@mui/material/Rating";
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Alert from "@mui/material/Alert";
-
 import { useMediaQuery, useTheme } from "@mui/material";
+
 import MobileNewPost from "./MobileNewPost";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import AccountRedirect from "../ErrorMessages/AccountRedirect";
 
 const AddPostContent = () => {
     //<-----------------TEXTFIELD STATE------------------->
@@ -47,20 +50,31 @@ const AddPostContent = () => {
     }
 
     const { data, error, isLoading } = useGetEquipmentQuery();
-    const [postReview, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostReviewMutation(); //include error handling
+    const [postReview, { data: mutationData, isError: isMutationError, isLoading: isMutationLoading, }] = usePostReviewMutation(); //include error handling
+    const { data: userData, error: userError, isLoading: userIsLoading } = useGetUserQuery();
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+    if(!userData) {
+        return(<div><AccountRedirect/></div>)
+    }
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return (<div><LoadingMessage/></div>)
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }
     if (isMutationError) {
-        return <div>Whoops! Something went wrong posting the review.</div>
+        return (
+            <div>
+                <Alert severity="error">
+                    Whoops! Something went wrong posting the review.
+                </Alert>
+            </div>
+        )
     }
+    console.log(userData);
 
     //<-----------------SUBMIT FORM HELPER FUNCTION------------------->
     const handleSubmit = async (event) => {
@@ -85,7 +99,7 @@ const AddPostContent = () => {
         4: `Good: A-peeling and good in a kitchen`,
         5: `Excellent: Truely egg-ceptional!`,
     };
-  
+
     return (
         <>
             {isMobile ?
@@ -176,7 +190,7 @@ const AddPostContent = () => {
                                                     value={title}
                                                     onChange={(event) => setTitle(event.target.value)}
                                                     size="small"
-                                            required = {true}
+                                                    required={true}
                                                     sx={{ m: 1, backgroundColor: "white" }}
                                                 />
                                                 {/* <-----------------CONTENT TEXTFIELD-------------------> */}
@@ -185,7 +199,7 @@ const AddPostContent = () => {
                                                     value={content}
                                                     onChange={(event) => setContent(event.target.value)}
                                                     size="small"
-                                            required = {true}
+                                                    required={true}
                                                     sx={{ m: 1, backgroundColor: "white" }}
                                                     multiline
                                                 />

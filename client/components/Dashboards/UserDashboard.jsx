@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 
 import { useGetUserQuery } from "../../redux/api";
 import LoginForm from "../AuthorizationForms/LoginForm"
+import AccountRedirect from "../ErrorMessages/AccountRedirect";
 
 const UserDashboard = () => {
 
@@ -24,13 +25,7 @@ const UserDashboard = () => {
 
     const { data, error, isLoading } = useGetUserQuery()
     if (!data) {
-        return (
-            <div>
-                <Typography variant="h3" sx={{ textAlign: "center", color: "#205375", m: 1 }}>
-                    You need to be logged in to see your account
-                </Typography>
-                <LoginForm />
-            </div>)
+        return (<div><AccountRedirect/></div>)
     }
     if (isLoading) {
         return <div>Loading...</div>
