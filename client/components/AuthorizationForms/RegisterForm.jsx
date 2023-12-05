@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../../redux/api";
 
 const RegisterForm = () => {
-    const [register, error] = useRegisterMutation();
+    const [register, { data, error, isLoading }] = useRegisterMutation();
     if (error) {
         return <div>Whoops! Something went wrong registering you.</div>
     }
@@ -95,7 +95,9 @@ const RegisterForm = () => {
                                             <Alert severity="error"> Passwords do not match </Alert> : null
                                     }
                                 />
-                                <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1, mx: 20 }}>
+                                <Button
+                                    type="submit"
+                                    sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1, mx: 20 }}>
                                     Start Your Cooking Journey
                                 </Button>
                                 <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
