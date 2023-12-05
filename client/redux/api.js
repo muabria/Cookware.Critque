@@ -187,10 +187,10 @@ patchReview: builder.mutation({
 }),
 //PATCH USER
 patchUser: builder.mutation({
-    query: ({ id, user }) => ({
+    query: ({ id, username, email, password }) => ({
         url: `/auth/account/${id}/edit`,
         method: 'PATCH',
-        body: { id, user } ,
+        body: { username, email, password } ,
     }),
     invalidatesTags: ["Users"]
 }),

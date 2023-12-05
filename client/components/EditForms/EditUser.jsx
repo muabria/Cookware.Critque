@@ -11,22 +11,22 @@ import { usePatchUserMutation, useGetUserQuery } from "../../redux/api";
 import { useState } from "react";
 
 const EditUser = () => {
-    const { id } = useParams();
-    const { data: userData, isLoading: userIsLoading, error: userError } = useGetUserQuery();
-    const [patchUser, { data, isLoading, error }] = usePatchUserMutation(id);
+    const {id} = useParams();
+    
+    const { data: userData, isLoading: userIsLoading, error: userError } = useGetUserQuery(id);
+    const [patchUser, { data, isLoading, error }] = usePatchUserMutation();
 
-
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [secondPassword, setSecondPassword] = useState("");
+    const [username, setUsername] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [secondPassword, setSecondPassword] = useState(null);
 
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            const response = await patchUser({ username, email, password, secondPassword })
+            const response = await patchUser({ id, username, email, password })
             console.log(response)
             navigate("/account")
         } catch (error) {
