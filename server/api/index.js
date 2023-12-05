@@ -130,7 +130,6 @@ apiRouter.get("/comments", async (req, res, next) => {
 //<--------------------------------GET REVIEWS BY EQUIPMENT----------------------------->
 //GET /api/equipment/review/:id
 apiRouter.get("/equipment/review/:id", async (req, res, next) => {
-    console.log(req.params)
     try {
         const reviews = await prisma.post.findMany({
             where: {equipmentId: Number(req.params.id)},

@@ -12,17 +12,21 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 import { useLoginMutation } from "../../redux/api";
 
 const LoginForm = () => {
-    const [login, { data, error, }] = useLoginMutation();
+    const [login, { data, error, isLoading }] = useLoginMutation();
     if (error) {
         return <div>Whoops! Something went wrong logging you in.</div>
     }
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const navigate = useNavigate();
 
@@ -44,7 +48,7 @@ const LoginForm = () => {
                 </Grid>
                 <Grid item xs={8}>
                     <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
-                        <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
+                        <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
                             Login:
                         </Typography>
                         <form onSubmit={handleSubmit}>
@@ -71,19 +75,40 @@ const LoginForm = () => {
                                             : null
                                     }
                                 />
-                                <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1 }}>
-                                    Login
-                                </Button>
-                                <Typography sx={{ mt: 2, textAlign: "center" }}>
-                                    Don't have an account?
-                                </Typography>
-
-                                <Link to="/register">
-                                    <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
-                                        Sign up!
-                                        <LoginIcon sx={{ ml: 2 }} />
-                                    </Button>
-                                </Link>
+                                {isMobile ?
+                                    <div>
+                                        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", width: "100%", p: 1 }}>
+                                            Login
+                                        </Button>
+                                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
+                                            Don't have an account?
+                                        </Typography>
+                                        <Link to="/register">
+                                            <Button
+                                                variant="outlined"
+                                                sx={{ color: "#000000", backgroundColor: "transparent", my: 1, color: "#205375", width: "100%" }}>
+                                                Sign up!
+                                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                    ://is NOT mobile... 
+                                    <div>
+                                        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, mx: 30 }}>
+                                            Login
+                                        </Button>
+                                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
+                                            Don't have an account?
+                                        </Typography>
+                                        <Link to="/register">
+                                            <Button
+                                                variant="outlined"
+                                                sx={{ color: "#000000", backgroundColor: "transparent", my: 1, color: "#205375", mx: 28 }}>
+                                                Sign up!
+                                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                            </Button>
+                                        </Link>
+                                    </div>}
 
                             </Stack>
                         </form>

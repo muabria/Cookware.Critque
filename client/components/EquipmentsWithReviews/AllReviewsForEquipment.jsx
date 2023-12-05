@@ -19,9 +19,7 @@ const AllReviewsForEquipment = () => {
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }
-    console.log(data);
-    console.log(reviewData);
-    console.log(reviewError);
+
     return (
         <>
             <Typography>
