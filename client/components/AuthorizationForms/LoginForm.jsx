@@ -14,6 +14,8 @@ import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
 import { useMediaQuery, useTheme } from '@mui/material';
 
+import LoadingMessage from "../ErrorMessages/LoadingMessage"
+
 import { useLoginMutation, useGetAllUsersValidationQuery } from "../../redux/api";
 
 const LoginForm = () => {
@@ -22,7 +24,6 @@ const LoginForm = () => {
     if (error) {
         return <div>Whoops! Something went wrong logging you in.</div>
     }
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -30,6 +31,14 @@ const LoginForm = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const navigate = useNavigate();
+
+    const [login, { data, error, isLoading }] = useLoginMutation();
+    if (isLoading){
+        return <><LoadingMessage/></>
+    }
+    if (error) {
+        return <div>Whoops! Something went wrong logging you in.</div>
+    }
 
     const handleSubmit = async (event) => {
         try {
@@ -58,7 +67,10 @@ const LoginForm = () => {
     }
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn"}}>
             <Grid container>
                 <Grid item xs={2}>
                 </Grid>
@@ -135,7 +147,7 @@ const LoginForm = () => {
                 <Grid item xs={2}>
                 </Grid>
             </Grid>
-        </>
+        </motion.div>
     )
 }
 export default LoginForm

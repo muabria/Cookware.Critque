@@ -3,17 +3,24 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 
+import { motion } from "framer-motion";
+
 import { Link, useParams } from "react-router-dom";
 
 import { useGetSingleEquipmentQuery } from "../../redux/api"
 import { useGetReviewByEquipmentQuery } from "../../redux/api";
+import { useGetUserQuery } from "../../redux/api";
 import { useMemo } from "react";
-import  Button  from "@mui/material/Button";
+import Button from "@mui/material/Button";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
+
 
 const AllReviewsForEquipment = () => {
     const { id } = useParams();
     const { data, error, isLoading } = useGetSingleEquipmentQuery(id);
+    const { data: userData, error: userError, isLoading: userIsLoading } = useGetUserQuery();
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetReviewByEquipmentQuery(id);
+    
     const avgRating = useMemo(() => {
         if (!reviewData) return 0;
         let sum = 0;
@@ -24,17 +31,20 @@ const AllReviewsForEquipment = () => {
     }, [reviewData])
 
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }
 
-    console.log(data);
+    console.log("data" + data);
     console.log("reviewData:", reviewData);
 
     return (
-        <>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
             <Typography variant="h2">
                 {data.name}
             </Typography>
@@ -73,7 +83,7 @@ const AllReviewsForEquipment = () => {
                             <Typography variant="h5">
                                 {review.title}
                             </Typography>
-                            
+
                             <Rating
                                 readOnly={true}
                                 value={review.rating}
@@ -87,15 +97,23 @@ const AllReviewsForEquipment = () => {
                     </Card>
                 ))}
             </Stack>
-            <Link to={`/edit_equipment/${data.id}`} >
-                <Button> Update Equipment </Button>
-            </Link>
+            {!userData || userData.isAdmin === false
+                ? //If not admin.... 
+                <div>
+                </div>
+                : //If admin...
+                <div>
+                    <Link to={`/edit_equipment/${data.id}`} >
+                        <Button> Update Equipment </Button>
+                    </Link>
+                </div>
+            }
             {reviewData && reviewData.map((review) => (
                 <Typography>
                     {review.title}
                 </Typography>
             ))}
-        </>
+        </motion.div>
     )
 }
 

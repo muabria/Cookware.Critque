@@ -14,6 +14,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import { useGetEquipmentQuery } from "../../redux/api"
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const MapAllEquipment = () => {
     const theme = useTheme();
@@ -21,7 +22,7 @@ const MapAllEquipment = () => {
 
     const { data, error, isLoading } = useGetEquipmentQuery();
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>

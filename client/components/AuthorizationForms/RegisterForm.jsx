@@ -16,13 +16,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useRegisterMutation, useGetAllUsersValidationQuery } from "../../redux/api";
 
-const RegisterForm = () => {
-    const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
-    const [register, {error}] = useRegisterMutation();
-    if (error) {
-        return <div>Whoops! Something went wrong registering you.</div>
-    }
+import LoadingMessage from "../ErrorMessages/LoadingMessage"
 
+const RegisterForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [secondPassword, setSecondPassword] = useState("");
@@ -32,6 +28,15 @@ const RegisterForm = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const navigate = useNavigate();
+
+    const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
+    const [register, { data, error, isLoading }] = useRegisterMutation();
+    if (isLoading){
+        return <><LoadingMessage/></>
+    }
+    if (error) {
+        return <div>Whoops! Something went wrong registering you.</div>
+    }
 
     const handleSubmit = async (event) => {
         try {
@@ -60,7 +65,10 @@ const RegisterForm = () => {
     }
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             <Grid container>
                 <Grid item xs={2}>
                 </Grid>
@@ -161,7 +169,7 @@ const RegisterForm = () => {
                 <Grid item xs={2}>
                 </Grid>
             </Grid>
-        </>
+        </motion.div>
     )
 }
 export default RegisterForm

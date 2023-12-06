@@ -5,10 +5,13 @@ import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
+import { motion } from "framer-motion";
+
 import { useNavigate, useParams } from "react-router-dom";
 
 import { usePatchUserMutation, useGetUserQuery } from "../../redux/api";
 import { useState } from "react";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const EditUser = () => {
     const { id } = useParams();
@@ -38,11 +41,14 @@ const EditUser = () => {
         return <div>Error</div>
     }
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div><LoadingMessage/></div>
     }
 
     return userData && (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
                 <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
                     Update Your Account:
@@ -103,7 +109,7 @@ const EditUser = () => {
                     </Stack>
                 </form>
             </Card>
-        </>
+        </motion.div>
     )
 }
 export default EditUser
