@@ -101,7 +101,10 @@ const AddPostContent = () => {
     };
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             {isMobile ?
                 <div><MobileNewPost/></div>
                 : //is NOT mobile...
@@ -237,7 +240,7 @@ const AddPostContent = () => {
                         </Grid>
                     </Grid>
                 </div>}
-        </>
+        </motion.div>
     )
 }
 export default AddPostContent

@@ -6,6 +6,8 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { useMediaQuery, useTheme } from '@mui/material';
 
+import { easeIn, motion } from "framer-motion";
+
 import { Link } from "react-router-dom";
 
 import { useGetAllUsersQuery } from "../../redux/api"
@@ -26,14 +28,17 @@ const AdminDashboard = () => {
         return <div>No data</div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Oops! Something went wrong loading the data. </div>;
     } else
 
         return (
-            <>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, ease: "easeIn" }}>
                 {isMobile ?
                     <div>
                         <Grid container spacing={1}>
@@ -74,21 +79,19 @@ const AdminDashboard = () => {
                     <div>
                         <Grid container spacing={1}>
                             <Grid item xs={2}>
+                            <Link to="/account">
+                                    <Button sx={{ backgroundColor: "#088395", color: "white", mx: 1, mt: 10 }}>
+                                        Return to User View
+                                    </Button>
+                                </Link>
                             </Grid>
                             <Grid item xs={10}>
                                 <Box sx={{ mb: 1 }}>
-                                    <Stack direction="row">
-                                        <Typography
-                                            variant="h4"
-                                            sx={{ color: "#205375" }}>
-                                            Hello Admin!
-                                        </Typography>
-                                        <Link to="/account">
-                                            <Button sx={{ backgroundColor: "#088395", color: "white", ml: 100 }}>
-                                                Return to User View
-                                            </Button>
-                                        </Link>
-                                    </Stack>
+                                    <Typography
+                                        variant="h4"
+                                        sx={{ color: "#205375" }}>
+                                        Hello Admin!
+                                    </Typography>
                                 </Box>
                                 <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
                                     <AddEquipment />
@@ -105,7 +108,7 @@ const AdminDashboard = () => {
                             </Grid>
                         </Grid>
                     </div>}
-            </>
+            </motion.div>
         )
 }
 export default AdminDashboard

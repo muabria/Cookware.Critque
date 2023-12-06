@@ -3,6 +3,8 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 
+import { motion } from "framer-motion";
+
 import { Link, useParams } from "react-router-dom";
 
 import { useGetSingleEquipmentQuery } from "../../redux/api"
@@ -35,7 +37,10 @@ const AllReviewsForEquipment = () => {
     console.log("reviewData:", reviewData);
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             <Typography variant="h2">
                 {data.name}
             </Typography>
@@ -96,7 +101,7 @@ const AllReviewsForEquipment = () => {
                     {review.title}
                 </Typography>
             ))}
-        </>
+        </motion.div>
     )
 }
 

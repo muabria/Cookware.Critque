@@ -31,7 +31,10 @@ const AllPosts = () => {
     }
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             <Box sx={{ maxHeight: "60px", mb: 3 }}>
                 <Typography variant="h3" sx={{ textAlign: "center", color: "#205375" }}>
                     Explore Trusted Critiques Made from Real Users
@@ -102,7 +105,7 @@ const AllPosts = () => {
                     </motion.div>
                 </div>
             </Box>
-        </>
+        </motion.div>
     );
 }
 export default AllPosts 

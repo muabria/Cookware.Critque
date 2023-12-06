@@ -10,6 +10,8 @@ import Stack from "@mui/material/Stack"
 import Rating from "@mui/material/Rating"
 import StarIcon from '@mui/icons-material/Star';
 
+import { motion } from "framer-motion"
+
 import { useParams } from "react-router-dom"
 
 import { useGetSingleReviewQuery, usePatchReviewMutation } from "../../redux/api"
@@ -44,7 +46,10 @@ const EditReviews = () => {
     }
 
     return reviewData && (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             <Grid container>
                 <Grid item xs={2}>
 
@@ -105,7 +110,7 @@ const EditReviews = () => {
 
                 </Grid>
             </Grid>
-        </>
+        </motion.div>
     )
 }
 export default EditReviews

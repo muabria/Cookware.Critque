@@ -37,7 +37,10 @@ const CategoryPage = () => {
     }
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             {isMobile ?
                 <div>
                     <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
@@ -140,7 +143,7 @@ const CategoryPage = () => {
                         </motion.div>
                     </div>
                 </div>}
-        </>
+        </motion.div>
     )
 }
 

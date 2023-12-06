@@ -7,6 +7,8 @@ import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 import RateReviewIcon from '@mui/icons-material/RateReview';
 
+import { motion } from "framer-motion";
+
 import { useMediaQuery, useTheme } from "@mui/material";
 
 import { useState } from "react";
@@ -36,7 +38,10 @@ const PostsWithComments = () => {
     }
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             {isMobile ?
                 <div>
                     <Grid container>
@@ -141,7 +146,7 @@ const PostsWithComments = () => {
                         </Grid>
                     </Grid>
                 </div>}
-        </>
+        </motion.div>
     )
 }
 
