@@ -18,7 +18,7 @@ import { useRegisterMutation, useGetAllUsersValidationQuery } from "../../redux/
 
 const RegisterForm = () => {
     const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
-    const [register, error] = useRegisterMutation();
+    const [register, {error}] = useRegisterMutation();
     if (error) {
         return <div>Whoops! Something went wrong registering you.</div>
     }
@@ -54,11 +54,10 @@ const RegisterForm = () => {
         }
     }
 
-    // const validateUsername = (name) => {
-    //     const compare = userData.find((current) => {return current.username === name})
-    //     compare !== undefined ? <Alert severity="error">Username already exists. Please choose another.</Alert> : null
-        //if (compare !== undefined) {return <Alert severity="error">Username already exists. Please choose another.</Alert>}
-    //}
+    const validateUsername = (name) => {
+        const compare = userData.find((current) => {return current.username === name})
+        if (compare !== undefined) {return <Alert severity="error">Username already exists. Please choose another.</Alert>}
+    }
 
     return (
         <>
@@ -79,7 +78,7 @@ const RegisterForm = () => {
                                     size="small"
                                     variant="filled"
                                     sx={{ m: 1 }}
-                                    //helperText={validateUsername(username)}
+                                    helperText={validateUsername(username)}
                                 />
                                 <TextField
                                     label="Enter E-mail"

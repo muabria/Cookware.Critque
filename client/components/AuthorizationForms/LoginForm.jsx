@@ -52,9 +52,10 @@ const LoginForm = () => {
         }
     }
 
-    //filter all users to find username that matches, otherwise "Username does not exist"
-    //error if password doesn't match
-
+    const validateUsername = (name) => {
+        const compare = userData.find((current) => {return current.username === name})
+        if (compare === undefined) {return <Alert severity="error">Username not found.</Alert>}
+    }
 
     return (
         <>
@@ -75,6 +76,7 @@ const LoginForm = () => {
                                     size="small"
                                     variant="filled"
                                     sx={{ m: 1 }}
+                                    helperText={username && validateUsername(username)}
                                 />
                                 <TextField
                                     label="Enter Password"
