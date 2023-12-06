@@ -14,6 +14,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import { useGetEquipmentQuery } from "../../redux/api"
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const MapAllEquipment = () => {
     const theme = useTheme();
@@ -21,7 +22,7 @@ const MapAllEquipment = () => {
 
     const { data, error, isLoading } = useGetEquipmentQuery();
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
@@ -103,15 +104,19 @@ const MapAllEquipment = () => {
                                             sx={{ textAlign: "center" }}>
                                             from {equipment.brand}
                                         </Typography>
-                                        <Typography sx={{ px: 2 }}>
-                                            {equipment.description}
-                                        </Typography>
-
+                                        <Box sx={{ m:2 }}>
+                                            <img
+                                                src={equipment.image}
+                                                alt={`${equipment.name} image`}
+                                                width="130"
+                                                height="130"
+                                            />
+                                        </Box>
                                         <Link to={`/equipment/${equipment.id}`}>
                                             <Button
                                                 sx={{
-                                                    mt: 2,
-                                                    ml: 8, 
+                                                    my: 2,
+                                                    ml: 8,
                                                     boxShadow: 3,
                                                     color: "#3C1B1F",
                                                     backgroundColor: "#EACD65",
@@ -120,7 +125,6 @@ const MapAllEquipment = () => {
                                                 See All Reviews
                                             </Button>
                                         </Link>
-
                                     </Stack>
                                 </Card>
                             ))}

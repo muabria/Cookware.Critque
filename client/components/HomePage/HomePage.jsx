@@ -9,10 +9,10 @@ import { useMediaQuery, useTheme } from '@mui/material';
 
 import { Link } from "react-router-dom";
 
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 
 import AllPost from "../Posts/AllPosts";
-import MapCategories from "../SearchEquipment/MapCategories"
+import MapCategories from "../Categories/MapCategories";
 import background from "../images/kitchenEquipmentBackground.png"
 import MapAllEquipment from "../EquipmentsWithReviews/MapAllEquipment";
 import MobileHomePage from "./MobileHomePage";
@@ -23,7 +23,10 @@ const HomePage = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeIn" }}>
             {isMobile ?
                 <>
                     <MobileHomePage />
@@ -31,7 +34,7 @@ const HomePage = () => {
                 :
                 <>
                     <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                        Welcome to "TITLE PLACEHOLDER".
+                        Welcome to Title Placeholder
                     </Typography>
                     <Typography variant="h5" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                         Home to honest critiques for all types of kitchen equipment from food prep to clean up.
@@ -59,29 +62,33 @@ const HomePage = () => {
                                 </Grid>
                                 <Grid item xs={6.5}>
                                     <Stack direction="row">
-                                        <Link to="/posts">
-                                            <Button sx={{ 
-                                                boxShadow: 3,
-                                                color: "#FAF3F0", 
-                                                backgroundColor: "#D988B9", 
-                                                border: "solid #B0578D 2px", 
-                                                borderRadius: "100px", 
-                                                p: 3 }}>
-                                                <Typography variant="h6">
-                                                    Find New Equipment
-                                                </Typography>
-                                            </Button>
-                                        </Link>
+                                        <motion.div whileHover={{ scale: 1.3 }}>
+                                            <Link to="/posts">
+                                                <Button sx={{
+                                                    boxShadow: 3,
+                                                    color: "#FAF3F0",
+                                                    backgroundColor: "#D988B9",
+                                                    border: "solid #B0578D 2px",
+                                                    borderRadius: "100px",
+                                                    p: 3
+                                                }}>
+                                                    <Typography variant="h6">
+                                                        Find New Equipment
+                                                    </Typography>
+                                                </Button>
+                                            </Link>
+                                        </motion.div>
                                     </Stack>
                                 </Grid>
                             </Grid>
                         </Box>
                     </div>
-                    <MapAllEquipment />
                     <AllPost />
+                    <MapAllEquipment />
                 </>
+
             }
-        </>
+        </motion.div>
     )
 }
 

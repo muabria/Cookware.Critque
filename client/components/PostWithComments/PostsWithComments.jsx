@@ -7,6 +7,8 @@ import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 import RateReviewIcon from '@mui/icons-material/RateReview';
 
+import { motion } from "framer-motion";
+
 import { useMediaQuery, useTheme } from "@mui/material";
 
 import { useState } from "react";
@@ -16,6 +18,7 @@ import { useGetSingleReviewQuery } from '../../redux/api';
 import { useGetCommentsQuery } from '../../redux/api';
 
 import CommentForm from "./CommentForm";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const PostsWithComments = () => {
     const [addComment, setAddComment] = useState(false);
@@ -28,16 +31,17 @@ const PostsWithComments = () => {
     const { data: commentData, error: commentError, isLoading: commentLoading } = useGetCommentsQuery();
 
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
     }
-    console.log(data);
-    console.log(commentData);
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             {isMobile ?
                 <div>
                     <Grid container>
@@ -142,7 +146,7 @@ const PostsWithComments = () => {
                         </Grid>
                     </Grid>
                 </div>}
-        </>
+        </motion.div>
     )
 }
 

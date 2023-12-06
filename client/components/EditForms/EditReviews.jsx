@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import Box from "@mui/material/Box"
+import Alert from "@mui/material/Alert"
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
 import Grid from "@mui/material/Grid"
@@ -10,9 +10,12 @@ import Stack from "@mui/material/Stack"
 import Rating from "@mui/material/Rating"
 import StarIcon from '@mui/icons-material/Star';
 
+import { motion } from "framer-motion"
+
 import { useParams } from "react-router-dom"
 
 import { useGetSingleReviewQuery, usePatchReviewMutation } from "../../redux/api"
+import LoadingMessage from "../ErrorMessages/LoadingMessage"
 
 const EditReviews = () => {
     const [title, setTitle] = useState("");
@@ -24,13 +27,13 @@ const EditReviews = () => {
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetSingleReviewQuery(id);
 
     const [patchReview, { data, error, isLoading }] = usePatchReviewMutation();
+    
     if (error) {
         return <div>Error</div>
     }
     if (isLoading) {
-        return <div>is loading..</div>
+        return <div><LoadingMessage/></div>
     }
-    // console.log(reviewData);
 
     const handleSubmit = async (event) => {
         try {
@@ -43,7 +46,10 @@ const EditReviews = () => {
     }
 
     return reviewData && (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             <Grid container>
                 <Grid item xs={2}>
 
@@ -86,10 +92,15 @@ const EditReviews = () => {
                                     onChange={(event) => setRating(event.target.value)}
                                     size="small"
                                     sx={{ m: 1, backgroundColor: "white" }}
+                                    helperText={
+                                        rating > 5 || rating < 0
+                                            ? <Alert severity="error">The item's rating must be on a scale of 1- 5</Alert>
+                                            : null
+                                    }
                                 />
                             </Stack>
                             <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
-                                Create Your Critique!
+                                Save Changes
                             </Button>
                         </Card>
                     </form>
@@ -99,7 +110,7 @@ const EditReviews = () => {
 
                 </Grid>
             </Grid>
-        </>
+        </motion.div>
     )
 }
 export default EditReviews

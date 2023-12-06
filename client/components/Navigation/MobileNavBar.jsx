@@ -19,10 +19,17 @@ import logo from "../images/cookingEquipmentLogo.png"
 
 import { Link } from "react-router-dom";
 
+import { motion } from "framer-motion";
+
+import { useGetUserQuery } from '../../redux/api';
+
 import LogoutButton from "../AuthorizationForms/LogoutButton";
 
 const MobileNavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
+
+    const { data, error, isLoading } = useGetUserQuery()
+
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -45,8 +52,6 @@ const MobileNavBar = () => {
                         </Typography>
                     </Stack>
                 </AccordionSummary>
-
-
                 <AccordionDetails>
                     <Link to="/">
                         <Box sx={{ borderBottom: 2, color: "#205375" }}>
@@ -57,9 +62,6 @@ const MobileNavBar = () => {
                         </Box>
                     </Link>
                 </AccordionDetails>
-
-
-
                 <AccordionDetails>
                     <Link to="/posts">
                         <Box sx={{ borderBottom: 2, color: "#205375" }}>
@@ -86,50 +88,64 @@ const MobileNavBar = () => {
 
                 </Grid>
                 <Grid item xs={2}>
-                    <Button
-                        aria-controls={open ? 'account-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}>
-                        <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
-                    </Button>
-                    <Menu
-                        id="account-menu"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}>
-                        <MenuItem>
-                            <Link to="/login">
-                                <Button>
-                                    Login
-                                </Button>
-                            </Link>
-                        </MenuItem>
-                        <MenuItem>
-                            <Link to="/register">
-                                <Button>
-                                    Sign Up
-                                </Button>
-                            </Link>
-                        </MenuItem>
-                        <MenuItem>
-                            <Link to="/admin_dashboard">
-                                <Button>
-                                    admin
-                                </Button>
-                            </Link>
-                        </MenuItem>
-                        <MenuItem>
-                            <Link to="/account">
-                                <Button>
-                                    user dashboard
-                                </Button>
-                            </Link>
-                        </MenuItem>
-                        <MenuItem>
-                            <LogoutButton />
-                        </MenuItem>
-                    </Menu>
+
+                    {data
+                        ?//if logged in...
+                        <div>
+                            <Button
+                                aria-controls={open ? 'account-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                                onClick={handleClick}>
+                                <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
+                            </Button>
+                            <Menu
+                                id="account-menu"
+                                anchorEl={anchorEl}
+                                open={open}
+                                onClose={handleClose}>
+                                <MenuItem>
+                                    <Link to="/account">
+                                        <Button>
+                                            My Account
+                                        </Button>
+                                    </Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <LogoutButton />
+                                </MenuItem>
+                            </Menu>
+                        </div>
+                        : //if NOT logged in...
+                        <div>
+                            <Button
+                                aria-controls={open ? 'account-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                                onClick={handleClick}>
+                                <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
+                            </Button>
+                            <Menu
+                                id="account-menu"
+                                anchorEl={anchorEl}
+                                open={open}
+                                onClose={handleClose}>
+                                <MenuItem>
+                                    <Link to="/login">
+                                        <Button>
+                                            Login
+                                        </Button>
+                                    </Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/register">
+                                        <Button>
+                                            Sign Up
+                                        </Button>
+                                    </Link>
+                                </MenuItem>
+                            </Menu>
+                        </div>}
                 </Grid>
             </Grid>
         </div>

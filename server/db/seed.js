@@ -272,7 +272,6 @@ async function seed() {
             },
             include: { category: true }
         })
-
         const castIronSkillet = await prisma.equipment.create({
             data: {
                 name: "Cast Iron Skillet",
@@ -517,19 +516,6 @@ async function seed() {
             include: { category: true }
         })
 
-        // const test5 = await prisma.equipment.create({
-        //     data: {
-        //         name: "",
-        //         description: "",
-        //         image: "",
-        //         category: { connect: { id: gadgets.id } },
-        //         brand: "Ninja",
-        //         purchaseLink: "",
-        //         priceRating: 2
-        //     },
-        //     include: { category: true }
-        // })
-
         //<-------------------------------- USERS -------------------------------->
 
         const marisa = await prisma.user.create({
@@ -571,8 +557,6 @@ async function seed() {
             },
 
         })
-
-
 
         //Post entries
 

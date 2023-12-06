@@ -16,6 +16,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { useGetReviewsQuery } from "../../redux/api";
+import { useDeleteReviewForUserMutation } from "../../redux/api";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 // import { useDeleteReviewForUserMutation } from "../../redux/api";
 
 //<-----------------DELETE REVIEW HELPER FUNCTION------------------->
@@ -27,17 +29,17 @@ const MapPostsAdmin = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const { data, error, isLoading } = useGetReviewsQuery();
+    const [deleteReview, { data: mutationData, error: mutationError, isLoading: mutationIsLoading }] = useDeleteReviewForUserMutation();
 
     if (!data) {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div> Loading... </div>;
+        return <div><LoadingMessage /></div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    console.log(data);
 
     return (
         <>
@@ -45,32 +47,32 @@ const MapPostsAdmin = () => {
                 <div>
                     <Accordion sx={{ m: 2, backgroundColor: "#D9E4DD" }}>
                         <AccordionSummary>
-                            <Typography 
-                            variant="h5" 
-                            sx={{ textAlign: "center", color: "#205375" }}>
-                                All Reviews <ExpandCircleDownIcon sx={{ color: "#205375" }}/>
+                            <Typography
+                                variant="h5"
+                                sx={{ textAlign: "center", color: "#205375" }}>
+                                All Reviews <ExpandCircleDownIcon sx={{ color: "#205375" }} />
                             </Typography>
                         </AccordionSummary>
                         {data && data.map((review) => (
                             <Card key={review.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
                                     <Grid item xs={12}>
-                                        <Typography variant="h5" sx={{ textAlign: "center" }}>
+                                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                             {review.title}
                                         </Typography>
-                                        <Typography variant="h6">
+                                        <Typography variant="h6" sx={{ color: "#205375" }}>
                                             {review.equipment}
                                         </Typography>
                                         <Rating
                                             readOnly={true}
                                             value={review.rating}
                                         />
-                                        <Typography>
+                                        <Typography sx={{ color: "#205375" }}>
                                             {review.content}
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Link to={`/equipment/${review.id}/review`}>
+                                        <Link to={`/review/${review.id}`}>
                                             <Button
                                                 sx={{ m: 1 }}>
                                                 <PreviewIcon />
@@ -84,54 +86,54 @@ const MapPostsAdmin = () => {
                                         </Button>
                                     </Grid>
                                 </Grid>
+                                {alert && <Alert severity="warning">
+                                    Are you sure you want to delete this post? Once you do it's gone forever.
+                                    <Button
+                                        onClick={() => deleteReview(review.id)}
+                                        variant="outlined"
+                                        color="error"
+                                        sx={{ m: 1 }}>
+                                        Yes, delete this review
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        onClick={() => setAlert(false)}
+                                        sx={{ m: 1 }}>
+                                        No, keep this review
+                                    </Button>
+                                </Alert>
+                                }
                             </Card>
                         ))}
-                        {alert && <Alert severity="warning">
-                            Are you sure you want to delete this post? Once you do it's gone forever.
-                            <Button
-                                onClick={() => deleteReview()}
-                                variant="outlined"
-                                color="error"
-                                sx={{ m: 1 }}>
-                                Yes, delete this review
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                onClick={() => setAlert(false)}
-                                sx={{ m: 1 }}>
-                                No, keep this review
-                            </Button>
-                        </Alert>
-                        }
                     </Accordion>
                 </div>
 
                 :// is NOT mobile...
                 <div>
                     <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
-                        <Typography variant="h5" sx={{ textAlign: "center" }}>
+                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                             All Reviews:
                         </Typography>
                         {data && data.map((review) => (
                             <Card key={review.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
                                     <Grid item xs={8}>
-                                        <Typography variant="h5" sx={{ textAlign: "center" }}>
+                                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                             {review.title}
                                         </Typography>
-                                        <Typography variant="h6">
+                                        <Typography variant="h6" sx={{ color: "#205375" }}>
                                             {review.equipment}
                                         </Typography>
                                         <Rating
                                             readOnly={true}
                                             value={review.rating}
                                         />
-                                        <Typography>
+                                        <Typography sx={{ color: "#205375" }}>
                                             {review.content}
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={4}>
-                                        <Link to={`/equipment/${review.id}/review`}>
+                                        <Link to={`/review/${review.id}`}>
                                             <Button
                                                 variant="outlined"
                                                 sx={{ m: 1 }}>
@@ -147,25 +149,25 @@ const MapPostsAdmin = () => {
                                         </Button>
                                     </Grid>
                                 </Grid>
+                                {alert && <Alert severity="warning">
+                                    Are you sure you want to delete this post? Once you do it's gone forever.
+                                    <Button
+                                        onClick={() => deleteReview(review.id)}
+                                        variant="outlined"
+                                        color="error"
+                                        sx={{ m: 1 }}>
+                                        Yes, delete this review
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        onClick={() => setAlert(false)}
+                                        sx={{ m: 1 }}>
+                                        No, keep this review
+                                    </Button>
+                                </Alert>
+                                }
                             </Card>
                         ))}
-                        {alert && <Alert severity="warning">
-                            Are you sure you want to delete this post? Once you do it's gone forever.
-                            <Button
-                                onClick={() => deleteReview()}
-                                variant="outlined"
-                                color="error"
-                                sx={{ m: 1 }}>
-                                Yes, delete this review
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                onClick={() => setAlert(false)}
-                                sx={{ m: 1 }}>
-                                No, keep this review
-                            </Button>
-                        </Alert>
-                        }
                     </Card>
                 </div>
             }

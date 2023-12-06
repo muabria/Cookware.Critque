@@ -10,25 +10,46 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 import { Link, useNavigate } from "react-router-dom";
 
-import { useRegisterMutation } from "../../redux/api";
+import { useRegisterMutation, useGetAllUsersValidationQuery } from "../../redux/api";
+
+import LoadingMessage from "../ErrorMessages/LoadingMessage"
 
 const RegisterForm = () => {
-    const [register, error] = useRegisterMutation();
-    if (error) {
-        return <div>Whoops! Something went wrong registering you.</div>
-    }
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [secondPassword, setSecondPassword] = useState("");
     const [email, setEmail] = useState("");
 
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
     const navigate = useNavigate();
+
+    const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
+    const [register, { data, error, isLoading }] = useRegisterMutation();
+    if (isLoading){
+        return <><LoadingMessage/></>
+    }
+    if (error) {
+        return <div>Whoops! Something went wrong registering you.</div>
+    }
+
     const handleSubmit = async (event) => {
         try {
+            if (password.length < 8) {
+                event.preventDefault();
+                alert("Password is too short.");
+                return
+            }
+            else if (password.length > 16) {
+                event.preventDefault();
+                alert("Password is too long.");
+                return
+            }
             event.preventDefault();
             await register({ username, email, password, secondPassword }),
                 console.log("Success!")
@@ -38,14 +59,22 @@ const RegisterForm = () => {
         }
     }
 
+    const validateUsername = (name) => {
+        const compare = userData.find((current) => {return current.username === name})
+        if (compare !== undefined) {return <Alert severity="error">Username already exists. Please choose another.</Alert>}
+    }
+
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             <Grid container>
                 <Grid item xs={2}>
                 </Grid>
                 <Grid item xs={8}>
                     <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
-                        <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
+                        <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
                             Sign Up:
                         </Typography>
                         <form onSubmit={handleSubmit}>
@@ -57,6 +86,7 @@ const RegisterForm = () => {
                                     size="small"
                                     variant="filled"
                                     sx={{ m: 1 }}
+                                    helperText={validateUsername(username)}
                                 />
                                 <TextField
                                     label="Enter E-mail"
@@ -77,6 +107,7 @@ const RegisterForm = () => {
                                     helperText={
                                         password && password.length < 8
                                             ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
+                                            : password.length > 16 ? <Alert severity="error"> Your password cannot be more than 16 characters long </Alert>
                                             : null
                                     }
                                 />
@@ -95,18 +126,42 @@ const RegisterForm = () => {
                                             <Alert severity="error"> Passwords do not match </Alert> : null
                                     }
                                 />
-                                <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1 }}>
-                                    Start Your Cooking Journey
-                                </Button>
-                                <Typography sx={{ mt: 2, textAlign: "center" }}>
-                                    Already have an account?
-                                </Typography>
-                                <Link to="/login">
-                                    <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
-                                        Login to your account
-                                        <LoginIcon sx={{ ml: 2 }} />
-                                    </Button>
-                                </Link>
+                                {isMobile ?
+                                    <div>
+                                        <Button
+                                            type="submit"
+                                            sx={{ backgroundColor: "#088395", color: "white", width: "100%", p: 1, my: 1, }}>
+                                            Start Your Cooking Journey
+                                        </Button>
+                                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
+                                            Already have an account?
+                                        </Typography>
+                                        <Link to="/login">
+                                            <Button
+                                                variant="outlined"
+                                                sx={{ color: "#205375", backgroundColor: "transparent", my: 1, width: "100%" }}>
+                                                Login to your account
+                                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                    ://is NOT mobile... 
+                                    <div>
+                                        <Button
+                                            type="submit"
+                                            sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1, mx: 20 }}>
+                                            Start Your Cooking Journey
+                                        </Button>
+                                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
+                                            Already have an account?
+                                        </Typography>
+                                        <Link to="/login">
+                                            <Button sx={{ color: "#205375", backgroundColor: "transparent", my: 1 }}>
+                                                Login to your account
+                                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                            </Button>
+                                        </Link>
+                                    </div>}
                             </Stack>
                         </form>
                     </Card>
@@ -114,7 +169,7 @@ const RegisterForm = () => {
                 <Grid item xs={2}>
                 </Grid>
             </Grid>
-        </>
+        </motion.div>
     )
 }
 export default RegisterForm
