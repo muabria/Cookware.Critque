@@ -78,7 +78,7 @@ const CategoryPage = () => {
                                                     backgroundColor: "#EACD65",
                                                     border: "solid #D29D2B 2px"
                                                 }}>
-                                                See All Reviews
+                                                See All Reviews 
                                             </Button>
                                         </Link>
                                     </Stack>
