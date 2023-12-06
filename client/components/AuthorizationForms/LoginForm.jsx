@@ -47,6 +47,10 @@ const LoginForm = () => {
         }
     }
 
+    //filter all users to find username that matches, otherwise error
+    //error if password doesn't match
+
+
     return (
         <>
             <Grid container>
