@@ -23,6 +23,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import MobileNewPost from "./MobileNewPost";
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
 import AccountRedirect from "../ErrorMessages/AccountRedirect";
+import { useNavigate } from "react-router-dom";
 
 const AddPostContent = () => {
     //<-----------------TEXTFIELD STATE------------------->
@@ -52,7 +53,7 @@ const AddPostContent = () => {
     const { data, error, isLoading } = useGetEquipmentQuery();
     const [postReview, { data: mutationData, isError: isMutationError, isLoading: isMutationLoading, }] = usePostReviewMutation(); //include error handling
     const { data: userData, error: userError, isLoading: userIsLoading } = useGetUserQuery();
-
+    const navigate = useNavigate();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -87,6 +88,7 @@ const AddPostContent = () => {
             event.preventDefault();
             const result = await postReview({ equipmentId: Number(equipment), title, content, rating: Number(rating) })
             console.log(result)
+            navigate("/");
         } catch (error) {
             console.error(error)
         }
