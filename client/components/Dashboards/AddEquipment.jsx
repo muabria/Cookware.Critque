@@ -97,7 +97,7 @@ const AddEquipment = () => {
                                     variant="filled"
                                     sx={{ m: 1 }}
                                 />
-                                <Typography>
+                                <Typography sx={{ color: "#205375" }}>
                                     Select Category:
                                 </Typography>
                                 <Stack direction="row">
@@ -132,7 +132,7 @@ const AddEquipment = () => {
                                     sx={{ m: 1 }}
                                     multiline
                                 />
-                                <Typography>
+                                <Typography sx={{ color: "#205375" }}>
                                     Price Rating:
                                 </Typography>
                                 <Box sx={{ textAlign: "center" }}>

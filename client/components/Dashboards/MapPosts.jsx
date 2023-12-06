@@ -47,24 +47,24 @@ const MapPosts = () => {
                 ?
                 <div>
                     <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
-                        <Typography variant="h5" sx={{ textAlign: "center" }}>
+                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                             My Reviews:
                         </Typography>
                         {data && data.map((review) => (
                             <Card key={review.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
                                     <Grid item xs={8}>
-                                        <Typography variant="h5" sx={{ textAlign: "center" }}>
+                                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                             {review.title}
                                         </Typography>
-                                        <Typography variant="h6">
+                                        <Typography variant="h6" sx={{ color: "#205375" }}>
                                             {review.equipment}
                                         </Typography>
                                         <Rating
                                             readOnly={true}
                                             value={review.rating}
                                         />
-                                        <Typography>
+                                        <Typography sx={{ color: "#205375" }}>
                                             {review.content}
                                         </Typography>
                                     </Grid>
@@ -88,7 +88,6 @@ const MapPosts = () => {
                                 </Grid>
                                 {alert && <Alert severity="warning">
                                     Are you sure you want to delete this post? Once you do it's gone forever.
-
                                     <Button
                                         onClick={() => deleteReview(review.id)}
                                         variant="outlined"
@@ -132,7 +131,7 @@ const MapPosts = () => {
                 : //is NOT mobile...
                 <div>
                     <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
-                        <Typography variant="h5" sx={{ textAlign: "center" }}>
+                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                             My Reviews:
                         </Typography>
                         {data && data.map((review) => (
@@ -141,17 +140,17 @@ const MapPosts = () => {
 
                                     <Grid item xs={10.5}>
                                         <Stack direction="row">
-                                            <Typography variant="h5" sx={{ textAlign: "center" }}>
+                                            <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                                 {review.title}
                                             </Typography>
-                                            <Typography variant="h6">
+                                            <Typography variant="h6" sx={{ color: "#205375" }}>
                                                 {review.equipment}
                                             </Typography>
                                             <Rating
                                                 readOnly={true}
                                                 value={review.rating}
                                             />
-                                            <Typography>
+                                            <Typography sx={{ color: "#205375" }}>
                                                 {review.content}
                                             </Typography>
                                         </Stack>

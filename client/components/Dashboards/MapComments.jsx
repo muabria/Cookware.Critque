@@ -34,8 +34,6 @@ const MapComments = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    console.log(data);
-    
 
     return (
         <>
@@ -43,14 +41,14 @@ const MapComments = () => {
                 <div>
                     <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
                         <Typography
-                            sx={{ textAlign: "center" }}>
+                            sx={{ textAlign: "center", color: "#205375" }}>
                             My Comments:
                         </Typography>
                         {data && data.map((comment) => (
                             <Card key={comment.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
                                     <Grid item xs={12}>
-                                        <Typography>
+                                        <Typography sx={{ color: "#205375" }}>
                                             {comment.content}
                                         </Typography>
                                     </Grid>
@@ -92,7 +90,7 @@ const MapComments = () => {
                     <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
                         <Typography
                             variant="h5"
-                            sx={{ textAlign: "center" }}>
+                            sx={{ textAlign: "center", color: "#205375" }}>
                             My Comments:
                         </Typography>
                         {data && data.map((comment) => (
@@ -100,7 +98,7 @@ const MapComments = () => {
                                 <Grid container>
                                     <Grid item xs={10.5}>
                                         <Typography
-                                            sx={{ textAlign: "center" }}>
+                                            sx={{ textAlign: "center", color: "#205375" }}>
                                             {comment.content}
                                         </Typography>
                                     </Grid>

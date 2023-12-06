@@ -11,8 +11,8 @@ import { usePatchUserMutation, useGetUserQuery } from "../../redux/api";
 import { useState } from "react";
 
 const EditUser = () => {
-    const {id} = useParams();
-    
+    const { id } = useParams();
+
     const { data: userData, isLoading: userIsLoading, error: userError } = useGetUserQuery(id);
     const [patchUser, { data, isLoading, error }] = usePatchUserMutation();
 
@@ -29,7 +29,8 @@ const EditUser = () => {
             const response = await patchUser({ id, username, email, password })
             console.log(response)
             navigate("/account")
-        } catch (error) {
+        }
+        catch (error) {
             console.error(error)
         }
     }
@@ -39,7 +40,7 @@ const EditUser = () => {
     if (isLoading) {
         return <div>Loading...</div>
     }
-    console.log(userData);
+
     return userData && (
         <>
             <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>

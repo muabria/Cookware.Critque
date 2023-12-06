@@ -30,7 +30,6 @@ const EditReviews = () => {
     if (isLoading) {
         return <div>is loading..</div>
     }
-    // console.log(reviewData);
 
     const handleSubmit = async (event) => {
         try {

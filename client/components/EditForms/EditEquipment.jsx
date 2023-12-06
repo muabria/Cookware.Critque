@@ -39,9 +39,8 @@ const EditEquipment = () => {
   }
   if (error) {
     return <div> Error: {error.message} </div>;
-  } else
-    // console.log(data);
-    console.log(category);
+  } 
+  
   //<----------------------RATING---------------------->
   const rating = [
     { value: 0, label: '$10' },

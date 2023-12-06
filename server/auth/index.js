@@ -165,8 +165,6 @@ authRouter.patch("/admin/:id", [requireUser, requireAdmin], async (req, res, nex
             where: {id: Number(req.params.id)},
             data: {isAdmin: isAdmin}
         })
-        console.log(isAdmin);
-        console.log(adminToggle);
         res.send(adminToggle)
     } catch (error) {
         next(error)

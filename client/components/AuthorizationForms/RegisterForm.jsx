@@ -10,6 +10,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -27,7 +28,11 @@ const RegisterForm = () => {
     const [secondPassword, setSecondPassword] = useState("");
     const [email, setEmail] = useState("");
 
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
     const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         try {
             if (password.length < 8) {
@@ -56,7 +61,7 @@ const RegisterForm = () => {
                 </Grid>
                 <Grid item xs={8}>
                     <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
-                        <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
+                        <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
                             Sign Up:
                         </Typography>
                         <form onSubmit={handleSubmit}>
@@ -107,18 +112,42 @@ const RegisterForm = () => {
                                             <Alert severity="error"> Passwords do not match </Alert> : null
                                     }
                                 />
-                                <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1 }}>
-                                    Start Your Cooking Journey
-                                </Button>
-                                <Typography sx={{ mt: 2, textAlign: "center" }}>
-                                    Already have an account?
-                                </Typography>
-                                <Link to="/login">
-                                    <Button sx={{ color: "#000000", backgroundColor: "transparent", my: 1 }}>
-                                        Login to your account
-                                        <LoginIcon sx={{ ml: 2 }} />
-                                    </Button>
-                                </Link>
+                                {isMobile ?
+                                    <div>
+                                        <Button
+                                            type="submit"
+                                            sx={{ backgroundColor: "#088395", color: "white", width: "100%", p: 1, my: 1, }}>
+                                            Start Your Cooking Journey
+                                        </Button>
+                                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
+                                            Already have an account?
+                                        </Typography>
+                                        <Link to="/login">
+                                            <Button
+                                                variant="outlined"
+                                                sx={{ color: "#205375", backgroundColor: "transparent", my: 1, width: "100%" }}>
+                                                Login to your account
+                                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                    ://is NOT mobile... 
+                                    <div>
+                                        <Button
+                                            type="submit"
+                                            sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1, mx: 20 }}>
+                                            Start Your Cooking Journey
+                                        </Button>
+                                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
+                                            Already have an account?
+                                        </Typography>
+                                        <Link to="/login">
+                                            <Button sx={{ color: "#205375", backgroundColor: "transparent", my: 1 }}>
+                                                Login to your account
+                                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                            </Button>
+                                        </Link>
+                                    </div>}
                             </Stack>
                         </form>
                     </Card>
