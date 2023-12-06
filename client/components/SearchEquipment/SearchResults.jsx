@@ -27,7 +27,7 @@ const SearchResults = ({ results }) => {
                                 alt={`${equipment.name} image`}
                                 width="200"
                                 height="150" />
-                            <Link to={`/equipment/${equipment.id}/review`} >
+                            <Link to={`/equipment/${equipment.id}`} >
                                 <Button>
                                     See the {equipment.name}'s Review
                                 </Button>
