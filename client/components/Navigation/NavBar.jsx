@@ -20,13 +20,17 @@ import SearchBar from '../SearchEquipment/SearchBar';
 import MobileNavBar from './MobileNavBar';
 import LogoutButton from '../AuthorizationForms/LogoutButton';
 
+import { useGetUserQuery } from '../../redux/api';
 
 const NavBar = () => {
+
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-    const [anchorEl, setAnchorEl] = useState(null);
+    const { data, error, isLoading } = useGetUserQuery()
+
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -34,6 +38,7 @@ const NavBar = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
 
     return (
         <>
@@ -83,51 +88,65 @@ const NavBar = () => {
                                     <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
                                 </Button>
 
-                                <Menu
-                                    id="account-menu"
-                                    anchorEl={anchorEl}
-                                    open={open}
-                                    onClose={handleClose}>
-                                    <motion.div whileHover={{ scale: 1.2 }}>
-                                        <Link
-                                            to="/login"
-                                            style={{ textDecoration: "none" }}>
-                                            <MenuItem>
-                                                <Button>
-                                                    Login
-                                                </Button>
-                                            </MenuItem>
-                                        </Link>
-                                    </motion.div>
-                                    <motion.div whileHover={{ scale: 1.2 }}>
-                                        <Link
-                                            to="/register"
-                                            style={{ textDecoration: "none" }}>
-                                            <MenuItem>
-                                                <Button>
-                                                    Sign Up
-                                                </Button>
+                                {data
+                                    ?//id logged in...
+                                    <div>
+                                        <Menu
+                                            id="account-menu"
+                                            anchorEl={anchorEl}
+                                            open={open}
+                                            onClose={handleClose}>
+                                            <motion.div whileHover={{ scale: 1.2 }}>
+                                                <Link
+                                                    to="/account"
+                                                    style={{ textDecoration: "none" }}>
+                                                    <MenuItem>
+                                                        <Button>
+                                                            My Account
+                                                        </Button>
+                                                    </MenuItem>
+                                                </Link>
+                                            </motion.div>
+                                            <motion.div whileHover={{ scale: 1.2 }}>
+                                                <MenuItem>
+                                                    <LogoutButton />
+                                                </MenuItem>
+                                            </motion.div>
+                                        </Menu>
+                                    </div>
 
-                                            </MenuItem>
-                                        </Link>
-                                    </motion.div>
-                                    <motion.div whileHover={{ scale: 1.2 }}>
-                                        <Link
-                                            to="/account"
-                                            style={{ textDecoration: "none" }}>
-                                            <MenuItem>
-                                                <Button>
-                                                    My Account
-                                                </Button>
-                                            </MenuItem>
-                                        </Link>
-                                    </motion.div>
-                                    <motion.div whileHover={{ scale: 1.2 }}>
-                                        <MenuItem>
-                                            <LogoutButton />
-                                        </MenuItem>
-                                    </motion.div>
-                                </Menu>
+                                    ://if NOT logged in...
+                                    <div>
+                                        <Menu
+                                            id="account-menu"
+                                            anchorEl={anchorEl}
+                                            open={open}
+                                            onClose={handleClose}>
+                                            <motion.div whileHover={{ scale: 1.2 }}>
+                                                <Link
+                                                    to="/login"
+                                                    style={{ textDecoration: "none" }}>
+                                                    <MenuItem>
+                                                        <Button>
+                                                            Login
+                                                        </Button>
+                                                    </MenuItem>
+                                                </Link>
+                                            </motion.div>
+                                            <motion.div whileHover={{ scale: 1.2 }}>
+                                                <Link
+                                                    to="/register"
+                                                    style={{ textDecoration: "none" }}>
+                                                    <MenuItem>
+                                                        <Button>
+                                                            Sign Up
+                                                        </Button>
+                                                    </MenuItem>
+                                                </Link>
+                                            </motion.div>
+                                        </Menu>
+                                    </div>}
+
                             </Stack>
                         </Box>
                     </Stack>
