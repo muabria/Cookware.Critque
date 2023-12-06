@@ -21,7 +21,6 @@ import SearchBar from '../SearchEquipment/SearchBar';
 
 const AllPosts = () => {
     const { data, error, isLoading } = useGetReviewsQuery()
-    console.log(data);
     
     if (isLoading) {
         return <div> Please Wait.. Still Loading</div>
@@ -46,7 +45,7 @@ const AllPosts = () => {
                         <Stack direction="row">
                             {data && data.map((review) => (
                                 <Grid container>
-                                    <Grid xs={8}>
+                                    <Grid item xs={8}>
                                         <Card key={review.id}
                                             sx={{
                                                 backgroundColor: "#F9FBE7",

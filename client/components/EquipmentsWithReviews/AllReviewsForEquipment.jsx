@@ -3,11 +3,12 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { useGetSingleEquipmentQuery } from "../../redux/api"
 import { useGetReviewByEquipmentQuery } from "../../redux/api";
 import { useMemo } from "react";
+import  Button  from "@mui/material/Button";
 
 const AllReviewsForEquipment = () => {
     const { id } = useParams();
@@ -31,11 +32,13 @@ const AllReviewsForEquipment = () => {
 
     console.log(data);
     console.log("reviewData:", reviewData);
+
     return (
         <>
             <Typography variant="h2">
                 {data.name}
             </Typography>
+
             <Rating
                 readOnly={true}
                 value={avgRating}
@@ -84,6 +87,14 @@ const AllReviewsForEquipment = () => {
                     </Card>
                 ))}
             </Stack>
+            <Link to={`/edit_equipment/${data.id}`} >
+                <Button> Update Equipment </Button>
+            </Link>
+            {reviewData && reviewData.map((review) => (
+                <Typography>
+                    {review.title}
+                </Typography>
+            ))}
         </>
     )
 }

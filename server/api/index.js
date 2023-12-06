@@ -130,7 +130,6 @@ apiRouter.get("/comments", async (req, res, next) => {
 //<--------------------------------GET REVIEWS BY EQUIPMENT----------------------------->
 //GET /api/equipment/review/:id
 apiRouter.get("/equipment/review/:id", async (req, res, next) => {
-    console.log(req.params)
     try {
         const reviews = await prisma.post.findMany({
             where: {equipmentId: Number(req.params.id)},
@@ -172,7 +171,7 @@ apiRouter.post("/equipment/", requireUser, async (req, res, next) => {
 //PATCH Update an existing equipment item
 apiRouter.patch("/equipment/:id", requireUser, async (req, res, next) => {
     try {
-        const { id } = req.params;
+        // const { id } = req.params;
         const { name, description, image, categoryId, brand, purchaseLink, priceRating } = req.body;
 
         const updatedEquipmentItem = await prisma.equipment.update({
@@ -269,7 +268,7 @@ apiRouter.post("/comment", requireUser, async (req, res, next) => {
 //PATCH /api/review/:id
 apiRouter.patch("/review/:id", requireUser, async (req, res, next) => {
     try {
-        const { title, content, rating, equipmentId } = req.body;
+        const { title, content, rating } = req.body;
         const updatedReview = await prisma.post.update({
             where: {
                 id: Number(req.params.id)

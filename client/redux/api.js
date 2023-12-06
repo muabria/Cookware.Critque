@@ -30,17 +30,24 @@ const api = createApi({
                 method: 'POST',
                 body: user,
             }),
+            providesTags: ["Users"]
         }),
-        //LOGIN ACCOUNT ENDPOINT
+        //LOGIN ACCOUNT 
         login: builder.mutation({
             query: (user) => ({
                 url: `/auth/login`,
                 method: 'POST',
                 body: user,
             }),
+            providesTags: ["Users"]
         }),
-
-
+        //LOGOUT ACCOUNT
+        logout: builder.mutation({
+            query: () => ({
+                data: {}
+            }),
+            invalidatesTags: ["Users"]
+        }),
         //<---------------------------GET USER INFO--------------------------->
         //GET USER
         getUser: builder.query({
@@ -133,17 +140,14 @@ const api = createApi({
             }),
             providesTags: ["Equipment"]
         }),
-        //GET EQUIPMENT BY ID
         getSingleEquipment: builder.query({
-            query: (id) => ({
-                url: `/api/equipment/${id}`,
+            query: (search) => ({
+                url: `/api/equipment/${search ? "?search=" + search : ""}`,
                 method: 'GET'
             }),
-            providesTags: ["Equipment"]
         }),
 
-
-         //<---------------------------POST--------------------------->
+        //<---------------------------POST--------------------------->
         //ADD NEW REVIEW
         postReview: builder.mutation({
             query: (post) => ({
@@ -171,27 +175,45 @@ const api = createApi({
             }),
             invalidatesTags: ["Equipment"]
         }),
- //<---------------------------PATCH--------------------------->
-//PATCH REVIEW
-patchReview: builder.mutation({
-    query: ({ id, review }) => ({
-        url: `/api/review/${id}`,
-        method: 'PATCH',
-        body: { review } ,
-    }),
-    invalidatesTags: ["Reviews"]
-}),
-//PATCH USER
-patchUser: builder.mutation({
-    query: ({ id, user }) => ({
-        url: `/auth/account/${id}/edit`,
-        method: 'PATCH',
-        body: { id, user } ,
-    }),
-    invalidatesTags: ["Users"]
-}),
- //<---------------------------DELETE--------------------------->
-       //DELETE REVIEW FOR USER
+        //<---------------------------PATCH--------------------------->
+        //PATCH REVIEW
+        patchReview: builder.mutation({
+            query: ({ id, title, content, rating  }) => ({
+                url: `/api/review/${id}`,
+                method: 'PATCH',
+                body: { title, content, rating },
+            }),
+            invalidatesTags: ["Reviews"]
+        }),
+        //PATCH USER
+        patchUser: builder.mutation({
+            query: ({ id, username, email, password }) => ({
+                url: `/auth/account/${id}/edit`,
+                method: 'PATCH',
+                body: { username, email, password },
+            }),
+            invalidatesTags: ["Users"]
+        }),
+        //PATCH COMMENT
+        patchComment: builder.mutation({
+            query: ({ id, content }) => ({
+                url: `/api/comment/${id}`,
+                method: 'PATCH',
+                body: { content },
+            }),
+            invalidatesTags: ["Comments"]
+        }),
+        //PATCH EQUIPMENT 
+        patchEquipment: builder.mutation({
+            query: ({ id, equipment }) => ({
+                url: `/api/equipment/${id}`,
+                method: 'PATCH',
+                body: equipment,
+            }),
+            invalidatesTags: ["Equipments"]
+        }),
+        //<---------------------------DELETE--------------------------->
+        //DELETE REVIEW FOR USER
         deleteReviewForUser: builder.mutation({
             query: (id) => ({
                 url: `/api/review/${id}`,
@@ -229,8 +251,8 @@ patchUser: builder.mutation({
             }),
             invalidatesTags: ["Users"]
         }),
-          //DELETE EQUIPMENT
-          deleteEquipment: builder.mutation({
+        //DELETE EQUIPMENT
+        deleteEquipment: builder.mutation({
             query: (id, equipment) => ({
                 url: `/api/equipment/${id}`,
                 method: 'DELETE',
@@ -240,10 +262,10 @@ patchUser: builder.mutation({
         }),
         //<------------------TOGGLE ADMIN-------------------->
         patchToggleAdmin: builder.mutation({
-            query: ({id, isAdmin}) => ({
+            query: ({ id, isAdmin }) => ({
                 url: `/auth/admin/${id}`,
                 method: 'PATCH',
-                body: {isAdmin},
+                body: { isAdmin },
             }),
             invalidatesTags: ["Users"]
         }),
@@ -256,6 +278,7 @@ export const {
     //AUTHORIZATION
     useRegisterMutation,
     useLoginMutation,
+    useLogoutMutation,
     //GET USER'S INFO
     useGetUserQuery,
     useGetCommentByUserQuery,
@@ -279,6 +302,8 @@ export const {
     //PATCH
     usePatchReviewMutation,
     usePatchUserMutation,
+    usePatchCommentMutation,
+    usePatchEquipmentMutation,
     //DELETE
     useDeleteReviewForUserMutation,
     useDeleteCommentForUserMutation,

@@ -2,10 +2,12 @@ import Button from "@mui/material/Button"
 import Card from '@mui/material/Card';
 import Grid from "@mui/material/Grid"
 import Typography from '@mui/material/Typography';
-import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
+import RateReviewIcon from '@mui/icons-material/RateReview';
+
+import { useMediaQuery, useTheme } from "@mui/material";
 
 import { useState } from "react";
 import { useParams } from 'react-router';
@@ -18,6 +20,9 @@ import CommentForm from "./CommentForm";
 const PostsWithComments = () => {
     const [addComment, setAddComment] = useState(false);
 
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
     const { id } = useParams();
     const { data, error, isLoading } = useGetSingleReviewQuery(id);
     const { data: commentData, error: commentError, isLoading: commentLoading } = useGetCommentsQuery();
@@ -28,56 +33,113 @@ const PostsWithComments = () => {
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
     }
-    console.log(data);
-    console.log(commentData);
 
     return (
         <>
-            <Grid container>
-                <Grid item xs={6}>
-                    <Card key={data.id}>
-                        <Stack direction="row">
-                            <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                                {data.title}
-                            </Typography>
-                            <img src={data.image} alt={data.name}/>
-                            <Rating
-                                readOnly="true"
-                                value={data.rating}
-                                sx={{ alignContent: "center", m: 1 }}
-                            />
-                        </Stack>
-                        <CardContent>
-                            <Stack direction="column">
-                                <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                                    {data.content}
-                                </Typography>
-                            </Stack>
-                        </CardContent>
-                    </Card>
-                </Grid>
-
-                <Grid item xs={6}>
-                    <Card sx={{ backgroundColor: "#8da6a9", p: 2 }}>
-                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
-                            Comments:
-                        </Typography>
-                        {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
-                            <Card key={comment.id} sx={{ p: 2 }}>
-                                <Typography>
-                                    {comment.content}
-                                </Typography>
+            {isMobile ?
+                <div>
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <Card key={data.id}>
+                                <Stack direction="column">
+                                    <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+                                        {data.title}
+                                    </Typography>
+                                    <Rating
+                                        readOnly={true}
+                                        value={data.rating}
+                                        sx={{ alignContent: "center", m: 1 }}
+                                    />
+                                </Stack>
+                                <CardContent>
+                                    <Stack direction="column">
+                                        <Typography sx={{ color: "#205375", m: 1 }}>
+                                            {data.content}
+                                        </Typography>
+                                    </Stack>
+                                </CardContent>
                             </Card>
-                        ))}
-                    </Card>
-                    <Button
-                        onClick={() => setAddComment(true)}>
-                        Add a Comment
-                    </Button>
-                    {addComment && <CommentForm />}
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Card sx={{ backgroundColor: "#b6d6d4", p: 2 }}>
+                                <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
+                                    Comments:
+                                </Typography>
+                                <Button
+                                    sx={{ ml: 11, color: "#205375", backgroundColor: "transparent", my: 1 }}
+                                    onClick={() => setAddComment(true)}>
+                                    <RateReviewIcon />
+                                    Add a Comment
+                                </Button>
+                                {addComment && <CommentForm />}
+                                {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
+                                    <Card key={comment.id} sx={{ p: 2 }}>
+                                        <Typography>
+                                            {comment.content}
+                                        </Typography>
+                                    </Card>
+                                ))}
+                            </Card>
+                        </Grid>
+                    </Grid>
+                </div>
+                : //is NOT mobile...
+                <div>
+                    <Grid container>
+                        <Grid item xs={6}>
+                            <Card 
+                            key={data.id}
+                            sx={{ 
+                                mx: 2
+                            }}>
+                                <Stack direction="row">
+                                    <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+                                        {data.title}
+                                    </Typography>
+                                    <Rating
+                                        readOnly={true}
+                                        value={data.rating}
+                                        sx={{ alignContent: "center", m: 1 }}
+                                    />
+                                </Stack>
+                                <CardContent>
+                                    <Stack direction="column">
+                                        <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+                                            {data.content}
+                                        </Typography>
+                                    </Stack>
+                                </CardContent>
+                            </Card>
+                        </Grid>
 
-                </Grid>
-            </Grid>
+                        <Grid item xs={6}>
+                            <Card sx={{ 
+                                mx: 2, 
+                                backgroundColor: "#b6d6d4", p: 
+                                2 }}>
+                                <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
+                                    Comments:
+                                </Typography>
+                                <Button
+                                sx={{ 
+                                    ml: 67,
+                                    color: "#205375" 
+                                }}
+                                    onClick={() => setAddComment(true)}>
+                                    <RateReviewIcon /> Add a Comment
+                                </Button>
+                                {addComment && <CommentForm />}
+                                {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
+                                    <Card key={comment.id} sx={{ p: 2 }}>
+                                        <Typography>
+                                            {comment.content}
+                                        </Typography>
+                                    </Card>
+                                ))}
+                            </Card>
+                        </Grid>
+                    </Grid>
+                </div>}
         </>
     )
 }
