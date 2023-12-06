@@ -105,7 +105,7 @@ const AdminMapEquipment = () => {
                             All Equipment:
                         </Typography>
                         <div className="carousel">
-                            <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -1000 }}>
+                            <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -3000 }}>
                                 <Stack direction="row">
                                     {data && data.map((equipment) => (
                                         <Card
