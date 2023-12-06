@@ -19,14 +19,6 @@ import { useRegisterMutation } from "../../redux/api";
 import LoadingMessage from "../ErrorMessages/LoadingMessage"
 
 const RegisterForm = () => {
-    const [register, { data, error, isLoading }] = useRegisterMutation();
-    if (isLoading){
-        return <><LoadingMessage/></>
-    }
-    if (error) {
-        return <div>Whoops! Something went wrong registering you.</div>
-    }
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [secondPassword, setSecondPassword] = useState("");
@@ -36,6 +28,14 @@ const RegisterForm = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const navigate = useNavigate();
+
+    const [register, { data, error, isLoading }] = useRegisterMutation();
+    if (isLoading){
+        return <><LoadingMessage/></>
+    }
+    if (error) {
+        return <div>Whoops! Something went wrong registering you.</div>
+    }
 
     const handleSubmit = async (event) => {
         try {

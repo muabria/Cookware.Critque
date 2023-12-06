@@ -18,13 +18,6 @@ import { useLoginMutation } from "../../redux/api";
 import LoadingMessage from "../ErrorMessages/LoadingMessage"
 
 const LoginForm = () => {
-    const [login, { data, error, isLoading }] = useLoginMutation();
-    if (isLoading){
-        return <><LoadingMessage/></>
-    }
-    if (error) {
-        return <div>Whoops! Something went wrong logging you in.</div>
-    }
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -33,6 +26,14 @@ const LoginForm = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const navigate = useNavigate();
+
+    const [login, { data, error, isLoading }] = useLoginMutation();
+    if (isLoading){
+        return <><LoadingMessage/></>
+    }
+    if (error) {
+        return <div>Whoops! Something went wrong logging you in.</div>
+    }
 
     const handleSubmit = async (event) => {
         try {
