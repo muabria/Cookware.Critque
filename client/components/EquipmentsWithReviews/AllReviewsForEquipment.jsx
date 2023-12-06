@@ -3,12 +3,15 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 
+import { motion } from "framer-motion";
+
 import { Link, useParams } from "react-router-dom";
 
 import { useGetSingleEquipmentQuery } from "../../redux/api"
 import { useGetReviewByEquipmentQuery } from "../../redux/api";
 import { useMemo } from "react";
 import  Button  from "@mui/material/Button";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const AllReviewsForEquipment = () => {
     const { id } = useParams();
@@ -24,7 +27,7 @@ const AllReviewsForEquipment = () => {
     }, [reviewData])
 
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
@@ -34,7 +37,10 @@ const AllReviewsForEquipment = () => {
     console.log("reviewData:", reviewData);
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             <Typography variant="h2">
                 {data.name}
             </Typography>
@@ -95,7 +101,7 @@ const AllReviewsForEquipment = () => {
                     {review.title}
                 </Typography>
             ))}
-        </>
+        </motion.div>
     )
 }
 

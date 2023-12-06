@@ -14,6 +14,7 @@ import { useState } from 'react';
 import { useGetCommentByUserQuery } from '../../redux/api';
 import { useDeleteCommentForUserMutation } from "../../redux/api";
 import { usePatchCommentMutation } from "../../redux/api";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const MapComments = () => {
     const [alert, setAlert] = useState(false);
@@ -29,7 +30,7 @@ const MapComments = () => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div> Loading... </div>;
+        return <div><LoadingMessage/></div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;

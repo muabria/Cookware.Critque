@@ -3,12 +3,13 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card"
 import Typography from "@mui/material/Typography";
-
 import { useMediaQuery, useTheme } from "@mui/material";
+
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 import { useGetCategoriesQuery } from "../../redux/api"
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const MapCategories = () => {
 
@@ -20,7 +21,7 @@ const MapCategories = () => {
         return <div>Error 404: Data not found. Maybe it's hiding in the pantry...</div>
     }
     if (isLoading) {
-        return <div> Loading... </div>;
+        return <div><LoadingMessage/></div>;
     }
     if (error) {
         return <div>Sorry! Something went wrong loading the categories.</div>;

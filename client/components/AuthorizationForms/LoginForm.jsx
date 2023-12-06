@@ -15,10 +15,14 @@ import LoginIcon from '@mui/icons-material/Login';
 import { useMediaQuery, useTheme } from '@mui/material';
 
 import { useLoginMutation, useGetAllUsersValidationQuery } from "../../redux/api";
+import LoadingMessage from "../ErrorMessages/LoadingMessage"
 
 const LoginForm = () => {
     const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
     const [login, { data, error, }] = useLoginMutation();
+    if (isLoading){
+        return <><LoadingMessage/></>
+    }
     if (error) {
         return <div>Whoops! Something went wrong logging you in.</div>
     }
@@ -58,7 +62,10 @@ const LoginForm = () => {
     }
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn"}}>
             <Grid container>
                 <Grid item xs={2}>
                 </Grid>
@@ -135,7 +142,7 @@ const LoginForm = () => {
                 <Grid item xs={2}>
                 </Grid>
             </Grid>
-        </>
+        </motion.div>
     )
 }
 export default LoginForm

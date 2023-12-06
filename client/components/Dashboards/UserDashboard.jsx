@@ -5,6 +5,8 @@ import Stack from '@mui/material/Stack'
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
+import { motion } from "framer-motion";
+
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
 import MapPosts from "./MapPosts";
@@ -16,6 +18,7 @@ import { Link } from "react-router-dom";
 
 import { useGetUserQuery } from "../../redux/api";
 import AccountRedirect from "../ErrorMessages/AccountRedirect";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const UserDashboard = () => {
 
@@ -27,7 +30,7 @@ const UserDashboard = () => {
         return (<div><AccountRedirect/></div>)
     }
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Oops! Something went wrong loading your data. </div>;
@@ -35,7 +38,10 @@ const UserDashboard = () => {
         console.log(data);
     //Patch user
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             <Box>
                 {isMobile ?
                     <div>
@@ -137,7 +143,7 @@ const UserDashboard = () => {
                     </Grid>
                 }
             </Box>
-        </>
+        </motion.div>
     )
 }
 

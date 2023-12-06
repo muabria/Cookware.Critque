@@ -17,6 +17,7 @@ import { useGetEquipmentQuery } from "../../redux/api";
 import { useDeleteEquipmentMutation } from "../../redux/api";
 
 import { motion } from "framer-motion";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const AdminMapEquipment = () => {
 
@@ -31,7 +32,7 @@ const AdminMapEquipment = () => {
         return <div>Oops! Couldn't fetch the equipmnet</div>
     }
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
@@ -105,7 +106,7 @@ const AdminMapEquipment = () => {
                             All Equipment:
                         </Typography>
                         <div className="carousel">
-                            <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -1000 }}>
+                            <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -3000 }}>
                                 <Stack direction="row">
                                     {data && data.map((equipment) => (
                                         <Card

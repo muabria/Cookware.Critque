@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { useGetReviewsQuery } from "../../redux/api";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 // import { useDeleteReviewForUserMutation } from "../../redux/api";
 
 //<-----------------DELETE REVIEW HELPER FUNCTION------------------->
@@ -32,7 +33,7 @@ const MapPostsAdmin = () => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div> Loading... </div>;
+        return <div><LoadingMessage/></div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;
@@ -108,7 +109,7 @@ const MapPostsAdmin = () => {
                 :// is NOT mobile...
                 <div>
                     <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
-                        <Typography variant="h5" sx={{ textAlign: "center" }}>
+                        <Typography variant="h5" sx={{ textAlign: "center",  color: "#205375" }}>
                             All Reviews:
                         </Typography>
                         {data && data.map((review) => (

@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useGetSingleEquipmentQuery } from "../../redux/api";
 
 import SearchResults from './SearchResults';
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const SearchBar = ({ onSubmit }) => {
     const { data, error, isLoading } = useGetSingleEquipmentQuery();
@@ -18,7 +19,7 @@ const SearchBar = ({ onSubmit }) => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div> Loading... </div>;
+        return <div><LoadingMessage/></div>;
     }
     if (error) {
         return <div>Oops! Something went wrong loading the data.</div>;
