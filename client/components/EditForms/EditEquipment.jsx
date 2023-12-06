@@ -13,6 +13,8 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 
+import { motion } from "framer-motion";
+
 import { useGetCategoriesQuery } from "../../redux/api";
 import { usePatchEquipmentMutation } from "../../redux/api";
 
@@ -35,7 +37,7 @@ const EditEquipment = () => {
     return <div>No data</div>
   }
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div><isLoading/></div>
   }
   if (error) {
     return <div> Error: {error.message} </div>;
@@ -70,7 +72,10 @@ const EditEquipment = () => {
   }
   console.log(category)
   return (
-    <>
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5, ease: "easeIn" }}>
       <Accordion sx={{ m: 2 }}>
         <AccordionSummary>
           <Typography variant="h5" sx={{ textAlign: "center", p: 1 }}>
@@ -165,7 +170,7 @@ const EditEquipment = () => {
           </Stack>
         </Card>
       </Accordion>
-    </>
+    </motion.div>
   )
 }
 

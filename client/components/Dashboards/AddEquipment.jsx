@@ -15,6 +15,7 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useGetCategoriesQuery } from "../../redux/api";
 import { usePostEquipmentMutation } from "../../redux/api";
 import { useNavigate } from "react-router-dom";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const AddEquipment = () => {
     const [equipment, setEquipment] = useState("");
@@ -33,7 +34,7 @@ const AddEquipment = () => {
         return <div>No data</div>
     }
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Error: {error.message} </div>;

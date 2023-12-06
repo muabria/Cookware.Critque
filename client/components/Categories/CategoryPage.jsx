@@ -13,6 +13,9 @@ import { motion } from 'framer-motion';
 
 import { useParams } from "react-router";
 
+
+import LoadingMessage from "../ErrorMessages/LoadingMessage"
+
 const CategoryPage = () => {
 
     const { id } = useParams();
@@ -27,14 +30,17 @@ const CategoryPage = () => {
         return <div>Error 404: Data not found. Maybe it's hiding in the pantry...</div>
     }
     if (isLoading) {
-        return <div> Loading... </div>;
+        return <div><LoadingMessage/></div>;
     }
     if (error) {
         return <div>Sorry! Something went wrong loading the categories.</div>;
     }
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             {isMobile ?
                 <div>
                     <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
@@ -78,7 +84,7 @@ const CategoryPage = () => {
                                                     backgroundColor: "#EACD65",
                                                     border: "solid #D29D2B 2px"
                                                 }}>
-                                                See All Reviews
+                                                See All Reviews 
                                             </Button>
                                         </Link>
                                     </Stack>
@@ -137,7 +143,7 @@ const CategoryPage = () => {
                         </motion.div>
                     </div>
                 </div>}
-        </>
+        </motion.div>
     )
 }
 
