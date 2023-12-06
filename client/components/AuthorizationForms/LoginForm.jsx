@@ -76,11 +76,6 @@ const LoginForm = () => {
                                     size="small"
                                     variant="filled"
                                     sx={{ m: 1 }}
-                                    helperText={
-                                        password && password.length < 8
-                                            ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
-                                            : null
-                                    }
                                 />
                                 {isMobile ?
                                     <div>
