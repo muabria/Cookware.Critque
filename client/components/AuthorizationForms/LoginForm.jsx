@@ -20,7 +20,7 @@ import { useLoginMutation, useGetAllUsersValidationQuery } from "../../redux/api
 
 const LoginForm = () => {
     const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
-    const [login, { data, error, }] = useLoginMutation();
+    const [login, { data, error }] = useLoginMutation();
     if (error) {
         return <div>Whoops! Something went wrong logging you in.</div>
     }
@@ -32,10 +32,6 @@ const LoginForm = () => {
 
     const navigate = useNavigate();
 
-    const [login, { data, error, isLoading }] = useLoginMutation();
-    if (isLoading){
-        return <><LoadingMessage/></>
-    }
     if (error) {
         return <div>Whoops! Something went wrong logging you in.</div>
     }
