@@ -28,8 +28,6 @@ const AllReviewsForEquipment = () => {
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }
-    //const ratings = reviewData.map(item => item.rating);
-    
 
     console.log(data);
     console.log("reviewData:", reviewData);
