@@ -49,6 +49,12 @@ const RegisterForm = () => {
         }
     }
 
+    // const validateUsername = (name) => {
+    //     const compare = userData.find((current) => {return current.username === name})
+    //     compare !== undefined ? <Alert severity="error">Username already exists. Please choose another.</Alert> : null
+        //if (compare !== undefined) {return <Alert severity="error">Username already exists. Please choose another.</Alert>}
+    //}
+
     return (
         <>
             <Grid container>
@@ -68,6 +74,7 @@ const RegisterForm = () => {
                                     size="small"
                                     variant="filled"
                                     sx={{ m: 1 }}
+                                    //helperText={validateUsername(username)}
                                 />
                                 <TextField
                                     label="Enter E-mail"

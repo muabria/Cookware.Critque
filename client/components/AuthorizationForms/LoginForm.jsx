@@ -48,7 +48,7 @@ const LoginForm = () => {
         }
     }
 
-    //filter all users to find username that matches, otherwise error
+    //filter all users to find username that matches, otherwise "Username does not exist"
     //error if password doesn't match
 
 
