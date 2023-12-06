@@ -14,10 +14,11 @@ import Stack from "@mui/material/Stack";
 import LoginIcon from '@mui/icons-material/Login';
 import { useMediaQuery, useTheme } from '@mui/material';
 
-import { useLoginMutation } from "../../redux/api";
+import { useLoginMutation, useGetAllUsersValidationQuery } from "../../redux/api";
 
 const LoginForm = () => {
-    const [login, { data, error, isLoading }] = useLoginMutation();
+    const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
+    const [login, { data, error, }] = useLoginMutation();
     if (error) {
         return <div>Whoops! Something went wrong logging you in.</div>
     }
@@ -32,6 +33,16 @@ const LoginForm = () => {
 
     const handleSubmit = async (event) => {
         try {
+            if (password.length < 8) {
+                event.preventDefault();
+                alert("Password is too short.");
+                return
+            }
+            else if (password.length > 16) {
+                event.preventDefault();
+                alert("Password is too long.");
+                return
+            }
             event.preventDefault();
             const result = await login({ username, password })
             console.log(result)
@@ -40,6 +51,10 @@ const LoginForm = () => {
             console.error(error)
         }
     }
+
+    //filter all users to find username that matches, otherwise error
+    //error if password doesn't match
+
 
     return (
         <>
@@ -72,6 +87,7 @@ const LoginForm = () => {
                                     helperText={
                                         password && password.length < 8
                                             ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
+                                            : password.length > 16 ? <Alert severity="error"> Your password cannot be more than 16 characters long </Alert>
                                             : null
                                     }
                                 />

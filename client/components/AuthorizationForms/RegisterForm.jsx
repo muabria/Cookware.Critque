@@ -14,10 +14,11 @@ import { useMediaQuery, useTheme } from '@mui/material';
 
 import { Link, useNavigate } from "react-router-dom";
 
-import { useRegisterMutation } from "../../redux/api";
+import { useRegisterMutation, useGetAllUsersValidationQuery } from "../../redux/api";
 
 const RegisterForm = () => {
-    const [register, { data, error, isLoading }] = useRegisterMutation();
+    const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
+    const [register, error] = useRegisterMutation();
     if (error) {
         return <div>Whoops! Something went wrong registering you.</div>
     }
@@ -34,6 +35,16 @@ const RegisterForm = () => {
 
     const handleSubmit = async (event) => {
         try {
+            if (password.length < 8) {
+                event.preventDefault();
+                alert("Password is too short.");
+                return
+            }
+            else if (password.length > 16) {
+                event.preventDefault();
+                alert("Password is too long.");
+                return
+            }
             event.preventDefault();
             await register({ username, email, password, secondPassword }),
                 console.log("Success!")
@@ -82,6 +93,7 @@ const RegisterForm = () => {
                                     helperText={
                                         password && password.length < 8
                                             ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
+                                            : password.length > 16 ? <Alert severity="error"> Your password cannot be more than 16 characters long </Alert>
                                             : null
                                     }
                                 />
