@@ -13,6 +13,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import { createTheme, useMediaQuery, useTheme } from '@mui/material';
 
+import { motion } from 'framer-motion';
+
 import logo from "../images/cookingEquipmentLogo.png"
 import SearchBar from '../SearchEquipment/SearchBar';
 import MobileNavBar from './MobileNavBar';
@@ -48,62 +50,85 @@ const NavBar = () => {
                         </Typography>
 
                         <Box sx={{ maxHeight: "50px", backgroundColor: "#F9FBE7", borderRadius: "50px" }}>
-                            <Link to="/">
-                                <Button sx={{ color: "#205375", mx: 5 }}>
-                                    <HomeIcon />
-                                    Home
-                                </Button>
-                            </Link>
-                            <Link to="/posts">
-                                <Button sx={{ color: "#205375", mx: 5 }}>
-                                    Find New Kitchen Equipment
-                                </Button>
-                            </Link>
-                            <Link to="/new_review">
-                                <Button sx={{ color: "#205375", mx: 5 }}>
-                                    <RateReviewIcon /> Add a Review
-                                </Button>
-                            </Link>
-                            <Button
-                                aria-controls={open ? 'account-menu' : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
-                                onClick={handleClick}>
-                                <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
-                            </Button>
-
-                            <Menu
-                                id="account-menu"
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleClose}>
-                                <MenuItem>
-                                    <Link to="/login">
-                                        <Button>
-                                            Login
+                            <Stack direction="row">
+                                <Link to="/">
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button sx={{ color: "#205375", mx: 5 }}>
+                                            <HomeIcon />
+                                            Home
                                         </Button>
-                                    </Link>
-                                </MenuItem>
-                                <MenuItem>
-                                    <Link to="/register">
-                                        <Button>
-                                            Sign Up
+                                    </motion.div>
+                                </Link>
+                                <Link to="/posts">
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button sx={{ color: "#205375", mx: 5 }}>
+                                            Find New Kitchen Equipment
                                         </Button>
-                                    </Link>
-                                </MenuItem>
-                                <MenuItem>
-                                    <Link to="/account">
-                                        <Button>
-                                            My Account
+                                    </motion.div>
+                                </Link>
+                                <Link to="/new_review">
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Button sx={{ color: "#205375", mx: 5 }}>
+                                            <RateReviewIcon /> Add a Review
                                         </Button>
-                                    </Link>
-                                </MenuItem>
+                                    </motion.div>
+                                </Link>
 
-                                <MenuItem>
-                                    <LogoutButton />
-                                </MenuItem>
 
-                            </Menu>
+                                <Button
+                                    aria-controls={open ? 'account-menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={open ? 'true' : undefined}
+                                    onClick={handleClick}>
+                                    <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
+                                </Button>
+
+                                <Menu
+                                    id="account-menu"
+                                    anchorEl={anchorEl}
+                                    open={open}
+                                    onClose={handleClose}>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Link
+                                            to="/login"
+                                            style={{ textDecoration: "none" }}>
+                                            <MenuItem>
+                                                <Button>
+                                                    Login
+                                                </Button>
+                                            </MenuItem>
+                                        </Link>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Link
+                                            to="/register"
+                                            style={{ textDecoration: "none" }}>
+                                            <MenuItem>
+                                                <Button>
+                                                    Sign Up
+                                                </Button>
+
+                                            </MenuItem>
+                                        </Link>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <Link
+                                            to="/account"
+                                            style={{ textDecoration: "none" }}>
+                                            <MenuItem>
+                                                <Button>
+                                                    My Account
+                                                </Button>
+                                            </MenuItem>
+                                        </Link>
+                                    </motion.div>
+                                    <motion.div whileHover={{ scale: 1.2 }}>
+                                        <MenuItem>
+                                            <LogoutButton />
+                                        </MenuItem>
+                                    </motion.div>
+                                </Menu>
+                            </Stack>
                         </Box>
                     </Stack>
                 }

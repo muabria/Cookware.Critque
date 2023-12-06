@@ -108,7 +108,7 @@ const MapPostsAdmin = () => {
                 :// is NOT mobile...
                 <div>
                     <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
-                        <Typography variant="h5" sx={{ textAlign: "center" }}>
+                        <Typography variant="h5" sx={{ textAlign: "center",  color: "#205375" }}>
                             All Reviews:
                         </Typography>
                         {data && data.map((review) => (

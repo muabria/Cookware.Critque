@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import AllPost from "../Posts/AllPosts";
-import MapCategories from "../SearchEquipment/MapCategories"
+import MapCategories from "../Categories/MapCategories";
 import background from "../images/kitchenEquipmentBackground.png"
 import MapAllEquipment from "../EquipmentsWithReviews/MapAllEquipment";
 import MobileHomePage from "./MobileHomePage";
@@ -59,6 +59,7 @@ const HomePage = () => {
                                 </Grid>
                                 <Grid item xs={6.5}>
                                     <Stack direction="row">
+                                    <motion.div whileHover={{ scale: 1.3 }}>
                                         <Link to="/posts">
                                             <Button sx={{ 
                                                 boxShadow: 3,
@@ -72,6 +73,7 @@ const HomePage = () => {
                                                 </Typography>
                                             </Button>
                                         </Link>
+                                        </motion.div>
                                     </Stack>
                                 </Grid>
                             </Grid>
