@@ -88,10 +88,10 @@ async function seed() {
             data: {
                 name: "Chef Kitchen Knife",
                 description: " A versatile knife for chopping, slicing, and dicing.",
-                image: "https://www.foodandwine.com/thmb/4SOH_P7cWin0hb7tKCGTklia-R4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/Best-Cold-Press-Juicers-Tested-FW-Social-d23056545dd44c33814aecbc32f8bfee.jpg",
+                image: "https://assets.wfcdn.com/im/72291186/resize-h445%5Ecompr-r85/2431/243198643/AIRPJ+21+Piece+Stainless+Steel+Knife+Block+Set.jpg",
                 category: { connect: { id: basic.id } },
                 brand: "Kitchen Aid, Walmart, Target, Amazon",
-                purchaseLink: "https://www.amazon.com/WÜSTHOF-Classic-Chefs-Knife-8-Inch/dp/B08CS96H2K",
+                purchaseLink: "https://www.wayfair.com/AIRPJ--AIRPJ-21-Piece-Stainless-Steel-Knife-Block-Set-USKS4-L3494-K~ARPJ1033.html?refid=GX490221400217-ARPJ1033&device=c&ptid=2018412487158&network=g&targetid=aud-1613017765086:pla-2018412487158&channel=GooglePLA&ireid=243198643&fdid=1817&gad_source=1&gbraid=0AAAAAD9ISC6E8pgMMotfw6V6396w_bXX8&gclid=Cj0KCQiAsburBhCIARIsAExmsu61CbmGX6h67XQsDwxTN-OBXkBZdPc0q0vycQvsgSsR2Tne3xVRINgaAqQwEALw_wcB",
                 priceRating: 2
             },
             include: { category: true }
