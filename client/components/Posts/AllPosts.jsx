@@ -13,24 +13,28 @@ import Button from '@mui/material/Button';
 
 import { motion } from 'framer-motion';
 
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
 import { useGetReviewsQuery } from '../../redux/api';
 
 import SearchBar from '../SearchEquipment/SearchBar';
+import LoadingMessage from '../ErrorMessages/LoadingMessage';
 
 const AllPosts = () => {
     const { data, error, isLoading } = useGetReviewsQuery()
-    
+
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
     }
 
     return (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn" }}>
             <Box sx={{ maxHeight: "60px", mb: 3 }}>
                 <Typography variant="h3" sx={{ textAlign: "center", color: "#205375" }}>
                     Explore Trusted Critiques Made from Real Users
@@ -41,15 +45,16 @@ const AllPosts = () => {
             </Box>
             <Box sx={{ mx: 5 }}>
                 <div className="carousel">
-                    <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -3000 }}>
+                    <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -2800 }}>
                         <Stack direction="row">
                             {data && data.map((review) => (
-                                <Grid container>
+                                <Grid container key={review.id} >
                                     <Grid item xs={8}>
                                         <Card key={review.id}
                                             sx={{
+                                                boxShadow: 3,
                                                 backgroundColor: "#F9FBE7",
-                                                border: "solid #D29D2B 5px",
+                                                border: "solid #D29D2B 2px",
                                                 borderRadius: "10px",
                                                 minWidth: 300,
                                                 minHeight: 300,
@@ -78,7 +83,15 @@ const AllPosts = () => {
                                                     <ShareIcon />
                                                 </IconButton> */}
                                                 <Link to={`/review/${review.id}`} >
-                                                    <Button sx={{ m: 1 }}>
+                                                    <Button
+                                                        sx={{
+                                                            my: 2,
+                                                            ml: 8,
+                                                            boxShadow: 3,
+                                                            color: "#3C1B1F",
+                                                            backgroundColor: "#EACD65",
+                                                            border: "solid #D29D2B 2px"
+                                                        }}>
                                                         See the Full Review
                                                     </Button>
                                                 </Link>
@@ -92,7 +105,7 @@ const AllPosts = () => {
                     </motion.div>
                 </div>
             </Box>
-        </>
+        </motion.div>
     );
 }
-export default AllPosts
+export default AllPosts 

@@ -16,6 +16,7 @@ import Rating from "@mui/material/Rating";
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const MobileNewPost = () => {
     //<-----------------TEXTFIELD STATE------------------->
@@ -45,7 +46,7 @@ const MobileNewPost = () => {
     const [postReview, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostReviewMutation(); //include error handling
 
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
