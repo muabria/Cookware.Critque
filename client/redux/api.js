@@ -43,7 +43,7 @@ const api = createApi({
         }),
         //LOGOUT ACCOUNT
         logout: builder.mutation({
-            query: () => ({
+            queryFn: () => ({
                 data: {}
             }),
             invalidatesTags: ["Users"]
