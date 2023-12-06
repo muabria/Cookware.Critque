@@ -48,6 +48,13 @@ const api = createApi({
             }),
             invalidatesTags: ["Users"]
         }),
+        //GET ALL USERS FOR VALIDATION
+        getAllUsersValidation: builder.query({
+            query: () => ({
+                url: `/auth/users/validate`,
+                method: 'GET',
+            }),
+        }),
         //<---------------------------GET USER INFO--------------------------->
         //GET USER
         getUser: builder.query({
@@ -288,6 +295,7 @@ export const {
     useRegisterMutation,
     useLoginMutation,
     useLogoutMutation,
+    useGetAllUsersValidationQuery,
     //GET USER'S INFO
     useGetUserQuery,
     useGetCommentByUserQuery,

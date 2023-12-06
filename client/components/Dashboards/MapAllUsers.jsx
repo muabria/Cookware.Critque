@@ -30,6 +30,12 @@ const MapAllUsers = () => {
     const { data, error, isLoading } = useGetAllUsersQuery();
     const [patchToggleAdmin, { error: adminError, isLoading: adminIsLoading, data: adminData }] = usePatchToggleAdminMutation();
 
+    const sortFunc = (a,b) => {
+        if (a.username < b.username) return -1;
+        if (a.username > b.username) return 1;
+        return 0
+    }
+
     if (!data) {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
@@ -53,7 +59,7 @@ const MapAllUsers = () => {
                                 All Users <ExpandCircleDownIcon sx={{ color: "#205375" }} />
                             </Typography>
                         </AccordionSummary>
-                        {data && data.map((user) => (
+                        {data && data.slice().sort((a,b) => a.username.localeCompare(b.username)).map((user) => (
                             <Card key={user.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
                                     <Grid item xs={12}>
@@ -129,7 +135,7 @@ const MapAllUsers = () => {
                         <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                             All Users:
                         </Typography>
-                        {data && data.map((user) => (
+                        {data && data.slice().sort((a,b) => a.username.localeCompare(b.username)).map((user) => (
                             <Card key={user.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
                                     <Grid item xs={8}>
