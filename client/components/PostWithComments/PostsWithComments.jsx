@@ -33,8 +33,6 @@ const PostsWithComments = () => {
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
     }
-    console.log(data);
-    console.log(commentData);
 
     return (
         <>

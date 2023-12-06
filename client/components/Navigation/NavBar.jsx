@@ -92,16 +92,9 @@ const NavBar = () => {
                                     </Link>
                                 </MenuItem>
                                 <MenuItem>
-                                    <Link to="/admin_dashboard">
-                                        <Button>
-                                            admin
-                                        </Button>
-                                    </Link>
-                                </MenuItem>
-                                <MenuItem>
                                     <Link to="/account">
                                         <Button>
-                                            user dashboard
+                                            My Account
                                         </Button>
                                     </Link>
                                 </MenuItem>
@@ -109,7 +102,7 @@ const NavBar = () => {
                                 <MenuItem>
                                     <LogoutButton />
                                 </MenuItem>
-                                
+
                             </Menu>
                         </Box>
                     </Stack>

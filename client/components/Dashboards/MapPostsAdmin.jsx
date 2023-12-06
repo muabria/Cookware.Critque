@@ -37,7 +37,6 @@ const MapPostsAdmin = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    console.log(data);
 
     return (
         <>
@@ -55,17 +54,17 @@ const MapPostsAdmin = () => {
                             <Card key={review.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
                                     <Grid item xs={12}>
-                                        <Typography variant="h5" sx={{ textAlign: "center" }}>
+                                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                             {review.title}
                                         </Typography>
-                                        <Typography variant="h6">
+                                        <Typography variant="h6" sx={{ color: "#205375" }}>
                                             {review.equipment}
                                         </Typography>
                                         <Rating
                                             readOnly={true}
                                             value={review.rating}
                                         />
-                                        <Typography>
+                                        <Typography sx={{ color: "#205375" }}>
                                             {review.content}
                                         </Typography>
                                     </Grid>
@@ -116,17 +115,17 @@ const MapPostsAdmin = () => {
                             <Card key={review.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
                                     <Grid item xs={8}>
-                                        <Typography variant="h5" sx={{ textAlign: "center" }}>
+                                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                             {review.title}
                                         </Typography>
-                                        <Typography variant="h6">
+                                        <Typography variant="h6" sx={{ color: "#205375" }}>
                                             {review.equipment}
                                         </Typography>
                                         <Rating
                                             readOnly={true}
                                             value={review.rating}
                                         />
-                                        <Typography>
+                                        <Typography sx={{ color: "#205375" }}>
                                             {review.content}
                                         </Typography>
                                     </Grid>
