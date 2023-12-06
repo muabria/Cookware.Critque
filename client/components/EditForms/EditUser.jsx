@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { usePatchUserMutation, useGetUserQuery } from "../../redux/api";
 import { useState } from "react";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const EditUser = () => {
     const { id } = useParams();
@@ -38,7 +39,7 @@ const EditUser = () => {
         return <div>Error</div>
     }
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div><LoadingMessage/></div>
     }
 
     return userData && (

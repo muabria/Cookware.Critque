@@ -15,9 +15,13 @@ import LoginIcon from '@mui/icons-material/Login';
 import { useMediaQuery, useTheme } from '@mui/material';
 
 import { useLoginMutation } from "../../redux/api";
+import LoadingMessage from "../ErrorMessages/LoadingMessage"
 
 const LoginForm = () => {
     const [login, { data, error, isLoading }] = useLoginMutation();
+    if (isLoading){
+        return <><LoadingMessage/></>
+    }
     if (error) {
         return <div>Whoops! Something went wrong logging you in.</div>
     }

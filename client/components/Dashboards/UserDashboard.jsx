@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 
 import { useGetUserQuery } from "../../redux/api";
 import AccountRedirect from "../ErrorMessages/AccountRedirect";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const UserDashboard = () => {
 
@@ -27,7 +28,7 @@ const UserDashboard = () => {
         return (<div><AccountRedirect/></div>)
     }
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Oops! Something went wrong loading your data. </div>;

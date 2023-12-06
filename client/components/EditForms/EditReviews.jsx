@@ -13,6 +13,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { useParams } from "react-router-dom"
 
 import { useGetSingleReviewQuery, usePatchReviewMutation } from "../../redux/api"
+import LoadingMessage from "../ErrorMessages/LoadingMessage"
 
 const EditReviews = () => {
     const [title, setTitle] = useState("");
@@ -24,11 +25,12 @@ const EditReviews = () => {
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetSingleReviewQuery(id);
 
     const [patchReview, { data, error, isLoading }] = usePatchReviewMutation();
+    
     if (error) {
         return <div>Error</div>
     }
     if (isLoading) {
-        return <div>is loading..</div>
+        return <div><LoadingMessage/></div>
     }
 
     const handleSubmit = async (event) => {

@@ -103,7 +103,7 @@ const AddPostContent = () => {
     return (
         <>
             {isMobile ?
-                <div><MobileNewPost /></div>
+                <div><MobileNewPost/></div>
                 : //is NOT mobile...
                 <div>
                     <Grid container>

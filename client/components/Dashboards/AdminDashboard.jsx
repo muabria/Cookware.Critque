@@ -14,6 +14,7 @@ import MapAllUsers from "./MapAllUsers";
 import AddEquipment from "./AddEquipment";
 import MapPostsAdmin from "./MapPostsAdmin";
 import AdminMapEquipment from "./AdminMapEquipment";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const AdminDashboard = () => {
     const theme = useTheme();
@@ -25,7 +26,7 @@ const AdminDashboard = () => {
         return <div>No data</div>
     }
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Oops! Something went wrong loading the data. </div>;

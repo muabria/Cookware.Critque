@@ -17,6 +17,7 @@ import { useState } from 'react';
 
 import { useDeleteUserMutation } from "../../redux/api";
 import { useGetAllUsersQuery, usePatchToggleAdminMutation } from '../../redux/api';
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const MapAllUsers = () => {
     const [alert, setAlert] = useState(false);
@@ -33,7 +34,7 @@ const MapAllUsers = () => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div> Loading... </div>;
+        return <div><LoadingMessage/></div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;

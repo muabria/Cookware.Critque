@@ -9,6 +9,7 @@ import { useGetSingleEquipmentQuery } from "../../redux/api"
 import { useGetReviewByEquipmentQuery } from "../../redux/api";
 import { useMemo } from "react";
 import  Button  from "@mui/material/Button";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const AllReviewsForEquipment = () => {
     const { id } = useParams();
@@ -24,7 +25,7 @@ const AllReviewsForEquipment = () => {
     }, [reviewData])
 
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>

@@ -16,6 +16,7 @@ import { useGetSingleReviewQuery } from '../../redux/api';
 import { useGetCommentsQuery } from '../../redux/api';
 
 import CommentForm from "./CommentForm";
+import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const PostsWithComments = () => {
     const [addComment, setAddComment] = useState(false);
@@ -28,7 +29,7 @@ const PostsWithComments = () => {
     const { data: commentData, error: commentError, isLoading: commentLoading } = useGetCommentsQuery();
 
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>

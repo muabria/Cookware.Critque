@@ -13,6 +13,9 @@ import { motion } from 'framer-motion';
 
 import { useParams } from "react-router";
 
+
+import LoadingMessage from "../ErrorMessages/LoadingMessage"
+
 const CategoryPage = () => {
 
     const { id } = useParams();
@@ -27,7 +30,7 @@ const CategoryPage = () => {
         return <div>Error 404: Data not found. Maybe it's hiding in the pantry...</div>
     }
     if (isLoading) {
-        return <div> Loading... </div>;
+        return <div><LoadingMessage/></div>;
     }
     if (error) {
         return <div>Sorry! Something went wrong loading the categories.</div>;

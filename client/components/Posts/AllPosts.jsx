@@ -18,12 +18,13 @@ import { Link } from 'react-router-dom';
 import { useGetReviewsQuery } from '../../redux/api';
 
 import SearchBar from '../SearchEquipment/SearchBar';
+import LoadingMessage from '../ErrorMessages/LoadingMessage';
 
 const AllPosts = () => {
     const { data, error, isLoading } = useGetReviewsQuery()
 
     if (isLoading) {
-        return <div> Please Wait.. Still Loading</div>
+        return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
