@@ -203,7 +203,6 @@ const MapPosts = () => {
                                     Are you sure you want to edit this post?
                                     <Link to={`/edit_review/${review.id}`}>
                                         <Button
-                                            onClick={console.log("Working!")}
                                             variant="outlined"
                                             color="error"
                                             sx={{ m: 1 }}>
