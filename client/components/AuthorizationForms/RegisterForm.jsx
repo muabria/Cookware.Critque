@@ -13,9 +13,10 @@ import LoginIcon from '@mui/icons-material/Login';
 
 import { Link, useNavigate } from "react-router-dom";
 
-import { useRegisterMutation } from "../../redux/api";
+import { useRegisterMutation, useGetAllUsersValidationQuery } from "../../redux/api";
 
 const RegisterForm = () => {
+    const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
     const [register, error] = useRegisterMutation();
     if (error) {
         return <div>Whoops! Something went wrong registering you.</div>
