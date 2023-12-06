@@ -7,12 +7,20 @@ import { useParams } from "react-router-dom";
 
 import { useGetSingleEquipmentQuery } from "../../redux/api"
 import { useGetReviewByEquipmentQuery } from "../../redux/api";
+import { useMemo } from "react";
 
 const AllReviewsForEquipment = () => {
     const { id } = useParams();
     const { data, error, isLoading } = useGetSingleEquipmentQuery(id);
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetReviewByEquipmentQuery(id);
-
+    const avgRating = useMemo(() => {
+        if (!reviewData) return 0;
+        let sum = 0;
+        for (let i = 0; i < reviewData.length; i++) {
+            sum = sum + reviewData[i].rating;
+        };
+        return sum / (reviewData.length);
+    }, [reviewData])
 
     if (isLoading) {
         return <div> Please Wait.. Still Loading</div>
@@ -21,27 +29,20 @@ const AllReviewsForEquipment = () => {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }
     //const ratings = reviewData.map(item => item.rating);
-
-    // let sum = 0;
-    // for (let i=0; i < reviewData.length; i++) {
-    //     sum = sum + reviewData[i].rating;
-    // };
-    // let avgRating = sum/(reviewData.length);
+    
 
     console.log(data);
     console.log("reviewData:", reviewData);
-    //console.log("ratings", ratings)
-    console.log(reviewError);
     return (
         <>
             <Typography variant="h2">
                 {data.name}
             </Typography>
-            {/* <Rating
-                readOnly="true"
-                //value={avgRating}
+            <Rating
+                readOnly={true}
+                value={avgRating}
                 sx={{ alignContent: "center", m: 1 }}
-            /> */}
+            />
             <Stack direction="row">
                 <Card>
                     <Stack direction="column">
@@ -66,14 +67,14 @@ const AllReviewsForEquipment = () => {
                     </Stack>
                 </Card>
                 {reviewData && reviewData.map((review) => (
-                    <Card>
+                    <Card key={review.id}>
                         <Stack direction="column">
                             <Typography variant="h5">
                                 {review.title}
                             </Typography>
                             
                             <Rating
-                                readOnly="true"
+                                readOnly={true}
                                 value={review.rating}
                                 size="small"
                                 sx={{ alignContent: "center", m: 1 }}
