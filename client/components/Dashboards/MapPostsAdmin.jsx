@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { useGetReviewsQuery } from "../../redux/api";
+import { useDeleteReviewForUserMutation } from "../../redux/api";
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
 // import { useDeleteReviewForUserMutation } from "../../redux/api";
 
@@ -28,12 +29,13 @@ const MapPostsAdmin = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const { data, error, isLoading } = useGetReviewsQuery();
+    const [deleteReview, { data: mutationData, error: mutationError, isLoading: mutationIsLoading }] = useDeleteReviewForUserMutation();
 
     if (!data) {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>;
+        return <div><LoadingMessage /></div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;
@@ -45,10 +47,10 @@ const MapPostsAdmin = () => {
                 <div>
                     <Accordion sx={{ m: 2, backgroundColor: "#D9E4DD" }}>
                         <AccordionSummary>
-                            <Typography 
-                            variant="h5" 
-                            sx={{ textAlign: "center", color: "#205375" }}>
-                                All Reviews <ExpandCircleDownIcon sx={{ color: "#205375" }}/>
+                            <Typography
+                                variant="h5"
+                                sx={{ textAlign: "center", color: "#205375" }}>
+                                All Reviews <ExpandCircleDownIcon sx={{ color: "#205375" }} />
                             </Typography>
                         </AccordionSummary>
                         {data && data.map((review) => (
@@ -84,32 +86,32 @@ const MapPostsAdmin = () => {
                                         </Button>
                                     </Grid>
                                 </Grid>
+                                {alert && <Alert severity="warning">
+                                    Are you sure you want to delete this post? Once you do it's gone forever.
+                                    <Button
+                                        onClick={() => deleteReview(review.id)}
+                                        variant="outlined"
+                                        color="error"
+                                        sx={{ m: 1 }}>
+                                        Yes, delete this review
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        onClick={() => setAlert(false)}
+                                        sx={{ m: 1 }}>
+                                        No, keep this review
+                                    </Button>
+                                </Alert>
+                                }
                             </Card>
                         ))}
-                        {alert && <Alert severity="warning">
-                            Are you sure you want to delete this post? Once you do it's gone forever.
-                            <Button
-                                onClick={() => deleteReview()}
-                                variant="outlined"
-                                color="error"
-                                sx={{ m: 1 }}>
-                                Yes, delete this review
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                onClick={() => setAlert(false)}
-                                sx={{ m: 1 }}>
-                                No, keep this review
-                            </Button>
-                        </Alert>
-                        }
                     </Accordion>
                 </div>
 
                 :// is NOT mobile...
                 <div>
                     <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
-                        <Typography variant="h5" sx={{ textAlign: "center",  color: "#205375" }}>
+                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                             All Reviews:
                         </Typography>
                         {data && data.map((review) => (
@@ -147,25 +149,25 @@ const MapPostsAdmin = () => {
                                         </Button>
                                     </Grid>
                                 </Grid>
+                                {alert && <Alert severity="warning">
+                                    Are you sure you want to delete this post? Once you do it's gone forever.
+                                    <Button
+                                        onClick={() => deleteReview(review.id)}
+                                        variant="outlined"
+                                        color="error"
+                                        sx={{ m: 1 }}>
+                                        Yes, delete this review
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        onClick={() => setAlert(false)}
+                                        sx={{ m: 1 }}>
+                                        No, keep this review
+                                    </Button>
+                                </Alert>
+                                }
                             </Card>
                         ))}
-                        {alert && <Alert severity="warning">
-                            Are you sure you want to delete this post? Once you do it's gone forever.
-                            <Button
-                                onClick={() => deleteReview()}
-                                variant="outlined"
-                                color="error"
-                                sx={{ m: 1 }}>
-                                Yes, delete this review
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                onClick={() => setAlert(false)}
-                                sx={{ m: 1 }}>
-                                No, keep this review
-                            </Button>
-                        </Alert>
-                        }
                     </Card>
                 </div>
             }

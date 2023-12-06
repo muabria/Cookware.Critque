@@ -251,6 +251,15 @@ const api = createApi({
             }),
             invalidatesTags: ["Users"]
         }),
+        //DELETE USER'S REVIEW
+        deleteUsersPost: builder.mutation({
+            query: (id, post) => ({
+                url: `/api/admin/post/${id}`,
+                method: 'DELETE',
+                body: post
+            }),
+            invalidatesTags: ["Reviews"]
+    }),
         //DELETE EQUIPMENT
         deleteEquipment: builder.mutation({
             query: (id, equipment) => ({
@@ -310,6 +319,7 @@ export const {
     //ADMIN
     useGetAllUsersQuery,
     useDeleteUserMutation,
+    useDeleteUsersPostMutation,
     useDeleteEquipmentMutation,
     usePatchToggleAdminMutation,
 } = api
