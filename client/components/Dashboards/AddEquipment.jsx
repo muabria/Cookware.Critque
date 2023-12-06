@@ -14,7 +14,6 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import { useGetCategoriesQuery } from "../../redux/api";
 import { usePostEquipmentMutation } from "../../redux/api";
-import { useNavigate } from "react-router-dom";
 
 const AddEquipment = () => {
     const [equipment, setEquipment] = useState("");
@@ -28,7 +27,6 @@ const AddEquipment = () => {
     const [newEquipmentInfo, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostEquipmentMutation();
 
     const { data, error, isLoading } = useGetCategoriesQuery();
-    const navigate = useNavigate();
     if (!data) {
         return <div>No data</div>
     }
@@ -72,7 +70,6 @@ const AddEquipment = () => {
             event.preventDefault();
             const result = await newEquipmentInfo({ name, description, image, categoryId: category, priceRating: Number(priceRating), brand, purchaseLink })
             console.log(result)
-            navigate("/admin_dashboard");
         } catch (error) {
             console.error(error)
         }
