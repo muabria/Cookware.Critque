@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import Box from "@mui/material/Box"
+import Alert from "@mui/material/Alert"
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
 import Grid from "@mui/material/Grid"
@@ -85,10 +85,15 @@ const EditReviews = () => {
                                     onChange={(event) => setRating(event.target.value)}
                                     size="small"
                                     sx={{ m: 1, backgroundColor: "white" }}
+                                    helperText={
+                                        rating > 5 || rating < 0
+                                            ? <Alert severity="error">The item's rating must be on a scale of 1- 5</Alert>
+                                            : null
+                                    }
                                 />
                             </Stack>
                             <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
-                                Create Your Critique!
+                                Save Changes
                             </Button>
                         </Card>
                     </form>
