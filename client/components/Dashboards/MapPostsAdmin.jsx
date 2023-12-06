@@ -72,7 +72,7 @@ const MapPostsAdmin = () => {
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Link to={`/equipment/${review.id}/review`}>
+                                        <Link to={`/review/${review.id}`}>
                                             <Button
                                                 sx={{ m: 1 }}>
                                                 <PreviewIcon />
@@ -133,7 +133,7 @@ const MapPostsAdmin = () => {
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={4}>
-                                        <Link to={`/equipment/${review.id}/review`}>
+                                        <Link to={`/review/${review.id}`}>
                                             <Button
                                                 variant="outlined"
                                                 sx={{ m: 1 }}>
