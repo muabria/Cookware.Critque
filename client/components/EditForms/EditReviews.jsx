@@ -12,7 +12,7 @@ import StarIcon from '@mui/icons-material/Star';
 
 import { motion } from "framer-motion"
 
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 import { useGetSingleReviewQuery, usePatchReviewMutation } from "../../redux/api"
 import LoadingMessage from "../ErrorMessages/LoadingMessage"
@@ -23,6 +23,7 @@ const EditReviews = () => {
     const [rating, setRating] = useState(0);
 
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetSingleReviewQuery(id);
 
@@ -40,6 +41,7 @@ const EditReviews = () => {
             event.preventDefault();
             const result = await patchReview({ id, title, content, rating: Number(rating) })
             console.log(result)
+            navigate("/account");
         } catch (error) {
             console.error(error)
         }

@@ -38,6 +38,8 @@ const RegisterForm = () => {
         return <div>Whoops! Something went wrong registering you.</div>
     }
 
+    let validUser = false;
+
     const handleSubmit = async (event) => {
         try {
             if (password.length < 8) {
@@ -45,23 +47,25 @@ const RegisterForm = () => {
                 alert("Password is too short.");
                 return
             }
-            else if (password.length > 16) {
+            if (password.length > 16) {
                 event.preventDefault();
                 alert("Password is too long.");
                 return
             }
+            if (validUser === true) {
             event.preventDefault();
             await register({ username, email, password, secondPassword }),
                 console.log("Success!")
             navigate("/account")
-        } catch (error) {
+        }} catch (error) {
             console.error(error)
         }
     }
 
     const validateUsername = (name) => {
         const compare = userData.find((current) => {return current.username === name})
-        if (compare !== undefined) {return <Alert severity="error">Username already exists. Please choose another.</Alert>}
+        if (compare !== undefined) {validUser = false; return <Alert severity="error">Username already exists. Please choose another.</Alert>}
+        if (compare === undefined) {validUser = true}
     }
 
     return (

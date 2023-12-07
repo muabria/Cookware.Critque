@@ -70,7 +70,7 @@ const MapPosts = () => {
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={4}>
-                                        <Link to={`/equipment/${review.id}/review`}>
+                                        <Link to={`/equipment/${review.id}`}>
                                             <Button>
                                                 <PreviewIcon />
                                             </Button>
@@ -158,7 +158,7 @@ const MapPosts = () => {
                                     </Grid>
                                     <Grid item xs={1.5}>
                                         <Stack direction="column">
-                                            <Link to={`/equipment/${review.id}/review`}>
+                                            <Link to={`/equipment/${review.id}`}>
                                                 <Button
                                                     variant="outlined"
                                                     sx={{ m: 1 }}>

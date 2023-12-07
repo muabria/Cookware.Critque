@@ -36,6 +36,8 @@ const LoginForm = () => {
         return <div>Whoops! Something went wrong logging you in.</div>
     }
 
+    let validUser = false;
+
     const handleSubmit = async (event) => {
         try {
             if (password.length < 8) {
@@ -43,23 +45,25 @@ const LoginForm = () => {
                 alert("Password is too short.");
                 return
             }
-            else if (password.length > 16) {
+            if (password.length > 16) {
                 event.preventDefault();
                 alert("Password is too long.");
                 return
             }
+            if (validUser === true) {
             event.preventDefault();
             const result = await login({ username, password })
             console.log(result)
             navigate("/account")
-        } catch (error) {
+        }} catch (error) {
             console.error(error)
         }
     }
 
     const validateUsername = (name) => {
         const compare = userData.find((current) => {return current.username === name})
-        if (compare === undefined) {return <Alert severity="error">Username not found.</Alert>}
+        if (compare === undefined) {validUser = false; return <Alert severity="error">Username not found.</Alert>}
+        if (compare !== undefined) {validUser = true}
     }
 
     return (
