@@ -99,8 +99,8 @@ const UserDashboard = () => {
                                     <ManageAccountsIcon sx={{ color: "#205375" }} />
                                     Account Information
                                 </Typography>
-                                <Typography sx={{ color: "#205375", my: 5 }}>
-                                    <Link to="/account/edit">
+                                <Typography sx={{ my: 5 }}>
+                                    <Link to="/account/edit" style={{textDecoration: "none", color:"#205375" }}>
                                         <EditIcon style={{ color: "#205375" }} />
                                         Edit Account
                                     </Link>
