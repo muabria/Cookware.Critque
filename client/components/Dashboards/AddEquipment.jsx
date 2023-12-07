@@ -28,7 +28,6 @@ const AddEquipment = () => {
     const [newEquipmentInfo, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostEquipmentMutation();
 
     const { data, error, isLoading } = useGetCategoriesQuery();
-
     if (!data) {
         return <div>No data</div>
     }
