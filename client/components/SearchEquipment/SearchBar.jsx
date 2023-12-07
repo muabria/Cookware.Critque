@@ -19,7 +19,7 @@ const SearchBar = ({ onSubmit }) => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>;
+        return <div><LoadingMessage /></div>;
     }
     if (error) {
         return <div>Oops! Something went wrong loading the data.</div>;
@@ -34,21 +34,26 @@ const SearchBar = ({ onSubmit }) => {
     return (
         <>
             {/*----------------------------------TEXT FIELD-------------------------------- */}
-                <Stack direction="row">
+            <Stack direction="row">
                 <TextField
                     type="text"
                     label="Search Equipment By Name"
                     fullWidth
                     value={searchEquipment}
                     onChange={(event) => {
-                        if (showResult === true) {
-                            setShowResult(false);
+                        // Check if the entered value is longer than the limit
+                        if (event.target.value.length > 24) {
+                            // Alert the user
+                            alert("Too many characters. Maximum 24 characters allowed.");
+                        } else {
+                            setSearchEquipment(event.target.value);
                         }
-                        setSearchEquipment(event.target.value)
                     }}
                     sx={{
                         backgroundColor: 'white',
                     }}
+                    // Set the maximum length to 24
+                    maxLength={24}
                 />
                 {/*----------------------------------SUBMIT BUTTON-------------------------------- */}
                 <Button
@@ -61,10 +66,10 @@ const SearchBar = ({ onSubmit }) => {
                     }}>
                     <SearchIcon />
                 </Button>
-                </Stack>
+            </Stack>
 
-                {showResult &&
-                    <SearchResults results={filteredSearch} />}
+            {showResult &&
+                <SearchResults results={filteredSearch} />}
         </>
     );
 };
