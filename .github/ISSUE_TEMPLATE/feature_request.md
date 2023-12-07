@@ -3,7 +3,7 @@ name: Feature request
 about: Suggest an idea for this project
 title: ''
 labels: dog-fooding, enhancement
-assignees: katc336, mizhenn, muabria, mvandell
+assignees: ''
 
 ---
 
