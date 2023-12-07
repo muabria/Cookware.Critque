@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
+import EditIcon from '@mui/icons-material/Edit';
 import MapPosts from "./MapPosts";
 import MapComments from "./MapComments";
 
@@ -27,10 +28,10 @@ const UserDashboard = () => {
 
     const { data, error, isLoading } = useGetUserQuery()
     if (!data) {
-        return (<div><AccountRedirect/></div>)
+        return (<div><AccountRedirect /></div>)
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Oops! Something went wrong loading your data. </div>;
@@ -39,9 +40,9 @@ const UserDashboard = () => {
     //Patch user
     return (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeIn" }}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
             <Box>
                 {isMobile ?
                     <div>
@@ -98,6 +99,12 @@ const UserDashboard = () => {
                                     <ManageAccountsIcon sx={{ color: "#205375" }} />
                                     Account Information
                                 </Typography>
+                                <Typography sx={{ color: "#205375", my: 5 }}>
+                                    <Link to="/account/edit">
+                                        <EditIcon style={{ color: "#205375" }} />
+                                        Edit Account
+                                    </Link>
+                                    </Typography>
                                 <Typography sx={{ my: 5, color: "#205375" }}>
                                     <LogoutSharpIcon sx={{ color: "#205375" }} /> Logout
                                 </Typography>
