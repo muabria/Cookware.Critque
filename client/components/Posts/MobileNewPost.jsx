@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { usePostReviewMutation } from "../../redux/api";
 import { useGetEquipmentQuery } from "../../redux/api";
+import { useNavigate } from "react-router-dom";
 
 import { motion, useAnimationControls } from "framer-motion";
 
@@ -17,6 +18,7 @@ import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
+
 
 const MobileNewPost = () => {
     //<-----------------TEXTFIELD STATE------------------->
@@ -45,6 +47,8 @@ const MobileNewPost = () => {
     const { data, error, isLoading } = useGetEquipmentQuery();
     const [postReview, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostReviewMutation(); //include error handling
 
+    const navigate = useNavigate();
+    
     if (isLoading) {
         return <div><LoadingMessage/></div>
     }
@@ -60,7 +64,8 @@ const MobileNewPost = () => {
         try {
             event.preventDefault();
             const result = await postReview({ equipmentId: Number(equipment), title, content, rating: Number(rating) })
-            console.log(result)
+            console.log(result);
+            navigate("/");
         } catch (error) {
             console.error(error)
         }

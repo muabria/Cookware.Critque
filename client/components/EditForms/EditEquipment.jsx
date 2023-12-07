@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -32,6 +32,7 @@ const EditEquipment = () => {
   const [patchEquipment, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePatchEquipmentMutation(id);
 
   const { data, error, isLoading } = useGetCategoriesQuery();
+  const navigate = useNavigate();
 
   if (!data) {
     return <div>No data</div>
@@ -65,7 +66,8 @@ const EditEquipment = () => {
         id,
         equipment: { name, description, image, categoryId: category, priceRating: Number(priceRating), brand, purchaseLink }
       })
-      console.log(result)
+      console.log(result);
+      navigate("/admin_dashboard");
     } catch (error) {
       console.error(error)
     }
