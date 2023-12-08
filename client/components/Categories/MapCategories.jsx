@@ -17,12 +17,6 @@ const MapCategories = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const { data, error, isLoading } = useGetCategoriesQuery();
-    if (!data) {
-        return <div>Error 404: Data not found. Maybe it's hiding in the pantry...</div>
-    }
-    if (isLoading) {
-        return <div><LoadingMessage/></div>;
-    }
     if (error) {
         return <div>Sorry! Something went wrong loading the categories.</div>;
     }

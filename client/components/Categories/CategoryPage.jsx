@@ -13,7 +13,6 @@ import { motion } from 'framer-motion';
 
 import { useParams } from "react-router";
 
-
 import LoadingMessage from "../ErrorMessages/LoadingMessage"
 
 const CategoryPage = () => {
@@ -26,9 +25,6 @@ const CategoryPage = () => {
     const { data, error, isLoading } = useGetSingleCategoryQuery(id);
     const { data: equipmentData, error: equipmentError, isLoading: equipmetLoading } = useGetEquipmentQuery();
 
-    if (!data) {
-        return <div>Error 404: Data not found. Maybe it's hiding in the pantry...</div>
-    }
     if (isLoading) {
         return <div><LoadingMessage/></div>;
     }
