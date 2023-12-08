@@ -1,11 +1,9 @@
-import Alert from "@mui/material/Alert";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const LoadingMessage = () => {
     return(
         <>
-        <Alert severity="info">
-            Page is loading, please wait a moment.
-        </Alert>
+        <CircularProgress />
         </>
     )
 }
