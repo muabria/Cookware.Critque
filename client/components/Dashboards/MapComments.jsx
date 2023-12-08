@@ -1,20 +1,23 @@
 import Alert from "@mui/material/Alert";
+import Box from "@mui/material/Box"
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid"
-import Stack  from "@mui/material/Stack"
+import Stack from "@mui/material/Stack"
 import Typography from '@mui/material/Typography';
 import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
-
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { useMediaQuery, useTheme } from '@mui/material';
 
 import { useState } from 'react';
 
+import { Link } from "react-router-dom";
+
 import { useGetCommentByUserQuery } from '../../redux/api';
 import { useDeleteCommentForUserMutation } from "../../redux/api";
 import { usePatchCommentMutation } from "../../redux/api";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
+
 
 const MapComments = () => {
     const [alert, setAlert] = useState(false);
@@ -26,16 +29,11 @@ const MapComments = () => {
     const [patchComment, { isLoading: patchIsLoading, Error: patchError, data: patchData }] = usePatchCommentMutation();
     const { data, error, isLoading } = useGetCommentByUserQuery();
 
-    if (!data) {
-        return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
-    }
-    if (isLoading) {
-        return <div><LoadingMessage/></div>;
-    }
     if (error) {
         return <div>Error:{error.message}</div>;
     }
 
+    console.log("comment:" + data)
     return (
         <>
             {isMobile ?
@@ -45,6 +43,15 @@ const MapComments = () => {
                             sx={{ textAlign: "center", color: "#205375" }}>
                             My Comments:
                         </Typography>
+                        <Box sx={{ backgroundColor: "#EEF5FF"}}>
+                            <Link to="/posts">
+                                <Button
+                                    sx={{ textTransform: "none", m: 1 }}>
+                                    What to make a comment? Go visit a review!
+                                    <ArrowCircleRightIcon sx={{ mx: 1}} />
+                                </Button>
+                            </Link>
+                        </Box>
                         {data && data.map((comment) => (
                             <Card key={comment.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
@@ -94,6 +101,15 @@ const MapComments = () => {
                             sx={{ textAlign: "center", color: "#205375" }}>
                             My Comments:
                         </Typography>
+                        <Box sx={{ backgroundColor: "#EEF5FF"}}>
+                            <Link to="/posts">
+                                <Button
+                                    sx={{ textTransform: "none", m: 1 }}>
+                                    What to make a comment? Go visit a review!
+                                    <ArrowCircleRightIcon sx={{ mx: 1}} />
+                                </Button>
+                            </Link>
+                        </Box>
                         {data && data.map((comment) => (
                             <Card key={comment.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
@@ -107,14 +123,14 @@ const MapComments = () => {
                                         <Stack direction="column">
                                             <Button
                                                 variant="outlined"
-                                                sx={{textTransform: "none",  m: 1 }}>
+                                                sx={{ textTransform: "none", m: 1 }}>
                                                 <PreviewIcon />
                                             </Button>
                                             <Button
                                                 onClick={() => setAlert(true)}
                                                 variant="outlined"
                                                 color="error"
-                                                sx={{textTransform: "none",  m: 1 }}>
+                                                sx={{ textTransform: "none", m: 1 }}>
                                                 <DeleteForeverSharpIcon />
                                             </Button>
                                         </Stack>
