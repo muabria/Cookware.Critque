@@ -11,14 +11,14 @@ const LogoutButton = () => {
         return (<LoadingMessage/>)
     }
     if (data){
-        console.log("logout" + data);
+        console.log("logout", data);
     }
     if (error) {
         console.log("logout" + error)
     }
     return (
         <>
-            <Typography onClick={() => {logout; navigate("/")}}>
+            <Typography onClick={async () => {await logout(); navigate("/");}}>
                 Logout
             </Typography>
         </>

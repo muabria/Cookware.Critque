@@ -14,18 +14,25 @@ import MapComments from "./MapComments";
 
 import { useMediaQuery, useTheme } from '@mui/material';
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 import { useGetUserQuery } from "../../redux/api";
 import AccountRedirect from "../ErrorMessages/AccountRedirect";
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import LogoutButton from "../AuthorizationForms/LogoutButton";
 
 const UserDashboard = () => {
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
-    const { data, error, isLoading } = useGetUserQuery()
+    const navigate = useNavigate();
+    const token = useSelector((state)=>state.auth.token);
+    const { data, error, isLoading } = useGetUserQuery();
+    
+    if (!token) {
+        navigate("/");
+    }
     if (!data) {
         return (<div><AccountRedirect/></div>)
     }
@@ -99,7 +106,7 @@ const UserDashboard = () => {
                                     Account Information
                                 </Typography>
                                 <Typography sx={{ my: 5, color: "#205375" }}>
-                                    <LogoutSharpIcon sx={{ color: "#205375" }} /> Logout
+                                    <LogoutSharpIcon sx={{ color: "#205375" }} /> <LogoutButton/>
                                 </Typography>
                             </Stack>
                         </Grid>
