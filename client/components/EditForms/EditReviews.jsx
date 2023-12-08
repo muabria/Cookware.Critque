@@ -38,11 +38,21 @@ const EditReviews = () => {
 
     const handleSubmit = async (event) => {
         try {
+            /*title and content length error is not working */
+            if (title.length < 10){
+                event.preventDefault();
+                alert("Please choose a shorter title.");
+            }
+            if (content.length < 30){
+                event.preventDefault();
+                alert("Please choose a shorter content.");
+            }
+            if (title.length >=10 && content.length >=30) {
             event.preventDefault();
             const result = await patchReview({ id, title, content, rating: Number(rating) })
             console.log(result)
             navigate("/account");
-        } catch (error) {
+        }} catch (error) {
             console.error(error)
         }
     }

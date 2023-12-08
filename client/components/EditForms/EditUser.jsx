@@ -25,23 +25,43 @@ const EditUser = () => {
     const [secondPassword, setSecondPassword] = useState(null);
 
     const navigate = useNavigate();
-
-    const handleSubmit = async (event) => {
-        try {
-            event.preventDefault();
-            const response = await patchUser({ id, username, email, password })
-            console.log(response)
-            navigate("/account")
-        }
-        catch (error) {
-            console.error(error)
-        }
+    if (!userData) {
+        return <div> Error </div>
     }
     if (error) {
         return <div>Error</div>
     }
     if (isLoading) {
         return <div><LoadingMessage/></div>
+    }
+
+    let validUser = false;
+    const validateUsername = (name) => {
+        const compare = userData.find((current) => {return current.username === name})
+        if (compare !== undefined) {validUser = false; return <Alert severity="error">Username already exists. Please choose another.</Alert>}
+        if (compare === undefined) {validUser = true}
+    }
+
+    const handleSubmit = async (event) => {
+        try {
+            if (password.length < 8) {
+                event.preventDefault();
+                alert("Password is too short.");
+                return
+            }
+            if (password.length > 16) {
+                event.preventDefault();
+                alert("Password is too long.");
+                return
+            }
+            if (validUser === true) {event.preventDefault();
+            const response = await patchUser({ id, username, email, password })
+            console.log(response)
+            navigate("/account")
+        }}
+        catch (error) {
+            console.error(error)
+        }
     }
 
     return userData && (
