@@ -2,10 +2,13 @@ import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid"
-import Stack  from "@mui/material/Stack"
+import Stack from "@mui/material/Stack"
 import Typography from '@mui/material/Typography';
 import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
+import TextField from '@mui/material/TextField';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import { useParams } from "react-router-dom";
 
 import { useMediaQuery, useTheme } from '@mui/material';
 
@@ -21,6 +24,8 @@ const MapComments = () => {
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+    const [edit, setEdit] = useState(false);
+    const [content, setContent] = useState();
 
     const [deleteComment, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteCommentForUserMutation();
     const [patchComment, { isLoading: patchIsLoading, Error: patchError, data: patchData }] = usePatchCommentMutation();
@@ -30,7 +35,7 @@ const MapComments = () => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>;
+        return <div><LoadingMessage /></div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;
@@ -58,12 +63,52 @@ const MapComments = () => {
                                             <PreviewIcon />
                                         </Button>
                                         <Button
+                                            onClick={() =>
+                                                setEdit(true)
+                                            }
+                                            variant="outlined"
+                                            sx={{ m: 1 }}>
+                                            <EditNoteIcon />
+
+                                        </Button>
+                                        <Button
                                             onClick={() => setAlert(true)}
                                             color="error">
                                             <DeleteForeverSharpIcon />
                                         </Button>
                                     </Grid>
                                 </Grid>
+                                {edit && <Alert severity="info">
+                                    <div>
+                                        <form onSubmit={(event) => { event.preventDefault(); patchComment({ id: comment.id, content }) }
+                                        }>
+                                            <Card>
+                                                <Stack direction="column">
+                                                    <Typography>
+                                                        Add a comment
+                                                    </Typography>
+                                                    <TextField sx={{ my: 2 }}
+                                                        onChange={(event) => setContent(event.target.value)}
+                                                        value={content}
+                                                        id="content"
+                                                        label="Add Comment Here"
+                                                        multiline
+                                                        rows={4}
+                                                        defaultValue="Type something"
+                                                    />
+                                                    <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}> Edit Comment</Button>
+                                                </Stack>
+                                            </Card>
+                                        </form>
+                                    </div>
+                                    <Button
+                                        variant="outlined"
+                                        onClick={() => setAlert(false)}
+                                        sx={{ m: 1 }}>
+                                        No, keep this comment
+                                    </Button>
+                                </Alert>
+                                }
                                 {alert && <Alert severity="warning">
                                     Are you sure you want to delete this post? Once you do it's gone forever.
                                     <Button
@@ -111,6 +156,15 @@ const MapComments = () => {
                                                 <PreviewIcon />
                                             </Button>
                                             <Button
+                                                onClick={() =>
+                                                    setEdit(true)
+                                                }
+                                                variant="outlined"
+                                                sx={{ m: 1 }}>
+                                                <EditNoteIcon />
+
+                                            </Button>
+                                            <Button
                                                 onClick={() => setAlert(true)}
                                                 variant="outlined"
                                                 color="error"
@@ -120,6 +174,37 @@ const MapComments = () => {
                                         </Stack>
                                     </Grid>
                                 </Grid>
+                                {edit && <Alert severity="info">
+                                    <div>
+                                        <form onSubmit={(event) => { event.preventDefault(); patchComment({ id: comment.id, content }) }
+                                        }>
+                                            <Card>
+                                                <Stack direction="column">
+                                                    <Typography>
+                                                        Add a comment
+                                                    </Typography>
+                                                    <TextField sx={{ my: 2 }}
+                                                        onChange={(event) => setContent(event.target.value)}
+                                                        value={content}
+                                                        id="content"
+                                                        label="Add Comment Here"
+                                                        multiline
+                                                        rows={4}
+                                                        defaultValue="Type something"
+                                                    />
+                                                    <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}> Edit Comment</Button>
+                                                </Stack>
+                                            </Card>
+                                        </form>
+                                    </div>
+                                    <Button
+                                        variant="outlined"
+                                        onClick={() => setAlert(false)}
+                                        sx={{ m: 1 }}>
+                                        No, keep this comment
+                                    </Button>
+                                </Alert>
+                                }
                                 {alert && <Alert severity="warning">
                                     Are you sure you want to delete this post? Once you do it's gone forever.
                                     <Button
