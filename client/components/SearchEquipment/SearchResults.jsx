@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 const SearchResults = ({ results }) => {
     return (
         <>
+        {results.length === 0 && 
+        <Typography sx={{py: 2}}>Whoops! Ingredient not found.</Typography>}
             <Stack direction="row">
                 {results.map((equipment) => (
                     <Avatar key={equipment.id}

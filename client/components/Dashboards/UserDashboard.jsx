@@ -34,10 +34,10 @@ const UserDashboard = () => {
         navigate("/");
     }
     if (!data) {
-        return (<div><AccountRedirect/></div>)
+        return (<div><AccountRedirect /></div>)
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Oops! Something went wrong loading your data. </div>;
@@ -46,9 +46,9 @@ const UserDashboard = () => {
     //Patch user
     return (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeIn" }}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
             <Box>
                 {isMobile ?
                     <div>
@@ -101,10 +101,12 @@ const UserDashboard = () => {
                     <Grid container spacing={1}>
                         <Grid item xs={2}>
                             <Stack direction="column">
-                                <Typography sx={{ color: "#205375", my: 5 }}>
+                                <Typography sx={{ my: 5 }}>
+                                    <Link to="/account/edit" style={{textDecoration: "none", color:"#205375" }}>
                                     <ManageAccountsIcon sx={{ color: "#205375" }} />
-                                    Account Information
-                                </Typography>
+                                        Edit Account
+                                    </Link>
+                                    </Typography>
                                 <Typography sx={{ my: 5, color: "#205375" }}>
                                     <LogoutSharpIcon sx={{ color: "#205375" }} /> <LogoutButton/>
                                 </Typography>
@@ -117,6 +119,9 @@ const UserDashboard = () => {
                                 </Typography>
                             </Stack>
                             <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
+                                <Typography variant="h6" sx={{ color: "#205375", mx:2, mt:1 }}>
+                                    Email: {data.email}
+                                </Typography>
                                 {data.isAdmin === true ?
                                     <Link to="/admin_dashboard">
                                         <Button sx={{
@@ -137,6 +142,7 @@ const UserDashboard = () => {
                                         Make a new Critique
                                     </Button>
                                 </Link>
+                                
                                 <Stack direction="row">
                                     <Grid item xs={6}>
                                         <MapPosts />
