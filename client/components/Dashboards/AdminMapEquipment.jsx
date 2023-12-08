@@ -10,11 +10,14 @@ import Stack from "@mui/material/Stack";
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import { useMediaQuery, useTheme } from '@mui/material';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import { Link, useParams } from "react-router-dom";
 
 import { useState } from "react";
 
 import { useGetEquipmentQuery } from "../../redux/api";
 import { useDeleteEquipmentMutation } from "../../redux/api";
+import { usePatchEquipmentMutation } from "../../redux/api";
 
 import { motion } from "framer-motion";
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
@@ -22,17 +25,20 @@ import LoadingMessage from "../ErrorMessages/LoadingMessage";
 const AdminMapEquipment = () => {
 
     const [alert, setAlert] = useState(false);
+    const [edit, setEdit] = useState(false);
+    const { id } = useParams();
     const [deleteEquipment, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteEquipmentMutation();
+    const [patchEquipment, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePatchEquipmentMutation();
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-    const { data, error, isLoading } = useGetEquipmentQuery();
+    const { data, error, isLoading } = useGetEquipmentQuery(id);
     if (!data) {
         return <div>Oops! Couldn't fetch the equipmnet</div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
@@ -71,12 +77,33 @@ const AdminMapEquipment = () => {
                                             </Typography>
                                         </AccordionDetails>
                                     </Accordion>
+                                    <Link to={`/edit_equipment/${equipment.id}`} >
+                                        <Button> <EditNoteIcon /> </Button>
+                                    </Link>
+
                                     <Button
                                         onClick={() => setAlert(true)}
                                         color="error"
                                         sx={{ m: 1 }}>
                                         <DeleteForeverSharpIcon />
                                     </Button>
+                                    {alert && <Alert severity="warning">
+                                        Are you sure you want to delete this post? Once you do it's gone forever.
+                                        <Button
+                                            onClick={() => deleteComment(comment.id)}
+                                            variant="outlined"
+                                            color="error"
+                                            sx={{ m: 1 }}>
+                                            Yes, delete this review
+                                        </Button>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={() => setAlert(false)}
+                                            sx={{ m: 1 }}>
+                                            No, keep this comment
+                                        </Button>
+                                    </Alert>
+                                    }
                                     {alert && <Alert severity="warning">
                                         Are you sure you want to delete this Equipment? Once you do it's gone forever.
                                         <Button
@@ -131,6 +158,9 @@ const AdminMapEquipment = () => {
                                                         </Typography>
                                                     </AccordionDetails>
                                                 </Accordion>
+                                                <Link to={`/edit_equipment/${equipment.id}`} >
+                                                    <Button> <EditNoteIcon /> </Button>
+                                                </Link>
                                                 <Button
                                                     onClick={() => setAlert(true)}
                                                     color="error"
