@@ -44,7 +44,6 @@ const NavBar = () => {
         <>
             <Box sx={{ p: 2 }}>
                 {isMobile ? <MobileNavBar /> :
-
                     <Stack direction="row">
                         <img
                             src={logo}
@@ -53,33 +52,44 @@ const NavBar = () => {
                         <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
                             Title Placeholder
                         </Typography>
-
                         <Box sx={{ maxHeight: "50px", backgroundColor: "#F9FBE7", borderRadius: "50px" }}>
                             <Stack direction="row">
-                                <Link to="/">
+                                <Link to="/"
+                                    style={{ textDecoration: "none" }}>
                                     <motion.div whileHover={{ scale: 1.2 }}>
-                                        <Button sx={{ color: "#205375", mx: 5 }}>
-                                            <HomeIcon />
-                                            Home
-                                        </Button>
+                                        <Box sx={{ color: "#205375", mx: 5, mt: 1.5 }}>
+                                            <Stack direction="row">
+                                                <HomeIcon />
+                                                <Typography>
+                                                    Home
+                                                </Typography>
+                                            </Stack>
+                                        </Box>
                                     </motion.div>
                                 </Link>
-                                <Link to="/posts">
+                                <Link to="/posts"
+                                    style={{ textDecoration: "none" }}>
                                     <motion.div whileHover={{ scale: 1.2 }}>
-                                        <Button sx={{ color: "#205375", mx: 5 }}>
-                                            Find New Kitchen Equipment
-                                        </Button>
+                                        <Box sx={{ color: "#205375", mx: 5, mt: 1.5 }}>
+                                            <Typography>
+                                                Find New Kitchen Equipment
+                                            </Typography>
+                                        </Box>
                                     </motion.div>
                                 </Link>
-                                <Link to="/new_review">
+                                <Link to="/new_review"
+                                    style={{ textDecoration: "none" }}>
                                     <motion.div whileHover={{ scale: 1.2 }}>
-                                        <Button sx={{ color: "#205375", mx: 5 }}>
-                                            <RateReviewIcon /> Add a Review
-                                        </Button>
+                                        <Box sx={{ color: "#205375", mx: 5, mt: 1.5 }}>
+                                            <Stack direction="row">
+                                                <RateReviewIcon />
+                                                <Typography>
+                                                    Add a Review
+                                                </Typography>
+                                            </Stack>
+                                        </Box>
                                     </motion.div>
                                 </Link>
-
-
                                 <Button
                                     aria-controls={open ? 'account-menu' : undefined}
                                     aria-haspopup="true"
@@ -87,9 +97,8 @@ const NavBar = () => {
                                     onClick={handleClick}>
                                     <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
                                 </Button>
-
                                 {data
-                                    ?//id logged in...
+                                    ?//if logged in...
                                     <div>
                                         <Menu
                                             id="account-menu"
@@ -101,9 +110,9 @@ const NavBar = () => {
                                                     to="/account"
                                                     style={{ textDecoration: "none" }}>
                                                     <MenuItem>
-                                                        <Button>
+                                                        <Typography>
                                                             My Account
-                                                        </Button>
+                                                        </Typography>
                                                     </MenuItem>
                                                 </Link>
                                             </motion.div>
@@ -127,9 +136,9 @@ const NavBar = () => {
                                                     to="/login"
                                                     style={{ textDecoration: "none" }}>
                                                     <MenuItem>
-                                                        <Button>
+                                                        <Typography>
                                                             Login
-                                                        </Button>
+                                                        </Typography>
                                                     </MenuItem>
                                                 </Link>
                                             </motion.div>
@@ -138,9 +147,9 @@ const NavBar = () => {
                                                     to="/register"
                                                     style={{ textDecoration: "none" }}>
                                                     <MenuItem>
-                                                        <Button>
+                                                        <Typography>
                                                             Sign Up
-                                                        </Button>
+                                                        </Typography>
                                                     </MenuItem>
                                                 </Link>
                                             </motion.div>
