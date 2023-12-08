@@ -74,14 +74,14 @@ const MapPostsAdmin = () => {
                                     <Grid item xs={12}>
                                         <Link to={`/review/${review.id}`}>
                                             <Button
-                                                sx={{ m: 1 }}>
+                                                sx={{ textTransform: "none", m: 1 }}>
                                                 <PreviewIcon />
                                             </Button>
                                         </Link>
                                         <Button
                                             onClick={() => setAlert(true)}
                                             color="error"
-                                            sx={{ m: 1 }}>
+                                            sx={{ textTransform: "none", m: 1 }}>
                                             <DeleteForeverSharpIcon />
                                         </Button>
                                     </Grid>
@@ -92,13 +92,13 @@ const MapPostsAdmin = () => {
                                         onClick={() => deleteReview(review.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, delete this review
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(false)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this review
                                     </Button>
                                 </Alert>
@@ -136,7 +136,7 @@ const MapPostsAdmin = () => {
                                         <Link to={`/review/${review.id}`}>
                                             <Button
                                                 variant="outlined"
-                                                sx={{ m: 1 }}>
+                                                sx={{ textTransform: "none", m: 1 }}>
                                                 <PreviewIcon />
                                             </Button>
                                         </Link>
@@ -144,7 +144,7 @@ const MapPostsAdmin = () => {
                                             onClick={() => setAlert(true)}
                                             variant="outlined"
                                             color="error"
-                                            sx={{ m: 1 }}>
+                                            sx={{ textTransform: "none", m: 1 }}>
                                             <DeleteForeverSharpIcon />
                                         </Button>
                                     </Grid>
@@ -155,13 +155,13 @@ const MapPostsAdmin = () => {
                                         onClick={() => deleteReview(review.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, delete this review
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(false)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this review
                                     </Button>
                                 </Alert>

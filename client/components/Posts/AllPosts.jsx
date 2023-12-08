@@ -85,6 +85,7 @@ const AllPosts = () => {
                                                 <Link to={`/review/${review.id}`} >
                                                     <Button
                                                         sx={{
+                                                            textTransform: "none",
                                                             my: 2,
                                                             ml: 8,
                                                             boxShadow: 3,

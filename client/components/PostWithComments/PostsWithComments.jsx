@@ -72,7 +72,7 @@ const PostsWithComments = () => {
                                     Comments:
                                 </Typography>
                                 <Button
-                                    sx={{ ml: 11, color: "#205375", backgroundColor: "transparent", my: 1 }}
+                                    sx={{ textTransform: "none", ml: 11, color: "#205375", backgroundColor: "transparent", my: 1 }}
                                     onClick={() => setAddComment(true)}>
                                     <RateReviewIcon />
                                     Add a Comment
@@ -128,6 +128,7 @@ const PostsWithComments = () => {
                                 </Typography>
                                 <Button
                                 sx={{ 
+                                    textTransform: "none",
                                     ml: 67,
                                     color: "#205375" 
                                 }}

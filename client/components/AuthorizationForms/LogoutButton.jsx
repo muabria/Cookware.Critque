@@ -1,4 +1,4 @@
-import Typography from "@mui/material/Typography"
+import Button from "@mui/material/Typography"
 import LoadingMessage from "../ErrorMessages/LoadingMessage"
 import { useLogoutMutation } from "../../redux/api"
 import { useNavigate } from "react-router-dom";
@@ -18,9 +18,11 @@ const LogoutButton = () => {
     }
     return (
         <>
-            <Typography onClick={async () => {await logout(); navigate("/");}}>
+            <Button 
+            sx={{ textTransform: "none" }}
+            onClick={async () => {await logout(); navigate("/");}}>
                 Logout
-            </Typography>
+            </Button>
         </>
     )
 }

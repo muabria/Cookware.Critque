@@ -93,13 +93,13 @@ const MapPosts = () => {
                                         onClick={() => deleteReview(review.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, I want to delete this review
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(false)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this review
                                     </Button>
                                 </Alert>
@@ -111,7 +111,7 @@ const MapPosts = () => {
                                             onClick={console.log("Working!")}
                                             variant="outlined"
                                             color="error"
-                                            sx={{ m: 1 }}>
+                                            sx={{ textTransform: "none", m: 1 }}>
                                             Yes, I want to edit this review
                                         </Button>
                                     </Link>
@@ -119,7 +119,7 @@ const MapPosts = () => {
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(false)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, I don't need to edit this review
                                     </Button>
                                 </Alert>
@@ -161,14 +161,14 @@ const MapPosts = () => {
                                             <Link to={`/equipment/${review.id}`}>
                                                 <Button
                                                     variant="outlined"
-                                                    sx={{ m: 1 }}>
+                                                    sx={{ textTransform: "none", m: 1 }}>
                                                     <PreviewIcon />
                                                 </Button>
                                             </Link>
                                             <Link to={`/edit_review/${review.id}`}>
                                                 <Button
                                                     variant="outlined"
-                                                    sx={{ m: 1 }}>
+                                                    sx={{textTransform: "none",  m: 1 }}>
                                                     <EditNoteIcon />
                                                 </Button>
                                             </Link>
@@ -176,7 +176,7 @@ const MapPosts = () => {
                                                 onClick={() => setAlert(true)}
                                                 variant="outlined"
                                                 color="error"
-                                                sx={{ m: 1 }}>
+                                                sx={{ textTransform: "none", m: 1 }}>
                                                 <DeleteForeverSharpIcon />
                                             </Button>
                                         </Stack>
@@ -188,13 +188,13 @@ const MapPosts = () => {
                                         onClick={() => deleteReview(review.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, I want to delete this review
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(false)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this review
                                     </Button>
                                 </Alert>
@@ -205,14 +205,14 @@ const MapPosts = () => {
                                         <Button
                                             variant="outlined"
                                             color="error"
-                                            sx={{ m: 1 }}>
+                                            sx={{ textTransform: "none", m: 1 }}>
                                             Yes, I want to edit this review
                                         </Button>
                                     </Link>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(false)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, I don't need to edit this review
                                     </Button>
                                 </Alert>

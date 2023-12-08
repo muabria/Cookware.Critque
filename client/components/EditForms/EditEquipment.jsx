@@ -104,7 +104,7 @@ const EditEquipment = () => {
                     <Box key={category.id}>
                       <Button
                         onClick={() => setCategory(category.id)}
-                        sx={{ mx: 1, backgroundColor: "#9BCDD2" }}>
+                        sx={{ textTransform: "none", mx: 1, backgroundColor: "#9BCDD2" }}>
                         {category.category}
                       </Button>
                     </Box>
@@ -162,7 +162,7 @@ const EditEquipment = () => {
                 />
 
                 {/* <---------------------------SUBMIT BUTTON-----------------------------> */}
-                <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
                   <Typography variant="h6">
                     Submit Equipment
                   </Typography>

@@ -1,6 +1,5 @@
 
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -55,8 +54,6 @@ const HomePage = () => {
                                     </Stack>
                                 </Grid>
                             </Grid>
-                            {/* <------------BUTTON-----------> */}
-
                             <Grid container>
                                 <Grid item xs={5.5}>
                                 </Grid>

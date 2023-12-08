@@ -103,7 +103,7 @@ const EditUser = () => {
                                     <Alert severity="error"> Passwords do not match </Alert> : null
                             }
                         />
-                        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1 }}>
+                        <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1, my: 1 }}>
                             Update Your Account
                         </Button>
                     </Stack>

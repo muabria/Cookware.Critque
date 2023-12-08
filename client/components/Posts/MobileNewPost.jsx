@@ -140,7 +140,7 @@ const MobileNewPost = () => {
                                 </div>
                                 <Button
                                     onClick={() => handelAnimation()}
-                                    sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                                    sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
                                     Next <ArrowForwardIosIcon /><ArrowForwardIosIcon /><ArrowForwardIosIcon />
                                 </Button>
                             </Card>
@@ -202,7 +202,7 @@ const MobileNewPost = () => {
                                             )}
                                         </Stack>
                                     </Stack>
-                                    <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                                    <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
                                         Create Your Critique!
                                     </Button>
                                 </Card>

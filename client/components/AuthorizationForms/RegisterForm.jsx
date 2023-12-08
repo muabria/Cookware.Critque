@@ -62,11 +62,11 @@ const RegisterForm = () => {
         }
     }
 
-    const validateUsername = (name) => {
-        const compare = userData.find((current) => {return current.username === name})
-        if (compare !== undefined) {validUser = false; return <Alert severity="error">Username already exists. Please choose another.</Alert>}
-        if (compare === undefined) {validUser = true}
-    }
+    // const validateUsername = (name) => {
+    //     const compare = userData.find((current) => {return current.username === name})
+    //     if (compare !== undefined) {validUser = false; return <Alert severity="error">Username already exists. Please choose another.</Alert>}
+    //     if (compare === undefined) {validUser = true}
+    // }
 
     return (
         <motion.div
@@ -90,7 +90,7 @@ const RegisterForm = () => {
                                     size="small"
                                     variant="filled"
                                     sx={{ m: 1 }}
-                                    helperText={validateUsername(username)}
+                                    // helperText={validateUsername(username)}
                                 />
                                 <TextField
                                     label="Enter E-mail"
@@ -134,7 +134,7 @@ const RegisterForm = () => {
                                     <div>
                                         <Button
                                             type="submit"
-                                            sx={{ backgroundColor: "#088395", color: "white", width: "100%", p: 1, my: 1, }}>
+                                            sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", width: "100%", p: 1, my: 1, }}>
                                             Start Your Cooking Journey
                                         </Button>
                                         <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
@@ -143,7 +143,7 @@ const RegisterForm = () => {
                                         <Link to="/login">
                                             <Button
                                                 variant="outlined"
-                                                sx={{ color: "#205375", backgroundColor: "transparent", my: 1, width: "100%" }}>
+                                                sx={{ textTransform: "none", color: "#205375", backgroundColor: "transparent", my: 1, width: "100%" }}>
                                                 Login to your account
                                                 <LoginIcon sx={{ ml: 2, color: "#205375" }} />
                                             </Button>
@@ -153,14 +153,14 @@ const RegisterForm = () => {
                                     <div>
                                         <Button
                                             type="submit"
-                                            sx={{ backgroundColor: "#088395", color: "white", p: 1, my: 1, mx: 20 }}>
+                                            sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1, my: 1, mx: 20 }}>
                                             Start Your Cooking Journey
                                         </Button>
                                         <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
                                             Already have an account?
                                         </Typography>
                                         <Link to="/login">
-                                            <Button sx={{ color: "#205375", backgroundColor: "transparent", my: 1 }}>
+                                            <Button sx={{ textTransform: "none", color: "#205375", backgroundColor: "transparent", my: 1 }}>
                                                 Login to your account
                                                 <LoginIcon sx={{ ml: 2, color: "#205375" }} />
                                             </Button>

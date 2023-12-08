@@ -74,7 +74,7 @@ const AdminMapEquipment = () => {
                                     <Button
                                         onClick={() => setAlert(true)}
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         <DeleteForeverSharpIcon />
                                     </Button>
                                     {alert && <Alert severity="warning">
@@ -83,13 +83,13 @@ const AdminMapEquipment = () => {
                                             onClick={() => deleteEquipment(equipment.id)}
                                             variant="outlined"
                                             color="error"
-                                            sx={{ m: 1 }}>
+                                            sx={{ textTransform: "none", m: 1 }}>
                                             Yes, delete this review
                                         </Button>
                                         <Button
                                             variant="outlined"
                                             onClick={() => setAlert(false)}
-                                            sx={{ m: 1 }}>
+                                            sx={{ textTransform: "none", m: 1 }}>
                                             No, keep this review
                                         </Button>
                                     </Alert>
@@ -134,7 +134,7 @@ const AdminMapEquipment = () => {
                                                 <Button
                                                     onClick={() => setAlert(true)}
                                                     color="error"
-                                                    sx={{ m: 1 }}>
+                                                    sx={{ textTransform: "none", m: 1 }}>
                                                     <DeleteForeverSharpIcon />
                                                 </Button>
                                                 {alert && <Alert severity="warning">
@@ -143,13 +143,13 @@ const AdminMapEquipment = () => {
                                                         onClick={() => deleteEquipment(equipment.id)}
                                                         variant="outlined"
                                                         color="error"
-                                                        sx={{ m: 1 }}>
+                                                        sx={{ textTransform: "none", m: 1 }}>
                                                         Yes, delete this review
                                                     </Button>
                                                     <Button
                                                         variant="outlined"
                                                         onClick={() => setAlert(false)}
-                                                        sx={{ m: 1 }}>
+                                                        sx={{ textTransform: "none", m: 1 }}>
                                                         No, keep this review
                                                     </Button>
                                                 </Alert>

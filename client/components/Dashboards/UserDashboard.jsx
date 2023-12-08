@@ -64,6 +64,7 @@ const UserDashboard = () => {
                                     {data.isAdmin === true ?
                                         <Link to="/admin_dashboard">
                                             <Button sx={{
+                                                textTransform: "none",
                                                 m: 1,
                                                 boxShadow: 3,
                                                 color: "#205375",
@@ -77,7 +78,7 @@ const UserDashboard = () => {
                                         <>
                                         </>}
                                     <Link to="/new_review">
-                                        <Button sx={{ backgroundColor: "#088395", color: "white", m: 1 }}>
+                                        <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 1 }}>
                                             Make a new Critique
                                         </Button>
                                     </Link>
@@ -125,6 +126,7 @@ const UserDashboard = () => {
                                 {data.isAdmin === true ?
                                     <Link to="/admin_dashboard">
                                         <Button sx={{
+                                            textTransform: "none",
                                             m: 1,
                                             boxShadow: 3,
                                             color: "#205375",
@@ -138,7 +140,7 @@ const UserDashboard = () => {
                                     <>
                                     </>}
                                 <Link to="/new_review">
-                                    <Button sx={{ backgroundColor: "#088395", color: "white", m: 2 }}>
+                                    <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2 }}>
                                         Make a new Critique
                                     </Button>
                                 </Link>

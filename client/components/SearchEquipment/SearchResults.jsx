@@ -30,7 +30,7 @@ const SearchResults = ({ results }) => {
                                 width="200"
                                 height="150" />
                             <Link to={`/equipment/${equipment.id}`} >
-                                <Button>
+                                <Button sx={{ textTransform: "none" }}>
                                     See the {equipment.name}'s Review
                                 </Button>
                             </Link>

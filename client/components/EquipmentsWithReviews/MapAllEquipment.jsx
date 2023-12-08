@@ -60,7 +60,7 @@ const MapAllEquipment = () => {
                                                 {equipment.description}
                                             </Typography>
                                             <Link to={`/equipment/${equipment.id}`}>
-                                                <Button>
+                                                <Button sx={{ textTransform: "none", }}>
                                                     See the {equipment.name}'s Reviews
                                                 </Button>
                                             </Link>
@@ -115,6 +115,7 @@ const MapAllEquipment = () => {
                                         <Link to={`/equipment/${equipment.id}`}>
                                             <Button
                                                 sx={{
+                                                    textTransform: "none",
                                                     my: 2,
                                                     ml: 8,
                                                     boxShadow: 3,

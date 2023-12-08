@@ -70,13 +70,13 @@ const MapComments = () => {
                                         onClick={() => deleteComment(comment.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, delete this review
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(false)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this comment
                                     </Button>
                                 </Alert>
@@ -107,14 +107,14 @@ const MapComments = () => {
                                         <Stack direction="column">
                                             <Button
                                                 variant="outlined"
-                                                sx={{ m: 1 }}>
+                                                sx={{textTransform: "none",  m: 1 }}>
                                                 <PreviewIcon />
                                             </Button>
                                             <Button
                                                 onClick={() => setAlert(true)}
                                                 variant="outlined"
                                                 color="error"
-                                                sx={{ m: 1 }}>
+                                                sx={{textTransform: "none",  m: 1 }}>
                                                 <DeleteForeverSharpIcon />
                                             </Button>
                                         </Stack>
@@ -126,13 +126,13 @@ const MapComments = () => {
                                         onClick={() => deleteComment(comment.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, delete this review
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(false)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this comment
                                     </Button>
                                 </Alert>
