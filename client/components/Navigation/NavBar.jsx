@@ -21,16 +21,17 @@ import MobileNavBar from './MobileNavBar';
 import LogoutButton from '../AuthorizationForms/LogoutButton';
 
 import { useGetUserQuery } from '../../redux/api';
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
-
+    const token = useSelector((state)=>state.auth.token);
     const [anchorEl, setAnchorEl] = useState(null);
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const { data, error, isLoading } = useGetUserQuery()
-
+    
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -97,7 +98,7 @@ const NavBar = () => {
                                     onClick={handleClick}>
                                     <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
                                 </Button>
-                                {data
+                                {data && token
                                     ?//if logged in...
                                     <div>
                                         <Menu

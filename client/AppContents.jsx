@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Routes, Route } from "react-router-dom";
+
 
 import HomePage from "./components/HomePage/HomePage";
 import LoginForm from "./components/AuthorizationForms/LoginForm";
@@ -16,10 +17,11 @@ import AllReviewsForEquipment from "./components/EquipmentsWithReviews/AllReview
 import EditReviews from "./components/EditForms/EditReviews";
 import EditUser from "./components/EditForms/EditUser";
 import EditEquipment from "./components/EditForms/EditEquipment";
+import api from "./redux/api";
 
 const AppContents = () => {
-
-  const token = useSelector((state) => state.auth.token)
+  const token = useSelector((state) => state.auth.token);
+  console.log(token);
 
   return (
     <div className='gradient_background'>
