@@ -36,7 +36,7 @@ const AllPosts = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeIn" }}>
             <Box sx={{ maxHeight: "60px", mb: 3 }}>
-                <Typography variant="h3" sx={{ textAlign: "center", color: "#205375" }}>
+                <Typography variant="h4" sx={{ textAlign: "center", color: "#205375" }}>
                     Explore Trusted Critiques Made from Real Users
                 </Typography>
             </Box>

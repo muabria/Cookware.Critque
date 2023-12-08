@@ -26,17 +26,9 @@ import { useGetUserQuery } from '../../redux/api';
 import LogoutButton from "../AuthorizationForms/LogoutButton";
 
 const MobileNavBar = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
 
     const { data, error, isLoading } = useGetUserQuery()
 
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
     return (
         <div>
             <Accordion sx={{ backgroundColor: "transparent" }}>
@@ -50,34 +42,84 @@ const MobileNavBar = () => {
                         <Typography variant="h6" sx={{ color: "#205375", flexGrow: 1 }}>
                             Title Placeholder
                         </Typography>
+
                     </Stack>
                 </AccordionSummary>
+                {data
+                    ?//if logged in...
+                    <div>
+                        <AccordionDetails>
+                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }} >
+                                <Link to="/account"
+                                    stle={{ textDecoration: "none" }}>
+                                    <Typography sx={{ color: "#205375" }}>
+                                        My Account
+                                    </Typography>
+                                </Link>
+                            </Box>
+                        </AccordionDetails>
+                        <AccordionDetails>
+                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }}>
+                                <LogoutButton />
+                            </Box>
+                        </AccordionDetails>
+                    </div>
+                    : //if NOT logged in...
+                    <div>
+                        <AccordionDetails>
+                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }} >
+                                <Link to="/login"
+                                    style={{ textDecoration: "none" }}>
+                                    <Typography sx={{ color: "#205375" }}>
+                                        Login
+                                    </Typography>
+                                </Link>
+                            </Box>
+                        </AccordionDetails>
+                        <AccordionDetails>
+                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }} >
+                                <Link to="/register"
+                                    style={{ textDecoration: "none" }}>
+                                    <Typography sx={{ color: "#205375" }}>
+                                        Sign Up
+                                    </Typography>
+                                </Link>
+                            </Box>
+                        </AccordionDetails>
+                    </div>}
                 <AccordionDetails>
-                    <Link to="/">
+                    <Link to="/"
+                        style={{ textDecoration: "none" }}>
                         <Box sx={{ borderBottom: 2, color: "#205375" }}>
-                            <Button sx={{ color: "#205375" }}>
-                                <HomeIcon />
-                                Home
-                            </Button>
+                            <Stack direction="row">
+                                <HomeIcon sx={{ mx: 1 }} />
+                                <Typography sx={{ color: "#205375" }}>
+                                    Home
+                                </Typography>
+                            </Stack>
                         </Box>
                     </Link>
                 </AccordionDetails>
                 <AccordionDetails>
-                    <Link to="/posts">
+                    <Link to="/posts"
+                        style={{ textDecoration: "none" }}>
                         <Box sx={{ borderBottom: 2, color: "#205375" }}>
-                            <Button sx={{ color: "#205375" }}>
+                            <Typography sx={{ m: 1, color: "#205375" }}>
                                 Find New Kitchen Equipment
-                            </Button>
+                            </Typography>
                         </Box>
                     </Link>
                 </AccordionDetails>
-
                 <AccordionDetails>
-                    <Link to="/new_review">
+                    <Link to="/new_review"
+                        style={{ textDecoration: "none" }}>
                         <Box sx={{ borderBottom: 2, color: "#205375" }} >
-                            <Button sx={{ color: "#205375" }}>
-                                <RateReviewIcon /> Add a Review
-                            </Button>
+                            <Stack direction="row">
+                                <RateReviewIcon sx={{ mx: 1 }} />
+                                <Typography sx={{ color: "#205375" }}>
+                                    Add a Review
+                                </Typography>
+                            </Stack>
                         </Box>
                     </Link>
                 </AccordionDetails>
@@ -89,63 +131,7 @@ const MobileNavBar = () => {
                 </Grid>
                 <Grid item xs={2}>
 
-                    {data
-                        ?//if logged in...
-                        <div>
-                            <Button
-                                aria-controls={open ? 'account-menu' : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
-                                onClick={handleClick}>
-                                <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
-                            </Button>
-                            <Menu
-                                id="account-menu"
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleClose}>
-                                <MenuItem>
-                                    <Link to="/account">
-                                        <Button>
-                                            My Account
-                                        </Button>
-                                    </Link>
-                                </MenuItem>
-                                <MenuItem>
-                                    <LogoutButton />
-                                </MenuItem>
-                            </Menu>
-                        </div>
-                        : //if NOT logged in...
-                        <div>
-                            <Button
-                                aria-controls={open ? 'account-menu' : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
-                                onClick={handleClick}>
-                                <AccountCircleIcon sx={{ color: "#205375", minWidth: 70, minHeight: 35 }} />
-                            </Button>
-                            <Menu
-                                id="account-menu"
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleClose}>
-                                <MenuItem>
-                                    <Link to="/login">
-                                        <Button>
-                                            Login
-                                        </Button>
-                                    </Link>
-                                </MenuItem>
-                                <MenuItem>
-                                    <Link to="/register">
-                                        <Button>
-                                            Sign Up
-                                        </Button>
-                                    </Link>
-                                </MenuItem>
-                            </Menu>
-                        </div>}
+
                 </Grid>
             </Grid>
         </div>

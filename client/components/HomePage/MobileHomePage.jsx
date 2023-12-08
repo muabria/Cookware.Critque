@@ -39,19 +39,27 @@ const MobileHomePage = () => {
                         <Grid item xs={6}>
                         </Grid>
                         <Grid item xs={6}>
-                            <Box sx={{ mt: 11 }}>
+                            <Box sx={{ mt: 22 }}>
                                 <motion.div whileHover={{ scale: 1.3 }}>
-                                    <Link to="/posts">
-                                        <Button sx={{
+                                    <Link 
+                                    to="/posts"
+                                    style={{ textDecoration: "none" }}>
+                                        <Box sx={{
                                             color: "#FAF3F0",
                                             backgroundColor: "#D988B9",
                                             border: "solid #B0578D 2px",
                                             borderRadius: "100px",
                                             fontSize: "11px",
-                                            m: 1
+                                            maxWidth: 200,
+                                            m: 1,
+                                            mb: 15
                                         }}>
-                                            Find New Equipment
-                                        </Button>
+                                            <Typography
+                                            variant="h6"
+                                            sx={{ textAlign: "center" }}>
+                                                Find New Equipment
+                                            </Typography>
+                                        </Box>
                                     </Link>
                                 </motion.div>
                             </Box>

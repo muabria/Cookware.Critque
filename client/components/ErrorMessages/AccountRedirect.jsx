@@ -6,7 +6,7 @@ const AccountRedirect = () => {
         <>
             <Alert severity="info">
                 <Typography variant="h4">
-                    You need to be logged in to this
+                    You need to be logged in to do this
                 </Typography>
             </Alert>
             <LoginForm />
