@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
-import EditIcon from '@mui/icons-material/Edit';
 import MapPosts from "./MapPosts";
 import MapComments from "./MapComments";
 
@@ -95,13 +94,9 @@ const UserDashboard = () => {
                     <Grid container spacing={1}>
                         <Grid item xs={2}>
                             <Stack direction="column">
-                                <Typography sx={{ color: "#205375", my: 5 }}>
-                                    <ManageAccountsIcon sx={{ color: "#205375" }} />
-                                    Account Information
-                                </Typography>
                                 <Typography sx={{ my: 5 }}>
                                     <Link to="/account/edit" style={{textDecoration: "none", color:"#205375" }}>
-                                        <EditIcon style={{ color: "#205375" }} />
+                                    <ManageAccountsIcon sx={{ color: "#205375" }} />
                                         Edit Account
                                     </Link>
                                     </Typography>
@@ -117,6 +112,9 @@ const UserDashboard = () => {
                                 </Typography>
                             </Stack>
                             <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
+                                <Typography variant="h6" sx={{ color: "#205375", mx:2, mt:1 }}>
+                                    Email: {data.email}
+                                </Typography>
                                 {data.isAdmin === true ?
                                     <Link to="/admin_dashboard">
                                         <Button sx={{
@@ -137,6 +135,7 @@ const UserDashboard = () => {
                                         Make a new Critique
                                     </Button>
                                 </Link>
+                                
                                 <Stack direction="row">
                                     <Grid item xs={6}>
                                         <MapPosts />
