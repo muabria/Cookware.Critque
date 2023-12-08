@@ -5,13 +5,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
 
 import { useState } from 'react';
-import { useGetSingleEquipmentQuery } from "../../redux/api";
+import { useGetEquipmentQuery } from "../../redux/api";
 
 import SearchResults from './SearchResults';
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const SearchBar = ({ onSubmit }) => {
-    const { data, error, isLoading } = useGetSingleEquipmentQuery();
+    const { data, error, isLoading } = useGetEquipmentQuery();
     const [searchEquipment, setSearchEquipment] = useState("");
     const [showResult, setShowResult] = useState(false);
 

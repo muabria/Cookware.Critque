@@ -148,8 +148,8 @@ const api = createApi({
             providesTags: ["Equipment"]
         }),
         getSingleEquipment: builder.query({
-            query: (search) => ({
-                url: `/api/equipment/${search ? "?search=" + search : ""}`,
+            query: (id) => ({
+                url: `/api/equipment/${id}`,
                 method: 'GET'
             }),
         }),
