@@ -122,6 +122,7 @@ const RegisterForm = () => {
                                     onChange={(event) => setSecondPassword(event.target.value)}
                                     size="small"
                                     variant="filled"
+                                    sx={{ m: 1 }}
                                     error={
                                         !!(password && secondPassword !== secondPassword)
                                     }
