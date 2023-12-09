@@ -24,14 +24,14 @@ import { useGetUserQuery } from '../../redux/api';
 import { useSelector } from 'react-redux';
 
 const NavBar = () => {
-    const token = useSelector((state)=>state.auth.token);
+    const token = useSelector((state) => state.auth.token);
     const [anchorEl, setAnchorEl] = useState(null);
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const { data, error, isLoading } = useGetUserQuery()
-    
+
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -39,7 +39,6 @@ const NavBar = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
 
     return (
         <>
@@ -59,12 +58,9 @@ const NavBar = () => {
                                     style={{ textDecoration: "none" }}>
                                     <motion.div whileHover={{ scale: 1.2 }}>
                                         <Box sx={{ color: "#205375", mx: 5, mt: 1.5 }}>
-                                            <Stack direction="row">
-                                                <HomeIcon />
-                                                <Typography>
-                                                    Home
-                                                </Typography>
-                                            </Stack>
+                                            <Typography>
+                                                Home
+                                            </Typography>
                                         </Box>
                                     </motion.div>
                                 </Link>
@@ -82,12 +78,9 @@ const NavBar = () => {
                                     style={{ textDecoration: "none" }}>
                                     <motion.div whileHover={{ scale: 1.2 }}>
                                         <Box sx={{ color: "#205375", mx: 5, mt: 1.5 }}>
-                                            <Stack direction="row">
-                                                <RateReviewIcon />
-                                                <Typography>
-                                                    Add a Review
-                                                </Typography>
-                                            </Stack>
+                                            <Typography>
+                                                Add a Review
+                                            </Typography>
                                         </Box>
                                     </motion.div>
                                 </Link>

@@ -18,6 +18,7 @@ import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import SlideShow from "../SlideShow";
 
 
 const MobileNewPost = () => {
@@ -48,9 +49,9 @@ const MobileNewPost = () => {
     const [postReview, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostReviewMutation(); //include error handling
 
     const navigate = useNavigate();
-    
+
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
@@ -107,21 +108,21 @@ const MobileNewPost = () => {
                                     </Typography>
                                 </Stack>
                                 {/* <--------------MAPP EQUIPMENT---------------> */}
-                                <div className="carousel">
-                                    <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -1700 }}>
-                                        <Stack direction="row">
+                                <SlideShow
+                                    content={
+                                        <>
                                             {data && data.map((equipment) => (
                                                 <Card
                                                     key={equipment.id}
                                                     className="select-equipment"
                                                     onClick={() => setEquipment(equipment.id)}
-                                                    sx={{ m: 1, minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150,border: "solid #D29D2B 5px", borderRadius: 100 }}>
+                                                    sx={{ m: 1, minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, border: "solid #D29D2B 5px", borderRadius: 100 }}>
                                                     <Box sx={{ backgroundColor: "#EACD65" }}>
                                                         <Typography
-                                                            sx={{ color: "#205375", mx: 2, mt: 2,fontSize:"12px", textAlign: "center" }}>
+                                                            sx={{ color: "#205375", mx: 2, mt: 2, fontSize: "12px", textAlign: "center" }}>
                                                             {equipment.name}
                                                         </Typography>
-                                                        <Typography sx={{ color: "#205375", m: 1, fontSize:"10px", textAlign: "center" }}>
+                                                        <Typography sx={{ color: "#205375", m: 1, fontSize: "10px", textAlign: "center" }}>
                                                             by {equipment.brand}
                                                         </Typography>
                                                     </Box>
@@ -135,9 +136,9 @@ const MobileNewPost = () => {
                                                 </Card>
                                             ))
                                             }
-                                        </Stack>
-                                    </motion.div>
-                                </div>
+                                        </>
+                                    }
+                                />
                                 <Button
                                     onClick={() => handelAnimation()}
                                     sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
@@ -157,9 +158,9 @@ const MobileNewPost = () => {
                                         <Avatar sx={{ color: "#205375", backgroundColor: "#E7B10A", border: "solid #D29D2B 2px" }}>
                                             2
                                         </Avatar>
-                                        <Typography 
-                                         variant="h8"
-                                         sx={{ color: "#205375", fontFamily: "arial", p: 1 }}>
+                                        <Typography
+                                            variant="h8"
+                                            sx={{ color: "#205375", fontFamily: "arial", p: 1 }}>
                                             Write Your Critique:
                                         </Typography>
                                     </Stack>
