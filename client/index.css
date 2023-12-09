@@ -8,19 +8,6 @@
   overflow-y: scroll;
 }
 
-.inner-carousel {
-  display: flex;
-  background-color: #89c7c3;
-  border-radius: 20px;
-}
-
-.carousel {
-  cursor: grab;
-  overflow: hidden;
-  background: #89c7c3;
-  border-radius: 20px;
-}
-
 .select-equipment {
   cursor: pointer;
 }

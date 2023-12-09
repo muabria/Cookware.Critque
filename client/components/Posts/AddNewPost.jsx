@@ -23,6 +23,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import MobileNewPost from "./MobileNewPost";
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
 import AccountRedirect from "../ErrorMessages/AccountRedirect";
+import SlideShow from "../SlideShow";
 import { useNavigate } from "react-router-dom";
 
 const AddPostContent = () => {
@@ -57,11 +58,11 @@ const AddPostContent = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-    if(!userData) {
-        return(<div><AccountRedirect/></div>)
+    if (!userData) {
+        return (<div><AccountRedirect /></div>)
     }
     if (isLoading) {
-        return (<div><LoadingMessage/></div>)
+        return (<div><LoadingMessage /></div>)
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
@@ -104,11 +105,11 @@ const AddPostContent = () => {
 
     return (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeIn" }}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
             {isMobile ?
-                <div><MobileNewPost/></div>
+                <div><MobileNewPost /></div>
                 : //is NOT mobile...
                 <div>
                     <Grid container>
@@ -137,16 +138,16 @@ const AddPostContent = () => {
                                             </Typography>
                                         </Stack>
                                         {/* <--------------MAP EQUIPMENT---------------> */}
-                                        <div className="carousel">
-                                            <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -2000 }}>
-                                                <Stack direction="row">
+                                        <SlideShow
+                                            content={
+                                                <>
                                                     {data && data.map((equipment) => (
                                                         <Card
                                                             key={equipment.id}
                                                             className="select-equipment"
                                                             onClick={() => setEquipment(equipment.id)}
-                                                            sx={{ m: 1, minWidth: 300, maxWidth: 300, border: "solid #D29D2B 5px", borderRadius: 100 }}>
-                                                            <Box sx={{ backgroundColor: "#EACD65" }}>
+                                                            sx={{ m: 1, minWidth: 350, maxWidth: 350, border: "solid #D29D2B 5px", borderRadius: 100 }}>
+                                                            <Box sx={{ pt: 5, px: 2, backgroundColor: "#EACD65" }}>
                                                                 <Typography
                                                                     variant="h5"
                                                                     sx={{ color: "#205375", m: 1, textAlign: "center" }}>
@@ -165,9 +166,9 @@ const AddPostContent = () => {
                                                             </Box>
                                                         </Card>
                                                     ))}
-                                                </Stack>
-                                            </motion.div>
-                                        </div>
+                                                </>
+                                            }
+                                        />
                                         <Button
                                             onClick={() => handelAnimation()}
                                             sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
