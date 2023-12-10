@@ -15,15 +15,17 @@ import { motion } from 'framer-motion';
 
 import { Link } from 'react-router-dom';
 
-import { useGetReviewsQuery, useGetEquipmentQuery } from '../../redux/api';
+import { useGetReviewsQuery } from '../../redux/api';
 
 import SearchBar from '../SearchEquipment/SearchBar';
 import LoadingMessage from '../ErrorMessages/LoadingMessage';
 import SlideShow from '../SlideShow';
+//import EquipmentName from './EquipmentName';
+import MapAllEquipment from '../EquipmentsWithReviews/MapAllEquipment';
 
 const AllPosts = () => {
     const { data, error, isLoading } = useGetReviewsQuery()
-    const { data: equipmentData, error: equipmentError, isLoading: equipmentLoading } = useGetEquipmentQuery();
+    //const { data: equipmentData, error: equipmentError, isLoading: equipmentLoading } = useGetEquipmentQuery();
 
     if (isLoading) {
         return <div><LoadingMessage /></div>
@@ -33,84 +35,89 @@ const AllPosts = () => {
     }
 
     // const findEquipment = (post) => {
-    //     const currentEquipment = equipmentData.find((equipment) => {
+    //     let currentEquipment;
+    //     currentEquipment = equipmentData.find((equipment) => {
     //         return equipment.id === post.equipmentId
     //     })
     //     return <Typography align='center' sx={{color: '#8F8F8F'}}>{currentEquipment.name}</Typography>
     // }
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, ease: "easeIn" }}>
-            <Box sx={{ maxHeight: "60px", mb: 3 }}>
-                <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
-                    Explore Trusted Critiques Made from Real Users
-                </Typography>
-            </Box>
-            <Box sx={{ mx: 10, mb: 1 }}>
-                <SearchBar />
-            </Box>
-            <Box sx={{ mx: 5 }}>
+        <>
+            <MapAllEquipment />
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, ease: "easeIn" }}>
+                <Box sx={{ maxHeight: "60px", mb: 3 }}>
+                    <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
+                        Explore Trusted Critiques Made from Real Users
+                    </Typography>
+                </Box>
+                <Box sx={{ mx: 10, mb: 1 }}>
+                    <SearchBar />
+                </Box>
+                <Box sx={{ mx: 5 }}>
 
-                <SlideShow
-                    content={
-                        <>
-                            {data && data.map((review) => (
-                                <Grid container key={review.id} >
-                                    <Grid item xs={8}>
-                                        <Card key={review.id}
-                                            sx={{
-                                                boxShadow: 3,
-                                                backgroundColor: "#F9FBE7",
-                                                border: "solid #D29D2B 2px",
-                                                borderRadius: "10px",
-                                                minWidth: 300,
-                                                minHeight: 300,
-                                                m: 5,
-                                            }}>
-                                            <CardHeader sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}
-                                                title={review.title}
-                                            // subheader="TO DO"
-                                            />
-                                            <CardContent>
-                                                <Typography variant="h6" sx={{ color: "#205375" }}>
-                                                    {review.content}
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions disableSpacing>
-                                                {/* <IconButton aria-label="add to favorites">
+                    <SlideShow
+                        content={
+                            <>
+                                {data && data.map((review) => (
+                                    <Grid container key={review.id} >
+                                        <Grid item xs={8}>
+                                            <Card key={review.id}
+                                                sx={{
+                                                    boxShadow: 3,
+                                                    backgroundColor: "#F9FBE7",
+                                                    border: "solid #D29D2B 2px",
+                                                    borderRadius: "10px",
+                                                    minWidth: 300,
+                                                    minHeight: 300,
+                                                    m: 5,
+                                                }}>
+                                                <CardHeader sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}
+                                                    title={review.title}
+                                                // subheader="TO DO"
+                                                />
+                                                <CardContent>
+                                                    <Typography variant="h6" sx={{ color: "#205375" }}>
+                                                        {review.content}
+                                                    </Typography>
+                                                </CardContent>
+                                                <CardActions disableSpacing>
+                                                    {/* <IconButton aria-label="add to favorites">
                                                     <FavoriteIcon />
                                                 </IconButton>
                                                 <IconButton aria-label="share">
                                                     <ShareIcon />
                                                 </IconButton> */}
-                                                <Link to={`/review/${review.id}`} >
-                                                    <Button
-                                                        sx={{
-                                                            my: 2,
-                                                            mx: 6,
-                                                            boxShadow: 3,
-                                                            color: "#3C1B1F",
-                                                            backgroundColor: "#EACD65",
-                                                            border: "solid #D29D2B 2px"
-                                                        }}>
-                                                        See the Full Review
-                                                    </Button>
-                                                </Link>
-                                            </CardActions>
-                                            {/* {findEquipment(review)} */}
-                                        </Card>
+                                                    <Link to={`/review/${review.id}`} >
+                                                        <Button
+                                                            sx={{
+                                                                my: 2,
+                                                                mx: 6,
+                                                                boxShadow: 3,
+                                                                color: "#3C1B1F",
+                                                                backgroundColor: "#EACD65",
+                                                                border: "solid #D29D2B 2px"
+                                                            }}>
+                                                            See the Full Review
+                                                        </Button>
+                                                    </Link>
+                                                </CardActions>
+                                                {/* <EquipmentName equipmentId={review.equipmentId} /> */}
+                                                {/* {findEquipment(review.id)} */}
+                                            </Card>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            ))
-                            }
-                        </>
-                    }
-                />
-            </Box>
-        </motion.div>
+                                ))
+                                }
+                            </>
+                        }
+                    />
+                </Box>
+            </motion.div>
+        </>
     );
 }
 export default AllPosts 
