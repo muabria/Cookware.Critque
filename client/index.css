@@ -10,4 +10,5 @@
 
 .select-equipment {
   cursor: pointer;
+  border: solid 1px;
 }

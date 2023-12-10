@@ -32,6 +32,7 @@ const AddPostContent = () => {
     const [content, setContent] = useState("");
     const [equipment, setEquipment] = useState("");
     const [rating, setRating] = useState(null);
+    const [select, setSelect] = useState(false)
 
     //<-----------------STAR RATING STATE ------------------->
     const [hover, setHover] = useState(-1);
@@ -142,29 +143,32 @@ const AddPostContent = () => {
                                             content={
                                                 <>
                                                     {data && data.map((equipment) => (
-                                                        <Card
-                                                            key={equipment.id}
-                                                            className="select-equipment"
-                                                            onClick={() => setEquipment(equipment.id)}
-                                                            sx={{ m: 1, minWidth: 350, maxWidth: 350, border: "solid #D29D2B 5px", borderRadius: 100 }}>
-                                                            <Box sx={{ pt: 5, px: 2, backgroundColor: "#EACD65" }}>
-                                                                <Typography
-                                                                    variant="h5"
-                                                                    sx={{ color: "#205375", m: 1, textAlign: "center" }}>
-                                                                    {equipment.name}
-                                                                </Typography>
-                                                                <Typography sx={{ color: "#205375", m: 1, textAlign: "center" }}>
-                                                                    by {equipment.brand}
-                                                                </Typography>
-                                                            </Box>
-                                                            <Box textAlign="center">
-                                                                <img
-                                                                    src={equipment.image}
-                                                                    alt={`${equipment.name} image`}
-                                                                    width="200"
-                                                                    height="200" />
-                                                            </Box>
-                                                        </Card>
+                                                        <motion.div
+                                                            whileTap={{ scale: 1.2 }}>
+                                                            <Card
+                                                                key={equipment.id}
+                                                                className="select-equipment"
+                                                                onClick={() => setEquipment(equipment.id)}
+                                                                sx={{ m: 1, minWidth: 350, maxWidth: 350, border: "solid #D29D2B 5px", borderRadius: 100 }}>
+                                                                <Box sx={{ pt: 5, px: 2, backgroundColor: "#EACD65" }}>
+                                                                    <Typography
+                                                                        variant="h5"
+                                                                        sx={{ color: "#205375", m: 1, textAlign: "center" }}>
+                                                                        {equipment.name}
+                                                                    </Typography>
+                                                                    <Typography sx={{ color: "#205375", m: 1, textAlign: "center" }}>
+                                                                        by {equipment.brand}
+                                                                    </Typography>
+                                                                </Box>
+                                                                <Box textAlign="center">
+                                                                    <img
+                                                                        src={equipment.image}
+                                                                        alt={`${equipment.name} image`}
+                                                                        width="200"
+                                                                        height="200" />
+                                                                </Box>
+                                                            </Card>
+                                                        </motion.div>
                                                     ))}
                                                 </>
                                             }
