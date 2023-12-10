@@ -64,7 +64,7 @@ const HomePage = () => {
                                     <Stack direction="row">
                                         <motion.div whileHover={{ scale: 1.3 }}>
                                             <Link
-                                                to="/posts"
+                                                to="/explore"
                                                 style={{ textDecoration: "none" }}>
                                                 <Box sx={{
                                                     boxShadow: 3,
@@ -75,7 +75,7 @@ const HomePage = () => {
                                                     p: 3
                                                 }}>
                                                     <Typography variant="h6">
-                                                        Find New Equipment
+                                                        Equipment and Reviews
                                                     </Typography>
                                                 </Box>
                                             </Link>
@@ -85,8 +85,8 @@ const HomePage = () => {
                             </Grid>
                         </Box>
                     </div>
-                    <AllPost />
-                    <MapAllEquipment />
+                    {/* <AllPost />
+                    <MapAllEquipment /> */}
                 </>
 
             }

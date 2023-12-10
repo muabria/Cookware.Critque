@@ -64,12 +64,12 @@ const NavBar = () => {
                                         </Box>
                                     </motion.div>
                                 </Link>
-                                <Link to="/posts"
+                                <Link to="/explore"
                                     style={{ textDecoration: "none" }}>
                                     <motion.div whileHover={{ scale: 1.2 }}>
                                         <Box sx={{ color: "#205375", mx: 5, mt: 1.5 }}>
                                             <Typography>
-                                                Find New Kitchen Equipment
+                                            Equipment and Reviews
                                             </Typography>
                                         </Box>
                                     </motion.div>

@@ -42,7 +42,7 @@ const MobileHomePage = () => {
                             <Box sx={{ mt: 22 }}>
                                 <motion.div whileHover={{ scale: 1.3 }}>
                                     <Link 
-                                    to="/posts"
+                                    to="/explore"
                                     style={{ textDecoration: "none" }}>
                                         <Box sx={{
                                             color: "#FAF3F0",
@@ -57,7 +57,7 @@ const MobileHomePage = () => {
                                             <Typography
                                             variant="h6"
                                             sx={{ textAlign: "center" }}>
-                                                Find New Equipment
+                                                Equipment and Reviews
                                             </Typography>
                                         </Box>
                                     </Link>
