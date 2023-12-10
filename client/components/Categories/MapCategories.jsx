@@ -27,7 +27,7 @@ const MapCategories = () => {
             {isMobile ?
                 <>
                     {data && data.map((category) => (
-                        <Box key={category.id} sx={{ m: .15 }}>
+                        <Button>
                             <motion.div whileHover={{ scale: 1.3 }}>
                                 <Link to={`/category/${category.id}`}
                                     style={{ textDecoration: "none" }}>
@@ -35,15 +35,14 @@ const MapCategories = () => {
                                         boxShadow: 3,
                                         color: "#3C1B1F",
                                         backgroundColor: "#E7B10A",
-                                        border: "solid #D29D2B 2px",
-                                    }} >
-                                        <Typography sx={{ fontSize: "10px" }}>
+                                        border: "solid #D29D2B 2px" }} >
+                                        <Typography>
                                             {category.category}
                                         </Typography>
                                     </Card>
                                 </Link>
                             </motion.div>
-                        </Box>
+                        </Button>
                     ))
                     }
                 </>
