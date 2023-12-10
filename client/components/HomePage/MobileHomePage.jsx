@@ -70,7 +70,6 @@ const MobileHomePage = () => {
 
                     </Grid>
                 </Box>
-                <MapAllEquipment />
             </div>
         </>
     )
