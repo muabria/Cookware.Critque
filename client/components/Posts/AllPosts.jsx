@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 
 import { Link } from 'react-router-dom';
 
-import { useGetReviewsQuery } from '../../redux/api';
+import { useGetReviewsQuery, useGetEquipmentQuery } from '../../redux/api';
 
 import SearchBar from '../SearchEquipment/SearchBar';
 import LoadingMessage from '../ErrorMessages/LoadingMessage';
@@ -23,12 +23,20 @@ import SlideShow from '../SlideShow';
 
 const AllPosts = () => {
     const { data, error, isLoading } = useGetReviewsQuery()
+    const { data: equipmentData, error: equipmentError, isLoading: equipmentLoading } = useGetEquipmentQuery();
 
     if (isLoading) {
         return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
+    }
+
+    const findEquipment = (post) => {
+        const currentEquipment = equipmentData.find((equipment) => {
+            return equipment.id === post.equipmentId
+        })
+        return <Typography align='center' sx={{color: '#8F8F8F'}}>{currentEquipment.name}</Typography>
     }
 
     return (
@@ -66,12 +74,6 @@ const AllPosts = () => {
                                                 title={review.title}
                                             // subheader="TO DO"
                                             />
-                                            {/* <CardMedia
-                                                component=" "
-                                                height="194"
-                                                image=""
-                                                alt="Equipment Picture"
-                                            /> */}
                                             <CardContent>
                                                 <Typography variant="h6" sx={{ color: "#205375" }}>
                                                     {review.content}
@@ -88,7 +90,7 @@ const AllPosts = () => {
                                                     <Button
                                                         sx={{
                                                             my: 2,
-                                                            ml: 8,
+                                                            mx: 6,
                                                             boxShadow: 3,
                                                             color: "#3C1B1F",
                                                             backgroundColor: "#EACD65",
@@ -98,6 +100,7 @@ const AllPosts = () => {
                                                     </Button>
                                                 </Link>
                                             </CardActions>
+                                            {findEquipment(review)}
                                         </Card>
                                     </Grid>
                                 </Grid>
