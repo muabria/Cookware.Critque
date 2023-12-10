@@ -4,6 +4,8 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import AspectRatio from '@mui/joy/AspectRatio';
+
 
 import { Slide, useMediaQuery, useTheme } from "@mui/material";
 
@@ -75,7 +77,7 @@ const MapAllEquipment = () => {
                     <Typography
                         variant="h4"
                         sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
-                        See All Equipment 
+                        See All Equipment
                     </Typography>
 
                     <Grid container >
@@ -104,19 +106,21 @@ const MapAllEquipment = () => {
                                                     sx={{ textAlign: "center" }}>
                                                     from {equipment.brand}
                                                 </Typography>
-                                                <Box sx={{ m: 2 }}>
-                                                    <img
-                                                        src={equipment.image}
-                                                        alt={`${equipment.name} image`}
-                                                        width="130"
-                                                        height="130"
-                                                    />
+                                                <Box sx={{ m: 2, maxHeight: 200 }}>
+                                                    <AspectRatio objectFit="contain">
+                                                        <img
+                                                            src={equipment.image}
+                                                            alt={`${equipment.name} image`}
+                                                            width="130"
+                                                            height="130"
+                                                        />
+                                                    </AspectRatio>
                                                 </Box>
                                                 <Link to={`/equipment/${equipment.id}`}>
                                                     <Button
                                                         sx={{
                                                             my: 2,
-                                                            ml: 8,
+                                                            mx: 9,
                                                             boxShadow: 3,
                                                             color: "#3C1B1F",
                                                             backgroundColor: "#EACD65",
