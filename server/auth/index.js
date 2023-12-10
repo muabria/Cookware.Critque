@@ -58,7 +58,8 @@ authRouter.post("/register", async (req, res, next) => {
         });
         delete user.password
         const token = jwt.sign({ id: user.id, username }, process.env.JWT_SECRET);
-        res.send({ user, token });
+        res.send({ token });
+        console.log("Registration successful!");
     } catch (error) {
         next(error)
     }
@@ -90,7 +91,8 @@ authRouter.post("/login", async (req, res, next) => {
 
         //Create token
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
-        res.send({ user, token });
+        res.send({ token });
+        console.log("Login successful!");
     } catch (error) {
         next(error);
     }
@@ -123,7 +125,7 @@ authRouter.delete("/user/:id", requireAdmin, async (req, res, next) => {
         if (!deletedUser) {
             return res.status(404).send("User not found");
         }
-        res.send(deletedUser);
+        res.send("User successfully deleted");
     } catch (error) {
         next(error)
     }
@@ -149,7 +151,7 @@ authRouter.patch("/account/:id/edit", requireUser, async (req, res, next) => {
             }
         }) 
         delete updatedUser.password;
-        res.send(updatedUser)
+        res.send("User successfully updated")
     } catch (error) {
         next(error)
     }

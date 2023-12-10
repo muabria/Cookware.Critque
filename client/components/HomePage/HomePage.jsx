@@ -24,9 +24,9 @@ const HomePage = () => {
 
     return (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeIn" }}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "easeIn" }}>
             {isMobile ?
                 <>
                     <MobileHomePage />
@@ -63,8 +63,10 @@ const HomePage = () => {
                                 <Grid item xs={6.5}>
                                     <Stack direction="row">
                                         <motion.div whileHover={{ scale: 1.3 }}>
-                                            <Link to="/posts">
-                                                <Button sx={{
+                                            <Link
+                                                to="/posts"
+                                                style={{ textDecoration: "none" }}>
+                                                <Box sx={{
                                                     boxShadow: 3,
                                                     color: "#FAF3F0",
                                                     backgroundColor: "#D988B9",
@@ -75,7 +77,7 @@ const HomePage = () => {
                                                     <Typography variant="h6">
                                                         Find New Equipment
                                                     </Typography>
-                                                </Button>
+                                                </Box>
                                             </Link>
                                         </motion.div>
                                     </Stack>

@@ -19,12 +19,13 @@ import { useGetReviewsQuery } from '../../redux/api';
 
 import SearchBar from '../SearchEquipment/SearchBar';
 import LoadingMessage from '../ErrorMessages/LoadingMessage';
+import SlideShow from '../SlideShow';
 
 const AllPosts = () => {
     const { data, error, isLoading } = useGetReviewsQuery()
 
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
@@ -32,11 +33,11 @@ const AllPosts = () => {
 
     return (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeIn" }}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
             <Box sx={{ maxHeight: "60px", mb: 3 }}>
-                <Typography variant="h3" sx={{ textAlign: "center", color: "#205375" }}>
+                <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
                     Explore Trusted Critiques Made from Real Users
                 </Typography>
             </Box>
@@ -44,9 +45,10 @@ const AllPosts = () => {
                 <SearchBar />
             </Box>
             <Box sx={{ mx: 5 }}>
-                <div className="carousel">
-                    <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -2800 }}>
-                        <Stack direction="row">
+
+                <SlideShow
+                    content={
+                        <>
                             {data && data.map((review) => (
                                 <Grid container key={review.id} >
                                     <Grid item xs={8}>
@@ -101,9 +103,9 @@ const AllPosts = () => {
                                 </Grid>
                             ))
                             }
-                        </Stack>
-                    </motion.div>
-                </div>
+                        </>
+                    }
+                />
             </Box>
         </motion.div>
     );

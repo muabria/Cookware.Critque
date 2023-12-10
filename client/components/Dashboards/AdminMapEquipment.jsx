@@ -5,24 +5,32 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { useMediaQuery, useTheme } from '@mui/material';
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { useGetEquipmentQuery } from "../../redux/api";
 import { useDeleteEquipmentMutation } from "../../redux/api";
 
 import { motion } from "framer-motion";
+
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import SlideShow from "../SlideShow";
 
 const AdminMapEquipment = () => {
 
     const [alert, setAlert] = useState(false);
     const [deleteEquipment, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteEquipmentMutation();
+    const [scrollItem, setscrollItem] = useState(0);
+
+    const ref = useRef();
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -32,13 +40,17 @@ const AdminMapEquipment = () => {
         return <div>Oops! Couldn't fetch the equipmnet</div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }
-    console.log(data);
 
+    const handleScroll = (movementAmount) => {
+        const newscrollItem = scrollItem + movementAmount;
+        setscrollItem(newscrollItem);
+        ref.current.scrollLeft = newscrollItem;
+    };
 
     return (
         <>
@@ -105,9 +117,9 @@ const AdminMapEquipment = () => {
                         <Typography variant="h5" sx={{ m: 2, color: "#205375" }}>
                             All Equipment:
                         </Typography>
-                        <div className="carousel">
-                            <motion.div className="inner-carousel" drag="x" dragConstraints={{ right: 0, left: -3000 }}>
-                                <Stack direction="row">
+                        <SlideShow
+                            content={
+                                <>
                                     {data && data.map((equipment) => (
                                         <Card
                                             key={equipment.id}
@@ -157,9 +169,9 @@ const AdminMapEquipment = () => {
                                             </Stack>
                                         </Card>
                                     ))}
-                                </Stack>
-                            </motion.div>
-                        </div>
+                                </>
+                            }
+                        />
                     </Box>
                 </div>}
         </>

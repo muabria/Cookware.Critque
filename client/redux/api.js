@@ -17,7 +17,7 @@ const api = createApi({
         },
     }),
 
-    tagTypes: ["Reviews", "Comments", "Users", "Equipment", "Categories"],
+    tagTypes: ["Reviews", "Comments", "Users", "Equipment", "Categories", "Me"],
     //equipment, reviews, users, comments, add Equipment
     //unique
 
@@ -30,7 +30,7 @@ const api = createApi({
                 method: 'POST',
                 body: user,
             }),
-            providesTags: ["Users"]
+            providesTags: ["Me"]
         }),
         //LOGIN ACCOUNT 
         login: builder.mutation({
@@ -39,14 +39,14 @@ const api = createApi({
                 method: 'POST',
                 body: user,
             }),
-            providesTags: ["Users"]
+            providesTags: ["Me"]
         }),
         //LOGOUT ACCOUNT
         logout: builder.mutation({
             queryFn: () => ({
                 data: {}
             }),
-            invalidatesTags: ["Users"]
+            invalidatesTags: ["Me"]
         }),
         //GET ALL USERS FOR VALIDATION
         getAllUsersValidation: builder.query({
@@ -62,7 +62,7 @@ const api = createApi({
                 url: `/auth/account`,
                 method: 'GET',
             }),
-            providesTags: ["Users"]
+            providesTags: ["Me"]
         }),
         //GET COMMENT BY USER
         getCommentByUser: builder.query({
@@ -148,8 +148,8 @@ const api = createApi({
             providesTags: ["Equipment"]
         }),
         getSingleEquipment: builder.query({
-            query: (search) => ({
-                url: `/api/equipment/${search ? "?search=" + search : ""}`,
+            query: (id) => ({
+                url: `/api/equipment/${id}`,
                 method: 'GET'
             }),
         }),
@@ -199,7 +199,7 @@ const api = createApi({
                 method: 'PATCH',
                 body: { username, email, password },
             }),
-            invalidatesTags: ["Users"]
+            invalidatesTags: ["Me"]
         }),
         //PATCH COMMENT
         patchComment: builder.mutation({
