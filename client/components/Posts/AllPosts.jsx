@@ -32,12 +32,12 @@ const AllPosts = () => {
         return <div> Sorry! There's a problem loading the reviews. </div>
     }
 
-    const findEquipment = (post) => {
-        const currentEquipment = equipmentData.find((equipment) => {
-            return equipment.id === post.equipmentId
-        })
-        return <Typography align='center' sx={{color: '#8F8F8F'}}>{currentEquipment.name}</Typography>
-    }
+    // const findEquipment = (post) => {
+    //     const currentEquipment = equipmentData.find((equipment) => {
+    //         return equipment.id === post.equipmentId
+    //     })
+    //     return <Typography align='center' sx={{color: '#8F8F8F'}}>{currentEquipment.name}</Typography>
+    // }
 
     return (
         <motion.div
@@ -100,7 +100,7 @@ const AllPosts = () => {
                                                     </Button>
                                                 </Link>
                                             </CardActions>
-                                            {findEquipment(review)}
+                                            {/* {findEquipment(review)} */}
                                         </Card>
                                     </Grid>
                                 </Grid>
