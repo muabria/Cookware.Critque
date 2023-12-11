@@ -125,20 +125,21 @@ const MapAllEquipment = () => {
                                                         height="130"
                                                     />
                                                 </Box>
-                                                <Link to={`/equipment/${equipment.id}`}>
-                                                    <Button
-                                                        sx={{
-                                                            textTransform: "none",
-                                                            my: 2,
-                                                            ml: 8,
-                                                            boxShadow: 3,
-                                                            color: "#3C1B1F",
-                                                            backgroundColor: "#EACD65",
-                                                            border: "solid #D29D2B 2px"
-                                                        }}>
-                                                        See All Reviews
-                                                    </Button>
-                                                </Link>
+                                                <Typography sx={{ textAlign: "center" }}>
+                                                    <Link to={`/equipment/${equipment.id}`}>
+                                                        <Button
+                                                            sx={{
+                                                                textTransform: "none",
+                                                                my: 2,
+                                                                boxShadow: 3,
+                                                                color: "#3C1B1F",
+                                                                backgroundColor: "#EACD65",
+                                                                border: "solid #D29D2B 2px"
+                                                            }}>
+                                                            See All Reviews
+                                                        </Button>
+                                                    </Link>
+                                                </Typography>
                                             </Stack>
                                         </Card>
                                     ))}

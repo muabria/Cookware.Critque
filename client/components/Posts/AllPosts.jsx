@@ -79,19 +79,21 @@ const AllPosts = () => {
                                                 </Typography>
                                             </CardContent>
                                             <CardActions>
-                                                <Link to={`/review/${review.id}`} >
-                                                    <Button
-                                                        sx={{
-                                                            textTransform: "none",
-                                                            my: 1,
-                                                            boxShadow: 3,
-                                                            color: "#3C1B1F",
-                                                            backgroundColor: "#EACD65",
-                                                            border: "solid #D29D2B 2px"
-                                                        }}>
-                                                        See the Full Review
-                                                    </Button>
-                                                </Link>
+                                                <Typography sx={{ textAlign:"center" }}>
+                                                    <Link to={`/review/${review.id}`} >
+                                                        <Button
+                                                            sx={{
+                                                                textTransform: "none",
+                                                                my: 1,
+                                                                boxShadow: 3,
+                                                                color: "#3C1B1F",
+                                                                backgroundColor: "#EACD65",
+                                                                border: "solid #D29D2B 2px"
+                                                            }}>
+                                                            See the Full Review
+                                                        </Button>
+                                                    </Link>
+                                                </Typography>
                                             </CardActions>
                                         </Card>
                                     ))
