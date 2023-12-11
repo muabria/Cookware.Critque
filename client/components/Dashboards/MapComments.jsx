@@ -20,13 +20,13 @@ import { usePatchCommentMutation } from "../../redux/api";
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const MapComments = () => {
-    const [alert, setAlert] = useState(false);
-
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+    const [alert, setAlert] = useState(null);
     const [edit, setEdit] = useState(false);
     const [content, setContent] = useState();
 
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  
     const [deleteComment, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteCommentForUserMutation();
     const [patchComment, { isLoading: patchIsLoading, Error: patchError, data: patchData }] = usePatchCommentMutation();
     const { data, error, isLoading } = useGetCommentByUserQuery();
@@ -63,22 +63,18 @@ const MapComments = () => {
                                             <PreviewIcon />
                                         </Button>
                                         <Button
-                                            onClick={() =>
-                                                setEdit(true)
-                                            }
-                                            variant="outlined"
+                                            onClick={() => setEdit(comment.id) }
                                             sx={{ m: 1 }}>
                                             <EditNoteIcon />
-
                                         </Button>
                                         <Button
-                                            onClick={() => setAlert(true)}
+                                            onClick={() => setAlert(comment.id)}
                                             color="error">
                                             <DeleteForeverSharpIcon />
                                         </Button>
                                     </Grid>
                                 </Grid>
-                                {edit && <Alert severity="info">
+                                {edit === comment.id && <Alert severity="info">
                                     <div>
                                         <form onSubmit={(event) => { event.preventDefault(); patchComment({ id: comment.id, content }) }
                                         }>
@@ -103,26 +99,26 @@ const MapComments = () => {
                                     </div>
                                     <Button
                                         variant="outlined"
-                                        onClick={() => setAlert(false)}
+                                        onClick={() => setEdit(null)}
                                         sx={{ m: 1 }}>
-                                        No, keep this comment
+                                        No, keep this comment.
                                     </Button>
                                 </Alert>
                                 }
-                                {alert && <Alert severity="warning">
-                                    Are you sure you want to delete this post? Once you do it's gone forever.
+                                {alert === comment.id && <Alert severity="warning">
+                                    Are you sure you want to delete this post? Once you do, it's gone forever.
                                     <Button
                                         onClick={() => deleteComment(comment.id)}
                                         variant="outlined"
                                         color="error"
                                         sx={{ m: 1 }}>
-                                        Yes, delete this review
+                                        Yes, delete this review.
                                     </Button>
                                     <Button
                                         variant="outlined"
-                                        onClick={() => setAlert(false)}
+                                        onClick={() => setAlert(null)}
                                         sx={{ m: 1 }}>
-                                        No, keep this comment
+                                        No, keep this comment.
                                     </Button>
                                 </Alert>
                                 }
@@ -156,16 +152,14 @@ const MapComments = () => {
                                                 <PreviewIcon />
                                             </Button>
                                             <Button
-                                                onClick={() =>
-                                                    setEdit(true)
-                                                }
+                                                onClick={() => setEdit(comment.id)}
                                                 variant="outlined"
                                                 sx={{ m: 1 }}>
                                                 <EditNoteIcon />
 
                                             </Button>
                                             <Button
-                                                onClick={() => setAlert(true)}
+                                                onClick={() => setAlert(comment.id)}
                                                 variant="outlined"
                                                 color="error"
                                                 sx={{ m: 1 }}>
@@ -174,7 +168,7 @@ const MapComments = () => {
                                         </Stack>
                                     </Grid>
                                 </Grid>
-                                {edit && <Alert severity="info">
+                                {edit === comment.id && <Alert severity="info">
                                     <div>
                                         <form onSubmit={(event) => { event.preventDefault(); patchComment({ id: comment.id, content }) }
                                         }>
@@ -199,26 +193,26 @@ const MapComments = () => {
                                     </div>
                                     <Button
                                         variant="outlined"
-                                        onClick={() => setAlert(false)}
+                                        onClick={() => setEdit(null)}
                                         sx={{ m: 1 }}>
-                                        No, keep this comment
+                                        No, keep this comment.
                                     </Button>
                                 </Alert>
                                 }
-                                {alert && <Alert severity="warning">
-                                    Are you sure you want to delete this post? Once you do it's gone forever.
+                                {alert === comment.id && <Alert severity="warning">
+                                    Are you sure you want to delete this post? Once you do, it's gone forever.
                                     <Button
                                         onClick={() => deleteComment(comment.id)}
                                         variant="outlined"
                                         color="error"
                                         sx={{ m: 1 }}>
-                                        Yes, delete this review
+                                        Yes, delete this review.
                                     </Button>
                                     <Button
                                         variant="outlined"
-                                        onClick={() => setAlert(false)}
+                                        onClick={() => setAlert(null)}
                                         sx={{ m: 1 }}>
-                                        No, keep this comment
+                                        No, keep this comment.
                                     </Button>
                                 </Alert>
                                 }
