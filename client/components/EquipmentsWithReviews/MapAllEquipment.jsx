@@ -55,12 +55,12 @@ const MapAllEquipment = () => {
                                                         sx={{ textAlign: "center" }}>
                                                         from {equipment.brand}
                                                     </Typography>
-                                                    <Box sx={{ px: 5 }}>
+                                                    <Box sx={{ px: 5, maxHeight: 200 }}>
+                                                        <AspectRatio objectFit="contain">
                                                         <img
                                                             src={equipment.image}
-                                                            alt={equipment.name}
-                                                            width="100"
-                                                            height="100" />
+                                                            alt={equipment.name}/>
+                                                            </AspectRatio>
                                                     </Box>
                                                     <Link to={`/equipment/${equipment.id}`}>
                                                         <Button
