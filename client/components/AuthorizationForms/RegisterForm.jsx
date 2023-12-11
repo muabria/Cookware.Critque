@@ -77,7 +77,7 @@ const RegisterForm = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeIn" }}>
             <Grid container>
-                <Grid item xs={2}>
+                <Grid item xs={3}>
                 </Grid>
                 <Grid item xs={8}>
                     <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
