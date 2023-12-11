@@ -1,4 +1,5 @@
 import Alert from "@mui/material/Alert";
+import Box from "@mui/material/Box"
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid"
@@ -8,7 +9,8 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import TextField from '@mui/material/TextField';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-import { useParams } from "react-router-dom";
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import { Link } from "react-router-dom";
 
 import { useMediaQuery, useTheme } from '@mui/material';
 
@@ -50,6 +52,15 @@ const MapComments = () => {
                             sx={{ textAlign: "center", color: "#205375" }}>
                             My Comments:
                         </Typography>
+                        <Box sx={{ backgroundColor: "#EEF5FF"}}>
+                            <Link to="/posts">
+                                <Button
+                                    sx={{ textTransform: "none", m: 1 }}>
+                                    Want to make a comment? Go visit a review!
+                                    <ArrowCircleRightIcon sx={{ mx: 1}} />
+                                </Button>
+                            </Link>
+                        </Box>
                         {data && data.map((comment) => (
                             <Card key={comment.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
@@ -137,6 +148,15 @@ const MapComments = () => {
                             sx={{ textAlign: "center", color: "#205375" }}>
                             My Comments:
                         </Typography>
+                        <Box sx={{ backgroundColor: "#EEF5FF" }}>
+                            <Link to="/posts">
+                                <Button
+                                    sx={{ textTransform: "none", m: 1 }}>
+                                    Want to make a comment? Go visit a review!
+                                    <ArrowCircleRightIcon sx={{ mx: 1 }} />
+                                </Button>
+                            </Link>
+                        </Box>
                         {data && data.map((comment) => (
                             <Card key={comment.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
