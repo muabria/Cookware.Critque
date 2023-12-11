@@ -31,14 +31,20 @@ const PostsWithComments = () => {
     const { data: commentData, error: commentError, isLoading: commentLoading } = useGetCommentsQuery();
     const { data: equipmentData, error: equipmentError, isLoading: equipmentLoading } = useGetEquipmentQuery();
 
+    if (!equipmentData) {
+        return <div> </div>
+    }
     if (isLoading) {
         return <div><LoadingMessage/></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
     }
-
-    const currentEquipment = equipmentData.find((equipment) => {return equipment.id === data.equipmentId})
+    console.log(equipmentData)
+    let currentEquipment;
+    if (equipmentData) {
+        currentEquipment = equipmentData.find((equipment) => {return equipment.id === data.equipmentId})
+    }
 
     return (
         <motion.div

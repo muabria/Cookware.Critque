@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Grid from "@mui/material/Grid";
 import { useMediaQuery, useTheme } from "@mui/material";
 
 import { motion } from 'framer-motion';
@@ -16,7 +17,7 @@ import { useGetReviewsQuery } from '../../redux/api';
 import SearchBar from '../SearchEquipment/SearchBar';
 import LoadingMessage from '../ErrorMessages/LoadingMessage';
 import SlideShow from '../SlideShow';
-//import EquipmentName from './EquipmentName';
+import EquipmentName from './EquipmentName';
 import MapAllEquipment from '../EquipmentsWithReviews/MapAllEquipment';
 
 const AllPosts = () => {
@@ -25,7 +26,7 @@ const AllPosts = () => {
 
     const { data, error, isLoading } = useGetReviewsQuery()
     //const { data: equipmentData, error: equipmentError, isLoading: equipmentLoading } = useGetEquipmentQuery();
-
+    
     if (isLoading) {
         return <div><LoadingMessage /></div>
     }
@@ -159,7 +160,7 @@ const AllPosts = () => {
                                                         </Button>
                                                     </Link>
                                                 </CardActions>
-                                                {/* <EquipmentName equipmentId={review.equipmentId} /> */}
+                                                <EquipmentName equipmentId={review.equipmentId} />
                                                 {/* {findEquipment(review.id)} */}
                                             </Card>
                                         </Grid>
