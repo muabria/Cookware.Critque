@@ -40,13 +40,16 @@ const NavBar = () => {
     return (
         <>
             <Box sx={{ p: 2 }}>
-                {isMobile ? <MobileNavBar /> :
+                {isMobile 
+                ? 
+                <MobileNavBar /> 
+                : //is NOT mobile...
                     <Stack direction="row">
                         <img
                             src={logo}
                             width="100"
                             height="100" />
-                        <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
+                        <Typography variant="h1" sx={{ color: "#205375", flexGrow: 1, fontSize: "40px" }}>
                             Title Placeholder
                         </Typography>
                         <Box sx={{ maxHeight: "50px", backgroundColor: "#F9FBE7", borderRadius: "50px" }}>
@@ -66,7 +69,7 @@ const NavBar = () => {
                                     <motion.div whileHover={{ scale: 1.2 }}>
                                         <Box sx={{ color: "#205375", mx: 5, mt: 1.5 }}>
                                             <Typography>
-                                                Find New Kitchen Equipment
+                                                See Reviews
                                             </Typography>
                                         </Box>
                                     </motion.div>

@@ -103,7 +103,7 @@ const MobileNavBar = () => {
                         style={{ textDecoration: "none" }}>
                         <Box sx={{ borderBottom: 2, color: "#205375" }}>
                             <Typography sx={{ color: "#205375" }}>
-                                Find New Kitchen Equipment
+                                See Reviews
                             </Typography>
                         </Box>
                     </Link>
