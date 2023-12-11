@@ -21,9 +21,6 @@ const CommentForm = () => {
   const { data: postData, error: postError, isLoading: postIsLoading } = useGetSingleReviewQuery(id);
   const [postComment, {data, error, isLoading}] = usePostCommentMutation();
 
-  if(isLoading){
-    return <div><LoadingMessage/></div>
-  }
   if (error) {
     return <div>Whoops! Something went wrong posting the comment.</div>
   }

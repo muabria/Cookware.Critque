@@ -30,9 +30,6 @@ const AllReviewsForEquipment = () => {
         return sum / (reviewData.length);
     }, [reviewData])
 
-    if (isLoading) {
-        return <div><LoadingMessage /></div>
-    }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }

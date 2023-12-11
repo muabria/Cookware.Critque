@@ -23,9 +23,6 @@ const AllPosts = () => {
 
     const { data, error, isLoading } = useGetReviewsQuery()
 
-    if (isLoading) {
-        return <div><LoadingMessage /></div>
-    }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
     }

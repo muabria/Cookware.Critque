@@ -37,11 +37,9 @@ const AdminMapEquipment = () => {
 
     const { data, error, isLoading } = useGetEquipmentQuery();
     if (!data) {
-        return <div>Oops! Couldn't fetch the equipmnet</div>
+        return <div> </div>
     }
-    if (isLoading) {
-        return <div><LoadingMessage /></div>
-    }
+
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }

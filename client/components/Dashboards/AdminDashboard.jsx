@@ -27,9 +27,7 @@ const AdminDashboard = () => {
     if (!data) {
         return <div>No data</div>
     }
-    if (isLoading) {
-        return <div><LoadingMessage /></div>
-    }
+
     if (error) {
         return <div> Oops! Something went wrong loading the data. </div>;
     } else

@@ -33,9 +33,6 @@ const CategoryPage = () => {
     const { data, error, isLoading } = useGetSingleCategoryQuery(id);
     const { data: equipmentData, error: equipmentError, isLoading: equipmetLoading } = useGetEquipmentQuery();
 
-    if (isLoading) {
-        return <div><LoadingMessage /></div>;
-    }
     if (error) {
         return <div>Sorry! Something went wrong loading the categories.</div>;
     }

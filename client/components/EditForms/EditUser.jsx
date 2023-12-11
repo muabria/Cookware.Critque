@@ -40,9 +40,6 @@ const EditUser = () => {
     if (error) {
         return <div>Error</div>
     }
-    if (isLoading) {
-        return <div><LoadingMessage/></div>
-    }
 
     return userData && (
         <motion.div

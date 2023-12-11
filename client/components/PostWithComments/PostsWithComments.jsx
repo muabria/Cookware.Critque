@@ -29,9 +29,8 @@ const PostsWithComments = () => {
     const { id } = useParams();
     const { data, error, isLoading } = useGetSingleReviewQuery(id);
     const { data: commentData, error: commentError, isLoading: commentLoading } = useGetCommentsQuery();
-
-    if (isLoading) {
-        return <div><LoadingMessage /></div>
+    if (!data) {
+        return <div></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
@@ -72,7 +71,7 @@ const PostsWithComments = () => {
                                     Comments:
                                 </Typography>
                                 <Button
-                                    sx={{ textTransform: "none", ml: 11, color: "#205375", backgroundColor: "transparent", my: 1 }}
+                                    sx={{ textTransform: "none", color: "#205375", backgroundColor: "transparent", my: 1 }}
                                     onClick={() => setAddComment(true)}>
                                     <RateReviewIcon />
                                     Add a Comment
@@ -128,7 +127,7 @@ const PostsWithComments = () => {
                                     Comments:
                                 </Typography>
                                 <Button
-                                    sx={{ textTransform: "none", ml: 67, color: "#205375" }}
+                                    sx={{ textTransform: "none", color: "#205375" }}
                                     onClick={() => setAddComment(true)}>
                                     <RateReviewIcon /> Add a Comment
                                 </Button>

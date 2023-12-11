@@ -51,9 +51,6 @@ const MobileNewPost = () => {
 
     const navigate = useNavigate();
 
-    if (isLoading) {
-        return <div><LoadingMessage /></div>
-    }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }

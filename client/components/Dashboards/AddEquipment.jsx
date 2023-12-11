@@ -32,10 +32,7 @@ const AddEquipment = () => {
 
     const { data, error, isLoading } = useGetCategoriesQuery();
     if (!data) {
-        return <div>No data</div>
-    }
-    if (isLoading) {
-        return <div><LoadingMessage /></div>
+        return <div> </div>
     }
     if (error) {
         return <div> Error: {error.message} </div>;

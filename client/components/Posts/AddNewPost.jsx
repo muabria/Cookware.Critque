@@ -63,9 +63,6 @@ const AddPostContent = () => {
     if (!userData) {
         return (<div><AccountRedirect /></div>)
     }
-    if (isLoading) {
-        return (<div><LoadingMessage /></div>)
-    }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
     }

@@ -32,9 +32,6 @@ const EditReviews = () => {
     if (error) {
         return <div>Error</div>
     }
-    if (isLoading) {
-        return <div><LoadingMessage/></div>
-    }
 
     const handleSubmit = async (event) => {
         try {

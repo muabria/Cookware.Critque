@@ -7,9 +7,6 @@ const LogoutButton = () => {
     const [logout, { data, error, isLoading }] = useLogoutMutation();
     const navigate = useNavigate();
 
-    if (isLoading){
-        return (<LoadingMessage/>)
-    }
     if (data){
         console.log("logout", data);
     }

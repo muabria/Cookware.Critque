@@ -36,9 +36,6 @@ const UserDashboard = () => {
     if (!data) {
         return (<div><AccountRedirect /></div>)
     }
-    if (isLoading) {
-        return <div><LoadingMessage /></div>
-    }
     if (error) {
         return <div> Oops! Something went wrong loading your data. </div>;
     } else

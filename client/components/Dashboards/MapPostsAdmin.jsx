@@ -33,10 +33,7 @@ const MapPostsAdmin = () => {
     const [deleteReview, { data: mutationData, error: mutationError, isLoading: mutationIsLoading }] = useDeleteReviewForUserMutation();
 
     if (!data) {
-        return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
-    }
-    if (isLoading) {
-        return <div><LoadingMessage /></div>;
+        return <div> </div>
     }
     if (error) {
         return <div>Error:{error.message}</div>;

@@ -18,11 +18,9 @@ const MapAllEquipment = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const { data, error, isLoading } = useGetEquipmentQuery();
-    if (isLoading) {
-        return <div><LoadingMessage /></div>
-    }
+   
     if (error) {
-        return <div> Sorry! There's a problem loading the equipment. </div>
+        return <div>  </div>
     }
     console.log(data);
 
