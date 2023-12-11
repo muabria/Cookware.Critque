@@ -112,15 +112,13 @@ const LoginForm = () => {
                                         </Typography>
                                         <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
                                             Don't have an account?
-                                        </Typography>
-                                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
-                                            <Link to="/register">
-                                                <Button
-                                                    sx={{ textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", width: "100%" }}>
-                                                    Sign up!
-                                                    <LoginIcon sx={{ ml: 2, color: "#205375" }} />
-                                                </Button>
-                                            </Link>
+                                        <Link to="/register">
+                                            <Button
+                                                sx={{ textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", width: "100%" }}>
+                                                Sign up!
+                                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                            </Button>
+                                        </Link>
                                         </Typography>
                                     </div>
                                     ://is NOT mobile... 

@@ -27,9 +27,9 @@ const UserDashboard = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
     const navigate = useNavigate();
-    const token = useSelector((state)=>state.auth.token);
+    const token = useSelector((state) => state.auth.token);
     const { data, error, isLoading } = useGetUserQuery();
-    
+
     if (!token) {
         navigate("/");
     }
@@ -52,11 +52,15 @@ const UserDashboard = () => {
                         <Grid container spacing={1}>
                             <Grid item xs={1}>
                             </Grid>
-
                             <Grid item xs={10}>
-                                <Typography variant="h5" sx={{ color: "#205375" }}>
-                                    Hello, {data.username}
-                                </Typography>
+                                <Stack direction="column">
+                                    <Typography variant="h2" sx={{ fontSize: "22px", color: "#205375" }}>
+                                        Hello, {data.username}
+                                    </Typography>
+                                    <Link to="/account/edit" style={{ textDecoration: "none", color: "#205375" }}>
+                                        <ManageAccountsIcon sx={{ color: "#205375", }} />
+                                    </Link>
+                                </Stack>
                                 <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
                                     {data.isAdmin === true ?
                                         <Link to="/admin_dashboard">
@@ -66,7 +70,8 @@ const UserDashboard = () => {
                                                 boxShadow: 3,
                                                 color: "#205375",
                                                 backgroundColor: "#E7B10A",
-                                                border: "solid #D29D2B 2px" }}>
+                                                border: "solid #D29D2B 2px"
+                                            }}>
                                                 View Admin Dashboard
                                             </Button>
                                         </Link>
@@ -98,14 +103,14 @@ const UserDashboard = () => {
                     <Grid container spacing={1}>
                         <Grid item xs={2}>
                             <Stack direction="column">
-                                <Typography sx={{ my: 5 }}>
-                                    <Link to="/account/edit" style={{textDecoration: "none", color:"#205375" }}>
-                                    <ManageAccountsIcon sx={{ color: "#205375" }} />
+                                <Typography sx={{ my: 5, mx: 2 }}>
+                                    <Link to="/account/edit" style={{ textDecoration: "none", color: "#205375" }}>
+                                        <ManageAccountsIcon sx={{ color: "#205375" }} />
                                         Edit Account
                                     </Link>
-                                    </Typography>
-                                <Typography sx={{ my: 5, color: "#205375" }}>
-                                    <LogoutSharpIcon sx={{ color: "#205375" }} /> <LogoutButton/>
+                                </Typography>
+                                <Typography sx={{ my: 5, mx: 2, color: "#205375" }}>
+                                    <LogoutSharpIcon sx={{ color: "#205375" }} /> <LogoutButton />
                                 </Typography>
                             </Stack>
                         </Grid>
@@ -116,7 +121,7 @@ const UserDashboard = () => {
                                 </Typography>
                             </Stack>
                             <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
-                                <Typography variant="h6" sx={{ color: "#205375", mx:2, mt:1 }}>
+                                <Typography variant="h6" sx={{ color: "#205375", mx: 2, mt: 1 }}>
                                     Email: {data.email}
                                 </Typography>
                                 {data.isAdmin === true ?
@@ -136,11 +141,11 @@ const UserDashboard = () => {
                                     <>
                                     </>}
                                 <Link to="/new_review">
-                                    <Button sx={{ textTransform: "none",backgroundColor: "#088395", color: "white", m: 2 }}>
+                                    <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2 }}>
                                         Make a new critique
                                     </Button>
                                 </Link>
-                                
+
                                 <Stack direction="row">
                                     <Grid item xs={6}>
                                         <MapPosts />
