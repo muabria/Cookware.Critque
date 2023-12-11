@@ -16,10 +16,10 @@ const MobileHomePage = () => {
     return (
         <>
 
-            <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+            <Typography variant="h2" sx={{ color: "#205375", textAlign: "center", fontSize: "20px", m: 1 }}>
                 Welcome to "TITLE PLACEHOLDER".
             </Typography>
-            <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+            <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", fontSize: "16px", m: 1 }}>
                 Home to honest critiques for all types of kitchen equipment from food prep to clean up.
             </Typography>
             <div style={{
@@ -48,8 +48,7 @@ const MobileHomePage = () => {
                                             mb: 10
                                         }}>
                                             <Typography
-                                                variant="h6"
-                                                sx={{ textAlign: "center" }}>
+                                                sx={{ textAlign: "center", fontSize: "16px", p: 1 }}>
                                                 Find New Equipment
                                             </Typography>
                                         </Box>

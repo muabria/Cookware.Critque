@@ -32,6 +32,7 @@ const MapCategories = () => {
                                 <Link to={`/category/${category.id}`}
                                     style={{ textDecoration: "none" }}>
                                     <Card sx={{
+                                        textTransform: "none",
                                         boxShadow: 3,
                                         color: "#3C1B1F",
                                         backgroundColor: "#E7B10A",
