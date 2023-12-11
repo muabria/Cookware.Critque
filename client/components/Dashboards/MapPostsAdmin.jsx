@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid"
 import Rating from "@mui/material/Rating"
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
@@ -79,27 +80,27 @@ const MapPostsAdmin = () => {
                                             </Button>
                                         </Link>
                                         <Button
-                                            onClick={() => setAlert(true)}
+                                            onClick={() => setAlert(review.id)}
                                             color="error"
                                             sx={{ m: 1 }}>
                                             <DeleteForeverSharpIcon />
                                         </Button>
                                     </Grid>
                                 </Grid>
-                                {alert && <Alert severity="warning">
-                                    Are you sure you want to delete this post? Once you do it's gone forever.
+                                {alert === review.id && <Alert severity="warning">
+                                    Are you sure you want to delete this post? Once you do, it's gone forever.
                                     <Button
                                         onClick={() => deleteReview(review.id)}
                                         variant="outlined"
                                         color="error"
                                         sx={{ m: 1 }}>
-                                        Yes, delete this review
+                                        Yes, delete this review.
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(false)}
                                         sx={{ m: 1 }}>
-                                        No, keep this review
+                                        No, keep this review.
                                     </Button>
                                 </Alert>
                                 }
@@ -141,7 +142,7 @@ const MapPostsAdmin = () => {
                                             </Button>
                                         </Link>
                                         <Button
-                                            onClick={() => setAlert(true)}
+                                            onClick={() => setAlert(review.id)}
                                             variant="outlined"
                                             color="error"
                                             sx={{ m: 1 }}>
@@ -149,21 +150,23 @@ const MapPostsAdmin = () => {
                                         </Button>
                                     </Grid>
                                 </Grid>
-                                {alert && <Alert severity="warning">
-                                    Are you sure you want to delete this post? Once you do it's gone forever.
-                                    <Button
-                                        onClick={() => deleteReview(review.id)}
-                                        variant="outlined"
-                                        color="error"
-                                        sx={{ m: 1 }}>
-                                        Yes, delete this review
-                                    </Button>
-                                    <Button
-                                        variant="outlined"
-                                        onClick={() => setAlert(false)}
-                                        sx={{ m: 1 }}>
-                                        No, keep this review
-                                    </Button>
+                                {alert === review.id && <Alert severity="warning">
+                                    <Stack direction="column">
+                                        Are you sure you want to delete this post? Once you do, it's gone forever.
+                                        <Button
+                                            onClick={() => deleteReview(review.id)}
+                                            variant="outlined"
+                                            color="error"
+                                            sx={{ m: 1 }}>
+                                            Yes, delete this review.
+                                        </Button>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={() => setAlert(false)}
+                                            sx={{ m: 1 }}>
+                                            No, keep this review.
+                                        </Button>
+                                    </Stack>
                                 </Alert>
                                 }
                             </Card>
