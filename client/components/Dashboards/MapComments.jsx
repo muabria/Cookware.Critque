@@ -47,7 +47,7 @@ const MapComments = () => {
                             <Link to="/posts">
                                 <Button
                                     sx={{ textTransform: "none", m: 1 }}>
-                                    What to make a comment? Go visit a review!
+                                    Want to make a comment? Go visit a review!
                                     <ArrowCircleRightIcon sx={{ mx: 1}} />
                                 </Button>
                             </Link>
@@ -105,7 +105,7 @@ const MapComments = () => {
                             <Link to="/posts">
                                 <Button
                                     sx={{ textTransform: "none", m: 1 }}>
-                                    What to make a comment? Go visit a review!
+                                    Want to make a comment? Go visit a review!
                                     <ArrowCircleRightIcon sx={{ mx: 1}} />
                                 </Button>
                             </Link>
