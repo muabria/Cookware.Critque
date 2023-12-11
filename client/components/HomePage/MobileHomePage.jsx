@@ -23,11 +23,6 @@ const MobileHomePage = () => {
             <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                 Home to honest critiques for all types of kitchen equipment from food prep to clean up.
             </Typography>
-            <Link to="/posts">
-                <Stack direction="row">
-                    <MapCategories />
-                </Stack>
-            </Link>
             <div style={{
                 backgroundImage: `url(${background})`,
                 backgroundSize: "contain",
@@ -38,8 +33,8 @@ const MobileHomePage = () => {
                     <Grid container>
                         <Grid item xs={6}>
                         </Grid>
-                        <Grid item xs={6}>
-                            <Box sx={{ mt: 22 }}>
+                        <Grid item xs={5.5}>
+                            <Box sx={{ mt: 12 }}>
                                 <motion.div whileHover={{ scale: 1.3 }}>
                                     <Link 
                                     to="/explore"
@@ -52,7 +47,7 @@ const MobileHomePage = () => {
                                             fontSize: "11px",
                                             maxWidth: 200,
                                             m: 1,
-                                            mb: 15
+                                            mb: 10
                                         }}>
                                             <Typography
                                             variant="h6"
@@ -64,12 +59,15 @@ const MobileHomePage = () => {
                                 </motion.div>
                             </Box>
                         </Grid>
-
-                        <Grid item xs={4}>
-                        </Grid>
-
                     </Grid>
                 </Box>
+                <Typography
+                    variant="h5"
+                    sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+                    Find New Equipment by Category:
+                </Typography>
+                    <MapCategories />
+                <MapAllEquipment />
             </div>
         </>
     )

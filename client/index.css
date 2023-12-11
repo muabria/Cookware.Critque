@@ -1,3 +1,7 @@
+body {
+  padding: 0;
+  margin: 0;
+}
 .gradient_background {
   background: linear-gradient(#89c7c3, #F9FBE7, #F9FBE7, white, white, white);
 
@@ -10,4 +14,5 @@
 
 .select-equipment {
   cursor: pointer;
+  border: solid 1px;
 }

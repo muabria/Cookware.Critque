@@ -26,7 +26,7 @@ import SlideShow from "../SlideShow";
 
 const AdminMapEquipment = () => {
 
-    const [alert, setAlert] = useState(false);
+    const [alert, setAlert] = useState(null);
     const [deleteEquipment, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteEquipmentMutation();
     const [scrollItem, setscrollItem] = useState(0);
 
@@ -84,25 +84,25 @@ const AdminMapEquipment = () => {
                                         </AccordionDetails>
                                     </Accordion>
                                     <Button
-                                        onClick={() => setAlert(true)}
+                                        onClick={() => setAlert(equipment.id)}
                                         color="error"
                                         sx={{ m: 1 }}>
                                         <DeleteForeverSharpIcon />
                                     </Button>
-                                    {alert && <Alert severity="warning">
+                                    {alert === equipment.id  && <Alert severity="warning">
                                         Are you sure you want to delete this Equipment? Once you do it's gone forever.
                                         <Button
                                             onClick={() => deleteEquipment(equipment.id)}
                                             variant="outlined"
                                             color="error"
                                             sx={{ m: 1 }}>
-                                            Yes, delete this review
+                                            Yes, delete this equipment.
                                         </Button>
                                         <Button
                                             variant="outlined"
-                                            onClick={() => setAlert(false)}
+                                            onClick={() => setAlert(null)}
                                             sx={{ m: 1 }}>
-                                            No, keep this review
+                                            No, keep this equipment.
                                         </Button>
                                     </Alert>
                                     }
@@ -144,25 +144,25 @@ const AdminMapEquipment = () => {
                                                     </AccordionDetails>
                                                 </Accordion>
                                                 <Button
-                                                    onClick={() => setAlert(true)}
+                                                    onClick={() => setAlert(equipment.id)}
                                                     color="error"
                                                     sx={{ m: 1 }}>
                                                     <DeleteForeverSharpIcon />
                                                 </Button>
-                                                {alert && <Alert severity="warning">
-                                                    Are you sure you want to delete this Equipment? Once you do it's gone forever.
+                                                {alert === equipment.id  && <Alert severity="warning">
+                                                    Are you sure you want to delete this equipment? Once you do it's gone forever.
                                                     <Button
                                                         onClick={() => deleteEquipment(equipment.id)}
                                                         variant="outlined"
                                                         color="error"
                                                         sx={{ m: 1 }}>
-                                                        Yes, delete this review
+                                                        Yes, delete this equipment.
                                                     </Button>
                                                     <Button
                                                         variant="outlined"
-                                                        onClick={() => setAlert(false)}
+                                                        onClick={() => setAlert(null)}
                                                         sx={{ m: 1 }}>
-                                                        No, keep this review
+                                                        No, keep this equipment.
                                                     </Button>
                                                 </Alert>
                                                 }
