@@ -56,6 +56,7 @@ const CommentForm = () => {
             <Button
               type="submit"
               sx={{
+                textTransform: "none",
                 backgroundColor: "#088395",
                 color: "white",
                 m: 2,

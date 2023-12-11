@@ -92,13 +92,13 @@ const MapPosts = () => {
                                         onClick={() => deleteReview(review.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, I want to delete this review.
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(null)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this review.
                                     </Button>
                                 </Alert>
@@ -153,7 +153,7 @@ const MapPosts = () => {
                                                 onClick={() => setAlert(review.id)}
                                                 variant="outlined"
                                                 color="error"
-                                                sx={{ m: 1 }}>
+                                                sx={{ textTransform: "none", m: 1 }}>
                                                 <DeleteForeverSharpIcon />
                                             </Button>
                                         </Stack>
@@ -166,13 +166,13 @@ const MapPosts = () => {
                                             onClick={() => deleteReview(review.id)}
                                             variant="outlined"
                                             color="error"
-                                            sx={{ m: 1 }}>
+                                            sx={{ textTransform: "none", m: 1 }}>
                                             Yes, I want to delete this review.
                                         </Button>
                                         <Button
                                             variant="outlined"
                                             onClick={() => setAlert(null)}
-                                            sx={{ m: 1 }}>
+                                            sx={{ textTransform: "none", m: 1 }}>
                                             No, keep this review.
                                         </Button>
                                     </Stack>
