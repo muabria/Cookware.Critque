@@ -169,9 +169,8 @@ const AllPosts = () => {
                             </>
                         }
                     />
-                </Box>
+                </div>}
             </motion.div>
-        </>
     );
 }
 export default AllPosts 
