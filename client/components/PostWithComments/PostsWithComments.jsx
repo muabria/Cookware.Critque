@@ -143,14 +143,17 @@ const PostsWithComments = () => {
                                     onClick={() => setAddComment(true)}>
                                     <RateReviewIcon /> Add a Comment
                                 </Button>
-                                {addComment && <CommentForm />}
+                                
                                 {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
-                                    <Card key={comment.id} sx={{ p: 2 }}>
+                                    <Card key={comment.id} sx={{ p: 2, m: 1 }}>
                                         <Typography>
                                             {comment.content}
                                         </Typography>
+                                        
                                     </Card>
-                                ))}
+                                )
+                                )}
+                                {addComment && <CommentForm />}
                             </Card>
                         </Grid>
                     </Grid>

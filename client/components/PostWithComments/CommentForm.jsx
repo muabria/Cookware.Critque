@@ -50,7 +50,7 @@ const CommentForm = () => {
               label="Add Comment Here"
               required = {true}
               multiline
-              rows={4}
+              rows={2}
               defaultValue="Type something"
             />
             <Button
