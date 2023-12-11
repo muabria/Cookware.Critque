@@ -43,7 +43,7 @@ authRouter.get("/users/validate", async (req, res, next) => {
 });
 
 //<--------------------------------REGISTER USER-------------------------------->
-// POST /auth/signup
+// POST /auth/register
 authRouter.post("/register", async (req, res, next) => {
     try {
         const { username, email, password, } = req.body
