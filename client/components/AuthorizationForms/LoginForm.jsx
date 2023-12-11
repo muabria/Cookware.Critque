@@ -19,7 +19,7 @@ import LoadingMessage from "../ErrorMessages/LoadingMessage"
 import { useLoginMutation, useGetAllUsersValidationQuery } from "../../redux/api";
 
 const LoginForm = () => {
-    const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
+    const { data: userData, error: userError, isLoading: userIsLoading } = useGetAllUsersValidationQuery();
     const [login, { data, error }] = useLoginMutation();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -48,26 +48,27 @@ const LoginForm = () => {
                 return
             }
             if (validUser === true) {
-            event.preventDefault();
-            const result = await login({ username, password })
-            console.log(result)
-            navigate("/account")
-        }} catch (error) {
+                event.preventDefault();
+                const result = await login({ username, password })
+                console.log(result)
+                navigate("/account")
+            }
+        } catch (error) {
             console.error(error)
         }
     }
 
     const validateUsername = (name) => {
-        const compare = userData.find((current) => {return current.username === name})
-        if (compare === undefined) {validUser = false; return <Alert severity="error">Username not found.</Alert>}
-        if (compare !== undefined) {validUser = true}
+        const compare = userData.find((current) => { return current.username === name })
+        if (compare === undefined) { validUser = false; return <Alert severity="error">Username not found.</Alert> }
+        if (compare !== undefined) { validUser = true }
     }
 
     return (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeIn"}}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
             <Grid container>
                 <Grid item xs={3}>
                 </Grid>
@@ -99,44 +100,46 @@ const LoginForm = () => {
                                         password && password.length < 8
                                             ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
                                             : password.length > 16 ? <Alert severity="error"> Your password cannot be more than 16 characters long </Alert>
-                                            : null
+                                                : null
                                     }
                                 />
                                 {isMobile ?
                                     <div>
-                                        <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", width: "100%", p: 1 }}>
-                                            Login
-                                        </Button>
+                                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
+                                            <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", width: "100%", p: 1 }}>
+                                                Login
+                                            </Button>
+                                        </Typography>
                                         <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
                                             Don't have an account?
                                         </Typography>
-                                        <Link to="/register">
-                                            <Button
-                                                variant="outlined"
-                                                sx={{ textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", width: "100%" }}>
-                                                Sign up!
-                                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
-                                            </Button>
-                                        </Link>
+                                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
+                                            <Link to="/register">
+                                                <Button
+                                                    sx={{ textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", width: "100%" }}>
+                                                    Sign up!
+                                                    <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                                </Button>
+                                            </Link>
+                                        </Typography>
                                     </div>
                                     ://is NOT mobile... 
                                     <div>
-                                        <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1, mx: 30 }}>
-                                            Login
-                                        </Button>
                                         <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
-                                            Don't have an account?
-                                        </Typography>
-                                        <Link to="/register">
-                                            <Button
-                                                variant="outlined"
-                                                sx={{ textTransform: "none", textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", mx: 28 }}>
-                                                Sign up!
-                                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                            <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1 }}>
+                                                Login
                                             </Button>
-                                        </Link>
+                                        </Typography>
+                                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
+                                            <Link to="/register">
+                                                <Button
+                                                    sx={{ textTransform: "none", textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375" }}>
+                                                    Don't have an account? Sign up!
+                                                    <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                                </Button>
+                                            </Link>
+                                        </Typography>
                                     </div>}
-
                             </Stack>
                         </form>
                     </Card>
