@@ -1,5 +1,4 @@
 import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
@@ -11,10 +10,10 @@ import SearchResults from './SearchResults';
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const SearchBar = ({ onSubmit }) => {
-    const { data, error, isLoading } = useGetEquipmentQuery();
     const [searchEquipment, setSearchEquipment] = useState("");
     const [showResult, setShowResult] = useState(false);
 
+    const { data, error, isLoading } = useGetEquipmentQuery();
     if (!data) {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }

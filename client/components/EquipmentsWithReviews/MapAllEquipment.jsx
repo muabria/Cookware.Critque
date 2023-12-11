@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
-import { Slide, useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 import { Link } from "react-router-dom";
 
@@ -32,7 +32,7 @@ const MapAllEquipment = () => {
             {isMobile ?
                 <div>
                     <Typography
-                        variant="h4"
+                        variant="h5"
                         sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
                         See All Equipment
                     </Typography>
@@ -42,7 +42,7 @@ const MapAllEquipment = () => {
                                 <>
                                     {data && data.map((equipment) => (
                                         <Stack direction="row" key={equipment.id}>
-                                            <Card sx={{ m: 2, color: "#205375", border: "solid #D29D2B 2px" }} key={equipment.id}>
+                                            <Card sx={{ m: 0.5, color: "#205375", border: "solid #D29D2B 2px", minWidth: "200px" }} key={equipment.id}>
                                                 <Stack direction="column">
                                                     <Typography
                                                         variant="h6"
@@ -53,12 +53,25 @@ const MapAllEquipment = () => {
                                                         sx={{ textAlign: "center" }}>
                                                         from {equipment.brand}
                                                     </Typography>
-                                                    <Typography sx={{ px: 2 }}>
-                                                        {equipment.description}
-                                                    </Typography>
+                                                    <Box sx={{ px: 5 }}>
+                                                        <img
+                                                            src={equipment.image}
+                                                            alt={equipment.name}
+                                                            width="100"
+                                                            height="100" />
+                                                    </Box>
                                                     <Link to={`/equipment/${equipment.id}`}>
-                                                        <Button>
-                                                            See the {equipment.name}'s Reviews
+                                                        <Button
+                                                            sx={{
+                                                                textTransform: "none",
+                                                                my: 2,
+                                                                mx: 2,
+                                                                boxShadow: 3,
+                                                                color: "#3C1B1F",
+                                                                backgroundColor: "#EACD65",
+                                                                border: "solid #D29D2B 2px"
+                                                            }}>
+                                                            See All Reviews
                                                         </Button>
                                                     </Link>
                                                 </Stack>
@@ -75,7 +88,7 @@ const MapAllEquipment = () => {
                     <Typography
                         variant="h4"
                         sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
-                        See All Equipment 
+                        See All Equipment
                     </Typography>
 
                     <Grid container >
@@ -115,6 +128,7 @@ const MapAllEquipment = () => {
                                                 <Link to={`/equipment/${equipment.id}`}>
                                                     <Button
                                                         sx={{
+                                                            textTransform: "none",
                                                             my: 2,
                                                             ml: 8,
                                                             boxShadow: 3,

@@ -20,7 +20,7 @@ const AllReviewsForEquipment = () => {
     const { data, error, isLoading } = useGetSingleEquipmentQuery(id);
     const { data: userData, error: userError, isLoading: userIsLoading } = useGetUserQuery();
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetReviewByEquipmentQuery(id);
-    
+
     const avgRating = useMemo(() => {
         if (!reviewData) return 0;
         let sum = 0;
@@ -31,7 +31,7 @@ const AllReviewsForEquipment = () => {
     }, [reviewData])
 
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
@@ -104,7 +104,9 @@ const AllReviewsForEquipment = () => {
                 : //If admin...
                 <div>
                     <Link to={`/edit_equipment/${data.id}`} >
-                        <Button> Update Equipment </Button>
+                        <Button sx={{ textTransform: "none", }}>
+                            Save Changes
+                        </Button>
                     </Link>
                 </div>
             }

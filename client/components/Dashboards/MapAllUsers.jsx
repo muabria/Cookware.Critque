@@ -20,8 +20,7 @@ import { useGetAllUsersQuery, usePatchToggleAdminMutation } from '../../redux/ap
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const MapAllUsers = () => {
-    const [alert, setAlert] = useState(false);
-    const [adminAlert, setAdminAlert] = useState(false);
+    const [alert, setAlert] = useState(null);
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -84,7 +83,6 @@ const MapAllUsers = () => {
                                                         console.log(user)
                                                         const response = await patchToggleAdmin({ id: user.id, isAdmin: !user.isAdmin });
                                                         console.log(response)
-
                                                     }} />
                                                 <Typography>
                                                     Admin
@@ -94,18 +92,14 @@ const MapAllUsers = () => {
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Button
-                                            sx={{ m: 1 }}>
-                                            <PreviewIcon />
-                                        </Button>
-                                        <Button
-                                            onClick={() => setAlert(true)}
+                                            onClick={() => setAlert(user.id)}
                                             color="error"
-                                            sx={{ m: 1 }}>
+                                            sx={{ mx: 11 }}>
                                             <DeleteForeverSharpIcon />
                                         </Button>
                                     </Grid>
                                 </Grid>
-                                {alert &&
+                                {alert === user.id  &&
                                     <Alert severity="warning">
                                         <Stack direction="column">
                                             Are you sure you want to delete user?
@@ -113,14 +107,14 @@ const MapAllUsers = () => {
                                                 onClick={(console.log("Delete"))}
                                                 variant="outlined"
                                                 color="error"
-                                                sx={{ m: 1 }}>
-                                                Yes, delete this user
+                                                sx={{ textTransform: "none", m: 1 }}>
+                                                Yes, delete this user.
                                             </Button>
                                             <Button
                                                 variant="outlined"
-                                                onClick={() => setAlert(false)}
-                                                sx={{ m: 1 }}>
-                                                No, keep this user active
+                                                onClick={() => setAlert(null)}
+                                                sx={{ textTransform: "none", m: 1 }}>
+                                                No, keep this user active.
                                             </Button>
                                         </Stack>
                                     </Alert>}
@@ -138,7 +132,7 @@ const MapAllUsers = () => {
                         {data && data.slice().sort((a,b) => a.username.localeCompare(b.username)).map((user) => (
                             <Card key={user.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
-                                    <Grid item xs={8}>
+                                    <Grid item xs={10}>
                                         <Typography sx={{ color: "#205375", backgroundColor: "#EEF5FF", p: 1, mx: 1, my: .5, borderRadius: "10px" }}>
                                             username: {user.username}
                                         </Typography>
@@ -160,20 +154,14 @@ const MapAllUsers = () => {
                                                         console.log(user)
                                                         const response = await patchToggleAdmin({ id: user.id, isAdmin: !user.isAdmin });
                                                         console.log(response)
-
                                                     }} />
                                                 <Typography>Admin</Typography>
                                             </Stack>
                                         </Box>
                                     </Grid>
-                                    <Grid item xs={4}>
+                                    <Grid item xs={2}>
                                         <Button
-                                            variant="outlined"
-                                            sx={{ m: 1 }}>
-                                            <PreviewIcon />
-                                        </Button>
-                                        <Button
-                                            onClick={() => setAlert(true)}
+                                            onClick={() => setAlert(user.id)}
                                             variant="outlined"
                                             color="error"
                                             sx={{ m: 1 }}>
@@ -181,7 +169,7 @@ const MapAllUsers = () => {
                                         </Button>
                                     </Grid>
                                 </Grid>
-                                {alert &&
+                                {alert === user.id  &&
                                     <Alert severity="warning">
                                         <Stack direction="column">
                                             Are you sure you want to delete user?
@@ -189,14 +177,14 @@ const MapAllUsers = () => {
                                                 onClick={(console.log("Delete"))}
                                                 variant="outlined"
                                                 color="error"
-                                                sx={{ m: 1 }}>
-                                                Yes, delete this user
+                                                sx={{textTransform: "none", m: 1 }}>
+                                                Yes, delete this user.
                                             </Button>
                                             <Button
                                                 variant="outlined"
-                                                onClick={() => setAlert(false)}
-                                                sx={{ m: 1 }}>
-                                                No, keep this user active
+                                                onClick={() => setAlert(null)}
+                                                sx={{ textTransform: "none", m: 1 }}>
+                                                No, keep this user active.
                                             </Button>
                                         </Stack>
                                     </Alert>}

@@ -10,7 +10,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 import { useGetCategoriesQuery } from "../../redux/api";
 import { usePostEquipmentMutation } from "../../redux/api";
@@ -27,12 +27,15 @@ const AddEquipment = () => {
 
     const [newEquipmentInfo, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostEquipmentMutation();
 
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
     const { data, error, isLoading } = useGetCategoriesQuery();
     if (!data) {
         return <div>No data</div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Error: {error.message} </div>;
@@ -80,11 +83,11 @@ const AddEquipment = () => {
         <>
             <Accordion sx={{ m: 2, backgroundColor: "#D9E4DD" }}>
                 <AccordionSummary>
-                    <Typography variant="h5" sx={{ textAlign: "center",color: "#205375", p: 1 }}>
-                        Add New Equipment <ExpandCircleDownIcon sx={{ color: "#205375" }}/>
+                    <Typography variant="h5" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
+                        Add New Equipment <ExpandCircleDownIcon sx={{ color: "#205375" }} />
                     </Typography>
                 </AccordionSummary>
-                <Card sx={{ px: 10, py: 2 }}>
+                <Card sx={{ px: 5, py: 2 }}>
                     <Stack direction="row">
                         <form onSubmit={handleSubmit}>
                             <Stack direction="column">
@@ -93,31 +96,48 @@ const AddEquipment = () => {
                                     value={equipment}
                                     onChange={(event) => setEquipment(event.target.value)}
                                     size="small"
-                                    required = {true}
+                                    required={true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                 />
                                 <Typography sx={{ color: "#205375" }}>
                                     Select Category:
                                 </Typography>
-                                <Stack direction="row">
-                                    {data && data.map((category) => (
-                                        <Box key={category.id}>
-                                            <Button
-                                                onClick={() => setCategory(category.id)}
-                                                sx={{ mx: 1, backgroundColor: "#9BCDD2" }}>
-                                                {category.category}
-                                            </Button>
-                                        </Box>
-                                    ))
-                                    }
-                                </Stack>
+
+                                {isMobile
+                                    ? <div>
+                                        <Stack direction="column">
+                                            {data && data.map((category) => (
+                                                <Box key={category.id}>
+                                                    <Button
+                                                        onClick={() => setCategory(category.id)}
+                                                        sx={{ textTransform: "none", m: 1, backgroundColor: "#9BCDD2" }}>
+                                                        {category.category}
+                                                    </Button>
+                                                </Box>
+                                            ))}
+                                        </Stack>
+                                    </div>
+                                    ://is NOT mobile...
+                                    <div>
+                                        <Stack direction="row">
+                                            {data && data.map((category) => (
+                                                <Box key={category.id}>
+                                                    <Button
+                                                        onClick={() => setCategory(category.id)}
+                                                        sx={{ textTransform: "none", mx: 1, backgroundColor: "#9BCDD2" }}>
+                                                        {category.category}
+                                                    </Button>
+                                                </Box>
+                                            ))}
+                                        </Stack>
+                                    </div>}
                                 <TextField
                                     label="Description"
                                     value={description}
                                     onChange={(event) => setDescription(event.target.value)}
                                     size="small"
-                                    required = {true}
+                                    required={true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                 />
@@ -127,7 +147,7 @@ const AddEquipment = () => {
                                     onChange={(event) => setImage(event.target.value)}
                                     size="small"
                                     type="url"
-                                    required = {true}
+                                    required={true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                     multiline
@@ -151,7 +171,7 @@ const AddEquipment = () => {
                                     value={brand}
                                     onChange={(event) => setBrand(event.target.value)}
                                     size="small"
-                                    required = {true}
+                                    required={true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                     multiline
@@ -162,7 +182,7 @@ const AddEquipment = () => {
                                     onChange={(event) => setPurchaseLink(event.target.value)}
                                     size="small"
                                     type="url"
-                                    required = {true}
+                                    required={true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                     multiline
@@ -173,7 +193,7 @@ const AddEquipment = () => {
                                     onChange={(event) => setImage(event.target.value)}
                                     size="small"
                                     type="url"
-                                    required = {true}
+                                    required={true}
                                     variant="filled"
                                     sx={{ m: 1 }}
                                     multiline
