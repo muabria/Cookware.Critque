@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { useMediaQuery, useTheme } from "@mui/material";
+import { AspectRatio } from "@mui/joy";
 
 import { useGetEquipmentQuery } from "../../redux/api";
 import { useGetSingleCategoryQuery } from "../../redux/api";
@@ -140,23 +141,27 @@ const CategoryPage = () => {
                                             p: 1,
                                         }}>
                                         <Stack direction="column">
-                                            <Typography sx={{ color: "#205375", fontSize: "12px", textAlign: "center" }}>
+                                            <Typography variant="h6" sx={{ color: "#205375", fontSize: "12px", textAlign: "center" }}>
                                                 {equipment.name}
                                             </Typography>
                                             <Typography variant="h6" sx={{ color: "#205375", fontSize: "11px", textAlign: "center" }}>
                                                 {equipment.brand}
                                             </Typography>
-                                            <img
-                                                src={equipment.image}
-                                                alt={`${equipment.name} image`}
-                                                width="100"
-                                                height="100"
-                                            />
+                                            <Box sx={{maxHeight: 200}}>
+                                                <AspectRatio objectFit="contain">
+                                                    <img
+                                                        src={equipment.image}
+                                                        alt={`${equipment.name} image`}
+                                                        width="100"
+                                                        height="100"
+                                                    />
+                                                </AspectRatio>
+                                            </Box>
                                             <Link to={`/equipment/${equipment.id}`} >
                                                 <Button
                                                     sx={{
                                                         mt: 2,
-                                                        ml: 3,
+                                                        mx: 4,
                                                         boxShadow: 3,
                                                         color: "#3C1B1F",
                                                         backgroundColor: "#EACD65",
