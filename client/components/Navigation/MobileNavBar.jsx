@@ -39,19 +39,20 @@ const MobileNavBar = () => {
                             src={logo}
                             width="40"
                             height="40" />
-                        <Typography variant="h6" sx={{ color: "#205375", flexGrow: 1 }}>
+                        <Typography
+                            variant="h1"
+                            sx={{ color: "#205375", flexGrow: 1, fontSize: "30px" }}>
                             Title Placeholder
                         </Typography>
-
                     </Stack>
                 </AccordionSummary>
                 {data
                     ?//if logged in...
                     <div>
                         <AccordionDetails>
-                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }} >
+                            <Box sx={{ borderBottom: 2, color: "#205375" }} >
                                 <Link to="/account"
-                                    stle={{ textDecoration: "none" }}>
+                                    style={{ textDecoration: "none" }}>
                                     <Typography sx={{ color: "#205375" }}>
                                         My Account
                                     </Typography>
@@ -59,7 +60,7 @@ const MobileNavBar = () => {
                             </Box>
                         </AccordionDetails>
                         <AccordionDetails>
-                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }}>
+                            <Box sx={{ borderBottom: 2, color: "#205375" }}>
                                 <LogoutButton />
                             </Box>
                         </AccordionDetails>
@@ -67,7 +68,7 @@ const MobileNavBar = () => {
                     : //if NOT logged in...
                     <div>
                         <AccordionDetails>
-                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }} >
+                            <Box sx={{ borderBottom: 2, color: "#205375" }} >
                                 <Link to="/login"
                                     style={{ textDecoration: "none" }}>
                                     <Typography sx={{ color: "#205375" }}>
@@ -77,7 +78,7 @@ const MobileNavBar = () => {
                             </Box>
                         </AccordionDetails>
                         <AccordionDetails>
-                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }} >
+                            <Box sx={{ borderBottom: 2, color: "#205375" }} >
                                 <Link to="/register"
                                     style={{ textDecoration: "none" }}>
                                     <Typography sx={{ color: "#205375" }}>
@@ -91,12 +92,9 @@ const MobileNavBar = () => {
                     <Link to="/"
                         style={{ textDecoration: "none" }}>
                         <Box sx={{ borderBottom: 2, color: "#205375" }}>
-                            <Stack direction="row">
-                                <HomeIcon sx={{ mx: 1 }} />
-                                <Typography sx={{ color: "#205375" }}>
-                                    Home
-                                </Typography>
-                            </Stack>
+                            <Typography sx={{ color: "#205375" }}>
+                                Home
+                            </Typography>
                         </Box>
                     </Link>
                 </AccordionDetails>
@@ -104,7 +102,7 @@ const MobileNavBar = () => {
                     <Link to="/posts"
                         style={{ textDecoration: "none" }}>
                         <Box sx={{ borderBottom: 2, color: "#205375" }}>
-                            <Typography sx={{ m: 1, color: "#205375" }}>
+                            <Typography sx={{ color: "#205375" }}>
                                 Find New Kitchen Equipment
                             </Typography>
                         </Box>
@@ -114,26 +112,13 @@ const MobileNavBar = () => {
                     <Link to="/new_review"
                         style={{ textDecoration: "none" }}>
                         <Box sx={{ borderBottom: 2, color: "#205375" }} >
-                            <Stack direction="row">
-                                <RateReviewIcon sx={{ mx: 1 }} />
-                                <Typography sx={{ color: "#205375" }}>
-                                    Add a Review
-                                </Typography>
-                            </Stack>
+                            <Typography sx={{ color: "#205375" }}>
+                                Add a Review
+                            </Typography>
                         </Box>
                     </Link>
                 </AccordionDetails>
             </Accordion>
-
-            <Grid container>
-                <Grid item xs={10}>
-
-                </Grid>
-                <Grid item xs={2}>
-
-
-                </Grid>
-            </Grid>
         </div>
     )
 }

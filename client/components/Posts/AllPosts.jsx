@@ -36,14 +36,14 @@ const AllPosts = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeIn" }}>
             <Box sx={{ maxHeight: "60px", mb: 3 }}>
-                <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
-                    Explore Trusted Critiques Made from Real Users
+                <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", mt: 10, mb: 5 }}>
+                    Trusted Critiques Made from Real Users
                 </Typography>
             </Box>
             {isMobile
                 ?
                 <div>
-                    <Box sx={{ mx: 1, mb: 1 }}>
+                    <Box sx={{ mx: 1, my: 2 }}>
                         <SearchBar />
                     </Box>
                 </div>
