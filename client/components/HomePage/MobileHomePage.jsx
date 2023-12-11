@@ -36,8 +36,9 @@ const MobileHomePage = () => {
                         <Grid item xs={5.5}>
                             <Box sx={{ mt: 12 }}>
                                 <motion.div whileHover={{ scale: 1.3 }}>
-                                    <Link to="/posts"
-                                        style={{ textDecoration: "none" }}>
+                                    <Link 
+                                    to="/explore"
+                                    style={{ textDecoration: "none" }}>
                                         <Box sx={{
                                             color: "#FAF3F0",
                                             backgroundColor: "#D988B9",
@@ -49,9 +50,9 @@ const MobileHomePage = () => {
                                             mb: 10
                                         }}>
                                             <Typography
-                                                variant="h6"
-                                                sx={{ textAlign: "center" }}>
-                                                Find New Equipment
+                                            variant="h6"
+                                            sx={{ textAlign: "center" }}>
+                                                Equipment and Reviews
                                             </Typography>
                                         </Box>
                                     </Link>
