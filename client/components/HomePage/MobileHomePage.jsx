@@ -8,10 +8,8 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import AllPost from "../Posts/AllPosts";
 import MapCategories from "../Categories/MapCategories";
 import background from "../images/kitchenEquipmentBackground.png"
-import MapAllEquipment from "../EquipmentsWithReviews/MapAllEquipment";
 
 const MobileHomePage = () => {
     return (
@@ -67,7 +65,6 @@ const MobileHomePage = () => {
                     Find New Equipment by Category:
                 </Typography>
                     <MapCategories />
-                <MapAllEquipment />
             </div>
         </>
     )

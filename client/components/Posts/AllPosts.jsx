@@ -25,8 +25,7 @@ const AllPosts = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const { data, error, isLoading } = useGetReviewsQuery()
-    //const { data: equipmentData, error: equipmentError, isLoading: equipmentLoading } = useGetEquipmentQuery();
-    
+
     if (isLoading) {
         return <div><LoadingMessage /></div>
     }
@@ -34,24 +33,13 @@ const AllPosts = () => {
         return <div> Sorry! There's a problem loading the reviews. </div>
     }
 
-    // const findEquipment = (post) => {
-    //     let currentEquipment;
-    //     currentEquipment = equipmentData.find((equipment) => {
-    //         return equipment.id === post.equipmentId
-    //     })
-    //     return <Typography align='center' sx={{color: '#8F8F8F'}}>{currentEquipment.name}</Typography>
-    // }
-
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeIn" }}>
-            <Box sx={{ maxHeight: "60px", mb: 3 }}>
-                <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
-                    Explore Trusted Critiques Made from Real Users
-                </Typography>
-            </Box>
+
+
             {isMobile
                 ?
                 <div>
@@ -68,6 +56,12 @@ const AllPosts = () => {
             {isMobile
                 ?
                 <div>
+                    <MapAllEquipment />
+                    <Box sx={{ maxHeight: "60px", mb: 3 }}>
+                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
+                            Explore Trusted Critiques Made from Real Users
+                        </Typography>
+                    </Box>
                     <Box sx={{ mx: 2 }}>
                         <SlideShow
                             content={
@@ -114,6 +108,12 @@ const AllPosts = () => {
                 </div>
                 :// is NOT mobile...
                 <div>
+                    <MapAllEquipment />
+                    <Box sx={{ maxHeight: "60px", mb: 3 }}>
+                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
+                            Explore Trusted Critiques Made from Real Users
+                        </Typography>
+                    </Box>
                     <SlideShow
                         content={
                             <>
@@ -132,7 +132,6 @@ const AllPosts = () => {
                                                 }}>
                                                 <CardHeader sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}
                                                     title={review.title}
-                                                // subheader="TO DO"
                                                 />
                                                 <CardContent>
                                                     <Typography variant="h6" sx={{ color: "#205375" }}>
@@ -140,12 +139,6 @@ const AllPosts = () => {
                                                     </Typography>
                                                 </CardContent>
                                                 <CardActions disableSpacing>
-                                                    {/* <IconButton aria-label="add to favorites">
-                                                    <FavoriteIcon />
-                                                </IconButton>
-                                                <IconButton aria-label="share">
-                                                    <ShareIcon />
-                                                </IconButton> */}
                                                     <Link to={`/review/${review.id}`} >
                                                         <Button
                                                             sx={{
@@ -161,7 +154,6 @@ const AllPosts = () => {
                                                     </Link>
                                                 </CardActions>
                                                 <EquipmentName equipmentId={review.equipmentId} />
-                                                {/* {findEquipment(review.id)} */}
                                             </Card>
                                         </Grid>
                                     </Grid>
@@ -171,7 +163,7 @@ const AllPosts = () => {
                         }
                     />
                 </div>}
-            </motion.div>
+        </motion.div>
     );
 }
 export default AllPosts 

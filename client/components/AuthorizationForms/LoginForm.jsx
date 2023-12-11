@@ -28,7 +28,7 @@ const LoginForm = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const navigate = useNavigate();
-
+    
     if (error) {
         return <div>Whoops! Something went wrong logging you in.</div>
     }

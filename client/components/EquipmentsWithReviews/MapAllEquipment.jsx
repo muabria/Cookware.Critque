@@ -34,17 +34,17 @@ const MapAllEquipment = () => {
             {isMobile ?
                 <div>
                     <Typography
-                        variant="h5"
+                        variant="h4"
                         sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
                         See All Equipment
                     </Typography>
-                    <Grid container >
+                    <Box sx={{m: 2.5}}>
                         <SlideShow
                             content={
                                 <>
                                     {data && data.map((equipment) => (
                                         <Stack direction="row" key={equipment.id}>
-                                            <Card sx={{ m: 0.5, color: "#205375", border: "solid #D29D2B 2px", minWidth: "200px" }} key={equipment.id}>
+                                            <Card sx={{ m: 0.5, color: "#205375", border: "solid #D29D2B 2px", minWidth: "200px", borderRadius: "10px" }} key={equipment.id}>
                                                 <Stack direction="column">
                                                     <Typography
                                                         variant="h6"
@@ -82,7 +82,7 @@ const MapAllEquipment = () => {
                                 </>
                             }
                         />
-                    </Grid>
+                    </Box>
                 </div>
                 ://is NOT mobile..
                 <div>
@@ -106,7 +106,8 @@ const MapAllEquipment = () => {
                                                 minHeight: 300,
                                                 m: 2,
                                                 color: "#205375",
-                                                border: "solid #D29D2B 2px"
+                                                border: "solid #D29D2B 2px",
+                                                borderRadius: "10px"
                                             }}>
                                             <Stack direction="column">
                                                 <Typography
