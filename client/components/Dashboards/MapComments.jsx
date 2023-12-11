@@ -26,7 +26,7 @@ const MapComments = () => {
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  
+
     const [deleteComment, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteCommentForUserMutation();
     const [patchComment, { isLoading: patchIsLoading, Error: patchError, data: patchData }] = usePatchCommentMutation();
     const { data, error, isLoading } = useGetCommentByUserQuery();
@@ -63,7 +63,7 @@ const MapComments = () => {
                                             <PreviewIcon />
                                         </Button>
                                         <Button
-                                            onClick={() => setEdit(comment.id) }
+                                            onClick={() => setEdit(comment.id)}
                                             sx={{ m: 1 }}>
                                             <EditNoteIcon />
                                         </Button>
@@ -92,7 +92,9 @@ const MapComments = () => {
                                                         rows={4}
                                                         defaultValue="Type something"
                                                     />
-                                                    <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}> Edit Comment</Button>
+                                                    <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                                                        Edit Comment
+                                                    </Button>
                                                 </Stack>
                                             </Card>
                                         </form>
@@ -100,7 +102,7 @@ const MapComments = () => {
                                     <Button
                                         variant="outlined"
                                         onClick={() => setEdit(null)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this comment.
                                     </Button>
                                 </Alert>
@@ -111,13 +113,13 @@ const MapComments = () => {
                                         onClick={() => deleteComment(comment.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, delete this review.
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(null)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this comment.
                                     </Button>
                                 </Alert>
@@ -186,7 +188,9 @@ const MapComments = () => {
                                                         rows={4}
                                                         defaultValue="Type something"
                                                     />
-                                                    <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}> Edit Comment</Button>
+                                                    <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                                                        Edit Comment
+                                                    </Button>
                                                 </Stack>
                                             </Card>
                                         </form>
@@ -194,7 +198,7 @@ const MapComments = () => {
                                     <Button
                                         variant="outlined"
                                         onClick={() => setEdit(null)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this comment.
                                     </Button>
                                 </Alert>
@@ -205,13 +209,13 @@ const MapComments = () => {
                                         onClick={() => deleteComment(comment.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, delete this review.
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(null)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this comment.
                                     </Button>
                                 </Alert>

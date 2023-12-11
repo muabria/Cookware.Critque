@@ -82,6 +82,7 @@ const AllPosts = () => {
                                                 <Link to={`/review/${review.id}`} >
                                                     <Button
                                                         sx={{
+                                                            textTransform: "none",
                                                             my: 1,
                                                             boxShadow: 3,
                                                             color: "#3C1B1F",
@@ -127,6 +128,7 @@ const AllPosts = () => {
                                             <Link to={`/review/${review.id}`} >
                                                 <Button
                                                     sx={{
+                                                        textTransform: "none",
                                                         my: 2,
                                                         ml: 8,
                                                         boxShadow: 3,

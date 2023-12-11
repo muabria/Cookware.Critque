@@ -111,7 +111,7 @@ const AddEquipment = () => {
                                                 <Box key={category.id}>
                                                     <Button
                                                         onClick={() => setCategory(category.id)}
-                                                        sx={{ m: 1, backgroundColor: "#9BCDD2" }}>
+                                                        sx={{ textTransform: "none", m: 1, backgroundColor: "#9BCDD2" }}>
                                                         {category.category}
                                                     </Button>
                                                 </Box>
@@ -125,7 +125,7 @@ const AddEquipment = () => {
                                                 <Box key={category.id}>
                                                     <Button
                                                         onClick={() => setCategory(category.id)}
-                                                        sx={{ mx: 1, backgroundColor: "#9BCDD2" }}>
+                                                        sx={{ textTransform: "none", mx: 1, backgroundColor: "#9BCDD2" }}>
                                                         {category.category}
                                                     </Button>
                                                 </Box>
