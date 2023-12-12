@@ -20,10 +20,12 @@ import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useMediaQuery, useTheme, createTheme } from "@mui/material";
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 import MobileNewPost from "./MobileNewPost";
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
 import AccountRedirect from "../ErrorMessages/AccountRedirect";
-import SlideShow from "../SlideShow";
 
 import { useNavigate } from "react-router-dom";
 
@@ -78,7 +80,25 @@ const AddPostContent = () => {
             </div>
         )
     }
-    console.log(userData);
+
+    const responsive = {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 3000 },
+            items: 3
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 2
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 1
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1
+        }
+    };
 
     //<-----------------SUBMIT FORM HELPER FUNCTION------------------->
     const handleSubmit = async (event) => {
@@ -142,48 +162,48 @@ const AddPostContent = () => {
                                             </Typography>
                                         </Stack>
                                         {/* <--------------MAP EQUIPMENT---------------> */}
-                                        <SlideShow
-                                            content={
-                                                <>
-                                                    {data && data.map((equipment) => (
-                                                        <motion.div
-                                                            whileTap={{ scale: 1.1 }}>
-                                                            <Card
-                                                                key={equipment.id}
-                                                                className="select-equipment"
-                                                                onClick={() => {
-                                                                    setEquipment(equipment.id),
-                                                                        setSelect(equipment.id)
-                                                                }}
-                                                                sx={{
-                                                                    m: 3,
-                                                                    minWidth: 350, maxWidth: 350,
-                                                                    border: select === equipment.id ? "solid #64CCC5 10px" : "solid #D29D2B 5px",
-                                                                    borderRadius: 100
-                                                                }}>
-                                                                <Box sx={{ pt: 5, px: 2, backgroundColor: "#EACD65" }}>
-                                                                    <Typography
-                                                                        variant="h6"
-                                                                        sx={{ color: "#205375", m: 2, textAlign: "center" }}>
-                                                                        {equipment.name}
-                                                                    </Typography>
-                                                                    <Typography sx={{ color: "#205375", m: 1, textAlign: "center" }}>
-                                                                        by {equipment.brand}
-                                                                    </Typography>
-                                                                </Box>
-                                                                <Box textAlign="center">
-                                                                    <img
-                                                                        src={equipment.image}
-                                                                        alt={`${equipment.name} image`}
-                                                                        width="200"
-                                                                        height="200" />
-                                                                </Box>
-                                                            </Card>
-                                                        </motion.div>
-                                                    ))}
-                                                </>
-                                            }
-                                        />
+                                        <Carousel
+                                            responsive={responsive}
+                                            swipeable={true}
+                                            draggable={true}
+                                            showDots={true}>
+                                            {data && data.map((equipment) => (
+                                                <motion.div
+                                                    whileTap={{ scale: 1.1 }}>
+                                                    <Card
+                                                        key={equipment.id}
+                                                        className="select-equipment"
+                                                        onClick={() => {
+                                                            setEquipment(equipment.id),
+                                                                setSelect(equipment.id)
+                                                        }}
+                                                        sx={{
+                                                            m: 3,
+                                                            minWidth: 350, maxWidth: 350,
+                                                            border: select === equipment.id ? "solid #64CCC5 10px" : "solid #D29D2B 5px",
+                                                            borderRadius: 100
+                                                        }}>
+                                                        <Box sx={{ pt: 5, px: 2, backgroundColor: "#EACD65" }}>
+                                                            <Typography
+                                                                variant="h6"
+                                                                sx={{ color: "#205375", m: 2, textAlign: "center" }}>
+                                                                {equipment.name}
+                                                            </Typography>
+                                                            <Typography sx={{ color: "#205375", m: 1, textAlign: "center" }}>
+                                                                by {equipment.brand}
+                                                            </Typography>
+                                                        </Box>
+                                                        <Box textAlign="center">
+                                                            <img
+                                                                src={equipment.image}
+                                                                alt={`${equipment.name} image`}
+                                                                width="200"
+                                                                height="200" />
+                                                        </Box>
+                                                    </Card>
+                                                </motion.div>
+                                            ))}
+                                        </Carousel>
                                         <Button
                                             onClick={() => handelAnimation()}
                                             sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
