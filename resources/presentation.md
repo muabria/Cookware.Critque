@@ -9,13 +9,13 @@ Introduce the app
 
 ### Major/unique features
 -Not logged in (Marisa)  
-    -Single equipment has purchase link, avg rating  
+-----Single equipment has purchase link, avg rating  
 -Users (Henrietta)  
-    -Make comments  
-    -Do you want to delete this?  
+-----Make comments  
+-----Do you want to delete this?  
 -Mobile/Admin (Kat)  
-    -Admin Dashboard  
-        -Admin toggle  
+-----Admin Dashboard  
+---------Admin toggle  
 
 ### Flow - share screen (Marisa)
 Homepage > Single Equipment > Login > User Dashboard - Delete post > Mobile > Admin Dashboard - Admin toggle  
@@ -30,5 +30,5 @@ New Share to slideshow
 URLs  
 List of favorite bugs  
 Heartfelt statement about how much we learned and enjoyed working with each other   
-    -Everyone shares what they learned  
+-----Everyone shares what they learned  
 Thank you  
