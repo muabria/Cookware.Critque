@@ -27,6 +27,7 @@ const MobileNewPost = () => {
     const [content, setContent] = useState("");
     const [equipment, setEquipment] = useState("");
     const [rating, setRating] = useState(null);
+    const [select, setSelect] = useState(false)
 
     //<-----------------STAR RATING STATE ------------------->
     const [hover, setHover] = useState(-1);
@@ -115,8 +116,15 @@ const MobileNewPost = () => {
                                                 <Card
                                                     key={equipment.id}
                                                     className="select-equipment"
-                                                    onClick={() => setEquipment(equipment.id)}
-                                                    sx={{ m: 1, minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, border: "solid #D29D2B 5px", borderRadius: 100 }}>
+                                                    onClick={() => {
+                                                        setEquipment(equipment.id),
+                                                            setSelect(equipment.id)
+                                                    }}
+                                                    sx={{
+                                                         m: 1, 
+                                                         minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, 
+                                                         border: select === equipment.id ? "solid #64CCC5 10px" : "solid #D29D2B 5px",
+                                                         borderRadius: 100 }}>
                                                     <Box sx={{ backgroundColor: "#EACD65" }}>
                                                         <Typography
                                                             sx={{ color: "#205375", mx: 2, mt: 2, fontSize: "12px", textAlign: "center" }}>
@@ -141,7 +149,7 @@ const MobileNewPost = () => {
                                 />
                                 <Button
                                     onClick={() => handelAnimation()}
-                                    sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                                    sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
                                     Next <ArrowForwardIosIcon /><ArrowForwardIosIcon /><ArrowForwardIosIcon />
                                 </Button>
                             </Card>
@@ -203,7 +211,7 @@ const MobileNewPost = () => {
                                             )}
                                         </Stack>
                                     </Stack>
-                                    <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                                    <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
                                         Create Your Critique!
                                     </Button>
                                 </Card>

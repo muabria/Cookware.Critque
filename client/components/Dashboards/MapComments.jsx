@@ -1,4 +1,5 @@
 import Alert from "@mui/material/Alert";
+import Box from "@mui/material/Box"
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid"
@@ -8,7 +9,8 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import TextField from '@mui/material/TextField';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-import { useParams } from "react-router-dom";
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import { Link } from "react-router-dom";
 
 import { useMediaQuery, useTheme } from '@mui/material';
 
@@ -26,7 +28,7 @@ const MapComments = () => {
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  
+
     const [deleteComment, { isLoading: deleteIsLoading, Error: deleteError, data: deleteData }] = useDeleteCommentForUserMutation();
     const [patchComment, { isLoading: patchIsLoading, Error: patchError, data: patchData }] = usePatchCommentMutation();
     const { data, error, isLoading } = useGetCommentByUserQuery();
@@ -50,6 +52,15 @@ const MapComments = () => {
                             sx={{ textAlign: "center", color: "#205375" }}>
                             My Comments:
                         </Typography>
+                        <Box sx={{ backgroundColor: "#EEF5FF"}}>
+                            <Link to="/posts">
+                                <Button
+                                    sx={{ textTransform: "none", m: 1 }}>
+                                    Want to make a comment? Go visit a review!
+                                    <ArrowCircleRightIcon sx={{ mx: 1}} />
+                                </Button>
+                            </Link>
+                        </Box>
                         {data && data.map((comment) => (
                             <Card key={comment.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
@@ -63,7 +74,7 @@ const MapComments = () => {
                                             <PreviewIcon />
                                         </Button>
                                         <Button
-                                            onClick={() => setEdit(comment.id) }
+                                            onClick={() => setEdit(comment.id)}
                                             sx={{ m: 1 }}>
                                             <EditNoteIcon />
                                         </Button>
@@ -92,7 +103,9 @@ const MapComments = () => {
                                                         rows={4}
                                                         defaultValue="Type something"
                                                     />
-                                                    <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}> Edit Comment</Button>
+                                                    <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                                                        Edit Comment
+                                                    </Button>
                                                 </Stack>
                                             </Card>
                                         </form>
@@ -100,7 +113,7 @@ const MapComments = () => {
                                     <Button
                                         variant="outlined"
                                         onClick={() => setEdit(null)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this comment.
                                     </Button>
                                 </Alert>
@@ -111,13 +124,13 @@ const MapComments = () => {
                                         onClick={() => deleteComment(comment.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, delete this review.
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(null)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this comment.
                                     </Button>
                                 </Alert>
@@ -135,6 +148,15 @@ const MapComments = () => {
                             sx={{ textAlign: "center", color: "#205375" }}>
                             My Comments:
                         </Typography>
+                        <Box sx={{ backgroundColor: "#EEF5FF" }}>
+                            <Link to="/posts">
+                                <Button
+                                    sx={{ textTransform: "none", m: 1 }}>
+                                    Want to make a comment? Go visit a review!
+                                    <ArrowCircleRightIcon sx={{ mx: 1 }} />
+                                </Button>
+                            </Link>
+                        </Box>
                         {data && data.map((comment) => (
                             <Card key={comment.id} sx={{ m: 1, p: 2 }}>
                                 <Grid container>
@@ -186,7 +208,9 @@ const MapComments = () => {
                                                         rows={4}
                                                         defaultValue="Type something"
                                                     />
-                                                    <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}> Edit Comment</Button>
+                                                    <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                                                        Edit Comment
+                                                    </Button>
                                                 </Stack>
                                             </Card>
                                         </form>
@@ -194,7 +218,7 @@ const MapComments = () => {
                                     <Button
                                         variant="outlined"
                                         onClick={() => setEdit(null)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this comment.
                                     </Button>
                                 </Alert>
@@ -205,13 +229,13 @@ const MapComments = () => {
                                         onClick={() => deleteComment(comment.id)}
                                         variant="outlined"
                                         color="error"
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         Yes, delete this review.
                                     </Button>
                                     <Button
                                         variant="outlined"
                                         onClick={() => setAlert(null)}
-                                        sx={{ m: 1 }}>
+                                        sx={{ textTransform: "none", m: 1 }}>
                                         No, keep this comment.
                                     </Button>
                                 </Alert>

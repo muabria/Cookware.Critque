@@ -104,7 +104,7 @@ const LoginForm = () => {
                                 />
                                 {isMobile ?
                                     <div>
-                                        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", width: "100%", p: 1 }}>
+                                        <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", width: "100%", p: 1 }}>
                                             Login
                                         </Button>
                                         <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
@@ -113,7 +113,7 @@ const LoginForm = () => {
                                         <Link to="/register">
                                             <Button
                                                 variant="outlined"
-                                                sx={{ color: "#000000", backgroundColor: "transparent", my: 1, color: "#205375", width: "100%" }}>
+                                                sx={{ textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", width: "100%" }}>
                                                 Sign up!
                                                 <LoginIcon sx={{ ml: 2, color: "#205375" }} />
                                             </Button>
@@ -130,7 +130,7 @@ const LoginForm = () => {
                                         <Link to="/register">
                                             <Button
                                                 variant="outlined"
-                                                sx={{ color: "#000000", backgroundColor: "transparent", my: 1, color: "#205375", mx: 28 }}>
+                                                sx={{ textTransform: "none", textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", mx: 28 }}>
                                                 Sign up!
                                                 <LoginIcon sx={{ ml: 2, color: "#205375" }} />
                                             </Button>

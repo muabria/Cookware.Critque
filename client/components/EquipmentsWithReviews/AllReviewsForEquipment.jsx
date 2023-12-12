@@ -144,7 +144,9 @@ const AllReviewsForEquipment = () => {
                 : //If admin...
                 <div>
                     <Link to={`/edit_equipment/${data.id}`} >
-                        <Button> Update Equipment </Button>
+                        <Button sx={{ textTransform: "none", }}>
+                            Save Changes
+                        </Button>
                     </Link>
                 </div>
             }

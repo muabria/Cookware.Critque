@@ -101,7 +101,7 @@ const EditReviews = () => {
                                     }
                                 />
                             </Stack>
-                            <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                            <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
                                 Save Changes
                             </Button>
                         </Card>

@@ -95,13 +95,13 @@ const AdminMapEquipment = () => {
                                             onClick={() => deleteEquipment(equipment.id)}
                                             variant="outlined"
                                             color="error"
-                                            sx={{ m: 1 }}>
+                                            sx={{ textTransform: "none",  m: 1 }}>
                                             Yes, delete this equipment.
                                         </Button>
                                         <Button
                                             variant="outlined"
                                             onClick={() => setAlert(null)}
-                                            sx={{ m: 1 }}>
+                                            sx={{ textTransform: "none", m: 1 }}>
                                             No, keep this equipment.
                                         </Button>
                                     </Alert>
@@ -146,7 +146,7 @@ const AdminMapEquipment = () => {
                                                 <Button
                                                     onClick={() => setAlert(equipment.id)}
                                                     color="error"
-                                                    sx={{ m: 1 }}>
+                                                    sx={{ textTransform: "none", m: 1 }}>
                                                     <DeleteForeverSharpIcon />
                                                 </Button>
                                                 {alert === equipment.id  && <Alert severity="warning">
@@ -155,13 +155,13 @@ const AdminMapEquipment = () => {
                                                         onClick={() => deleteEquipment(equipment.id)}
                                                         variant="outlined"
                                                         color="error"
-                                                        sx={{ m: 1 }}>
+                                                        sx={{  textTransform: "none", m: 1 }}>
                                                         Yes, delete this equipment.
                                                     </Button>
                                                     <Button
                                                         variant="outlined"
                                                         onClick={() => setAlert(null)}
-                                                        sx={{ m: 1 }}>
+                                                        sx={{ textTransform: "none", m: 1 }}>
                                                         No, keep this equipment.
                                                     </Button>
                                                 </Alert>

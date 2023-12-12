@@ -65,6 +65,7 @@ const MapAllEquipment = () => {
                                                     <Link to={`/equipment/${equipment.id}`}>
                                                         <Button
                                                             sx={{
+                                                                textTransform: "none",
                                                                 my: 2,
                                                                 mx: 2,
                                                                 boxShadow: 3,
@@ -132,6 +133,7 @@ const MapAllEquipment = () => {
                                                 <Link to={`/equipment/${equipment.id}`}>
                                                     <Button
                                                         sx={{
+                                                            textTransform: "none",
                                                             my: 2,
                                                             mx: 9,
                                                             boxShadow: 3,

@@ -35,7 +35,7 @@ const PostsWithComments = () => {
         return <div> </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
@@ -48,9 +48,9 @@ const PostsWithComments = () => {
 
     return (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeIn" }}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
             {isMobile ?
                 <div>
                     <Grid container>
@@ -84,7 +84,7 @@ const PostsWithComments = () => {
                                     Comments:
                                 </Typography>
                                 <Button
-                                    sx={{ ml: 11, color: "#205375", backgroundColor: "transparent", my: 1 }}
+                                    sx={{ textTransform: "none", ml: 11, color: "#205375", backgroundColor: "transparent", my: 1 }}
                                     onClick={() => setAddComment(true)}>
                                     <RateReviewIcon />
                                     Add a Comment
@@ -105,11 +105,11 @@ const PostsWithComments = () => {
                 <div>
                     <Grid container>
                         <Grid item xs={6}>
-                            <Card 
-                            key={data.id}
-                            sx={{ 
-                                mx: 2
-                            }}>
+                            <Card
+                                key={data.id}
+                                sx={{
+                                    mx: 2
+                                }}>
                                 <Stack direction="row">
                                     <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                                         {data.title}
@@ -134,18 +134,16 @@ const PostsWithComments = () => {
                         </Grid>
 
                         <Grid item xs={6}>
-                            <Card sx={{ 
-                                mx: 2, 
-                                backgroundColor: "#b6d6d4", p: 
-                                2 }}>
+                            <Card sx={{
+                                mx: 2,
+                                backgroundColor: "#b6d6d4", p:
+                                    2
+                            }}>
                                 <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                     Comments:
                                 </Typography>
                                 <Button
-                                sx={{ 
-                                    ml: 67,
-                                    color: "#205375" 
-                                }}
+                                    sx={{ textTransform: "none", ml: 67, color: "#205375" }}
                                     onClick={() => setAddComment(true)}>
                                     <RateReviewIcon /> Add a Comment
                                 </Button>

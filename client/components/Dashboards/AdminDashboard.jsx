@@ -53,7 +53,7 @@ const AdminDashboard = () => {
                                             Hello Admin!
                                         </Typography>
                                         <Link to="/account">
-                                            <Button sx={{ backgroundColor: "#088395", color: "white" }}>
+                                            <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white" }}>
                                                 Return to User View
                                             </Button>
                                         </Link>
@@ -80,7 +80,7 @@ const AdminDashboard = () => {
                         <Grid container spacing={1}>
                             <Grid item xs={2}>
                             <Link to="/account">
-                                    <Button sx={{ backgroundColor: "#088395", color: "white", mx: 1, mt: 10 }}>
+                                    <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", mx: 1, mt: 10 }}>
                                         Return to User View
                                     </Button>
                                 </Link>

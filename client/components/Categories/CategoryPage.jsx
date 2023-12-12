@@ -102,6 +102,7 @@ const CategoryPage = () => {
                                             <Link to={`/equipment/${equipment.id}`} >
                                                 <Button
                                                     sx={{
+                                                        textTransform: "none",
                                                         mt: 2,
                                                         ml: 3,
                                                         boxShadow: 3,
@@ -160,6 +161,7 @@ const CategoryPage = () => {
                                             <Link to={`/equipment/${equipment.id}`} >
                                                 <Button
                                                     sx={{
+                                                        textTransform: "none",
                                                         mt: 2,
                                                         mx: 4,
                                                         boxShadow: 3,

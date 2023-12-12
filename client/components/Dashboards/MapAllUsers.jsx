@@ -107,13 +107,13 @@ const MapAllUsers = () => {
                                                 onClick={(console.log("Delete"))}
                                                 variant="outlined"
                                                 color="error"
-                                                sx={{ m: 1 }}>
+                                                sx={{ textTransform: "none", m: 1 }}>
                                                 Yes, delete this user.
                                             </Button>
                                             <Button
                                                 variant="outlined"
                                                 onClick={() => setAlert(null)}
-                                                sx={{ m: 1 }}>
+                                                sx={{ textTransform: "none", m: 1 }}>
                                                 No, keep this user active.
                                             </Button>
                                         </Stack>
@@ -177,13 +177,13 @@ const MapAllUsers = () => {
                                                 onClick={(console.log("Delete"))}
                                                 variant="outlined"
                                                 color="error"
-                                                sx={{ m: 1 }}>
+                                                sx={{textTransform: "none", m: 1 }}>
                                                 Yes, delete this user.
                                             </Button>
                                             <Button
                                                 variant="outlined"
                                                 onClick={() => setAlert(null)}
-                                                sx={{ m: 1 }}>
+                                                sx={{ textTransform: "none", m: 1 }}>
                                                 No, keep this user active.
                                             </Button>
                                         </Stack>
