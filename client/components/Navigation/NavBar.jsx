@@ -46,8 +46,8 @@ const NavBar = () => {
                             src={logo}
                             width="100"
                             height="100" />
-                        <Typography variant="h3" sx={{ color: "#205375", flexGrow: 1 }}>
-                            Title Placeholder
+                        <Typography variant="h1" sx={{ color: "#205375", flexGrow: 1, fontSize: "40px" }}>
+                            Cookware Critique
                         </Typography>
                         <Box sx={{ maxHeight: "50px", backgroundColor: "#F9FBE7", borderRadius: "50px" }}>
                             <Stack direction="row">

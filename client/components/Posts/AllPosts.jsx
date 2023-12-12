@@ -8,6 +8,9 @@ import Button from '@mui/material/Button';
 import Grid from "@mui/material/Grid";
 import { useMediaQuery, useTheme } from "@mui/material";
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 import { motion } from 'framer-motion';
 
 import { Link } from 'react-router-dom';
@@ -16,7 +19,6 @@ import { useGetReviewsQuery } from '../../redux/api';
 
 import SearchBar from '../SearchEquipment/SearchBar';
 import LoadingMessage from '../ErrorMessages/LoadingMessage';
-import SlideShow from '../SlideShow';
 import EquipmentName from './EquipmentName';
 import MapAllEquipment from '../EquipmentsWithReviews/MapAllEquipment';
 
@@ -33,13 +35,29 @@ const AllPosts = () => {
         return <div> Sorry! There's a problem loading the reviews. </div>
     }
 
+    const responsive = {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 3000 },
+            items: 5
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1
+        }
+    };
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeIn" }}>
-
-
             {isMobile
                 ?
                 <div>
@@ -53,118 +71,52 @@ const AllPosts = () => {
                         <SearchBar />
                     </Box>
                 </div>}
-            {isMobile
-                ?
-                <div>
-                    <MapAllEquipment />
-                    <Box sx={{ maxHeight: "60px", mb: 3 }}>
-                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
-                            Explore Trusted Critiques Made from Real Users
-                        </Typography>
-                    </Box>
-                    <Box sx={{ mx: 2 }}>
-                        <SlideShow
-                            content={
-                                <>
-                                    {data && data.map((review) => (
-                                        <Card key={review.id}
-                                            sx={{
-                                                boxShadow: 3,
-                                                backgroundColor: "#F9FBE7",
-                                                border: "solid #D29D2B 2px",
-                                                borderRadius: "10px",
-                                                minWidth: 200,
-                                                maxHeight: 300,
-                                                m: 1,
-                                            }}>
-                                            <CardHeader sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}
-                                                title={review.title} />
-                                            <CardContent>
-                                                <Typography variant="h6" sx={{ color: "#205375" }}>
-                                                    {review.content}
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Link to={`/review/${review.id}`} >
-                                                    <Button
-                                                        sx={{
-                                                            textTransform: "none",
-                                                            my: 1,
-                                                            boxShadow: 3,
-                                                            color: "#3C1B1F",
-                                                            backgroundColor: "#EACD65",
-                                                            border: "solid #D29D2B 2px"
-                                                        }}>
-                                                        See the Full Review
-                                                    </Button>
-                                                </Link>
-                                            </CardActions>
-                                        </Card>
-                                    ))
-                                    }
-                                </>
-                            }
-                        />
-                    </Box>
-                </div>
-                :// is NOT mobile...
-                <div>
-                    <MapAllEquipment />
-                    <Box sx={{ maxHeight: "60px", mb: 3 }}>
-                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
-                            Explore Trusted Critiques Made from Real Users
-                        </Typography>
-                    </Box>
-                    <SlideShow
-                        content={
-                            <>
-                                {data && data.map((review) => (
-                                    <Grid container key={review.id} >
-                                        <Grid item xs={8}>
-                                            <Card key={review.id}
-                                                sx={{
-                                                    boxShadow: 3,
-                                                    backgroundColor: "#F9FBE7",
-                                                    border: "solid #D29D2B 2px",
-                                                    borderRadius: "10px",
-                                                    minWidth: 300,
-                                                    minHeight: 300,
-                                                    m: 5,
-                                                }}>
-                                                <CardHeader sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}
-                                                    title={review.title}
-                                                />
-                                                <CardContent>
-                                                    <Typography variant="h6" sx={{ color: "#205375" }}>
-                                                        {review.content}
-                                                    </Typography>
-                                                </CardContent>
-                                                <CardActions disableSpacing>
-                                                    <Link to={`/review/${review.id}`} >
-                                                        <Button
-                                                            sx={{
-                                                                my: 2,
-                                                                mx: 6,
-                                                                boxShadow: 3,
-                                                                color: "#3C1B1F",
-                                                                backgroundColor: "#EACD65",
-                                                                border: "solid #D29D2B 2px"
-                                                            }}>
-                                                            See the Full Review
-                                                        </Button>
-                                                    </Link>
-                                                </CardActions>
-                                                <EquipmentName equipmentId={review.equipmentId} />
-                                            </Card>
-                                        </Grid>
-                                    </Grid>
-                                ))
-                                }
-                            </>
-                        }
-                    />
-                </div>}
+            <MapAllEquipment />
+            <Carousel
+                responsive={responsive}
+                swipeable={true}
+                draggable={true}
+                showDots={true}>
+                {data && data.map((review) => (
+                    <Card key={review.id}
+                        sx={{
+                            boxShadow: 3,
+                            backgroundColor: "#F9FBE7",
+                            border: "solid #D29D2B 2px",
+                            borderRadius: "10px",
+                            width: 300,
+                            minHeight: 300,
+                            mx: 1,
+                            my: 5
+                        }}>
+                        <CardHeader sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}
+                            title={review.title} />
+                        <CardContent>
+                            <Typography variant="h6" sx={{ color: "#205375" }}>
+                                {review.content}
+                            </Typography>
+                            <EquipmentName equipmentId={review.equipmentId} />
+                        </CardContent>
+                            <Typography sx={{ textAlign: "center" }}>
+                                <Link to={`/review/${review.id}`} >
+                                    <Button
+                                        sx={{
+                                            textTransform: "none",
+                                            my: 1,
+                                            boxShadow: 3,
+                                            color: "#3C1B1F",
+                                            backgroundColor: "#EACD65",
+                                            border: "solid #D29D2B 2px"
+                                        }}>
+                                        See the Full Review
+                                    </Button>
+                                </Link>
+                            </Typography>
+                    </Card>
+                ))}
+            </Carousel>
         </motion.div>
     );
 }
-export default AllPosts 
+export default AllPosts
+

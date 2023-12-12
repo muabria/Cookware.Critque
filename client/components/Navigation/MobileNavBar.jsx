@@ -39,8 +39,8 @@ const MobileNavBar = () => {
                             src={logo}
                             width="40"
                             height="40" />
-                        <Typography variant="h6" sx={{ color: "#205375", flexGrow: 1 }}>
-                            Title Placeholder
+                        <Typography variant="h1" sx={{ mx: 1, color: "#205375", flexGrow: 1, fontSize: "20px" }}>
+                            Cookware Critique
                         </Typography>
 
                     </Stack>

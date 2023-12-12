@@ -17,8 +17,10 @@ import Rating from "@mui/material/Rating";
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
-import SlideShow from "../SlideShow";
+import LoadingMessage from "../ErrorMessages/LoadingMessage"
+
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 
 const MobileNewPost = () => {
@@ -80,7 +82,25 @@ const MobileNewPost = () => {
         4: `Good: A-peeling and good in a kitchen`,
         5: `Excellent: Truely egg-ceptional!`,
     };
-    console.log(equipment);
+
+    const responsive = {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 3000 },
+            items: 3
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 2
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 1
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1
+        }
+    };
     return (
         <>
             <Grid container>
@@ -109,44 +129,47 @@ const MobileNewPost = () => {
                                     </Typography>
                                 </Stack>
                                 {/* <--------------MAPP EQUIPMENT---------------> */}
-                                <SlideShow
-                                    content={
-                                        <>
-                                            {data && data.map((equipment) => (
-                                                <Card
-                                                    key={equipment.id}
-                                                    className="select-equipment"
-                                                    onClick={() => {
-                                                        setEquipment(equipment.id),
-                                                            setSelect(equipment.id)
-                                                    }}
-                                                    sx={{
-                                                         m: 1, 
-                                                         minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 150, 
-                                                         border: select === equipment.id ? "solid #64CCC5 10px" : "solid #D29D2B 5px",
-                                                         borderRadius: 100 }}>
-                                                    <Box sx={{ backgroundColor: "#EACD65" }}>
-                                                        <Typography
-                                                            sx={{ color: "#205375", mx: 2, mt: 2, fontSize: "12px", textAlign: "center" }}>
-                                                            {equipment.name}
-                                                        </Typography>
-                                                        <Typography sx={{ color: "#205375", m: 1, fontSize: "10px", textAlign: "center" }}>
-                                                            by {equipment.brand}
-                                                        </Typography>
-                                                    </Box>
-                                                    <Box textAlign="center">
-                                                        <img
-                                                            src={equipment.image}
-                                                            alt={`${equipment.name} image`}
-                                                            width="75"
-                                                            height="75" />
-                                                    </Box>
-                                                </Card>
-                                            ))
-                                            }
-                                        </>
+                                <Carousel
+                                    responsive={responsive}
+                                    swipeable={true}
+                                    draggable={true}
+                                    showDots={true}>
+                                    {data && data.map((equipment) => (
+                                        <Card
+                                            key={equipment.id}
+                                            className="select-equipment"
+                                            onClick={() => {
+                                                setEquipment(equipment.id),
+                                                    setSelect(equipment.id)
+                                            }}
+                                            sx={{
+                                                mt: 1,
+                                                mb: 5,
+                                                mx: 8, 
+                                                width: 150, minHeight: 150,
+                                                border: select === equipment.id ? "solid #64CCC5 10px" : "solid #D29D2B 5px",
+                                                borderRadius: 100
+                                            }}>
+                                            <Box sx={{ backgroundColor: "#EACD65" }}>
+                                                <Typography
+                                                    sx={{ color: "#205375", mx: 2, mt: 2, fontSize: "12px", textAlign: "center" }}>
+                                                    {equipment.name}
+                                                </Typography>
+                                                <Typography sx={{ color: "#205375", m: 1, fontSize: "10px", textAlign: "center" }}>
+                                                    by {equipment.brand}
+                                                </Typography>
+                                            </Box>
+                                            <Box textAlign="center">
+                                                <img
+                                                    src={equipment.image}
+                                                    alt={`${equipment.name} image`}
+                                                    width="75"
+                                                    height="75" />
+                                            </Box>
+                                        </Card>
+                                    ))
                                     }
-                                />
+                                </Carousel>
                                 <Button
                                     onClick={() => handelAnimation()}
                                     sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>

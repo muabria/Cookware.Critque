@@ -14,8 +14,8 @@ const MobileHomePage = () => {
     return (
         <>
 
-            <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                Welcome to "TITLE PLACEHOLDER".
+            <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", m: 1, fontSize: "20px" }}>
+                Welcome to Cookware Critique
             </Typography>
             <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                 Home to honest critiques for all types of kitchen equipment from food prep to clean up.
