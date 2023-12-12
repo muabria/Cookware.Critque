@@ -18,7 +18,6 @@ import { useGetReviewsQuery } from '../../redux/api';
 
 import SearchBar from '../SearchEquipment/SearchBar';
 import LoadingMessage from '../ErrorMessages/LoadingMessage';
-import SlideShow from '../SlideShow';
 
 const AllPosts = () => {
     const theme = useTheme();

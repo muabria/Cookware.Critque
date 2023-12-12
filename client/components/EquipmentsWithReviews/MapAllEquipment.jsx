@@ -1,21 +1,38 @@
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
-import { useMediaQuery, useTheme } from "@mui/material";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 import { Link } from "react-router-dom";
 
 import { useGetEquipmentQuery } from "../../redux/api"
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
-import SlideShow from "../SlideShow";
 
 const MapAllEquipment = () => {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+    const responsive = {
+        superLargeDesktop: {
+            // the naming can be any, depends on you.
+            breakpoint: { max: 4000, min: 3000 },
+            items: 5
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1
+        }
+    };
 
     const { data, error, isLoading } = useGetEquipmentQuery();
     if (isLoading) {
@@ -26,126 +43,68 @@ const MapAllEquipment = () => {
     }
     console.log(data);
 
-
     return (
         <>
-            {isMobile ?
-                <div>
-                    <Typography
-                        variant="h5"
-                        sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
-                        See All Equipment
-                    </Typography>
-                    <Grid container >
-                        <SlideShow
-                            content={
-                                <>
-                                    {data && data.map((equipment) => (
-                                        <Stack direction="row" key={equipment.id}>
-                                            <Card sx={{ m: 0.5, color: "#205375", border: "solid #D29D2B 2px", minWidth: "200px" }} key={equipment.id}>
-                                                <Stack direction="column">
-                                                    <Typography
-                                                        variant="h6"
-                                                        sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}>
-                                                        {equipment.name}
-                                                    </Typography>
-                                                    <Typography
-                                                        sx={{ textAlign: "center" }}>
-                                                        from {equipment.brand}
-                                                    </Typography>
-                                                    <Box sx={{ px: 5 }}>
-                                                        <img
-                                                            src={equipment.image}
-                                                            alt={equipment.name}
-                                                            width="100"
-                                                            height="100" />
-                                                    </Box>
-                                                    <Link to={`/equipment/${equipment.id}`}>
-                                                        <Button
-                                                            sx={{
-                                                                textTransform: "none",
-                                                                my: 2,
-                                                                mx: 2,
-                                                                boxShadow: 3,
-                                                                color: "#3C1B1F",
-                                                                backgroundColor: "#EACD65",
-                                                                border: "solid #D29D2B 2px"
-                                                            }}>
-                                                            See All Reviews
-                                                        </Button>
-                                                    </Link>
-                                                </Stack>
-                                            </Card>
-                                        </Stack>
-                                    ))}
-                                </>
-                            }
-                        />
-                    </Grid>
-                </div>
-                ://is NOT mobile..
-                <div>
-                    <Typography
-                        variant="h4"
-                        sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
-                        See All Equipment
-                    </Typography>
-
-                    <Grid container >
-                        <SlideShow
-                            content={
-                                <>
-                                    {data && data.map((equipment) => (
-                                        <Card
-                                            key={equipment.id}
-                                            sx={{
-                                                maxWidth: 300,
-                                                minWidth: 300,
-                                                maxHeight: 300,
-                                                minHeight: 300,
-                                                m: 2,
-                                                color: "#205375",
-                                                border: "solid #D29D2B 2px"
-                                            }}>
-                                            <Stack direction="column">
-                                                <Typography
-                                                    variant="h6"
-                                                    sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}>
-                                                    {equipment.name}
-                                                </Typography>
-                                                <Typography
-                                                    sx={{ textAlign: "center" }}>
-                                                    from {equipment.brand}
-                                                </Typography>
-                                                <Box sx={{ m: 2 }}>
-                                                    <img
-                                                        src={equipment.image}
-                                                        alt={`${equipment.name} image`}
-                                                        width="130"
-                                                        height="130"
-                                                    />
-                                                </Box>
-                                                <Link to={`/equipment/${equipment.id}`}>
-                                                    <Button
-                                                        sx={{
-                                                            textTransform: "none",
-                                                            my: 2,
-                                                            ml: 8,
-                                                            boxShadow: 3,
-                                                            color: "#3C1B1F",
-                                                            backgroundColor: "#EACD65",
-                                                            border: "solid #D29D2B 2px"
-                                                        }}>
-                                                        See All Reviews
-                                                    </Button>
-                                                </Link>
-                                            </Stack>
-                                        </Card>
-                                    ))}
-                                </>
-                            } />
-                    </Grid>
-                </div>}
+            <Typography
+                variant="h4"
+                sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
+                See All Equipment
+            </Typography>
+            <Carousel
+                responsive={responsive}
+                swipeable={true}
+                draggable={true}
+                showDots={true}>
+                {data && data.map((equipment) => (
+                    <Card
+                        key={equipment.id}
+                        sx={{
+                            width: 300,
+                            minHeight: 300,
+                            my: 5,
+                            mx: 2,
+                            color: "#205375",
+                            backgroundColor: "#F9FBE7",
+                            border: "solid #D29D2B 2px"
+                        }}>
+                        <Stack direction="column">
+                            <Typography
+                                variant="h6"
+                                sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}>
+                                {equipment.name}
+                            </Typography>
+                            <Typography
+                                sx={{ textAlign: "center" }}>
+                                from {equipment.brand}
+                            </Typography>
+                            <Box sx={{ m: 2 }}>
+                                <img
+                                    src={equipment.image}
+                                    alt={`${equipment.name} image`}
+                                    width="130"
+                                    height="130"
+                                />
+                            </Box>
+                            <Link to={`/equipment/${equipment.id}`}>
+                                <Typography sx={{ textAlign: "center" }}>
+                                    <Button
+                                        sx={{
+                                            textTransform: "none",
+                                            my: 2,
+                                            ml: 8,
+                                            boxShadow: 3,
+                                            color: "#3C1B1F",
+                                            backgroundColor: "#EACD65",
+                                            border: "solid #D29D2B 2px"
+                                        }}>
+                                        See All Reviews
+                                    </Button>
+                                </Typography>
+                            </Link>
+                        </Stack>
+                    </Card>
+                ))}
+            </Carousel>
         </>
     )
 }
