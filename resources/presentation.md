@@ -28,6 +28,7 @@ New Share to slideshow
 
 ##Conclusion (everyone)
 URLs
+List of favorite bugs
 Heartfelt statement about how much we learned and enjoyed working with each other 
     -Everyone shares what they learned
 Thank you
