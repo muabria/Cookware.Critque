@@ -33,7 +33,7 @@ const HomePage = () => {
                 :
                 <>
                     <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                        Welcome to Title Placeholder
+                        Welcome to Cookware Critique
                     </Typography>
                     <Typography variant="h5" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                         Home to honest critiques for all types of kitchen equipment from food prep to clean up.
