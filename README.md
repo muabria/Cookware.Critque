@@ -24,15 +24,20 @@ While its name gives away the basis of the website, the real reason we chose to 
 To run this code on your computer, follow these steps:  
 1. Copy the 'clone' link from the **<> Code** button
 2. Run `git clone <copied link>` in the command line to copy the repo down to your local computer
-3. Run `npm install` in the command line to install any dependency you don't have installed globally
-4. Create a .env file in the top-level of your folder
-5. In the .env file, insert this code:  
+3. Run `cd Cookware_Critique` to switch to the repo's folder
+4. Run `npm install` in the command line to install any dependencies you don't have installed globally
+5. Run `npm install react-multi-carousel --save` in the command line to install the react carousel we use
+6. Create a .env file in the top-level of your folder
+7. In the .env file, insert this code:  
     `PORT=<port number>`  
     `DATABASE_URL="postgresql://postgres:postgres@localhost:5432/<database name>"`  
-    `JWT_SECRET="<some secret>"`
-6. {initialize database}
-7. Run `npm run seed` in the command line to seed the database
-8. Run `npm run dev` in the command line to start the server
+    `JWT_SECRET="<some secret>"`  
+8. Run  the following commands in the command line to add prisma and initialize the database:  
+    `npm init -y`  
+    `npm install prisma --save-dev`  
+    `npx prisma migrate dev --name init`  
+9. Run `npm run seed` in the command line to seed the database
+10. Run `npm run dev` in the command line to start the server
 
 ## Known Issues
 
