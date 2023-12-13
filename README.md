@@ -39,5 +39,9 @@ To run this code on your computer, follow these steps:
 9. Run `npm run seed` in the command line to seed the database
 10. Run `npm run dev` in the command line to start the server
 
-## Known Issues
-
+## Known Issues  
+- Error handling for updating records  
+- Update forms do not auto-populate with current content  
+- GET single equipment does not provide the proper tags  
+- Reviews and comments do not show their author  
+- There are very few character limits on the forms
