@@ -1,7 +1,8 @@
 # Cookware Critique  
 View our website: https://cooking-equipment.onrender.com/  
 
-## Table of Contents  
+## Table of Contents 
+ <!-- toc -->
 1. [Description](##Description)  
 2. [Contributors](##Contributors)  
 3. [Technology Used](##Technology-Used)  
