@@ -19,6 +19,7 @@ import { useGetCommentsQuery } from '../../redux/api';
 
 import CommentForm from "./CommentForm";
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import ProvideUsername from "./ProvideUsername";
 
 const PostsWithComments = () => {
     const [addComment, setAddComment] = useState(false);
@@ -74,6 +75,7 @@ const PostsWithComments = () => {
                                         <Typography sx={{ color: "#205375", m: 1 }}>
                                             {data.content}
                                         </Typography>
+                                        <ProvideUsername userId={data.userId} />
                                     </Stack>
                                 </CardContent>
                             </Card>
@@ -95,6 +97,7 @@ const PostsWithComments = () => {
                                         <Typography>
                                             {comment.content}
                                         </Typography>
+                                        <ProvideUsername userId={comment.userId} />
                                     </Card>
                                 ))}
                             </Card>
@@ -125,6 +128,7 @@ const PostsWithComments = () => {
                                         <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                                             {data.content}
                                         </Typography>
+                                        <ProvideUsername userId={data.userId} />
                                     </Stack>
                                 </CardContent>
                             </Card>
@@ -153,7 +157,7 @@ const PostsWithComments = () => {
                                         <Typography>
                                             {comment.content}
                                         </Typography>
-                                        
+                                        <ProvideUsername userId={comment.userId} />
                                     </Card>
                                 )
                                 )}
