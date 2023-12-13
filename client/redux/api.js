@@ -152,6 +152,7 @@ const api = createApi({
                 url: `/api/equipment/${id}`,
                 method: 'GET'
             }),
+            providesTags: ["Equipment"]
         }),
 
         //<---------------------------POST--------------------------->
