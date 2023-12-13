@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 
 import { Link, useParams } from "react-router-dom";
 
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 
 import { useGetSingleEquipmentQuery } from "../../redux/api"
 import { useGetReviewByEquipmentQuery } from "../../redux/api";
@@ -54,10 +54,10 @@ const AllReviewsForEquipment = () => {
                     <Grid container>
                         <Grid item xs={12}>
                             <Typography variant="h3"
-                            sx={{
-                                mx: 2,
-                                p: 2
-                            }}>
+                                sx={{
+                                    mx: 2,
+                                    p: 2
+                                }}>
                                 {data.name}
                             </Typography>
                             <Card
@@ -149,18 +149,18 @@ const AllReviewsForEquipment = () => {
                         </Grid>
                     </Grid>
                     {!userData || userData.isAdmin === false
-                ? //If not admin.... 
-                <div>
-                </div>
-                : //If admin...
-                <div>
-                    <Link to={`/edit_equipment/${data.id}`} >
-                        <Button sx={{ textTransform: "none", }}>
-                            Save Changes
-                        </Button>
-                    </Link>
-                </div>
-            }
+                        ? //If not admin.... 
+                        <div>
+                        </div>
+                        : //If admin...
+                        <div>
+                            <Link to={`/edit_equipment/${data.id}`} >
+                                <Button sx={{ textTransform: "none", }}>
+                                    Save Changes
+                                </Button>
+                            </Link>
+                        </div>
+                    }
                 </div>
                 : //is NOT mobile...
                 <div>
@@ -191,13 +191,14 @@ const AllReviewsForEquipment = () => {
                                             </Stack>
                                         </Card>
                                     </Stack>
-                                    <Card sx={{ m: 1, p: 2, maxHeight: 400 }}>
-                                        <AspectRatio objectFit="contain">
-                                            <img
-                                                src={data.image}
-                                                alt={data.name} />
-                                        </AspectRatio>
+                                    <Card sx={{ m: 1, p: 2 }}>
+                                       <AspectRatio objectFit="contain" >
+                                        <img
+                                            src={data.image}
+                                            alt={data.name} />
+                                    </AspectRatio> 
                                     </Card>
+                                    
                                     <Stack direction="row">
                                         <Card sx={{ m: 1 }}>
                                             <Typography sx={{ p: 1 }}>
