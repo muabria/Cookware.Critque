@@ -4,7 +4,7 @@ View our website: https://cooking-equipment.onrender.com/
 ## Table of Contents  
 1. [Description](##Description)  
 2. [Contributors](##Contributors)  
-3. [Technology Used](##Technology Used)  
+3. [Technology-Used](##Technology-Used)  
 4. [How to Run the Project](##How to Run the Project)  
 5. [Known Issues](##Known Issues)  
 
