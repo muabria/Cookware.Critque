@@ -41,7 +41,6 @@ To run this code on your computer, follow these steps:
 
 ## Known Issues  
 - Error handling for updating records  
-- Update forms do not auto-populate with current content  
-- GET single equipment does not provide the proper tags  
-- Reviews and comments do not show their author  
+- Update forms do not auto-populate with current content    
+- Admins are not able to delete comments  
 - There are very few character limits on the forms
