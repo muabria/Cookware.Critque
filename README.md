@@ -1,129 +1,46 @@
-# React + Express Boilerplate
+# Cookware Critique  
+View our website: https://cooking-equipment.onrender.com/  
 
-## Getting Started
+## Table of Contents 
+1. [Description](https://github.com/muabria/Capstone/tree/readme?tab=readme-ov-file#description)  
+2. [Contributors](https://github.com/muabria/Capstone/tree/readme?tab=readme-ov-file#contributors)  
+3. [Technology Used](https://github.com/muabria/Capstone/tree/readme?tab=readme-ov-file#technology-used)  
+4. [How to Run the Project](https://github.com/muabria/Capstone/tree/readme?tab=readme-ov-file#how-to-run-the-project)  
+5. [Known Issues](https://github.com/muabria/Capstone/tree/readme?tab=readme-ov-file#known-issues)  
 
-1. Make a new repository using this template
-2. Add your teammates as collaborators on the repository
-3. Clone your repository locally
-4. Run `npm install` to install all the dependencies
-5. Setup your `.env` file locally - you can use the `.env.example` as a guideline. In particular, you will need to setup `PORT` and `DATABASE_URL` environment variables. But you may as well at a `JWT_SECRET` while you're in there.
-6. Run `npm run dev` to run locally
+## Description  
+While its name gives away the basis of the website, the real reason we chose to make it was to help everyday people find everyday cookware, especially those just starting out on their cooking journeys. With all of the kitchen equipment out there, it can be hard to know what works the best.
 
+## Contributors
+- [Marisa Vandellos](https://github.com/mvandell)
+- [Kat Christensen](https://github.com/katc336)
+- [Brianna Moore](https://github.com/muabria)
+- [Henrietta Mizhquiri](https://github.com/mizhenn)
 
-### Starting the App
+## Technology Used
+![Postgres badge](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)  ![Prisma badge](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)  ![Redux badge](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)  ![React badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  ![React Router badge](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)  ![Vite badge](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)  ![NPM badge](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)  ![Node badge](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
-Start just the server (great while only working on API endpoints)
-```
-npm run server:dev
-```
+## How to Run the Project
+To run this code on your computer, follow these steps:  
+1. Copy the 'clone' link from the **<> Code** button
+2. Run `git clone <copied link>` in the command line to copy the repo down to your local computer
+3. Run `cd Cookware_Critique` to switch to the repo's folder
+4. Run `npm install` in the command line to install any dependencies you don't have installed globally
+5. Run `npm install react-multi-carousel --save` in the command line to install the react carousel we use
+6. Create a .env file in the top-level of your folder
+7. In the .env file, insert this code:  
+    `PORT=<port number>`  
+    `DATABASE_URL="postgresql://postgres:postgres@localhost:5432/<database name>"`  
+    `JWT_SECRET="<some secret>"`  
+8. Run  the following commands in the command line to add prisma and initialize the database:  
+    `npm init -y`  
+    `npm install prisma --save-dev`  
+    `npx prisma migrate dev --name init`  
+9. Run `npm run seed` in the command line to seed the database
+10. Run `npm run dev` in the command line to start the server
 
-For starting the full-stack application - the server will restart whenever changes are made in the `server` directory, and the React app will rebuild whenever changes are made in the `client` directory.
-
-```
-npm run dev
-```
-
-### Running Tests
-
-This will run Jest with verbose output enabled:
-```
-npm run test
-```
-
-If you want Jest to continually run as files are changed, you can call:
-```
-npm run test -- --watch
-```
-
-Or if you want Jest to continually run all tests when files change:
-```
-npm run test -- --watchAll
-```
-
-### Seed the Database
-
-This will run the `server/db/seed.js` file:
-```
-npm run seed
-```
-
-### Deploying the App
-
-You will need to create a Database in your hosting provider of choice (Render or Heroku both work well, but only Render is free).
-
-Once you have a Database URL setup, you will need to setup your Environment Variables to include your Database URL, as well as any other app secrets needed (eg. JWT secret, Client ID and Secret for OAuth, etc)
-
-Whichever provider you use, you will need to set the following settings:
-
-**Build Command:** `npm install && npm run seed && npm run build`
-**Start Command:** `npm start`
-
-## Basic File Structure
-```
-.
-├── client/
-├── dist (ignored by git)
-├── mocks/
-├── node_modules (ignored by git)
-├── prisma/
-├── server/
-├── .gitignore
-├── index.html
-├── jest.config.js
-├── package.json
-├── README.md
-└── vite.config.js
-```
-
-### Client Files
-
-```
-.
-├── client/
-│   ├── components/
-│   │   ├── __tests__/
-│   │   │   └── MyComponent.test.js
-│   │   ├── MyComponent.jsx
-│   │   ├── ... (etc, with as many nested folders as needed to keep organized)
-│   │   └── profile/
-│   │       ├── Profile.jsx
-│   │       ├── ProfileImage.jsx
-│   │       └── ProfileHeader.jsx
-│   ├── app/
-│   │   └── store.js
-│   ├── features/
-│   │   ├── api/
-│   │   │   └── apiSlice.js
-│   │   ├── auth/
-│   │   │   └── authSlice.js
-│   │   └── counter/
-│   │       └── counterSlice.js
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-```
-
-### Server Files
-
-```
-.
-├── server/
-│   ├── __tests__/
-│   │   └── app.test.js
-│   ├── api/
-│   │   ├── __tests__/
-│   │   │   └── user.test.js
-│   │   ├── index.js
-│   │   ├── user.js
-│   │   └── // ... (etc, with nested folders for sub-routes as needed to keep organized)
-│   ├── auth/
-│   │   ├── __tests__/
-│   │   │   └── auth.test.js
-│   │   └── index.js (used for authenticating with your app)
-│   ├── db/
-│   │   ├── client.js
-│   │   ├── seed.js
-│   │   └── // ... (optionally, add files / sub-folders with helper methods for accessing the DB with Prisma)
-│   ├── app.js (configure the app)
-│   └── index.js (start the app)
-```
+## Known Issues  
+- Error handling for updating records  
+- Update forms do not auto-populate with current content    
+- Admins are not able to delete comments  
+- There are very few character limits on the forms
