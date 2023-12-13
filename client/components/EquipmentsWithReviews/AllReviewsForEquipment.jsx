@@ -191,11 +191,12 @@ const AllReviewsForEquipment = () => {
                                             </Stack>
                                         </Card>
                                     </Stack>
-                                    <Card sx={{ m: 1, p: 2 }}>
+                                    <Card sx={{ m: 1, p: 3 }}>
                                        <AspectRatio objectFit="contain" >
                                         <img
                                             src={data.image}
-                                            alt={data.name} />
+                                            alt={data.name}
+                                            width={200} />
                                     </AspectRatio> 
                                     </Card>
                                     
