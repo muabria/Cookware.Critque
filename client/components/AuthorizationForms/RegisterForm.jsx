@@ -32,7 +32,7 @@ const RegisterForm = () => {
     const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
     const [register, { data, error, isLoading }] = useRegisterMutation();
     if (!userData) {
-        return <div> Oops! Please try registering another time </div>
+        return <div> </div>
     }
     if (isLoading){
         return <><LoadingMessage/></>

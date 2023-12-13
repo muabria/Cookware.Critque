@@ -42,7 +42,7 @@ const AppContents = () => {
 
           <Route path="/review/:id" element={<PostsWithComments />} />
         
-          <Route path="/posts" element={<AllPosts/>} />
+          <Route path="/explore" element={<AllPosts/>} />
           <Route path="/category/:id" element={<CategoryPage/>} />
           
           <Route path="/equipment/:id" element={<AllReviewsForEquipment/>} />

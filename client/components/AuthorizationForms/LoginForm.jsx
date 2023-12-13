@@ -28,7 +28,7 @@ const LoginForm = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const navigate = useNavigate();
-
+    
     if (error) {
         return <div>Whoops! Something went wrong logging you in.</div>
     }
@@ -121,7 +121,7 @@ const LoginForm = () => {
                                     </div>
                                     ://is NOT mobile... 
                                     <div>
-                                        <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1, mx: 30 }}>
+                                        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, mx: 32 }}>
                                             Login
                                         </Button>
                                         <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>

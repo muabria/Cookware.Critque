@@ -101,11 +101,11 @@ const MobileNavBar = () => {
                     </Link>
                 </AccordionDetails>
                 <AccordionDetails>
-                    <Link to="/posts"
+                    <Link to="/explore"
                         style={{ textDecoration: "none" }}>
                         <Box sx={{ borderBottom: 2, color: "#205375" }}>
                             <Typography sx={{ m: 1, color: "#205375" }}>
-                                Find New Kitchen Equipment
+                            Equipment and Reviews
                             </Typography>
                         </Box>
                     </Link>

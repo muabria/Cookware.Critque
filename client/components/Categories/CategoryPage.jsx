@@ -2,6 +2,7 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { AspectRatio } from "@mui/joy";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -81,12 +82,14 @@ const CategoryPage = () => {
                             <Typography variant="h6" sx={{ color: "#205375", fontSize: "11px", textAlign: "center" }}>
                                 {equipment.brand}
                             </Typography>
-                            <img
-                                src={equipment.image}
-                                alt={`${equipment.name} image`}
-                                width="100"
-                                height="100"
-                            />
+                            <AspectRatio objectFit="contain">
+                               <img
+                                   src={equipment.image}
+                                   alt={`${equipment.name} image`}
+                                   width="100"
+                                   height="100"
+                               />
+                            </AspectRatio>
                             <Link to={`/equipment/${equipment.id}`} >
                                 <Typography sx={{ textAlign: "center" }}>
                                     <Button
@@ -99,6 +102,7 @@ const CategoryPage = () => {
                                             backgroundColor: "#EACD65",
                                             border: "solid #D29D2B 2px"
                                         }}>
+
                                         See All Reviews
                                     </Button>
                                 </Typography>

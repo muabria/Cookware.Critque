@@ -14,11 +14,12 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { useState } from "react";
 import { useParams } from 'react-router';
 
-import { useGetSingleReviewQuery } from '../../redux/api';
+import { useGetSingleReviewQuery, useGetEquipmentQuery } from '../../redux/api';
 import { useGetCommentsQuery } from '../../redux/api';
 
 import CommentForm from "./CommentForm";
 import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import ProvideUsername from "./ProvideUsername";
 
 const PostsWithComments = () => {
     const [addComment, setAddComment] = useState(false);
@@ -29,12 +30,21 @@ const PostsWithComments = () => {
     const { id } = useParams();
     const { data, error, isLoading } = useGetSingleReviewQuery(id);
     const { data: commentData, error: commentError, isLoading: commentLoading } = useGetCommentsQuery();
+    const { data: equipmentData, error: equipmentError, isLoading: equipmentLoading } = useGetEquipmentQuery();
 
+    if (!equipmentData) {
+        return <div> </div>
+    }
     if (isLoading) {
         return <div><LoadingMessage /></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
+    }
+    console.log(equipmentData)
+    let currentEquipment;
+    if (equipmentData) {
+        currentEquipment = equipmentData.find((equipment) => {return equipment.id === data.equipmentId})
     }
 
     return (
@@ -46,6 +56,9 @@ const PostsWithComments = () => {
                 <div>
                     <Grid container>
                         <Grid item xs={12}>
+                            <Typography variant="h3" sx={{p: 2.5, color: "#589D96"}}>
+                                {currentEquipment.name}
+                            </Typography>
                             <Card key={data.id}>
                                 <Stack direction="column">
                                     <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
@@ -62,6 +75,7 @@ const PostsWithComments = () => {
                                         <Typography sx={{ color: "#205375", m: 1 }}>
                                             {data.content}
                                         </Typography>
+                                        <ProvideUsername userId={data.userId} />
                                     </Stack>
                                 </CardContent>
                             </Card>
@@ -79,10 +93,11 @@ const PostsWithComments = () => {
                                 </Button>
                                 {addComment && <CommentForm />}
                                 {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
-                                    <Card key={comment.id} sx={{ p: 2 }}>
+                                    <Card key={comment.id} sx={{ p: 2, m: 1 }}>
                                         <Typography>
                                             {comment.content}
                                         </Typography>
+                                        <ProvideUsername userId={comment.userId} />
                                     </Card>
                                 ))}
                             </Card>
@@ -113,9 +128,13 @@ const PostsWithComments = () => {
                                         <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
                                             {data.content}
                                         </Typography>
+                                        <ProvideUsername userId={data.userId} />
                                     </Stack>
                                 </CardContent>
                             </Card>
+                            <Typography variant="h3" sx={{p: 2.5, color: "#589D96"}}>
+                                {currentEquipment.name}
+                            </Typography>
                         </Grid>
 
                         <Grid item xs={6}>
@@ -132,14 +151,17 @@ const PostsWithComments = () => {
                                     onClick={() => setAddComment(true)}>
                                     <RateReviewIcon /> Add a Comment
                                 </Button>
-                                {addComment && <CommentForm />}
+                                
                                 {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
-                                    <Card key={comment.id} sx={{ p: 2 }}>
+                                    <Card key={comment.id} sx={{ p: 2, m: 1 }}>
                                         <Typography>
                                             {comment.content}
                                         </Typography>
+                                        <ProvideUsername userId={comment.userId} />
                                     </Card>
-                                ))}
+                                )
+                                )}
+                                {addComment && <CommentForm />}
                             </Card>
                         </Grid>
                     </Grid>

@@ -3,6 +3,8 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import AspectRatio from '@mui/joy/AspectRatio';
+
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -77,12 +79,14 @@ const MapAllEquipment = () => {
                                 from {equipment.brand}
                             </Typography>
                             <Box sx={{ m: 2 }}>
-                                <img
-                                    src={equipment.image}
-                                    alt={`${equipment.name} image`}
-                                    width="130"
-                                    height="130"
-                                />
+                                <AspectRatio objectFit="contain">
+                                      <img
+                                           src={equipment.image}
+                                           alt={`${equipment.name} image`}
+                                           width="130"
+                                           height="130"
+                                       />
+                                 </AspectRatio>
                             </Box>
                             <Link to={`/equipment/${equipment.id}`}>
                                 <Typography sx={{ textAlign: "center" }}>

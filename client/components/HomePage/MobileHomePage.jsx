@@ -7,10 +7,8 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import AllPost from "../Posts/AllPosts";
 import MapCategories from "../Categories/MapCategories";
 import background from "../images/kitchenEquipmentBackground.png"
-import MapAllEquipment from "../EquipmentsWithReviews/MapAllEquipment";
 
 const MobileHomePage = () => {
     return (
@@ -35,8 +33,9 @@ const MobileHomePage = () => {
                         <Grid item xs={5.5}>
                             <Box sx={{ mt: 12 }}>
                                 <motion.div whileHover={{ scale: 1.3 }}>
-                                    <Link to="/posts"
-                                        style={{ textDecoration: "none" }}>
+                                    <Link 
+                                    to="/explore"
+                                    style={{ textDecoration: "none" }}>
                                         <Box sx={{
                                             color: "#FAF3F0",
                                             backgroundColor: "#D988B9",
@@ -48,9 +47,9 @@ const MobileHomePage = () => {
                                             mb: 10
                                         }}>
                                             <Typography
-                                                variant="h6"
-                                                sx={{ textAlign: "center" }}>
-                                                Find New Equipment
+                                            variant="h6"
+                                            sx={{ textAlign: "center" }}>
+                                                Equipment and Reviews
                                             </Typography>
                                         </Box>
                                     </Link>
@@ -65,7 +64,6 @@ const MobileHomePage = () => {
                     Find New Equipment by Category:
                 </Typography>
                     <MapCategories />
-                <MapAllEquipment />
             </div>
         </>
     )

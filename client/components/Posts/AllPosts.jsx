@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Grid from "@mui/material/Grid";
 import { useMediaQuery, useTheme } from "@mui/material";
 
 import Carousel from "react-multi-carousel";
@@ -18,6 +19,8 @@ import { useGetReviewsQuery } from '../../redux/api';
 
 import SearchBar from '../SearchEquipment/SearchBar';
 import LoadingMessage from '../ErrorMessages/LoadingMessage';
+import EquipmentName from './EquipmentName';
+import MapAllEquipment from '../EquipmentsWithReviews/MapAllEquipment';
 
 const AllPosts = () => {
     const theme = useTheme();
@@ -55,11 +58,6 @@ const AllPosts = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeIn" }}>
-            <Box sx={{ maxHeight: "60px", mb: 3 }}>
-                <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
-                    Explore Trusted Critiques Made from Real Users
-                </Typography>
-            </Box>
             {isMobile
                 ?
                 <div>
@@ -73,6 +71,7 @@ const AllPosts = () => {
                         <SearchBar />
                     </Box>
                 </div>}
+            <MapAllEquipment />
             <Carousel
                 responsive={responsive}
                 swipeable={true}
@@ -96,6 +95,7 @@ const AllPosts = () => {
                             <Typography variant="h6" sx={{ color: "#205375" }}>
                                 {review.content}
                             </Typography>
+                            <EquipmentName equipmentId={review.equipmentId} />
                         </CardContent>
                             <Typography sx={{ textAlign: "center" }}>
                                 <Link to={`/review/${review.id}`} >
