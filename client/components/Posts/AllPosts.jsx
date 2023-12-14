@@ -72,6 +72,12 @@ const AllPosts = () => {
                     </Box>
                 </div>}
             <MapAllEquipment />
+
+            <Typography
+             variant="h4"
+             sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
+                See All Reviews
+            </Typography>
             <Carousel
                 responsive={responsive}
                 swipeable={true}
