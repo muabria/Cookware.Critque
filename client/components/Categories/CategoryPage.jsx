@@ -72,14 +72,14 @@ const CategoryPage = () => {
                             borderRadius: "10px",
                             width: 300,
                             minHeight: 300,
-                            m: 1,
+                            m: 5,
                             p: 1,
                         }}>
                         <Stack direction="column">
-                            <Typography sx={{ color: "#205375", fontSize: "12px", textAlign: "center" }}>
+                            <Typography sx={{ color: "#205375", fontSize: "30px", textAlign: "center" }}>
                                 {equipment.name}
                             </Typography>
-                            <Typography variant="h6" sx={{ color: "#205375", fontSize: "11px", textAlign: "center" }}>
+                            <Typography variant="h6" sx={{ color: "#205375", fontSize: "16px", textAlign: "center" }}>
                                 {equipment.brand}
                             </Typography>
                             <AspectRatio objectFit="contain">
@@ -96,7 +96,6 @@ const CategoryPage = () => {
                                         sx={{
                                             textTransform: "none",
                                             mt: 2,
-                                            ml: 3,
                                             boxShadow: 3,
                                             color: "#3C1B1F",
                                             backgroundColor: "#EACD65",

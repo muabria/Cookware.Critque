@@ -24,6 +24,7 @@ const AddEquipment = () => {
     const [brand, setBrand] = useState("");
     const [purchaseLink, setPurchaseLink] = useState("");
     const [priceRating, setPriceRating] = useState(0);
+    const [select, setSelect] = useState(null)
 
     const [newEquipmentInfo, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostEquipmentMutation();
 
@@ -111,7 +112,12 @@ const AddEquipment = () => {
                                                 <Box key={category.id}>
                                                     <Button
                                                         onClick={() => setCategory(category.id)}
-                                                        sx={{ textTransform: "none", m: 1, backgroundColor: "#9BCDD2" }}>
+                                                        sx={{
+                                                            border: select === category.id ? "solid #64CCC5 5px" : "solid #D29D2B 2px",
+                                                            textTransform: "none",
+                                                            m: 1,
+                                                            backgroundColor: "#9BCDD2"
+                                                        }}>
                                                         {category.category}
                                                     </Button>
                                                 </Box>
@@ -125,7 +131,12 @@ const AddEquipment = () => {
                                                 <Box key={category.id}>
                                                     <Button
                                                         onClick={() => setCategory(category.id)}
-                                                        sx={{ textTransform: "none", mx: 1, backgroundColor: "#9BCDD2" }}>
+                                                        sx={{
+                                                            border: select === category.id ? "solid #64CCC5 5px" : "solid #D29D2B 2px",
+                                                            textTransform: "none",
+                                                            mx: 1,
+                                                            backgroundColor: "#9BCDD2"
+                                                        }}>
                                                         {category.category}
                                                     </Button>
                                                 </Box>
