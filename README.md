@@ -44,3 +44,4 @@ To run this code on your computer, follow these steps:
 - Update forms do not auto-populate with current content    
 - Admins are not able to delete comments  
 - There are very few character limits on the forms
+- Some purchase links do not go to the right place
