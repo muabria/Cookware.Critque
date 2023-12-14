@@ -94,7 +94,6 @@ const MapAllEquipment = () => {
                                         sx={{
                                             textTransform: "none",
                                             my: 2,
-                                            ml: 8,
                                             boxShadow: 3,
                                             color: "#3C1B1F",
                                             backgroundColor: "#EACD65",
