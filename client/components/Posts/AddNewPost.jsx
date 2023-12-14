@@ -19,6 +19,7 @@ import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useMediaQuery, useTheme, createTheme } from "@mui/material";
+import AspectRatio from '@mui/joy/AspectRatio';
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -194,11 +195,13 @@ const AddPostContent = () => {
                                                             </Typography>
                                                         </Box>
                                                         <Box textAlign="center">
-                                                            <img
-                                                                src={equipment.image}
-                                                                alt={`${equipment.name} image`}
-                                                                width="200"
-                                                                height="200" />
+                                                            <AspectRatio objectFit="contain">
+                                                                <img
+                                                                    src={equipment.image}
+                                                                    alt={`${equipment.name} image`}
+                                                                    width="200"
+                                                                    height="200" />
+                                                            </AspectRatio>
                                                         </Box>
                                                     </Card>
                                                 </motion.div>
