@@ -26,20 +26,20 @@ Cookware Critique allows users to browse kitchen equipment and read/write review
 To run this code on your computer, follow these steps:  
 1. Copy the 'clone' link from the **<> Code** button
 2. Run `git clone <copied link>` in the command line to copy the repo down to your local computer
-3. Run `cd Cookware_Critique` to switch to the repo's folder
+3. Run `cd Cookware.Critque` to switch to the repo's folder
 4. Run `npm install` in the command line to install any dependencies you don't have installed globally
-5. Run `npm install react-multi-carousel --save` and `npm install @mui/joy @emotion/react @emotion/styled` in the command line to install other dependencies used
-6. Create a .env file in the top-level of your folder
-7. In the .env file, insert this code:  
+used
+5. Create a .env file in the top-level of your folder
+6. In the .env file, insert this code:  
     `PORT=<port number>`  
     `DATABASE_URL="postgresql://postgres:postgres@localhost:5432/<database name>"`  
     `JWT_SECRET="<some secret>"`  
-8. Run  the following commands in the command line to add prisma and initialize the database:  
-    `npm init -y`  
+7. Run  the following commands in the command line to add prisma and initialize the database:  
     `npm install prisma --save-dev`  
     `npx prisma migrate dev --name init`  
-9. Run `npm run seed` in the command line to seed the database
-10. Run `npm run dev` in the command line to start the server
+8. Run `npm run seed` in the command line to seed the database
+9. Run `npm run dev` in the command line to start the server
+10. Open the app at http://localhost:\< PORT >
 
 ## Known Issues  
 - Error handling for updating records  
