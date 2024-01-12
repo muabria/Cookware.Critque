@@ -9,7 +9,9 @@ View our website: https://cooking-equipment.onrender.com/
 5. [Known Issues](https://github.com/muabria/Capstone/tree/readme?tab=readme-ov-file#known-issues)  
 
 ## Description  
-While its name gives away the basis of the website, the real reason we chose to make it was to help everyday people find everyday cookware, especially those just starting out on their cooking journeys. With all of the kitchen equipment out there, it can be hard to know what works the best.
+While its name gives away the basis of the website, the real reason we chose to make it was to help everyday people find everyday cookware, especially those just starting out on their cooking journeys. With all of the kitchen equipment out there, it can be hard to know what works the best.   
+
+Cookware Critique allows users to browse kitchen equipment and read/write reviews for them.
 
 ## Contributors
 - [Marisa Vandellos](https://github.com/mvandell)
