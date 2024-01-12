@@ -39,7 +39,7 @@ used
     `npx prisma migrate dev --name init`  
 8. Run `npm run seed` in the command line to seed the database
 9. Run `npm run dev` in the command line to start the server
-10. Open the app at http://localhost:\< PORT >
+10. Open the app on your localhost at the port you specified!
 
 ## Known Issues  
 - Error handling for updating records  
