@@ -71,32 +71,40 @@ const AllPosts = () => {
                         <SearchBar />
                     </Box>
                 </div>}
-            <MapAllEquipment />
-            <Carousel
-                responsive={responsive}
-                swipeable={true}
-                draggable={true}
-                showDots={true}>
-                {data && data.map((review) => (
-                    <Card key={review.id}
-                        sx={{
-                            boxShadow: 3,
-                            backgroundColor: "#F9FBE7",
-                            border: "solid #D29D2B 2px",
-                            borderRadius: "10px",
-                            width: 300,
-                            minHeight: 300,
-                            mx: 1,
-                            my: 5
-                        }}>
-                        <CardHeader sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}
-                            title={review.title} />
-                        <CardContent>
-                            <Typography variant="h6" sx={{ color: "#205375" }}>
-                                {review.content}
-                            </Typography>
-                            <EquipmentName equipmentId={review.equipmentId} />
-                        </CardContent>
+            <Card sx={{ p: 1, m: 5, border: 1, borderColor: "#205375" }}>
+                <MapAllEquipment />
+            </Card>
+            <Card sx={{ p: 1, m: 5, border: 1, borderColor: "#205375" }}>
+                <Typography
+                    variant="h4"
+                    sx={{ textAlign: "center", color: "#205375", mt: 1 }}>
+                    All Reviews from Users
+                </Typography>
+                <Carousel
+                    responsive={responsive}
+                    swipeable={true}
+                    draggable={true}
+                    showDots={true}>
+                    {data && data.map((review) => (
+                        <Card key={review.id}
+                            sx={{
+                                boxShadow: 3,
+                                backgroundColor: "#F9FBE7",
+                                border: "solid #D29D2B 2px",
+                                borderRadius: "10px",
+                                width: 300,
+                                minHeight: 300,
+                                mx: 1,
+                                my: 5
+                            }}>
+                            <CardHeader sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}
+                                title={review.title} />
+                            <CardContent>
+                                <Typography variant="h6" sx={{ color: "#205375" }}>
+                                    {review.content}
+                                </Typography>
+                                <EquipmentName equipmentId={review.equipmentId} />
+                            </CardContent>
                             <Typography sx={{ textAlign: "center" }}>
                                 <Link to={`/review/${review.id}`} >
                                     <Button
@@ -112,9 +120,10 @@ const AllPosts = () => {
                                     </Button>
                                 </Link>
                             </Typography>
-                    </Card>
-                ))}
-            </Carousel>
+                        </Card>
+                    ))}
+                </Carousel>
+            </Card>
         </motion.div>
     );
 }
