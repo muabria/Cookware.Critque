@@ -48,7 +48,7 @@ const MapAllEquipment = () => {
         <>
             <Typography
                 variant="h4"
-                sx={{ textAlign: "center", color: "#205375", mt: 10 }}>
+                sx={{ textAlign: "center", color: "#205375", mt: 1 }}>
                 See All Equipment
             </Typography>
             <Carousel
