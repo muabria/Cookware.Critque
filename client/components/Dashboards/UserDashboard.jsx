@@ -33,11 +33,9 @@ const UserDashboard = () => {
     if (!token) {
         navigate("/");
     }
-    if (!data) {
-        return (<div><AccountRedirect /></div>)
-    }
     if (isLoading) {
-        return <div><LoadingMessage /></div>
+        console.log("Loading...")
+        return null
     }
     if (error) {
         return <div> Oops! Something went wrong loading your data. </div>;
