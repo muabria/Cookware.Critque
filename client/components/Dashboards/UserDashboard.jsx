@@ -101,9 +101,11 @@ const UserDashboard = () => {
                         <Grid item xs={2}>
                             <Stack direction="column">
                                 <Typography sx={{ my: 5 }}>
-                                    <Link to="/account/edit" style={{ textDecoration: "none", color: "#205375" }}>
+                                    <Link to="/account/edit" style={{ textDecoration: "none" }}>
                                         <ManageAccountsIcon sx={{ ml: 2, color: "#205375" }} />
+                                        <Button sx={{ color: "#205375", textTransform: "none" }}>
                                         Edit Account
+                                        </Button>
                                     </Link>
                                 </Typography>
                                 <Typography sx={{ my: 5, color: "#205375" }}>
