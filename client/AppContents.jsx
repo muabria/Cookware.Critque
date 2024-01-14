@@ -18,6 +18,7 @@ import EditReviews from "./components/EditForms/EditReviews";
 import EditUser from "./components/EditForms/EditUser";
 import EditEquipment from "./components/EditForms/EditEquipment";
 import api from "./redux/api";
+import DummyAdminDashboard from "./components/Dashboards/DummyAdmin/DummyAdminDashboard";
 
 const AppContents = () => {
   const token = useSelector((state) => state.auth.token);
@@ -36,6 +37,7 @@ const AppContents = () => {
           <Route path="/account" element={<UserDashboard />} />
           <Route path="/admin_dashboard" element={<AdminDashboard/>} />
           <Route path="/account/edit" element={<EditUser/>} />
+          <Route path="/dummy_admin" element={< DummyAdminDashboard/>} />
 
           <Route path="/new_review" element={<AddNewPost />} />
           <Route path="/edit_review/:id" element={<EditReviews/>} />
