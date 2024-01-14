@@ -16,8 +16,8 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
-import { useGetReviewsQuery } from "../../redux/api";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import { useGetReviewsQuery } from "../../../redux/api";
+import LoadingMessage from "../../ErrorMessages/LoadingMessage";
 
 //<-----------------DELETE REVIEW HELPER FUNCTION------------------->
 

@@ -13,8 +13,8 @@ import { Link } from "react-router-dom";
 import { useGetAllUsersQuery } from "../../../redux/api"
 
 import DummyMapAllUsers from "./DummyMapAllUsers";
-import DummyMapPostsAdmin from "../DummyMapPostsAdmin";
-import DummyAdminMapEquipment from "../DummyAdminMapEquipment";
+import DummyMapPostsAdmin from "./DummyMapPostsAdmin";
+import DummyAdminMapEquipment from "./DummyAdminMapEquipment";
 import LoadingMessage from "../../ErrorMessages/LoadingMessage";
 
 const DummyAdminDashboard = () => {

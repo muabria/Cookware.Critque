@@ -16,9 +16,9 @@ import "react-multi-carousel/lib/styles.css";
 
 import { useState } from "react";
 
-import { useGetEquipmentQuery } from "../../redux/api";
+import { useGetEquipmentQuery } from "../../../redux/api";
 
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import LoadingMessage from "../../ErrorMessages/LoadingMessage";
 
 const DummyAdminMapEquipment = () => {
 
