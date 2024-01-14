@@ -10,7 +10,7 @@ import { easeIn, motion } from "framer-motion";
 
 import { Link } from "react-router-dom";
 
-import { useGetAllUsersQuery } from "../../../redux/api"
+import { useGetAllUsersValidationQuery } from "../../../redux/api"
 
 import DummyMapAllUsers from "./DummyMapAllUsers";
 import DummyMapPostsAdmin from "./DummyMapPostsAdmin";
@@ -21,7 +21,7 @@ const DummyAdminDashboard = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-    const { data, error, isLoading } = useGetAllUsersQuery();
+    const { data, error, isLoading } = useGetAllUsersValidationQuery();
 
     if (!data) {
         return <div> </div>
@@ -49,7 +49,7 @@ const DummyAdminDashboard = () => {
                                         <Typography
                                             variant="h4"
                                             sx={{ color: "#205375" }}>
-                                            Hello Admin!
+                                            Hello Dummy Admin!
                                         </Typography>
                                         <Link to="/account">
                                             <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white" }}>
@@ -59,6 +59,9 @@ const DummyAdminDashboard = () => {
                                     </Stack>
                                 </Box>
                                 <Card sx={{ backgroundColor: "#8da6a9", minHeight: 300 }}>
+                                    <Typography sx={{ textAlign: "center", p: 1, backgroundColor: "#F9B8B3", m: 1.3, fontWeight: "bolder" }}>
+                                        Any changes you make here will not affect the site in any way.
+                                    </Typography>
                                     <DummyAdminMapEquipment />
                                     <Grid item xs={12}>
                                         <DummyMapAllUsers />
@@ -77,7 +80,7 @@ const DummyAdminDashboard = () => {
                     <div>
                         <Grid container spacing={1}>
                             <Grid item xs={2}>
-                            <Link to="/account">
+                                <Link to="/account">
                                     <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", mx: 1, mt: 10 }}>
                                         Return to User View
                                     </Button>
@@ -88,10 +91,16 @@ const DummyAdminDashboard = () => {
                                     <Typography
                                         variant="h4"
                                         sx={{ color: "#205375" }}>
-                                        Hello Admin!
+                                        Hello Dummy Admin!
                                     </Typography>
                                 </Box>
                                 <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
+                                    <Typography 
+                                    variant="h6"
+                                    sx={{ textAlign: "center", p: 1, backgroundColor: "#F9B8B3", m: 1.3, fontWeight: "bold" }}
+                                    >
+                                        Any changes you make here will not affect the site in any way.
+                                    </Typography>
                                     <DummyAdminMapEquipment />
                                     <Stack direction="row">
                                         <Grid item xs={6}>

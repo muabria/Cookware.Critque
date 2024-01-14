@@ -148,7 +148,7 @@ const UserDashboard = () => {
                                             backgroundColor: "#E7B10A",
                                             border: "solid #D29D2B 2px"
                                         }}>
-                                            View Admin Dashboard
+                                            View Dummy Admin Dashboard
                                         </Button>
                                     </Link>
                                     }
