@@ -13,8 +13,8 @@ import { Link } from "react-router-dom";
 import { useGetAllUsersQuery } from "../../../redux/api"
 
 import DummyMapAllUsers from "./DummyMapAllUsers";
-import MapPostsAdmin from "../MapPostsAdmin";
-import AdminMapEquipment from "../AdminMapEquipment";
+import DummyMapPostsAdmin from "../DummyMapPostsAdmin";
+import DummyAdminMapEquipment from "../DummyAdminMapEquipment";
 import LoadingMessage from "../../ErrorMessages/LoadingMessage";
 
 const DummyAdminDashboard = () => {
@@ -59,12 +59,12 @@ const DummyAdminDashboard = () => {
                                     </Stack>
                                 </Box>
                                 <Card sx={{ backgroundColor: "#8da6a9", minHeight: 300 }}>
-                                    <AdminMapEquipment />
+                                    <DummyAdminMapEquipment />
                                     <Grid item xs={12}>
                                         <DummyMapAllUsers />
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <MapPostsAdmin />
+                                        <DummyMapPostsAdmin />
                                     </Grid>
                                 </Card>
                             </Grid>
@@ -92,13 +92,13 @@ const DummyAdminDashboard = () => {
                                     </Typography>
                                 </Box>
                                 <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
-                                    <AdminMapEquipment />
+                                    <DummyAdminMapEquipment />
                                     <Stack direction="row">
                                         <Grid item xs={6}>
                                             <DummyMapAllUsers />
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <MapPostsAdmin />
+                                            <DummyMapPostsAdmin />
                                         </Grid>
                                     </Stack>
                                 </Card>
