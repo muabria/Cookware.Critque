@@ -1,3 +1,4 @@
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography"
 import LoadingMessage from "../ErrorMessages/LoadingMessage"
 import { useLogoutMutation } from "../../redux/api"
@@ -7,10 +8,10 @@ const LogoutButton = () => {
     const [logout, { data, error, isLoading }] = useLogoutMutation();
     const navigate = useNavigate();
 
-    if (isLoading){
-        return (<LoadingMessage/>)
+    if (isLoading) {
+        return (<LoadingMessage />)
     }
-    if (data){
+    if (data) {
         console.log("logout", data);
     }
     if (error) {
@@ -18,9 +19,11 @@ const LogoutButton = () => {
     }
     return (
         <>
-            <Typography onClick={async () => {await logout(); navigate("/");}}>
-                Logout
-            </Typography>
+            <Button sx={{ color: "#205375", textTransform: "none" }}>
+                <Typography onClick={async () => { await logout(); navigate("/"); }}>
+                    Logout
+                </Typography>
+            </Button>
         </>
     )
 }
