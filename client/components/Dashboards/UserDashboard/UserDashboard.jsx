@@ -146,10 +146,10 @@ const UserDashboard = () => {
                                 </Link>
 
                                 <Stack direction="row">
-                                    <Grid item xs={6}>
+                                    <Grid item xs={9}>
                                         <MapPosts />
                                     </Grid>
-                                    <Grid item xs={6}>
+                                    <Grid item xs={3}>
                                         <MapComments />
                                     </Grid>
                                 </Stack>

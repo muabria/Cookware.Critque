@@ -137,24 +137,26 @@ const MapPosts = () => {
                                             <Link to={`/review/${review.id}`}>
                                                 <Button
                                                     variant="outlined"
-                                                    sx={{ m: 1 }}>
+                                                    sx={{m:1}}>
                                                     <PreviewIcon />
                                                 </Button>
                                             </Link>
                                             <Link to={`/edit_review/${review.id}`}>
                                                 <Button
                                                     variant="outlined"
-                                                    sx={{ m: 1 }}>
+                                                    sx={{m:1}}>
                                                     <EditNoteIcon />
                                                 </Button>
                                             </Link>
+                                            <Link>
                                             <Button
                                                 onClick={() => setAlert(review.id)}
                                                 variant="outlined"
                                                 color="error"
-                                                sx={{ textTransform: "none", m: 1 }}>
+                                                sx={{m:1}}>
                                                 <DeleteForeverSharpIcon />
                                             </Button>
+                                            </Link>
                                         </Stack>
                                     </Grid>
                                 </Grid>
