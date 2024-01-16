@@ -17,9 +17,9 @@ import { Link } from 'react-router-dom';
 
 import { useGetReviewsQuery } from '../../redux/api';
 
-import SearchBar from '../SearchEquipment/SearchBar';
+import SearchBar from './SearchEquipment/SearchBar';
 import EquipmentName from './EquipmentName';
-import MapAllEquipment from '../SingleEquipment/MapAllEquipment';
+import MapAllEquipment from "./MapAllEquipment";
 
 const AllPosts = () => {
     const theme = useTheme();

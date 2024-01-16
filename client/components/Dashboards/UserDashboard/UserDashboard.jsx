@@ -18,7 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 import { useGetUserQuery } from "../../../redux/api";
-import LogoutButton from "../AuthorizationForms/LogoutButton";
+import LogoutButton from "../../Navigation/LogoutButton";
 
 const UserDashboard = () => {
 

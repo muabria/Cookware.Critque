@@ -8,15 +8,15 @@ import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import UserDashboard from "./components/Dashboards/UserDashboard/UserDashboard";
 import AdminDashboard from "./components/Dashboards/AdminDashboard/AdminDashboard";
-import AllPosts from "./components/Posts/AllPosts";
+import AllPosts from "./components/EquipmentAndReviews/AllPosts";
 import PostsWithComments from "./components/SingleReview/SingleReview";
 import AddNewPost from "./components/AddReview/AddNewPost"
 import NavBar from "./components/Navigation/NavBar";
 import CategoryPage from "./components/Categories/CategoryPage";
 import SingleEquipment from "./components/SingleEquipment/SingleEquipment";
-import EditReviews from "./components/EditForms/EditReviews";
-import EditUser from "./components/EditForms/EditUser";
-import EditEquipment from "./components/EditForms/EditEquipment";
+import EditReviews from "./components/Dashboards/UserDashboard/EditReviews";
+import EditUser from "./components/Dashboards/UserDashboard/EditUser";
+import EditEquipment from "./components/EditEquipment/EditEquipment";
 import api from "./redux/api";
 
 const AppContents = () => {
