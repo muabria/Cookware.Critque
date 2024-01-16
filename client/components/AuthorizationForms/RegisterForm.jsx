@@ -16,8 +16,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useRegisterMutation, useGetAllUsersValidationQuery } from "../../redux/api";
 
-import LoadingMessage from "../ErrorMessages/LoadingMessage"
-
 const RegisterForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -35,7 +33,7 @@ const RegisterForm = () => {
         return <div> </div>
     }
     if (isLoading){
-        return <><LoadingMessage/></>
+        return null;
     }
     if (error) {
         return <div>Whoops! Something went wrong registering you.</div>

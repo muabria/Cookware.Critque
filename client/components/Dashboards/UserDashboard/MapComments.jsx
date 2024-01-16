@@ -16,10 +16,9 @@ import { useMediaQuery, useTheme } from '@mui/material';
 
 import { useState } from 'react';
 
-import { useGetCommentByUserQuery } from '../../redux/api';
-import { useDeleteCommentForUserMutation } from "../../redux/api";
-import { usePatchCommentMutation } from "../../redux/api";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import { useGetCommentByUserQuery } from '../../../redux/api';
+import { useDeleteCommentForUserMutation } from "../../../redux/api";
+import { usePatchCommentMutation } from "../../../redux/api";
 
 const MapComments = () => {
     const [alert, setAlert] = useState(null);
@@ -37,7 +36,7 @@ const MapComments = () => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage /></div>;
+        return <div> </div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;

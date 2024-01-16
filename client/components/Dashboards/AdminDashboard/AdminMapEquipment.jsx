@@ -16,10 +16,8 @@ import "react-multi-carousel/lib/styles.css";
 
 import { useState } from "react";
 
-import { useGetEquipmentQuery } from "../../redux/api";
-import { useDeleteEquipmentMutation } from "../../redux/api";
-
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import { useGetEquipmentQuery } from "../../../redux/api";
+import { useDeleteEquipmentMutation } from "../../../redux/api";
 
 const AdminMapEquipment = () => {
 
@@ -52,7 +50,7 @@ const AdminMapEquipment = () => {
         return <div>Oops! Couldn't fetch the equipmnet</div>
     }
     if (isLoading) {
-        return <div><LoadingMessage /></div>
+        return <div> </div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>

@@ -15,8 +15,6 @@ import { motion } from 'framer-motion';
 
 import { useParams } from "react-router";
 
-import LoadingMessage from "../ErrorMessages/LoadingMessage"
-
 const CategoryPage = () => {
 
     const { id } = useParams();
@@ -44,7 +42,7 @@ const CategoryPage = () => {
     const { data: equipmentData, error: equipmentError, isLoading: equipmetLoading } = useGetEquipmentQuery();
 
     if (isLoading) {
-        return <div><LoadingMessage /></div>;
+        return <div> </div>;
     }
     if (error) {
         return <div>Sorry! Something went wrong loading the categories.</div>;

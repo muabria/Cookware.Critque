@@ -17,9 +17,7 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
-import { useGetUserQuery } from "../../redux/api";
-import AccountRedirect from "../ErrorMessages/AccountRedirect";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import { useGetUserQuery } from "../../../redux/api";
 import LogoutButton from "../AuthorizationForms/LogoutButton";
 
 const UserDashboard = () => {
