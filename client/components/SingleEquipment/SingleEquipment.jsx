@@ -18,10 +18,9 @@ import { useGetReviewByEquipmentQuery } from "../../redux/api";
 import { useGetUserQuery } from "../../redux/api";
 import { useMemo } from "react";
 
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
-import ProvideUsername from "../PostWithComments/ProvideUsername";
+import ProvideUsername from "../SingleReview/ProvideUsername";
 
-const AllReviewsForEquipment = () => {
+const SingleEquipment = () => {
     const { id } = useParams();
     const { data, error, isLoading } = useGetSingleEquipmentQuery(id);
     const { data: userData, error: userError, isLoading: userIsLoading } = useGetUserQuery();
@@ -40,7 +39,7 @@ const AllReviewsForEquipment = () => {
     }, [reviewData])
 
     if (isLoading) {
-        return <div><LoadingMessage /></div>
+        return <div> </div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
@@ -270,4 +269,4 @@ const AllReviewsForEquipment = () => {
     )
 }
 
-export default AllReviewsForEquipment
+export default SingleEquipment;

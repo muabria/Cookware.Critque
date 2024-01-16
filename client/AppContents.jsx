@@ -6,17 +6,17 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import LoginForm from "./components/AuthorizationForms/LoginForm";
 import RegisterForm from "./components/AuthorizationForms/RegisterForm";
-import UserDashboard from "./components/Dashboards/UserDashboard";
-import AdminDashboard from "./components/Dashboards/AdminDashboard";
-import AllPosts from "./components/Posts/AllPosts";
-import PostsWithComments from "./components/PostWithComments/PostsWithComments";
-import AddNewPost from "./components/Posts/AddNewPost";
+import UserDashboard from "./components/Dashboards/UserDashboard/UserDashboard";
+import AdminDashboard from "./components/Dashboards/AdminDashboard/AdminDashboard";
+import AllPosts from "./components/EquipmentAndReviews/AllPosts";
+import PostsWithComments from "./components/SingleReview/SingleReview";
+import AddNewPost from "./components/AddReview/AddNewPost"
 import NavBar from "./components/Navigation/NavBar";
 import CategoryPage from "./components/Categories/CategoryPage";
-import AllReviewsForEquipment from "./components/EquipmentsWithReviews/AllReviewsForEquipment";
-import EditReviews from "./components/EditForms/EditReviews";
-import EditUser from "./components/EditForms/EditUser";
-import EditEquipment from "./components/EditForms/EditEquipment";
+import SingleEquipment from "./components/SingleEquipment/SingleEquipment";
+import EditReviews from "./components/Dashboards/UserDashboard/EditReviews";
+import EditUser from "./components/Dashboards/UserDashboard/EditUser";
+import EditEquipment from "./components/EditEquipment/EditEquipment";
 import api from "./redux/api";
 
 const AppContents = () => {
@@ -45,7 +45,7 @@ const AppContents = () => {
           <Route path="/explore" element={<AllPosts/>} />
           <Route path="/category/:id" element={<CategoryPage/>} />
           
-          <Route path="/equipment/:id" element={<AllReviewsForEquipment/>} />
+          <Route path="/equipment/:id" element={<SingleEquipment/>} />
           <Route path="/edit_equipment/:id" element={<EditEquipment/>} />
         </Routes>
       </div>

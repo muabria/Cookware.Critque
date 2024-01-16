@@ -17,8 +17,6 @@ import { motion } from "framer-motion";
 
 import { useGetCategoriesQuery } from "../../redux/api";
 import { usePatchEquipmentMutation } from "../../redux/api";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
-
 
 const EditEquipment = () => {
   const { id } = useParams();
@@ -39,7 +37,7 @@ const EditEquipment = () => {
     return <div>No data</div>
   }
   if (isLoading) {
-    return <div><LoadingMessage/></div>
+    return <div> </div>
   }
   if (error) {
     return <div> Error: {error.message} </div>;

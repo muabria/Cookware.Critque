@@ -10,13 +10,12 @@ import { easeIn, motion } from "framer-motion";
 
 import { Link } from "react-router-dom";
 
-import { useGetAllUsersQuery } from "../../redux/api"
+import { useGetAllUsersQuery } from "../../../redux/api"
 
 import MapAllUsers from "./MapAllUsers";
 import AddEquipment from "./AddEquipment";
 import MapPostsAdmin from "./MapPostsAdmin";
 import AdminMapEquipment from "./AdminMapEquipment";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const AdminDashboard = () => {
     const theme = useTheme();
@@ -28,7 +27,7 @@ const AdminDashboard = () => {
         return <div>No data</div>
     }
     if (isLoading) {
-        return <div><LoadingMessage /></div>
+        return <div> </div>
     }
     if (error) {
         return <div> Oops! Something went wrong loading the data. </div>;

@@ -1,6 +1,5 @@
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography"
-import LoadingMessage from "../ErrorMessages/LoadingMessage"
 import { useLogoutMutation } from "../../redux/api"
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +8,7 @@ const LogoutButton = () => {
     const navigate = useNavigate();
 
     if (isLoading) {
-        return (<LoadingMessage />)
+        return null;
     }
     if (data) {
         console.log("logout", data);

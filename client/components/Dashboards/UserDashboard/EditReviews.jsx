@@ -14,8 +14,7 @@ import { motion } from "framer-motion"
 
 import { useParams, useNavigate } from "react-router-dom"
 
-import { useGetSingleReviewQuery, usePatchReviewMutation } from "../../redux/api"
-import LoadingMessage from "../ErrorMessages/LoadingMessage"
+import { useGetSingleReviewQuery, usePatchReviewMutation } from "../../../redux/api"
 
 const EditReviews = () => {
     const [title, setTitle] = useState("");
@@ -33,7 +32,7 @@ const EditReviews = () => {
         return <div>Error</div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>
+        return <div> </div>
     }
 
     const handleSubmit = async (event) => {

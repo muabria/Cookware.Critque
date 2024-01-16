@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Stack from "@mui/material/Stack";
 import Rating from "@mui/material/Rating";
 import RateReviewIcon from '@mui/icons-material/RateReview';
+import { AspectRatio } from "@mui/joy";
 
 import { motion } from "framer-motion";
 
@@ -18,10 +19,9 @@ import { useGetSingleReviewQuery, useGetEquipmentQuery } from '../../redux/api';
 import { useGetCommentsQuery } from '../../redux/api';
 
 import CommentForm from "./CommentForm";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
 import ProvideUsername from "./ProvideUsername";
 
-const PostsWithComments = () => {
+const SingleReview = () => {
     const [addComment, setAddComment] = useState(false);
 
     const theme = useTheme();
@@ -36,7 +36,7 @@ const PostsWithComments = () => {
         return <div> </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage /></div>
+        return <div> </div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>
@@ -59,6 +59,12 @@ const PostsWithComments = () => {
                             <Typography variant="h3" sx={{p: 2.5, color: "#589D96"}}>
                                 {currentEquipment.name}
                             </Typography>
+                            <AspectRatio objectFit="contain">
+                                <img
+                                    src={currentEquipment.image}
+                                    alt={`${currentEquipment.name} image`}
+                                />
+                            </AspectRatio>
                             <Card key={data.id}>
                                 <Stack direction="column">
                                     <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
@@ -135,6 +141,12 @@ const PostsWithComments = () => {
                             <Typography variant="h3" sx={{p: 2.5, color: "#589D96"}}>
                                 {currentEquipment.name}
                             </Typography>
+                            <AspectRatio objectFit="contain">
+                                <img
+                                    src={currentEquipment.image}
+                                    alt={`${currentEquipment.name} image`}
+                                />
+                            </AspectRatio>
                         </Grid>
 
                         <Grid item xs={6}>
@@ -170,4 +182,4 @@ const PostsWithComments = () => {
     )
 }
 
-export default PostsWithComments
+export default SingleReview;

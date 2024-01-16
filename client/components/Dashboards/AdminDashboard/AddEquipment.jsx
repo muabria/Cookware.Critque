@@ -12,9 +12,8 @@ import Stack from "@mui/material/Stack";
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 import { useMediaQuery, useTheme } from '@mui/material';
 
-import { useGetCategoriesQuery } from "../../redux/api";
-import { usePostEquipmentMutation } from "../../redux/api";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import { useGetCategoriesQuery } from "../../../redux/api";
+import { usePostEquipmentMutation } from "../../../redux/api";
 
 const AddEquipment = () => {
     const [equipment, setEquipment] = useState("");
@@ -36,7 +35,7 @@ const AddEquipment = () => {
         return <div>No data</div>
     }
     if (isLoading) {
-        return <div><LoadingMessage /></div>
+        return <div> </div>
     }
     if (error) {
         return <div> Error: {error.message} </div>;

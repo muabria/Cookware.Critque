@@ -17,7 +17,6 @@ import Rating from "@mui/material/Rating";
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import LoadingMessage from "../ErrorMessages/LoadingMessage"
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -54,7 +53,7 @@ const MobileNewPost = () => {
     const navigate = useNavigate();
 
     if (isLoading) {
-        return <div><LoadingMessage /></div>
+        return <div> </div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>

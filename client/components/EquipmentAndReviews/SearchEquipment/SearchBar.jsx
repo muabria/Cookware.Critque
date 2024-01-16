@@ -4,10 +4,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
 
 import { useState } from 'react';
-import { useGetEquipmentQuery } from "../../redux/api";
+import { useGetEquipmentQuery } from "../../../redux/api";
 
 import SearchResults from './SearchResults';
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const SearchBar = ({ onSubmit }) => {
     const [searchEquipment, setSearchEquipment] = useState("");
@@ -18,7 +17,7 @@ const SearchBar = ({ onSubmit }) => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>;
+        return <div> </div>;
     }
     if (error) {
         return <div>Oops! Something went wrong loading the data.</div>;

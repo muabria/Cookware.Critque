@@ -15,9 +15,8 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
-import { useGetReviewByUserQuery } from "../../redux/api";
-import { useDeleteReviewForUserMutation } from "../../redux/api";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import { useGetReviewByUserQuery } from "../../../redux/api";
+import { useDeleteReviewForUserMutation } from "../../../redux/api";
 
 //<-----------------DELETE REVIEW HELPER FUNCTION------------------->
 
@@ -34,7 +33,7 @@ const MapPosts = () => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage /></div>;
+        return <div> </div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;
@@ -138,24 +137,26 @@ const MapPosts = () => {
                                             <Link to={`/review/${review.id}`}>
                                                 <Button
                                                     variant="outlined"
-                                                    sx={{ m: 1 }}>
+                                                    sx={{m:1}}>
                                                     <PreviewIcon />
                                                 </Button>
                                             </Link>
                                             <Link to={`/edit_review/${review.id}`}>
                                                 <Button
                                                     variant="outlined"
-                                                    sx={{ m: 1 }}>
+                                                    sx={{m:1}}>
                                                     <EditNoteIcon />
                                                 </Button>
                                             </Link>
+                                            <Link>
                                             <Button
                                                 onClick={() => setAlert(review.id)}
                                                 variant="outlined"
                                                 color="error"
-                                                sx={{ textTransform: "none", m: 1 }}>
+                                                sx={{m:1}}>
                                                 <DeleteForeverSharpIcon />
                                             </Button>
+                                            </Link>
                                         </Stack>
                                     </Grid>
                                 </Grid>
