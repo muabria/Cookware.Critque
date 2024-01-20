@@ -18,7 +18,6 @@ import EditReviews from "./components/Dashboards/UserDashboard/EditReviews";
 import EditUser from "./components/Dashboards/UserDashboard/EditUser";
 import EditEquipment from "./components/EditEquipment/EditEquipment";
 import api from "./redux/api";
-import SingleReview from "./components/SingleReview/SingleReview";
 
 const AppContents = () => {
   const token = useSelector((state) => state.auth.token);

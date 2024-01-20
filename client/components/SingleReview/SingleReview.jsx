@@ -19,11 +19,15 @@ import { Link } from "react-router-dom";
 import { useGetSingleReviewQuery, useGetEquipmentQuery } from '../../redux/api';
 import { useGetCommentsQuery } from '../../redux/api';
 
+import { useSelector } from "react-redux";
+
 import CommentForm from "./CommentForm";
 import ProvideUsername from "./ProvideUsername";
 
 const SingleReview = () => {
     const [addComment, setAddComment] = useState(false);
+
+    const token = useSelector((state) => state.auth.token);
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -167,12 +171,13 @@ const SingleReview = () => {
                                 <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                     Comments:
                                 </Typography>
-                                <Button
-                                    sx={{ textTransform: "none", ml: 67, color: "#205375" }}
-                                    onClick={() => setAddComment(true)}>
-                                    <RateReviewIcon /> Add a Comment
-                                </Button>
-
+                                {token &&
+                                    <Button
+                                        sx={{ textTransform: "none", ml: 67, color: "#205375" }}
+                                        onClick={() => setAddComment(true)}>
+                                        <RateReviewIcon /> Add a Comment
+                                    </Button>
+                                }
                                 {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
                                     <Card key={comment.id} sx={{ p: 2, m: 1 }}>
                                         <Typography>
