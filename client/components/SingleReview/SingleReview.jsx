@@ -14,6 +14,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 
 import { useState } from "react";
 import { useParams } from 'react-router';
+import { Link } from "react-router-dom";
 
 import { useGetSingleReviewQuery, useGetEquipmentQuery } from '../../redux/api';
 import { useGetCommentsQuery } from '../../redux/api';
@@ -44,7 +45,7 @@ const SingleReview = () => {
     console.log(equipmentData)
     let currentEquipment;
     if (equipmentData) {
-        currentEquipment = equipmentData.find((equipment) => {return equipment.id === data.equipmentId})
+        currentEquipment = equipmentData.find((equipment) => { return equipment.id === data.equipmentId })
     }
 
     return (
@@ -56,9 +57,11 @@ const SingleReview = () => {
                 <div>
                     <Grid container>
                         <Grid item xs={12}>
-                            <Typography variant="h3" sx={{p: 2.5, color: "#589D96"}}>
-                                {currentEquipment.name}
-                            </Typography>
+                        <Link to={`/equipment/${currentEquipment.id}`}>
+                                <Button sx={{ color: "#589D96", textTransform: "none", fontSize: 52, px: 2 }}>
+                                    {currentEquipment.name}
+                                </Button>
+                            </Link>
                             <AspectRatio objectFit="contain">
                                 <img
                                     src={currentEquipment.image}
@@ -138,9 +141,11 @@ const SingleReview = () => {
                                     </Stack>
                                 </CardContent>
                             </Card>
-                            <Typography variant="h3" sx={{p: 2.5, color: "#589D96"}}>
-                                {currentEquipment.name}
-                            </Typography>
+                            <Link to={`/equipment/${currentEquipment.id}`}>
+                                <Button sx={{ color: "#589D96", textTransform: "none", fontSize: 52, px: 2 }}>
+                                    {currentEquipment.name}
+                                </Button>
+                            </Link>
                             <AspectRatio objectFit="contain">
                                 <img
                                     src={currentEquipment.image}
@@ -163,7 +168,7 @@ const SingleReview = () => {
                                     onClick={() => setAddComment(true)}>
                                     <RateReviewIcon /> Add a Comment
                                 </Button>
-                                
+
                                 {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
                                     <Card key={comment.id} sx={{ p: 2, m: 1 }}>
                                         <Typography>
