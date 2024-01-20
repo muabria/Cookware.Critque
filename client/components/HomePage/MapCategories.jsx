@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 import { useGetCategoriesQuery } from "../../redux/api"
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
 
 const MapCategories = () => {
 

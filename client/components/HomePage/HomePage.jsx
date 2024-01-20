@@ -10,10 +10,8 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import AllPost from "../Posts/AllPosts";
-import MapCategories from "../Categories/MapCategories";
-import background from "../images/kitchenEquipmentBackground.png"
-import MapAllEquipment from "../EquipmentsWithReviews/MapAllEquipment";
+import MapCategories from "./MapCategories";
+import background from "./kitchenEquipmentBackground.png"
 import MobileHomePage from "./MobileHomePage";
 
 const HomePage = () => {

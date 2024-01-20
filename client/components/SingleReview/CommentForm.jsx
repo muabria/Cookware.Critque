@@ -11,7 +11,6 @@ import { useParams } from "react-router-dom"
 import { useState } from 'react';
 
 import { useGetSingleReviewQuery, usePostCommentMutation } from '../../redux/api';
-import LoadingMessage from '../ErrorMessages/LoadingMessage';
 
 const CommentForm = () => {
   const [content, setContent] = useState(" ");
@@ -22,7 +21,7 @@ const CommentForm = () => {
   const [postComment, {data, error, isLoading}] = usePostCommentMutation();
 
   if(isLoading){
-    return <div><LoadingMessage/></div>
+    return <div> </div>
   }
   if (error) {
     return <div>Whoops! Something went wrong posting the comment.</div>

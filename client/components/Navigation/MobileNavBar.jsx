@@ -15,7 +15,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 
-import logo from "../images/cookingEquipmentLogo.png"
+import logo from "./cookingEquipmentLogo.png";
 
 import { Link } from "react-router-dom";
 
@@ -23,7 +23,7 @@ import { motion } from "framer-motion";
 
 import { useGetUserQuery } from '../../redux/api';
 
-import LogoutButton from "../AuthorizationForms/LogoutButton";
+import LogoutButton from "./LogoutButton";
 
 const MobileNavBar = () => {
 

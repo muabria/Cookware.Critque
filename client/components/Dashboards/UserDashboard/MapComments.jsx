@@ -16,10 +16,9 @@ import { useMediaQuery, useTheme } from '@mui/material';
 
 import { useState } from 'react';
 
-import { useGetCommentByUserQuery } from '../../redux/api';
-import { useDeleteCommentForUserMutation } from "../../redux/api";
-import { usePatchCommentMutation } from "../../redux/api";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import { useGetCommentByUserQuery } from '../../../redux/api';
+import { useDeleteCommentForUserMutation } from "../../../redux/api";
+import { usePatchCommentMutation } from "../../../redux/api";
 
 const MapComments = () => {
     const [alert, setAlert] = useState(null);
@@ -37,7 +36,7 @@ const MapComments = () => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage /></div>;
+        return <div> </div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;
@@ -52,12 +51,12 @@ const MapComments = () => {
                             sx={{ textAlign: "center", color: "#205375" }}>
                             My Comments:
                         </Typography>
-                        <Box sx={{ backgroundColor: "#EEF5FF"}}>
+                        <Box sx={{ backgroundColor: "#EEF5FF" }}>
                             <Link to="/posts">
                                 <Button
                                     sx={{ textTransform: "none", m: 1 }}>
                                     Want to make a comment? Go visit a review!
-                                    <ArrowCircleRightIcon sx={{ mx: 1}} />
+                                    <ArrowCircleRightIcon sx={{ mx: 1 }} />
                                 </Button>
                             </Link>
                         </Box>
@@ -150,46 +149,48 @@ const MapComments = () => {
                         </Typography>
                         <Box sx={{ backgroundColor: "#EEF5FF" }}>
                             <Link to="/posts">
-                                <Button
-                                    sx={{ textTransform: "none", m: 1 }}>
-                                    Want to make a comment? Go visit a review!
-                                    <ArrowCircleRightIcon sx={{ mx: 1 }} />
-                                </Button>
+                                <Typography textAlign="center">
+                                    <Button
+                                        sx={{ textTransform: "none", 
+                                        backgroundColor: "transparent", 
+                                        color: "#088395", 
+                                        m: 1, px: 3, py: 1, 
+                                        border: 1, 
+                                        borderColor: "#088395", 
+                                        borderBottom: 3, 
+                                        borderRight: 3,
+                                        borderRadius: 2 }}>
+                                        Click here to comment on a review
+                                    </Button>
+                                </Typography>
                             </Link>
                         </Box>
                         {data && data.map((comment) => (
                             <Card key={comment.id} sx={{ m: 1, p: 2 }}>
-                                <Grid container>
-                                    <Grid item xs={10.5}>
-                                        <Typography
-                                            sx={{ textAlign: "center", color: "#205375" }}>
-                                            {comment.content}
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item xs={1.5}>
-                                        <Stack direction="column">
-                                            <Button
-                                                variant="outlined"
-                                                sx={{ m: 1 }}>
-                                                <PreviewIcon />
-                                            </Button>
-                                            <Button
-                                                onClick={() => setEdit(comment.id)}
-                                                variant="outlined"
-                                                sx={{ m: 1 }}>
-                                                <EditNoteIcon />
-
-                                            </Button>
-                                            <Button
-                                                onClick={() => setAlert(comment.id)}
-                                                variant="outlined"
-                                                color="error"
-                                                sx={{ m: 1 }}>
-                                                <DeleteForeverSharpIcon />
-                                            </Button>
-                                        </Stack>
-                                    </Grid>
-                                </Grid>
+                                <Typography
+                                    sx={{ textAlign: "center", color: "#205375" }}>
+                                    {comment.content}
+                                </Typography>
+                                <Stack direction="row" sx={{ mx: 3 }}>
+                                    <Button
+                                        variant="outlined"
+                                        sx={{ m: 1 }}>
+                                        <PreviewIcon />
+                                    </Button>
+                                    <Button
+                                        onClick={() => setEdit(comment.id)}
+                                        variant="outlined"
+                                        sx={{ m: 1 }}>
+                                        <EditNoteIcon />
+                                    </Button>
+                                    <Button
+                                        onClick={() => setAlert(comment.id)}
+                                        variant="outlined"
+                                        color="error"
+                                        sx={{ m: 1 }}>
+                                        <DeleteForeverSharpIcon />
+                                    </Button>
+                                </Stack>
                                 {edit === comment.id && <Alert severity="info">
                                     <div>
                                         <form onSubmit={(event) => { event.preventDefault(); patchComment({ id: comment.id, content }) }

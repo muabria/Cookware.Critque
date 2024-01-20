@@ -25,8 +25,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import MobileNewPost from "./MobileNewPost";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
-import AccountRedirect from "../ErrorMessages/AccountRedirect";
+import AccountRedirect from "../AccountRedirect/AccountRedirect";
 
 import { useNavigate } from "react-router-dom";
 
@@ -67,7 +66,7 @@ const AddPostContent = () => {
         return (<div><AccountRedirect /></div>)
     }
     if (isLoading) {
-        return (<div><LoadingMessage /></div>)
+        return null;
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>

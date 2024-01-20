@@ -17,10 +17,9 @@ import { Link } from 'react-router-dom';
 
 import { useGetReviewsQuery } from '../../redux/api';
 
-import SearchBar from '../SearchEquipment/SearchBar';
-import LoadingMessage from '../ErrorMessages/LoadingMessage';
+import SearchBar from './SearchEquipment/SearchBar';
 import EquipmentName from './EquipmentName';
-import MapAllEquipment from '../EquipmentsWithReviews/MapAllEquipment';
+import MapAllEquipment from "./MapAllEquipment";
 
 const AllPosts = () => {
     const theme = useTheme();
@@ -29,7 +28,7 @@ const AllPosts = () => {
     const { data, error, isLoading } = useGetReviewsQuery()
 
     if (isLoading) {
-        return <div><LoadingMessage /></div>
+        return <div> </div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the reviews. </div>

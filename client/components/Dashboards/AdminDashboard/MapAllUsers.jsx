@@ -15,9 +15,8 @@ import { useMediaQuery, useTheme } from '@mui/material';
 
 import { useState } from 'react';
 
-import { useDeleteUserMutation } from "../../redux/api";
-import { useGetAllUsersQuery, usePatchToggleAdminMutation } from '../../redux/api';
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
+import { useDeleteUserMutation } from "../../../redux/api";
+import { useGetAllUsersQuery, usePatchToggleAdminMutation } from '../../../redux/api';
 
 const MapAllUsers = () => {
     const [alert, setAlert] = useState(null);
@@ -39,7 +38,7 @@ const MapAllUsers = () => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>;
+        return <div> </div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;

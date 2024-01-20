@@ -15,10 +15,9 @@ import { createTheme, useMediaQuery, useTheme } from '@mui/material';
 
 import { motion } from 'framer-motion';
 
-import logo from "../images/cookingEquipmentLogo.png"
-import SearchBar from '../SearchEquipment/SearchBar';
+import logo from "./cookingEquipmentLogo.png";
 import MobileNavBar from './MobileNavBar';
-import LogoutButton from '../AuthorizationForms/LogoutButton';
+import LogoutButton from './LogoutButton';
 
 import { useSelector } from 'react-redux';
 

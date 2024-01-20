@@ -17,10 +17,8 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
-import { useGetUserQuery } from "../../redux/api";
-import AccountRedirect from "../ErrorMessages/AccountRedirect";
-import LoadingMessage from "../ErrorMessages/LoadingMessage";
-import LogoutButton from "../AuthorizationForms/LogoutButton";
+import { useGetUserQuery } from "../../../redux/api";
+import LogoutButton from "../../Navigation/LogoutButton";
 
 const UserDashboard = () => {
 
@@ -159,10 +157,10 @@ const UserDashboard = () => {
                                 </Link>
 
                                 <Stack direction="row">
-                                    <Grid item xs={6}>
+                                    <Grid item xs={9}>
                                         <MapPosts />
                                     </Grid>
-                                    <Grid item xs={6}>
+                                    <Grid item xs={3}>
                                         <MapComments />
                                     </Grid>
                                 </Stack>
