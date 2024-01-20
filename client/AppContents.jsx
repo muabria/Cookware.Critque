@@ -9,7 +9,7 @@ import RegisterForm from "./components/AuthorizationForms/RegisterForm";
 import UserDashboard from "./components/Dashboards/UserDashboard/UserDashboard";
 import AdminDashboard from "./components/Dashboards/AdminDashboard/AdminDashboard";
 import AllPosts from "./components/EquipmentAndReviews/AllPosts";
-import PostsWithComments from "./components/SingleReview/SingleReview";
+import SingleReview from "./components/SingleReview/SingleReview";
 import AddNewPost from "./components/AddReview/AddNewPost"
 import NavBar from "./components/Navigation/NavBar";
 import CategoryPage from "./components/Categories/CategoryPage";
@@ -18,6 +18,7 @@ import EditReviews from "./components/Dashboards/UserDashboard/EditReviews";
 import EditUser from "./components/Dashboards/UserDashboard/EditUser";
 import EditEquipment from "./components/EditEquipment/EditEquipment";
 import api from "./redux/api";
+import SingleReview from "./components/SingleReview/SingleReview";
 
 const AppContents = () => {
   const token = useSelector((state) => state.auth.token);
@@ -40,7 +41,7 @@ const AppContents = () => {
           <Route path="/new_review" element={<AddNewPost />} />
           <Route path="/edit_review/:id" element={<EditReviews/>} />
 
-          <Route path="/review/:id" element={<PostsWithComments />} />
+          <Route path="/review/:id" element={<SingleReview />} />
         
           <Route path="/explore" element={<AllPosts/>} />
           <Route path="/category/:id" element={<CategoryPage/>} />
