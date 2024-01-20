@@ -57,9 +57,11 @@ const SingleReview = () => {
                 <div>
                     <Grid container>
                         <Grid item xs={12}>
-                        <Link to={`/equipment/${currentEquipment.id}`}>
-                                <Button sx={{ color: "#589D96", textTransform: "none", fontSize: 52, px: 2 }}>
-                                    {currentEquipment.name}
+                            <Link to={`/equipment/${currentEquipment.id}`}>
+                                <Button sx={{ color: "#589D96", textTransform: "none" }}>
+                                    <Typography variant="h3" sx={{ p: 2.5, color: "#589D96" }}>
+                                        {currentEquipment.name}
+                                    </Typography>
                                 </Button>
                             </Link>
                             <AspectRatio objectFit="contain">
@@ -142,8 +144,10 @@ const SingleReview = () => {
                                 </CardContent>
                             </Card>
                             <Link to={`/equipment/${currentEquipment.id}`}>
-                                <Button sx={{ color: "#589D96", textTransform: "none", fontSize: 52, px: 2 }}>
-                                    {currentEquipment.name}
+                                <Button sx={{ color: "#589D96", textTransform: "none" }}>
+                                    <Typography variant="h3" sx={{ p: 2.5, color: "#589D96" }}>
+                                        {currentEquipment.name}
+                                    </Typography>
                                 </Button>
                             </Link>
                             <AspectRatio objectFit="contain">

@@ -121,10 +121,13 @@ const SingleEquipment = () => {
                                 {reviewData && reviewData.map((review) => (
                                     <Card key={review.id} sx={{ m: 1, p: 1 }}>
                                         <Stack direction="column">
-                                            <Typography variant="h5">
-                                                {review.title}
-                                            </Typography>
-
+                                        <Link to={`/review/${review.id}`}>
+                                                <Button sx={{ textTransform: "none", color: "white" }}>
+                                                    <Typography variant="h5" sx={{ color: "#205375" }}>
+                                                        {review.title}
+                                                    </Typography>
+                                                </Button>
+                                            </Link>
                                             <Rating
                                                 readOnly={true}
                                                 value={review.rating}
@@ -187,12 +190,12 @@ const SingleEquipment = () => {
                                         </Box>
                                     </Stack>
                                     <Card sx={{ m: 1, p: 3 }}>
-                                       <AspectRatio objectFit="contain" >
-                                        <img
-                                            src={data.image}
-                                            alt={data.name}
-                                            width={200} />
-                                    </AspectRatio> 
+                                        <AspectRatio objectFit="contain" >
+                                            <img
+                                                src={data.image}
+                                                alt={data.name}
+                                                width={200} />
+                                        </AspectRatio>
                                     </Card>
                                     <Stack direction="row">
                                         <Card sx={{ m: 1 }}>
@@ -223,8 +226,8 @@ const SingleEquipment = () => {
                             <Card sx={{
                                 mt: 5,
                                 mx: 2,
-                                backgroundColor: "#82C4C1", 
-                                p:2
+                                backgroundColor: "#82C4C1",
+                                p: 2
                             }}>
                                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375" }}>
                                     Reviews:
@@ -232,9 +235,13 @@ const SingleEquipment = () => {
                                 {reviewData && reviewData.map((review) => (
                                     <Card key={review.id} sx={{ m: 1, p: 1 }}>
                                         <Stack direction="column">
-                                            <Typography variant="h5" sx={{ color: "#205375" }}>
-                                                {review.title}
-                                            </Typography>
+                                            <Link to={`/review/${review.id}`}>
+                                                <Button sx={{ textTransform: "none", color: "white" }}>
+                                                    <Typography variant="h5" sx={{ color: "#205375" }}>
+                                                        {review.title}
+                                                    </Typography>
+                                                </Button>
+                                            </Link>
                                             <Rating
                                                 readOnly={true}
                                                 value={review.rating}
