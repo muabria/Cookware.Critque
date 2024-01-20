@@ -6,6 +6,7 @@ import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import AspectRatio from '@mui/joy/AspectRatio';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 
 import { motion } from "framer-motion";
 
@@ -17,11 +18,14 @@ import { useGetSingleEquipmentQuery } from "../../redux/api"
 import { useGetReviewByEquipmentQuery } from "../../redux/api";
 import { useGetUserQuery } from "../../redux/api";
 import { useMemo } from "react";
+import { useSelector } from "react-redux";
 
 import ProvideUsername from "../SingleReview/ProvideUsername";
 
 const SingleEquipment = () => {
     const { id } = useParams();
+    const token = useSelector((state) => state.auth.token);
+
     const { data, error, isLoading } = useGetSingleEquipmentQuery(id);
     const { data: userData, error: userError, isLoading: userIsLoading } = useGetUserQuery();
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetReviewByEquipmentQuery(id);
@@ -118,10 +122,17 @@ const SingleEquipment = () => {
                                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375" }}>
                                     Reviews:
                                 </Typography>
+                                {token &&
+                                    <Link to="/new_review">
+                                        <Button sx={{ textTransform: "none", ml: 67, color: "#205375" }}>
+                                            <RateReviewIcon /> Add a Review
+                                        </Button>
+                                    </Link>
+                                }
                                 {reviewData && reviewData.map((review) => (
                                     <Card key={review.id} sx={{ m: 1, p: 1 }}>
                                         <Stack direction="column">
-                                        <Link to={`/review/${review.id}`}>
+                                            <Link to={`/review/${review.id}`}>
                                                 <Button sx={{ textTransform: "none", color: "white" }}>
                                                     <Typography variant="h5" sx={{ color: "#205375" }}>
                                                         {review.title}
@@ -232,6 +243,17 @@ const SingleEquipment = () => {
                                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375" }}>
                                     Reviews:
                                 </Typography>
+
+                                <Link to="/new_review">
+                                    {/* <RateReviewIcon/> Add a Review */}
+                                    <Button
+                                        sx={{ ml: 67, color: "#205375" }}
+                                        onClick={(console.log("Add a Review"))}>
+                                        <RateReviewIcon/>
+                                        Add a Review
+                                    </Button>
+                                </Link>
+
                                 {reviewData && reviewData.map((review) => (
                                     <Card key={review.id} sx={{ m: 1, p: 1 }}>
                                         <Stack direction="column">
