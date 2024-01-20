@@ -100,12 +100,13 @@ const SingleReview = () => {
                                 <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                     Comments:
                                 </Typography>
-                                <Button
-                                    sx={{ textTransform: "none", ml: 11, color: "#205375", backgroundColor: "transparent", my: 1 }}
-                                    onClick={() => setAddComment(true)}>
-                                    <RateReviewIcon />
-                                    Add a Comment
-                                </Button>
+                                {token &&
+                                    <Button
+                                        sx={{ textTransform: "none", ml: 67, color: "#205375" }}
+                                        onClick={() => setAddComment(true)}>
+                                        <RateReviewIcon /> Add a Comment
+                                    </Button>
+                                }
                                 {addComment && <CommentForm />}
                                 {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
                                     <Card key={comment.id} sx={{ p: 2, m: 1 }}>
