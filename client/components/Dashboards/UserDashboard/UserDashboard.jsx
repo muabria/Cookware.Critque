@@ -136,9 +136,20 @@ const UserDashboard = () => {
                                             View Admin Dashboard
                                         </Button>
                                     </Link>
-                                    : //If not admin, return nothing
-                                    <>
-                                    </>}
+                                    : 
+                                    <Link to="/dummy_admin">
+                                        <Button sx={{
+                                            textTransform: "none",
+                                            m: 1,
+                                            boxShadow: 3,
+                                            color: "#205375",
+                                            backgroundColor: "#E7B10A",
+                                            border: "solid #D29D2B 2px"
+                                        }}>
+                                            View Dummy Admin Dashboard
+                                        </Button>
+                                    </Link>
+                                    }
                                 <Link to="/new_review">
                                     <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2 }}>
                                         Make a new critique
