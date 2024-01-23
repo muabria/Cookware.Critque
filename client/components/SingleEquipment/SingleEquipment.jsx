@@ -58,7 +58,7 @@ const SingleEquipment = () => {
                     <Grid container>
                         <Grid item xs={12}>
                             <Typography variant="h3"
-                                sx={{ color: "#205375", mx: 2, p: 2, fontSize: "30px" }}>
+                                sx={{ color: "#205375", mx: 2, p: 2 }}>
                                 {data.name}
                             </Typography>
                             <Card
@@ -116,18 +116,21 @@ const SingleEquipment = () => {
                             <Card sx={{
                                 mx: 2,
                                 my: 2,
-                                backgroundColor: "#b6d6d4", p:
+                                backgroundColor: "#82C4C1", p:
                                     2
                             }}>
                                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375" }}>
                                     Reviews:
                                 </Typography>
                                 {token &&
-                                    <Link to="/new_review">
-                                        <Button sx={{ textTransform: "none", ml: 67, color: "#205375" }}>
-                                            <RateReviewIcon /> Add a Review
-                                        </Button>
-                                    </Link>
+                                    <Typography sx={{ textAlign: "center" }}>
+                                        <Link to="/new_review">
+                                            <Button variant="text" sx={{ color: "#205375", textTransform: "none" }}>
+                                                <RateReviewIcon />
+                                                Add a Review
+                                            </Button>
+                                        </Link>
+                                    </Typography>
                                 }
                                 {reviewData && reviewData.map((review) => (
                                     <Card key={review.id} sx={{ m: 1, p: 1 }}>
@@ -243,16 +246,14 @@ const SingleEquipment = () => {
                                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375" }}>
                                     Reviews:
                                 </Typography>
-
-                                <Link to="/new_review">
-                                    {/* <RateReviewIcon/> Add a Review */}
-                                    <Button
-                                        sx={{ ml: 67, color: "#205375" }}
-                                        onClick={(console.log("Add a Review"))}>
-                                        <RateReviewIcon/>
-                                        Add a Review
-                                    </Button>
-                                </Link>
+                                {token &&
+                                    <Link to="/new_review">
+                                        <Button variant="text" sx={{ color: "#205375", ml: 44, textTransform: "none" }}>
+                                            <RateReviewIcon />
+                                            Add a Review
+                                        </Button>
+                                    </Link>
+                                }
 
                                 {reviewData && reviewData.map((review) => (
                                     <Card key={review.id} sx={{ m: 1, p: 1 }}>
