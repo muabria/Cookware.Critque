@@ -6,6 +6,7 @@ import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import AspectRatio from '@mui/joy/AspectRatio';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 
 import { motion } from "framer-motion";
 
@@ -17,11 +18,14 @@ import { useGetSingleEquipmentQuery } from "../../redux/api"
 import { useGetReviewByEquipmentQuery } from "../../redux/api";
 import { useGetUserQuery } from "../../redux/api";
 import { useMemo } from "react";
+import { useSelector } from "react-redux";
 
 import ProvideUsername from "../SingleReview/ProvideUsername";
 
 const SingleEquipment = () => {
     const { id } = useParams();
+    const token = useSelector((state) => state.auth.token);
+
     const { data, error, isLoading } = useGetSingleEquipmentQuery(id);
     const { data: userData, error: userError, isLoading: userIsLoading } = useGetUserQuery();
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetReviewByEquipmentQuery(id);
@@ -54,7 +58,7 @@ const SingleEquipment = () => {
                     <Grid container>
                         <Grid item xs={12}>
                             <Typography variant="h3"
-                                sx={{ color: "#205375", mx: 2, p: 2, fontSize: "30px" }}>
+                                sx={{ color: "#205375", mx: 2, p: 2 }}>
                                 {data.name}
                             </Typography>
                             <Card
@@ -112,19 +116,32 @@ const SingleEquipment = () => {
                             <Card sx={{
                                 mx: 2,
                                 my: 2,
-                                backgroundColor: "#b6d6d4", p:
+                                backgroundColor: "#82C4C1", p:
                                     2
                             }}>
                                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375" }}>
                                     Reviews:
                                 </Typography>
+                                {token &&
+                                    <Typography sx={{ textAlign: "center" }}>
+                                        <Link to="/new_review">
+                                            <Button variant="text" sx={{ color: "#205375", textTransform: "none" }}>
+                                                <RateReviewIcon />
+                                                Add a Review
+                                            </Button>
+                                        </Link>
+                                    </Typography>
+                                }
                                 {reviewData && reviewData.map((review) => (
                                     <Card key={review.id} sx={{ m: 1, p: 1 }}>
                                         <Stack direction="column">
-                                            <Typography variant="h5">
-                                                {review.title}
-                                            </Typography>
-
+                                            <Link to={`/review/${review.id}`}>
+                                                <Button sx={{ textTransform: "none", color: "white" }}>
+                                                    <Typography variant="h5" sx={{ color: "#205375" }}>
+                                                        {review.title}
+                                                    </Typography>
+                                                </Button>
+                                            </Link>
                                             <Rating
                                                 readOnly={true}
                                                 value={review.rating}
@@ -187,12 +204,12 @@ const SingleEquipment = () => {
                                         </Box>
                                     </Stack>
                                     <Card sx={{ m: 1, p: 3 }}>
-                                       <AspectRatio objectFit="contain" >
-                                        <img
-                                            src={data.image}
-                                            alt={data.name}
-                                            width={200} />
-                                    </AspectRatio> 
+                                        <AspectRatio objectFit="contain" >
+                                            <img
+                                                src={data.image}
+                                                alt={data.name}
+                                                width={200} />
+                                        </AspectRatio>
                                     </Card>
                                     <Stack direction="row">
                                         <Card sx={{ m: 1 }}>
@@ -223,18 +240,31 @@ const SingleEquipment = () => {
                             <Card sx={{
                                 mt: 5,
                                 mx: 2,
-                                backgroundColor: "#82C4C1", 
-                                p:2
+                                backgroundColor: "#82C4C1",
+                                p: 2
                             }}>
                                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375" }}>
                                     Reviews:
                                 </Typography>
+                                {token &&
+                                    <Link to="/new_review">
+                                        <Button variant="text" sx={{ color: "#205375", ml: 44, textTransform: "none" }}>
+                                            <RateReviewIcon />
+                                            Add a Review
+                                        </Button>
+                                    </Link>
+                                }
+
                                 {reviewData && reviewData.map((review) => (
                                     <Card key={review.id} sx={{ m: 1, p: 1 }}>
                                         <Stack direction="column">
-                                            <Typography variant="h5" sx={{ color: "#205375" }}>
-                                                {review.title}
-                                            </Typography>
+                                            <Link to={`/review/${review.id}`}>
+                                                <Button sx={{ textTransform: "none", color: "white" }}>
+                                                    <Typography variant="h5" sx={{ color: "#205375" }}>
+                                                        {review.title}
+                                                    </Typography>
+                                                </Button>
+                                            </Link>
                                             <Rating
                                                 readOnly={true}
                                                 value={review.rating}

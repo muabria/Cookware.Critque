@@ -14,15 +14,20 @@ import { useMediaQuery, useTheme } from "@mui/material";
 
 import { useState } from "react";
 import { useParams } from 'react-router';
+import { Link } from "react-router-dom";
 
 import { useGetSingleReviewQuery, useGetEquipmentQuery } from '../../redux/api';
 import { useGetCommentsQuery } from '../../redux/api';
+
+import { useSelector } from "react-redux";
 
 import CommentForm from "./CommentForm";
 import ProvideUsername from "./ProvideUsername";
 
 const SingleReview = () => {
     const [addComment, setAddComment] = useState(false);
+
+    const token = useSelector((state) => state.auth.token);
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -44,7 +49,7 @@ const SingleReview = () => {
     console.log(equipmentData)
     let currentEquipment;
     if (equipmentData) {
-        currentEquipment = equipmentData.find((equipment) => {return equipment.id === data.equipmentId})
+        currentEquipment = equipmentData.find((equipment) => { return equipment.id === data.equipmentId })
     }
 
     return (
@@ -56,9 +61,13 @@ const SingleReview = () => {
                 <div>
                     <Grid container>
                         <Grid item xs={12}>
-                            <Typography variant="h3" sx={{p: 2.5, color: "#589D96"}}>
-                                {currentEquipment.name}
-                            </Typography>
+                            <Link to={`/equipment/${currentEquipment.id}`}>
+                                <Button sx={{ color: "#589D96", textTransform: "none" }}>
+                                    <Typography variant="h3" sx={{ p: 2.5, color: "#589D96" }}>
+                                        {currentEquipment.name}
+                                    </Typography>
+                                </Button>
+                            </Link>
                             <AspectRatio objectFit="contain">
                                 <img
                                     src={currentEquipment.image}
@@ -91,12 +100,15 @@ const SingleReview = () => {
                                 <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                     Comments:
                                 </Typography>
-                                <Button
-                                    sx={{ textTransform: "none", ml: 11, color: "#205375", backgroundColor: "transparent", my: 1 }}
-                                    onClick={() => setAddComment(true)}>
-                                    <RateReviewIcon />
-                                    Add a Comment
-                                </Button>
+                                {token &&
+                                    <Typography sx={{textAlign: "center"}}>
+                                        <Button
+                                            sx={{ textTransform: "none", color: "#205375" }}
+                                            onClick={() => setAddComment(true)}>
+                                            <RateReviewIcon fontSize="small"/> Add a Comment
+                                        </Button>
+                                    </Typography>
+                                }
                                 {addComment && <CommentForm />}
                                 {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
                                     <Card key={comment.id} sx={{ p: 2, m: 1 }}>
@@ -138,9 +150,13 @@ const SingleReview = () => {
                                     </Stack>
                                 </CardContent>
                             </Card>
-                            <Typography variant="h3" sx={{p: 2.5, color: "#589D96"}}>
-                                {currentEquipment.name}
-                            </Typography>
+                            <Link to={`/equipment/${currentEquipment.id}`}>
+                                <Button sx={{ color: "#589D96", textTransform: "none" }}>
+                                    <Typography variant="h3" sx={{ p: 2.5, color: "#589D96" }}>
+                                        {currentEquipment.name}
+                                    </Typography>
+                                </Button>
+                            </Link>
                             <AspectRatio objectFit="contain">
                                 <img
                                     src={currentEquipment.image}
@@ -158,12 +174,13 @@ const SingleReview = () => {
                                 <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                                     Comments:
                                 </Typography>
-                                <Button
-                                    sx={{ textTransform: "none", ml: 67, color: "#205375" }}
-                                    onClick={() => setAddComment(true)}>
-                                    <RateReviewIcon /> Add a Comment
-                                </Button>
-                                
+                                {token &&
+                                    <Button
+                                        sx={{ textTransform: "none", ml: 67, color: "#205375" }}
+                                        onClick={() => setAddComment(true)}>
+                                        <RateReviewIcon /> Add a Comment
+                                    </Button>
+                                }
                                 {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
                                     <Card key={comment.id} sx={{ p: 2, m: 1 }}>
                                         <Typography>

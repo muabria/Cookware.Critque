@@ -128,7 +128,7 @@ const LoginForm = () => {
                                         <Link to="/register">
                                             <Button
                                                 variant="outlined"
-                                                sx={{ textTransform: "none", textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", mx: 28 }}>
+                                                sx={{ textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", mx: 28 }}>
                                                 Sign up!
                                                 <LoginIcon sx={{ ml: 2, color: "#205375" }} />
                                             </Button>
