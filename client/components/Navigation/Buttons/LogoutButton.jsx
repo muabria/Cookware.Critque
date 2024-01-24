@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography"
-import { useLogoutMutation } from "../../redux/api"
+
+import { useLogoutMutation } from "../../../redux/api";
+
 import { useNavigate } from "react-router-dom";
 
 const LogoutButton = () => {
@@ -18,10 +19,11 @@ const LogoutButton = () => {
     }
     return (
         <>
-            <Button sx={{ color: "#205375", textTransform: "none" }}>
-                <Typography onClick={async () => { await logout(); navigate("/"); }}>
+            <Button
+                onClick={async () => { await logout(); navigate("/"); }}
+                variant="text"
+                sx={{ color: "#205375", mt: 1, textTransform: "none", backgroundColor: "transparent" }}>
                     Logout
-                </Typography>
             </Button>
         </>
     )

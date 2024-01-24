@@ -67,7 +67,7 @@ const LoginForm = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeIn"}}>
             <Grid container>
-                <Grid item xs={2}>
+                <Grid item xs={3}>
                 </Grid>
                 <Grid item xs={8}>
                     <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
@@ -119,7 +119,10 @@ const LoginForm = () => {
                                     </div>
                                     ://is NOT mobile... 
                                     <div>
-                                        <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", p: 1, mx: 32 }}>
+                                        <Button 
+                                        type="submit" 
+                                        variant="contained"
+                                        sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1, mx: 32 }}>
                                             Login
                                         </Button>
                                         <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
@@ -127,7 +130,7 @@ const LoginForm = () => {
                                         </Typography>
                                         <Link to="/register">
                                             <Button
-                                                variant="outlined"
+                                                variant="text"
                                                 sx={{ textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", mx: 28 }}>
                                                 Sign up!
                                                 <LoginIcon sx={{ ml: 2, color: "#205375" }} />
@@ -139,7 +142,7 @@ const LoginForm = () => {
                         </form>
                     </Card>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={1}>
                 </Grid>
             </Grid>
         </motion.div>

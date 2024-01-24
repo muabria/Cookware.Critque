@@ -27,12 +27,12 @@ const RegisterForm = () => {
 
     const navigate = useNavigate();
 
-    const {data: userData, error: userError, isLoading: userIsLoading} = useGetAllUsersValidationQuery();
+    const { data: userData, error: userError, isLoading: userIsLoading } = useGetAllUsersValidationQuery();
     const [register, { data, error, isLoading }] = useRegisterMutation();
     if (!userData) {
         return <div> </div>
     }
-    if (isLoading){
+    if (isLoading) {
         return null;
     }
     if (error) {
@@ -54,28 +54,29 @@ const RegisterForm = () => {
                 return
             }
             if (validUser === true) {
-            event.preventDefault();
-            await register({ username, email, password, secondPassword }),
-                console.log("Success!")
-            navigate("/account")
-        }} catch (error) {
+                event.preventDefault();
+                await register({ username, email, password, secondPassword }),
+                    console.log("Success!")
+                navigate("/account")
+            }
+        } catch (error) {
             console.error(error)
         }
     }
 
     const validateUsername = (name) => {
-        const compare = userData.find((current) => {return current.username === name})
-        if (compare !== undefined) {validUser = false; return <Alert severity="error">Username already exists. Please choose another.</Alert>}
-        if (compare === undefined) {validUser = true}
+        const compare = userData.find((current) => { return current.username === name })
+        if (compare !== undefined) { validUser = false; return <Alert severity="error">Username already exists. Please choose another.</Alert> }
+        if (compare === undefined) { validUser = true }
     }
 
     return (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeIn" }}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
             <Grid container>
-                <Grid item xs={2}>
+                <Grid item xs={3}>
                 </Grid>
                 <Grid item xs={8}>
                     <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
@@ -113,7 +114,7 @@ const RegisterForm = () => {
                                         password && password.length < 8
                                             ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
                                             : password.length > 16 ? <Alert severity="error"> Your password cannot be more than 16 characters long </Alert>
-                                            : null
+                                                : null
                                     }
                                 />
                                 <TextField
@@ -153,26 +154,31 @@ const RegisterForm = () => {
                                     </div>
                                     ://is NOT mobile... 
                                     <div>
-                                        <Button
-                                            type="submit"
-                                            sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1, my: 1, mx: 20 }}>
-                                            Start Your Cooking Journey
-                                        </Button>
+                                        <Typography sx={{ textAlign: "center" }}>
+                                            <Button
+                                                type="submit"
+                                                variant="contained"
+                                                sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1, my: 1, mx: 20 }}>
+                                                Start Your Cooking Journey
+                                            </Button>
+                                        </Typography>
                                         <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
                                             Already have an account?
                                         </Typography>
                                         <Link to="/login">
-                                            <Button sx={{ textTransform: "none", color: "#205375", backgroundColor: "transparent", my: 1 }}>
-                                                Login to your account
-                                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
-                                            </Button>
+                                            <Typography sx={{ textAlign: "center" }}>
+                                                <Button sx={{ textTransform: "none", color: "#205375", backgroundColor: "transparent", my: 1 }}>
+                                                    Login to your account
+                                                    <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                                </Button>
+                                            </Typography>
                                         </Link>
                                     </div>}
                             </Stack>
                         </form>
                     </Card>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={1}>
                 </Grid>
             </Grid>
         </motion.div>

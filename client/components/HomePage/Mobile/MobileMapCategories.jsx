@@ -9,10 +9,13 @@ import { useGetCategoriesQuery } from "../../../redux/api";
 
 const MobileMapCategories = () => {
     const { data, error, isLoading } = useGetCategoriesQuery();
+    if (isLoading) {
+        return <div> </div>
+    }
     if (error) {
         return <div>Sorry! Something went wrong loading the categories.</div>;
     }
-    console.log(data);
+
     return (
         <div>
             {data && data.map((category) => (

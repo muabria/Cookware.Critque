@@ -1,17 +1,11 @@
-import { useState } from "react";
-
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import Menu from "@mui/material/Menu"
-import MenuItem from "@mui/material/MenuItem"
 import Stack from "@mui/material/Stack"
 import Typography from '@mui/material/Typography';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 
@@ -19,15 +13,20 @@ import logo from "./cookingEquipmentLogo.png";
 
 import { Link } from "react-router-dom";
 
-import { motion } from "framer-motion";
-
 import { useGetUserQuery } from '../../redux/api';
 
-import LogoutButton from "./LogoutButton";
+import LogoutButton from "./Buttons/LogoutButton";
 
 const MobileNavBar = () => {
 
     const { data, error, isLoading } = useGetUserQuery()
+
+    if(isLoading) {
+        return <div></div>
+    }
+    if (error){
+        console.log (error)
+    }
 
     return (
         <div>
@@ -42,7 +41,6 @@ const MobileNavBar = () => {
                         <Typography variant="h1" sx={{ mx: 1, color: "#205375", flexGrow: 1, fontSize: "20px" }}>
                             Cookware Critique
                         </Typography>
-
                     </Stack>
                 </AccordionSummary>
                 {data
