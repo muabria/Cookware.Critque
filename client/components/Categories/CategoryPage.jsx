@@ -16,9 +16,7 @@ import { motion } from 'framer-motion';
 import { useParams } from "react-router";
 
 const CategoryPage = () => {
-
     const { id } = useParams();
-
     const responsive = {
         superLargeDesktop: {
             breakpoint: { max: 4000, min: 3000 },
@@ -37,9 +35,8 @@ const CategoryPage = () => {
             items: 1
         }
     };
-
     const { data, error, isLoading } = useGetSingleCategoryQuery(id);
-    const { data: equipmentData, error: equipmentError, isLoading: equipmetLoading } = useGetEquipmentQuery();
+    const { data: equipmentData } = useGetEquipmentQuery();
 
     if (isLoading) {
         return <div> </div>;
@@ -47,7 +44,6 @@ const CategoryPage = () => {
     if (error) {
         return <div>Sorry! Something went wrong loading the categories.</div>;
     }
-
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -56,7 +52,6 @@ const CategoryPage = () => {
             <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
                 All {data.category} Kitchen Equipment
             </Typography>
-
             <Carousel
                 responsive={responsive}
                 swipeable={true}
@@ -99,7 +94,6 @@ const CategoryPage = () => {
                                             backgroundColor: "#EACD65",
                                             border: "solid #D29D2B 2px"
                                         }}>
-
                                         See All Reviews
                                     </Button>
                                 </Typography>

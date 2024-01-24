@@ -9,8 +9,8 @@ import { motion } from "framer-motion";
 
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
-import MapPosts from "./MapPosts";
-import MapComments from "./MapComments";
+import MapPosts from "./MapPosts/MapPosts";
+import MapComments from "./MapComments/MapComments";
 
 import { useMediaQuery, useTheme } from '@mui/material';
 
