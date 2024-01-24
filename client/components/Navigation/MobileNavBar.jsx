@@ -1,33 +1,36 @@
-import { useState } from "react";
-
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import Menu from "@mui/material/Menu"
-import MenuItem from "@mui/material/MenuItem"
 import Stack from "@mui/material/Stack"
 import Typography from '@mui/material/Typography';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import HomeIcon from '@mui/icons-material/Home';
-import RateReviewIcon from '@mui/icons-material/RateReview';
 
 import logo from "./cookingEquipmentLogo.png";
 
 import { Link } from "react-router-dom";
 
-import { motion } from "framer-motion";
-
 import { useGetUserQuery } from '../../redux/api';
 
-import LogoutButton from "./LogoutButton";
+import LogoutButton from "./Buttons/LogoutButton";
+import MyAccountButton from './Buttons/MyAccountButton';
+import LoginButton from './Buttons/LoginButton';
+import SignUpButton from './Buttons/SignUpButton';
+import HomePageButton from './Buttons/HomePageButton';
+import EquipmentAndReviewsButton from './Buttons/EquipmentAndReviewsButton';
+import AddReviewButton from './Buttons/AddReviewButton';
 
 const MobileNavBar = () => {
 
     const { data, error, isLoading } = useGetUserQuery()
+
+    if (isLoading) {
+        return <div></div>
+    }
+    if (error) {
+        console.log(error)
+    }
 
     return (
         <div>
@@ -42,98 +45,68 @@ const MobileNavBar = () => {
                         <Typography variant="h1" sx={{ mx: 1, color: "#205375", flexGrow: 1, fontSize: "20px" }}>
                             Cookware Critique
                         </Typography>
-
                     </Stack>
                 </AccordionSummary>
                 {data
                     ?//if logged in...
                     <div>
                         <AccordionDetails>
-                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }} >
-                                <Link to="/account"
-                                    stle={{ textDecoration: "none" }}>
-                                    <Typography sx={{ color: "#205375" }}>
-                                        My Account
-                                    </Typography>
-                                </Link>
+                            <Box sx={{ pb: 1, border: 1, borderColor: "#205375", borderRadius: "50px" }}>
+                                <Typography sx={{ textAlign: "center" }}>
+                                    <MyAccountButton />
+                                </Typography>
                             </Box>
                         </AccordionDetails>
                         <AccordionDetails>
-                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }}>
-                                <LogoutButton />
+                            <Box sx={{ pb: 1, border: 1, borderColor: "#205375", borderRadius: "50px" }}>
+                                <Typography sx={{ textAlign: "center" }}>
+                                    <LogoutButton />
+                                </Typography>
                             </Box>
                         </AccordionDetails>
                     </div>
                     : //if NOT logged in...
                     <div>
                         <AccordionDetails>
-                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }} >
-                                <Link to="/login"
-                                    style={{ textDecoration: "none" }}>
-                                    <Typography sx={{ color: "#205375" }}>
-                                        Login
-                                    </Typography>
-                                </Link>
+                            <Box sx={{ pb: 1, border: 1, borderColor: "#205375", borderRadius: "50px" }} >
+                                <Typography sx={{ textAlign: "center" }}>
+                                    <LoginButton />
+                                </Typography>
                             </Box>
                         </AccordionDetails>
                         <AccordionDetails>
-                            <Box sx={{ borderBottom: 2, color: "#205375", mx: 1 }} >
-                                <Link to="/register"
-                                    style={{ textDecoration: "none" }}>
-                                    <Typography sx={{ color: "#205375" }}>
-                                        Sign Up
-                                    </Typography>
-                                </Link>
+                            <Box sx={{ pb: 1, border: 1, borderColor: "#205375", borderRadius: "50px" }} >
+                                <Typography sx={{ textAlign: "center" }}>
+                                    <SignUpButton />
+                                </Typography>
                             </Box>
                         </AccordionDetails>
                     </div>}
                 <AccordionDetails>
                     <Link to="/"
                         style={{ textDecoration: "none" }}>
-                        <Box sx={{ borderBottom: 2, color: "#205375" }}>
-                            <Stack direction="row">
-                                <HomeIcon sx={{ mx: 1 }} />
-                                <Typography sx={{ color: "#205375" }}>
-                                    Home
-                                </Typography>
-                            </Stack>
-                        </Box>
-                    </Link>
-                </AccordionDetails>
-                <AccordionDetails>
-                    <Link to="/explore"
-                        style={{ textDecoration: "none" }}>
-                        <Box sx={{ borderBottom: 2, color: "#205375" }}>
-                            <Typography sx={{ m: 1, color: "#205375" }}>
-                            Equipment and Reviews
+                        <Box sx={{ pb: 1, border: 1, borderColor: "#205375", borderRadius: "50px" }} >
+                            <Typography sx={{ textAlign: "center" }}>
+                                <HomePageButton />
                             </Typography>
                         </Box>
                     </Link>
                 </AccordionDetails>
                 <AccordionDetails>
-                    <Link to="/new_review"
-                        style={{ textDecoration: "none" }}>
-                        <Box sx={{ borderBottom: 2, color: "#205375" }} >
-                            <Stack direction="row">
-                                <RateReviewIcon sx={{ mx: 1 }} />
-                                <Typography sx={{ color: "#205375" }}>
-                                    Add a Review
-                                </Typography>
-                            </Stack>
-                        </Box>
-                    </Link>
+                    <Box sx={{ pb: 1, border: 1, borderColor: "#205375", borderRadius: "50px" }} >
+                        <Typography sx={{ textAlign: "center" }}>
+                            <EquipmentAndReviewsButton />
+                        </Typography>
+                    </Box>
+                </AccordionDetails>
+                <AccordionDetails>
+                    <Box sx={{ pb: 1, border: 1, borderColor: "#205375", borderRadius: "50px" }} >
+                        <Typography sx={{ textAlign: "center" }}>
+                            <AddReviewButton />
+                        </Typography>
+                    </Box>
                 </AccordionDetails>
             </Accordion>
-
-            <Grid container>
-                <Grid item xs={10}>
-
-                </Grid>
-                <Grid item xs={2}>
-
-
-                </Grid>
-            </Grid>
         </div>
     )
 }

@@ -25,7 +25,6 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import MobileNewPost from "./MobileNewPost";
-import AccountRedirect from "../AccountRedirect/AccountRedirect";
 
 import { useNavigate } from "react-router-dom";
 
@@ -61,10 +60,7 @@ const AddPostContent = () => {
     const navigate = useNavigate();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
-    if (!userData) {
-        return (<div><AccountRedirect /></div>)
-    }
+    
     if (isLoading) {
         return null;
     }

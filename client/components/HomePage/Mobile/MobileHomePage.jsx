@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import MapCategories from "./MapCategories";
-import background from "./kitchenEquipmentBackground.png"
+import MapCategories from "../MapCategories";
+import background from "../kitchenEquipmentBackground.png"
 
 const MobileHomePage = () => {
     return (

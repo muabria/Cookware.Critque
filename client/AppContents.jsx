@@ -1,7 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
-
 import { Routes, Route } from "react-router-dom";
-
 
 import HomePage from "./components/HomePage/HomePage";
 import LoginForm from "./components/AuthorizationForms/LoginForm";
@@ -17,12 +14,9 @@ import SingleEquipment from "./components/SingleEquipment/SingleEquipment";
 import EditReviews from "./components/Dashboards/UserDashboard/EditReviews";
 import EditUser from "./components/Dashboards/UserDashboard/EditUser";
 import EditEquipment from "./components/EditEquipment/EditEquipment";
-import api from "./redux/api";
 import DummyAdminDashboard from "./components/Dashboards/DummyAdmin/DummyAdminDashboard";
 
 const AppContents = () => {
-  const token = useSelector((state) => state.auth.token);
-  console.log(token);
 
   return (
     <div className='gradient_background'>
@@ -56,5 +50,3 @@ const AppContents = () => {
 }
 
 export default AppContents;
-
-//for Windows, run server:dev & dev concurrently in different terminals

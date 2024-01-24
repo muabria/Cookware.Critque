@@ -9,8 +9,8 @@ import { motion } from "framer-motion";
 
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
-import MapPosts from "./MapPosts";
-import MapComments from "./MapComments";
+import MapPosts from "./MapPosts/MapPosts";
+import MapComments from "./MapComments/MapComments";
 
 import { useMediaQuery, useTheme } from '@mui/material';
 
@@ -18,7 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 import { useGetUserQuery } from "../../../redux/api";
-import LogoutButton from "../../Navigation/LogoutButton";
+import LogoutButton from "../../Navigation/Buttons/LogoutButton";
 
 const UserDashboard = () => {
 
