@@ -22,7 +22,7 @@ const LogoutButton = () => {
             <Button
                 onClick={async () => { await logout(); navigate("/"); }}
                 variant="text"
-                sx={{ color: "#205375", mt: 1, textTransform: "none", backgroundColor: "transparent" }}>
+                sx={{ color: "#205375", mx: 5, mt: 1, textTransform: "none", backgroundColor: "transparent" }}>
                     Logout
             </Button>
         </>

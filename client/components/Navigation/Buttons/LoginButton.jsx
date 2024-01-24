@@ -10,7 +10,7 @@ const LoginButton = () => {
                     style={{ textDecoration: "none" }}>
                     <Button
                         variant="text"
-                        sx={{ color: "#205375", textTransform: "none", backgroundColor: "transparent" }}>
+                        sx={{ color: "#205375", mx: 5, mt: 1, textTransform: "none", backgroundColor: "transparent" }}>
                         Login
                     </Button>
                 </Link>
