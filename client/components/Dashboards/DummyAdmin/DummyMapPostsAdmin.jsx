@@ -17,7 +17,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { useGetReviewsQuery } from "../../../redux/api";
-import LoadingMessage from "../../ErrorMessages/LoadingMessage";
 
 //<-----------------DELETE REVIEW HELPER FUNCTION------------------->
 
@@ -33,7 +32,7 @@ const DummyMapPostsAdmin = () => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage /></div>;
+        return <div></div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;

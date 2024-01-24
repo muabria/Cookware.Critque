@@ -15,7 +15,6 @@ import { useGetAllUsersValidationQuery } from "../../../redux/api"
 import DummyMapAllUsers from "./DummyMapAllUsers";
 import DummyMapPostsAdmin from "./DummyMapPostsAdmin";
 import DummyAdminMapEquipment from "./DummyAdminMapEquipment";
-import LoadingMessage from "../../ErrorMessages/LoadingMessage";
 
 const DummyAdminDashboard = () => {
     const theme = useTheme();
@@ -27,7 +26,7 @@ const DummyAdminDashboard = () => {
         return <div> </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage /></div>
+       return <div></div>
     }
     if (error) {
         return <div> Oops! Something went wrong loading the data. </div>;

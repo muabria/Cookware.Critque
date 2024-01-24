@@ -16,7 +16,6 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import { useState } from 'react';
 
 import { useGetAllUsersValidationQuery } from "../../../redux/api";
-import LoadingMessage from "../../ErrorMessages/LoadingMessage";
 
 const DummyMapAllUsers = () => {
     const [alert, setAlert] = useState(null);
@@ -36,7 +35,7 @@ const DummyMapAllUsers = () => {
         return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
     }
     if (isLoading) {
-        return <div><LoadingMessage/></div>;
+        return <div></div>
     }
     if (error) {
         return <div>Error:{error.message}</div>;

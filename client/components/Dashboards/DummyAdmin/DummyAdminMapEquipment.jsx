@@ -18,8 +18,6 @@ import { useState } from "react";
 
 import { useGetEquipmentQuery } from "../../../redux/api";
 
-import LoadingMessage from "../../ErrorMessages/LoadingMessage";
-
 const DummyAdminMapEquipment = () => {
 
     const [alert, setAlert] = useState(null);
@@ -50,7 +48,7 @@ const DummyAdminMapEquipment = () => {
         return <div>Oops! Couldn't fetch the equipmnet</div>
     }
     if (isLoading) {
-        return <div><LoadingMessage /></div>
+        return <div></div>
     }
     if (error) {
         return <div> Sorry! There's a problem loading the equipment. </div>
