@@ -14,7 +14,7 @@ import SingleEquipment from "./components/SingleEquipment/SingleEquipment";
 import EditReviews from "./components/Dashboards/UserDashboard/EditReviews";
 import EditUser from "./components/Dashboards/UserDashboard/EditUser";
 import EditEquipment from "./components/EditEquipment/EditEquipment";
-import DummyAdminDashboard from "./components/Dashboards/DummyAdmin/DummyAdminDashboard";
+import DummyAdminDashboard from "./components/Dashboards/DummyAdmin/DummyAdminDashboard"
 
 const AppContents = () => {
 
