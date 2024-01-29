@@ -10,12 +10,10 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
-import { useMediaQuery, useTheme } from '@mui/material';
 
-import { useGetCategoriesQuery } from "../../../redux/api";
-import { usePostEquipmentMutation } from "../../../redux/api";
+import { useGetCategoriesQuery } from "../../../../../redux/api";
 
-const AddEquipment = () => {
+const MobileAddEquipment = () => {
     const [equipment, setEquipment] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState("");
@@ -25,22 +23,14 @@ const AddEquipment = () => {
     const [priceRating, setPriceRating] = useState(0);
     const [select, setSelect] = useState(null)
 
-    const [newEquipmentInfo, { isLoading: isMutationLoading, isError: isMutationError, data: mutationData }] = usePostEquipmentMutation();
-
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
     const { data, error, isLoading } = useGetCategoriesQuery();
-    if (!data) {
-        return <div>No data</div>
-    }
+
     if (isLoading) {
         return <div> </div>
     }
     if (error) {
         return <div> Error: {error.message} </div>;
     } else
-        // console.log(data);
         console.log(category);
     //<----------------------RATING---------------------->
     const rating = [
@@ -56,9 +46,6 @@ const AddEquipment = () => {
         return `${value}`;
     }
     //<----------------------SUBMIT FORM---------------------->
-    // const myJSON = JSON.stringify(obj/string?);
-    // console.log(myJSON);
-
     const handleSubmit = async (event) => {
         try {
             if (!category) {
@@ -72,8 +59,6 @@ const AddEquipment = () => {
                 return
             }
             event.preventDefault();
-            const result = await newEquipmentInfo({ name, description, image, categoryId: category, priceRating: Number(priceRating), brand, purchaseLink })
-            console.log(result)
         } catch (error) {
             console.error(error)
         }
@@ -103,45 +88,22 @@ const AddEquipment = () => {
                                 <Typography sx={{ color: "#205375" }}>
                                     Select Category:
                                 </Typography>
-
-                                {isMobile
-                                    ? <div>
-                                        <Stack direction="column">
-                                            {data && data.map((category) => (
-                                                <Box key={category.id}>
-                                                    <Button
-                                                        onClick={() => setCategory(category.id)}
-                                                        sx={{
-                                                            border: select === category.id ? "solid #64CCC5 5px" : "solid #D29D2B 2px",
-                                                            textTransform: "none",
-                                                            m: 1,
-                                                            backgroundColor: "#9BCDD2"
-                                                        }}>
-                                                        {category.category}
-                                                    </Button>
-                                                </Box>
-                                            ))}
-                                        </Stack>
-                                    </div>
-                                    ://is NOT mobile...
-                                    <div>
-                                        <Stack direction="row">
-                                            {data && data.map((category) => (
-                                                <Box key={category.id}>
-                                                    <Button
-                                                        onClick={() => setCategory(category.id)}
-                                                        sx={{
-                                                            border: select === category.id ? "solid #64CCC5 5px" : "solid #D29D2B 2px",
-                                                            textTransform: "none",
-                                                            mx: 1,
-                                                            backgroundColor: "#9BCDD2"
-                                                        }}>
-                                                        {category.category}
-                                                    </Button>
-                                                </Box>
-                                            ))}
-                                        </Stack>
-                                    </div>}
+                                <Stack direction="column">
+                                    {data && data.map((category) => (
+                                        <Box key={category.id}>
+                                            <Button
+                                                onClick={() => setCategory(category.id)}
+                                                sx={{
+                                                    border: select === category.id ? "solid #64CCC5 5px" : "solid #D29D2B 2px",
+                                                    textTransform: "none",
+                                                    m: 1,
+                                                    backgroundColor: "#9BCDD2"
+                                                }}>
+                                                {category.category}
+                                            </Button>
+                                        </Box>
+                                    ))}
+                                </Stack>
                                 <TextField
                                     label="Description"
                                     value={description}
@@ -208,7 +170,6 @@ const AddEquipment = () => {
                                     sx={{ m: 1 }}
                                     multiline
                                 />
-
                                 {/* <---------------------------SUBMIT BUTTON-----------------------------> */}
                                 <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
                                     <Typography variant="h6">
@@ -224,4 +185,4 @@ const AddEquipment = () => {
     )
 }
 
-export default AddEquipment
+export default MobileAddEquipment

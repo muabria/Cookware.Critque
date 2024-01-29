@@ -2,10 +2,8 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Grid from "@mui/material/Grid";
 import { useMediaQuery, useTheme } from "@mui/material";
 
 import Carousel from "react-multi-carousel";

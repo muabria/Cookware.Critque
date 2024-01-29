@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import AspectRatio from '@mui/joy/AspectRatio';
 
-
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
