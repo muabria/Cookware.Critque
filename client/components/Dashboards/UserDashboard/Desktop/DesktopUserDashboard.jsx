@@ -44,14 +44,31 @@ const DesktopUserDashboard = () => {
                 <Grid container spacing={1}>
                     <Grid item xs={2}>
                         <Stack direction="column">
-                            <Typography sx={{ my: 5 }}>
+                            <Box sx={{ my: 5 }}>
+                            {data.isAdmin === true ?
+                                    <Link to="/admin_dashboard">
+                                        <button className="admin-button">
+                                            Admin Dashboard
+                                        </button>
+                                    </Link>
+                                    :
+                                    <Link to="/dummy_admin">
+                                        <button className="admin-button">
+                                            Admin Dashboard
+                                        </button>
+                                    </Link>
+                                }
                                 <Link to="/account/edit" style={{ textDecoration: "none" }}>
-                                    <ManageAccountsIcon sx={{ ml: 2, color: "#205375" }} />
-                                    <Button sx={{ color: "#205375", textTransform: "none" }}>
-                                        Edit Account
-                                    </Button>
+                                    <button className="dash-critique-button">
+                                    <ManageAccountsIcon sx={{ color:"white" }} /> Edit Account
+                                    </button>
                                 </Link>
-                            </Typography>
+                                <Link to="/new_review">
+                                    <button className="dash-critique-button">
+                                        Make a Citique
+                                    </button>
+                                </Link>
+                            </Box>
                         </Stack>
                     </Grid>
                     <Grid item xs={10}>
@@ -66,24 +83,6 @@ const DesktopUserDashboard = () => {
                             <Typography variant="h6" sx={{ color: "#205375", mx: 2, mt: 1 }}>
                                 Email: {data.email}
                             </Typography>
-                            {data.isAdmin === true ?
-                                <Link to="/admin_dashboard">
-                                    <button className="admin-button">
-                                        Admin Dashboard
-                                    </button>
-                                </Link>
-                                :
-                                <Link to="/dummy_admin">
-                                    <button className="admin-button">
-                                        Admin Dashboard
-                                    </button>
-                                </Link>
-                            }
-                            <Link to="/new_review">
-                                <button className="critique-button">
-                                    Make a Citique
-                                </button>
-                            </Link>
                             <Stack direction="row">
                                 <Grid item xs={9}>
                                     <DesktopMapPosts />
