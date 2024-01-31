@@ -32,7 +32,7 @@ const MobileHomePage = () => {
                     <Typography
                         variant="h4"
                         sx={{ color: "#205375", fontSize: "12px", mt: 7, ml: 3, mr: 11 }}>
-                        Home to honest critiques for all types of kitchen equipment from food prep to clean up.
+                        Home to honest critiques for all types of kitchen equipment, from food prep to clean up.
                     </Typography>
                 </Grid>
                 <Grid item xs={3} >

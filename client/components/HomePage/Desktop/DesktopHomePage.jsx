@@ -35,7 +35,7 @@ const DesktopHomePage = () => {
                         <Typography
                             variant="h4"
                             sx={{ color: "#205375", mt: 1, ml: 5, mr: 12 }}>
-                            Home to honest critiques for all types of kitchen equipment from food prep to clean up.
+                            Home to honest critiques for all types of kitchen equipment, from food prep to clean up.
                         </Typography>
                     </Grid>
                     <Grid item xs={7} sx={{ mx: 3, mt: 10 }}>
