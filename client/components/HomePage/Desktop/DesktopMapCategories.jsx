@@ -19,7 +19,7 @@ const DesktopMapCategories = () => {
     return (
         <>
             {data && data.map((category) => (
-                <Box key={category.id} sx={{ m: 2 }}>
+                <Box key={category.id} sx={{ m: 1 }}>
                     <Link to={`/category/${category.id}`}
                         style={{ textDecoration: "none" }}>
                         <motion.div whileHover={{ scale: 1.1 }}>

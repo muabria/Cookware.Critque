@@ -7,66 +7,54 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import MapCategories from "../MapCategories";
 import background from "../kitchenEquipmentBackground.png"
+import MobileMapCategories from "./MobileMapCategories";
 
 const MobileHomePage = () => {
     return (
-        <>
-
-            <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", m: 1, fontSize: "20px" }}>
-                Welcome to Cookware Critique
+        <div style={{ overflowX: "hidden", overflowY: "hidden" }}>
+            <img
+                src={background}
+                alt="Background image of kitchen supplies"
+                style={{
+                    marginTop: "10px",
+                    zIndex: -1,
+                    marginLeft: "20%",
+                    backgroundSize: "contain",
+                    height: "200px",
+                    position: "absolute"
+                }} />
+            <Typography variant="h1" sx={{ color: "#205375", fontWeight: "bold", fontSize: "33px", mx: 3 }}>
+                Cookware Critique
             </Typography>
-            <Typography sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                Home to honest critiques for all types of kitchen equipment from food prep to clean up.
-            </Typography>
-            <div style={{
-                backgroundImage: `url(${background})`,
-                backgroundSize: "contain",
-                height: "800px",
-                backgroundRepeat: "no-repeat"
-            }}>
-                <Box>
-                    <Grid container>
-                        <Grid item xs={6}>
-                        </Grid>
-                        <Grid item xs={5.5}>
-                            <Box sx={{ mt: 12 }}>
-                                <motion.div whileHover={{ scale: 1.3 }}>
-                                    <Link 
-                                    to="/explore"
-                                    style={{ textDecoration: "none" }}>
-                                        <Box sx={{
-                                            color: "#FAF3F0",
-                                            backgroundColor: "#D988B9",
-                                            border: "solid #B0578D 2px",
-                                            borderRadius: "100px",
-                                            fontSize: "11px",
-                                            maxWidth: 200,
-                                            m: 1,
-                                            mb: 10
-                                        }}>
-                                            <Typography
-                                            variant="h6"
-                                            sx={{ textAlign: "center" }}>
-                                                Equipment and Reviews
-                                            </Typography>
-                                        </Box>
-                                    </Link>
-                                </motion.div>
-                            </Box>
-                        </Grid>
-                    </Grid>
-                </Box>
-                <Typography
-                    variant="h5"
-                    sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                    Find New Equipment by Category:
-                </Typography>
-                    <MapCategories />
-            </div>
-        </>
+            <Grid container>
+                <Grid item xs={9}>
+                    <Typography
+                        variant="h4"
+                        sx={{ color: "#205375", fontSize: "12px", mt: 7, ml: 3, mr: 11 }}>
+                        Home to honest critiques for all types of kitchen equipment from food prep to clean up.
+                    </Typography>
+                </Grid>
+                <Grid item xs={3} >
+                </Grid>
+                <Grid item xs={4}>
+                    <MobileMapCategories />
+                </Grid>
+                <Grid item xs={8}>
+                    <Box sx={{ mt: 14 }}>
+                    <motion.div whileHover={{ scale: 1.1 }}>
+                        <Link
+                            to="/explore"
+                            style={{ textDecoration: "none" }}>
+                            <button className="nav-button" style={{ fontSize: "16px"}}>
+                                See Reviews
+                            </button>
+                        </Link>
+                    </motion.div>
+                    </Box>
+                </Grid>
+            </Grid>
+        </div>
     )
 }
-
 export default MobileHomePage

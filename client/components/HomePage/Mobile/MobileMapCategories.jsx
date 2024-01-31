@@ -1,6 +1,4 @@
 import Button from "@mui/material/Button";
-import Card from "@mui/material/Card"
-import Typography from "@mui/material/Typography";
 
 import { Link } from "react-router-dom";
 
@@ -19,23 +17,18 @@ const MobileMapCategories = () => {
     return (
         <div>
             {data && data.map((category) => (
-                <Button>
-                    <motion.div whileHover={{ scale: 1.3 }}>
-                        <Link to={`/category/${category.id}`}
-                            style={{ textDecoration: "none" }}>
-                            <Card sx={{
-                                boxShadow: 3,
-                                color: "#3C1B1F",
-                                backgroundColor: "#E7B10A",
-                                border: "solid #D29D2B 2px"
-                            }} >
-                                <Typography>
-                                    {category.category}
-                                </Typography>
-                            </Card>
-                        </Link>
-                    </motion.div>
-                </Button>
+                <motion.div
+                    key={category.id}
+                    whileHover={{ scale: 1.3 }}>
+                    <Link
+                        to={`/category/${category.id}`}
+                        style={{ textDecoration: "none" }}>
+                        <button
+                            className="mobile-category">
+                            {category.category}
+                        </button>
+                    </Link>
+                </motion.div>
             ))
             }
         </div>

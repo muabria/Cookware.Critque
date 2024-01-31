@@ -19,7 +19,6 @@ import DummyAdminDashboard from "./components/Dashboards/DummyAdmin/DummyAdminDa
 const AppContents = () => {
 
   return (
-    <div className='gradient_background'>
       <div className="App">
         <NavBar />
         <Routes>
@@ -45,7 +44,6 @@ const AppContents = () => {
           <Route path="/edit_equipment/:id" element={<EditEquipment/>} />
         </Routes>
       </div>
-    </div>
   );
 }
 

@@ -1,14 +1,17 @@
 body {
   padding: 0;
-  margin: 0;
+  margin: 5px;
 }
 
-.gradient_background {
+html {
   background: linear-gradient(#89c7c3, #F9FBE7, #F9FBE7, white, white, white);
-
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
+.no-overflow{
+  overflow: hidden;
+}
 .App {
   overflow-y: scroll;
 }
@@ -22,6 +25,37 @@ body {
   width: 125px;
   height: 125px;
   border-radius: 50%;
+  border-color: transparent;
   background-image: radial-gradient(circle, #fce600, #f9dc00, #f5d200, #f1c802, #edbe05, #e1b306, #d4a807, #c89d08, #b28e08, #9c7f07, #887007, #746107);
   box-shadow: 5px 5px 5px #746107;
+}
+.mobile-category{
+  margin: 2px;
+  border-radius: 10px;
+  border-color: transparent;
+  background-image: radial-gradient(circle, #fce600, #f9dc00, #f5d200, #f1c802, #edbe05, #e1b306);
+  box-shadow: 5px 5px 5px #746107;
+}
+.background-img{
+  z-index: -1;
+  position: absolute;
+}
+.nav-button {
+  padding: 15px;
+  font-size: 34px;
+  border-radius: 50px;
+  border: none;
+  color: #E9E8E8;
+  background-image: linear-gradient(to right top, #9b2b6b, #a73e79, #b35088, #be6196, #ca72a5, #c982c0, #c494d9, #bca6f0, #91c0ff, #5bd7ff);
+  background-size: 400%;
+  transition: 0.5s;
+}
+
+.nav-button:hover {
+  cursor: pointer;
+  transition: .5s;
+  transform: center;
+  background-size: 100%;
+  text-decoration: none;
+
 }

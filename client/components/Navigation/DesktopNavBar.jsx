@@ -15,17 +15,18 @@ const DesktopNavBar = () => {
             <Stack direction="row">
                 <img
                     src={logo}
-                    width="100"
-                    height="100" />
-                <Typography variant="h1" sx={{ color: "#205375", flexGrow: 1, fontSize: "40px" }}>
+                    alt="Picture of logo with a pot with a clock inside"
+                    width="40"
+                    height="40" />
+                <Typography variant="h1" sx={{ color: "#205375", flexGrow: 1, fontWeight: "bold",fontSize: "30px" }}>
                     Cookware Critique
                 </Typography>
-                <Box sx={{ maxHeight: "50px", backgroundColor: "#F9FBE7", borderRadius: "50px" }}>
+                <Box sx={{ maxHeight: "50px", backgroundSize: "90%", backgroundImage: "radial-gradient(circle, #fcfcfc, #fefafd, #fff8f9, #fff7f2, #fff8ec, #fdf7e5, #f9f6de)", borderRadius: "50px", boxShadow: "3px 3px 3px #746107" }}>
                     <Stack direction="row" sx={{ px: 3 }}>
-                            <HomePageButton />
-                            <EquipmentAndReviewsButton />
-                            <AddReviewButton />
-                            <AccountIcon />
+                        <HomePageButton />
+                        <EquipmentAndReviewsButton />
+                        <AddReviewButton />
+                        <AccountIcon />
                     </Stack>
                 </Box>
             </Stack>
