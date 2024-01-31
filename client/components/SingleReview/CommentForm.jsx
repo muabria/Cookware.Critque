@@ -17,9 +17,9 @@ const CommentForm = () => {
   const { id } = useParams();
 
   const { data: postData, error: postError, isLoading: postIsLoading } = useGetSingleReviewQuery(id);
-  const [postComment, {data, error, isLoading}] = usePostCommentMutation();
+  const [postComment, { data, error, isLoading }] = usePostCommentMutation();
 
-  if(isLoading){
+  if (isLoading) {
     return <div> </div>
   }
   if (error) {
@@ -46,22 +46,16 @@ const CommentForm = () => {
               value={content}
               id="content"
               label="Add Comment Here"
-              required = {true}
+              required={true}
               multiline
               rows={2}
               defaultValue="Type something"
             />
-            <Button
+            <button
               type="submit"
-              sx={{
-                textTransform: "none",
-                backgroundColor: "#088395",
-                color: "white",
-                m: 2,
-                p: 1
-              }}>
-              <AddCommentIcon /> Add Comment
-            </Button>
+              className="critique-button">
+              Add a Comment
+            </button>
           </Stack>
         </Card>
       </form>

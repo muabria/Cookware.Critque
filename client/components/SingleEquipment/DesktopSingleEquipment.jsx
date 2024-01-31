@@ -110,10 +110,9 @@ const DesktopSingleEquipment = () => {
                             </Typography>
                             {token &&
                                 <Link to="/new_review">
-                                    <Button variant="text" sx={{ color: "#205375", ml: 44, textTransform: "none" }}>
-                                        <RateReviewIcon />
+                                    <button className="critique-button">
                                         Add a Review
-                                    </Button>
+                                    </button>
                                 </Link>
                             }
                             {reviewData && reviewData.map((review) => (

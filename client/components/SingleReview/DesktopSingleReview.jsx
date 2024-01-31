@@ -97,11 +97,11 @@ const DesktopSingleReview = () => {
                                 Comments:
                             </Typography>
                             {token &&
-                                <Button
-                                    sx={{ textTransform: "none", ml: 67, color: "#205375" }}
-                                    onClick={() => setAddComment(true)}>
-                                    <RateReviewIcon /> Add a Comment
-                                </Button>
+                                <button
+                                    onClick={() => setAddComment(true)}
+                                    className="critique-button">
+                                    Add a Comment
+                                </button>
                             }
                             {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
                                 <Card key={comment.id} sx={{ p: 2, m: 1 }}>
