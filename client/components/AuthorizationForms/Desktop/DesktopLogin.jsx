@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import Alert from "@mui/material/Alert"
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
-import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
@@ -63,65 +62,60 @@ const DesktopLogin = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeIn" }}>
-            <Grid container>
-                <Grid item xs={3}>
-                </Grid>
-                <Grid item xs={8}>
-                    <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
-                        <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
-                            Login:
+            <Card 
+            className="auth-form" 
+            elevation={10}
+            sx={{ mb: 10 }}>
+                <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
+                    Login:
+                </Typography>
+                <form onSubmit={handleSubmit}>
+                    <Stack direction="column">
+                        <TextField
+                            label="Enter Login Username"
+                            value={username}
+                            onChange={(event) => setUsername(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ m: 1 }}
+                            helperText={username && validateUsername(username)}
+                        />
+                        <TextField
+                            label="Enter Password"
+                            value={password}
+                            type="password"
+                            onChange={(event) => setPassword(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ m: 1 }}
+                            helperText={
+                                password && password.length < 8
+                                    ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
+                                    : password.length > 16 ? <Alert severity="error"> Your password cannot be more than 16 characters long </Alert>
+                                        : null
+                            } />
+                        <button
+                            className="auth-button"
+                            type="submit">
+                            Login
+                        </button>
+                        <Typography
+                            sx={{ mt: 5, textAlign: "center", color: "#205375" }}>
+                            Don't have an account?
                         </Typography>
-                        <form onSubmit={handleSubmit}>
-                            <Stack direction="column">
-                                <TextField
-                                    label="Enter Login Username"
-                                    value={username}
-                                    onChange={(event) => setUsername(event.target.value)}
-                                    size="small"
-                                    variant="filled"
-                                    sx={{ m: 1 }}
-                                    helperText={username && validateUsername(username)}
-                                />
-                                <TextField
-                                    label="Enter Password"
-                                    value={password}
-                                    type="password"
-                                    onChange={(event) => setPassword(event.target.value)}
-                                    size="small"
-                                    variant="filled"
-                                    sx={{ m: 1 }}
-                                    helperText={
-                                        password && password.length < 8
-                                            ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
-                                            : password.length > 16 ? <Alert severity="error"> Your password cannot be more than 16 characters long </Alert>
-                                                : null
-                                    } />
-                                <div>
-                                    <Button
-                                        type="submit"
-                                        variant="contained"
-                                        sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1, mx: 32 }}>
-                                        Login
-                                    </Button>
-                                    <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
-                                        Don't have an account?
-                                    </Typography>
-                                    <Link to="/register">
-                                        <Button
-                                            variant="text"
-                                            sx={{ textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", mx: 28 }}>
-                                            Sign up!
-                                            <LoginIcon sx={{ ml: 2, color: "#205375" }} />
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </Stack>
-                        </form>
-                    </Card>
-                </Grid>
-                <Grid item xs={1}>
-                </Grid>
-            </Grid>
+                        <Link to="/register">
+                            <Typography sx={{ textAlign: "center" }} y>
+                                <Button
+                                    variant="text"
+                                    sx={{ textTransform: "none", backgroundColor: "transparent", my: 1, color: "#205375", fontSize: "16px" }}>
+                                    Sign up!
+                                    <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                                </Button>
+                            </Typography>
+                        </Link>
+                    </Stack>
+                </form>
+            </Card>
         </motion.div>
     )
 }

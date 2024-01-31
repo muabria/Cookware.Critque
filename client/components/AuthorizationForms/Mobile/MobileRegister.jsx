@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Alert from "@mui/material/Alert"
 import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
-import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
@@ -75,7 +74,10 @@ const MobileRegister = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeIn" }}>
-            <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600, mx: 5, my: 3 }}>
+            <Card
+                className="mobile-auth-form"
+                elevation={10}
+                sx={{ mb: 10 }}>
                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
                     Sign Up:
                 </Typography>
@@ -111,8 +113,7 @@ const MobileRegister = () => {
                                     ? <Alert severity="error"> Your password needs to be at least 8 characters long </Alert>
                                     : password.length > 16 ? <Alert severity="error"> Your password cannot be more than 16 characters long </Alert>
                                         : null
-                            }
-                        />
+                            } />
                         <TextField
                             label="Re-enter Password"
                             value={secondPassword}
@@ -127,27 +128,23 @@ const MobileRegister = () => {
                             helperText={
                                 password && secondPassword && password !== secondPassword ?
                                     <Alert severity="error"> Passwords do not match </Alert> : null
-                            }
-                        />
-                        <div>
-                            <Typography sx={{ textAlign: "center" }}>
-                                <Button
-                                    sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1, my: 1, }}>
-                                    Start Your Cooking Journey
-                                </Button>
-                            </Typography>
-                            <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
-                                Already have an account?
-                            </Typography>
-                            <Link to="/login">
-                                <Button
-                                    variant="text"
-                                    sx={{ textTransform: "none", color: "#205375", backgroundColor: "transparent", my: 1, width: "100%" }}>
-                                    Login to your account
-                                    <LoginIcon sx={{ ml: 2, color: "#205375" }} />
-                                </Button>
-                            </Link>
-                        </div>
+                            } />
+                        <button
+                            className="mobile-auth-button"
+                            type="submit">
+                            Sign Up
+                        </button>
+                        <Typography sx={{ mt: 2, textAlign: "center", color: "#205375" }}>
+                            Already have an account?
+                        </Typography>
+                        <Link to="/login">
+                            <Button
+                                variant="text"
+                                sx={{ textTransform: "none", color: "#205375", backgroundColor: "transparent", my: 1, width: "100%" }}>
+                                Login to your account
+                                <LoginIcon sx={{ ml: 2, color: "#205375" }} />
+                            </Button>
+                        </Link>
                     </Stack>
                 </form>
             </Card>
