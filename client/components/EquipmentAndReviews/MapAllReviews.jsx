@@ -52,9 +52,9 @@ const MapAllReviews = () => {
             transition={{ duration: 0.5, ease: "easeIn" }}>
 
             <Typography
-                variant="h4"
-                sx={{ textAlign: "center", color: "#205375", mt: 1 }}>
-                All Reviews from Users
+                variant="h3"
+                sx={{ textAlign: "center", color: "#205375", mt: 1, fontWeight: "bold", mb: 3 }}>
+                User Reviews
             </Typography>
             <Carousel
                 responsive={responsive}

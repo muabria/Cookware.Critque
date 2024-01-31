@@ -10,7 +10,7 @@ import { useGetReviewsQuery } from '../../redux/api';
 
 import SearchBar from './SearchEquipment/SearchBar';
 import MapAllEquipment from "./MapAllEquipment";
-import MapAllReviews from './MapAllRevies';
+import MapAllReviews from './MapAllReviews';
 
 const AllPosts = () => {
     const theme = useTheme();
