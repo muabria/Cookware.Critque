@@ -2,6 +2,7 @@ body {
   padding: 0;
   margin: 0;
 }
+
 .gradient_background {
   background: linear-gradient(#89c7c3, #F9FBE7, #F9FBE7, white, white, white);
 
@@ -15,4 +16,12 @@ body {
 .select-equipment {
   cursor: pointer;
   border: solid 1px;
+}
+
+.category-circle {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  background-image: radial-gradient(circle, #fce600, #f9dc00, #f5d200, #f1c802, #edbe05, #e1b306, #d4a807, #c89d08, #b28e08, #9c7f07, #887007, #746107);
+  box-shadow: 5px 5px 5px #746107;
 }

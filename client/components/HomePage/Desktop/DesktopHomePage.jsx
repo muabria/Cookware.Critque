@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import MapCategories from "../MapCategories";
+import DesktopMapCategories from "./DesktopMapCategories";
 import background from "../kitchenEquipmentBackground.png"
 const DesktopHomePage = () => {
     return (
@@ -28,9 +28,9 @@ const DesktopHomePage = () => {
                     <Grid container>
                         <Grid item xs={1}>
                         </Grid>
-                        <Grid item xs={11} sx={{ mb: 25 }}>
+                        <Grid item xs={11} sx={{ mx: 20, mb: 25 }}>
                             <Stack direction="row">
-                                <MapCategories />
+                               <DesktopMapCategories />
                             </Stack>
                         </Grid>
                     </Grid>
