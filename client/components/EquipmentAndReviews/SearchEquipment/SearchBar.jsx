@@ -31,6 +31,7 @@ console.log("Data:" + data)
             <Stack direction="row">
                 <TextField
                     type="text"
+                    variant="filled"
                     label="Search Equipment By Name"
                     fullWidth
                     value={searchEquipment}
@@ -39,13 +40,7 @@ console.log("Data:" + data)
                             setShowResult(false);
                         }
                         setSearchEquipment(event.target.value)
-                    }}
-                    sx={{
-                        border: "solid 2px",
-                        borderRadius: "7px",
-                        borderColor: "#163c3a",
-                        background: "white"
-                    }} />
+                    }}/>
                 {/*----------------------------------SUBMIT BUTTON-------------------------------- */}
                 <button
                     className="search-button"
