@@ -52,16 +52,13 @@ html {
   background-size: 400%;
   transition: 0.5s;
 }
-
 .nav-button:hover {
   cursor: pointer;
   transition: .5s;
   transform: center;
   background-size: 100%;
   text-decoration: none;
-
 }
-
 .auth-button {
   align-items: center;
   margin-left: 40%;
@@ -75,14 +72,12 @@ html {
   background-size: 400%;
   transition: 0.5s;
 }
-
 .auth-button:hover {
   cursor: pointer;
   transition: .5s;
   transform: center;
   background-size: 100%;
   text-decoration: none;
-
 }
 .auth-form{
   align-items: center;
@@ -127,4 +122,45 @@ html {
   background-image: radial-gradient(circle, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #fefeff, #fcfdff, #f9fdff);
   max-width: 600;
   min-height: 300;
+}
+
+.posts-card {
+  margin: 2%;
+  padding: 2%;
+  background-image: radial-gradient(circle, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #fefeff, #fcfdff, #f9fdff);
+  border-radius: 50%;
+}
+.all-card{
+  width: 300px;
+  min-height: 300px;
+  color: #205375;
+  background-image: radial-gradient(circle, #ffffff, #fffdff, #fffafb, #fff8f4, #fff8ed, #fbf1db, #f3ebc9, #e9e6b8 );
+  border-radius: 50%;
+}
+
+.see-all-button {
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 50px;
+  border: none;
+  color: #E9E8E8;
+  background-image: linear-gradient(to left bottom, #fff5ca, #fff1ae, #ffed91, #ffe973, #ffe552, #fcdd41, #f9d62f, #f6ce14, #eec11c, #e5b523, #dca927, #d29d2b);
+  background-size: 400%;
+  transition: 0.5s;
+  color: #2b1a00;
+  box-shadow: 5px 5px 5px #746107;
+}
+
+.see-all-button:hover {
+  cursor: pointer;
+  transition: .5s;
+  transform: center;
+  background-size: 100%;
+  text-decoration: none;
+
 }
