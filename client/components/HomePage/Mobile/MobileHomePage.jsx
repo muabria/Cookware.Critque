@@ -27,33 +27,23 @@ const MobileHomePage = () => {
             <Typography variant="h1" sx={{ color: "#205375", fontWeight: "bold", fontSize: "33px", mx: 3 }}>
                 Cookware Critique
             </Typography>
-            <Grid container>
-                <Grid item xs={9}>
-                    <Typography
-                        variant="h4"
-                        sx={{ color: "#205375", fontSize: "12px", mt: 7, ml: 3, mr: 11 }}>
-                        Home to honest critiques for all types of kitchen equipment, from food prep to clean up.
-                    </Typography>
-                </Grid>
-                <Grid item xs={3} >
-                </Grid>
-                <Grid item xs={4}>
-                    <MobileMapCategories />
-                </Grid>
-                <Grid item xs={8}>
-                    <Box sx={{ mt: 14 }}>
-                    <motion.div whileHover={{ scale: 1.1 }}>
-                        <Link
-                            to="/explore"
-                            style={{ textDecoration: "none" }}>
-                            <button className="nav-button" style={{ fontSize: "16px"}}>
-                                See Reviews
-                            </button>
-                        </Link>
-                    </motion.div>
-                    </Box>
-                </Grid>
-            </Grid>
+            <Typography
+                variant="h4"
+                sx={{ color: "#205375", fontSize: "12px", mt: 7, ml: 3, mr: 23 }}>
+                Home to honest critiques for all types of kitchen equipment, from food prep to clean up.
+            </Typography>
+            <Box sx={{ mt: 1, mx: 6 }}>
+                <motion.div whileHover={{ scale: 1.1 }}>
+                    <Link
+                        to="/explore"
+                        style={{ textDecoration: "none" }}>
+                        <button className="nav-button" style={{ fontSize: "16px" }}>
+                            See Reviews
+                        </button>
+                    </Link>
+                </motion.div>
+            </Box>
+            <MobileMapCategories />
         </div>
     )
 }

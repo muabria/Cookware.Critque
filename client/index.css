@@ -7,6 +7,7 @@ html {
   background: linear-gradient(#89c7c3, #F9FBE7, #F9FBE7, white, white, white);
   background-size: cover;
   background-repeat: no-repeat;
+  overflow-x: hidden;
 }
 
 .no-overflow{
@@ -30,8 +31,9 @@ html {
   box-shadow: 5px 5px 5px #746107;
 }
 .mobile-category{
-  margin: 2px;
-  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 50px;
   border-color: transparent;
   background-image: radial-gradient(circle, #fce600, #f9dc00, #f5d200, #f1c802, #edbe05, #e1b306);
   box-shadow: 5px 5px 5px #746107;
