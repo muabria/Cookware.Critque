@@ -235,3 +235,6 @@ html {
   background-size: 100%;
   text-decoration: none;
 }
+.dashboard-component{
+  background-image: radial-gradient(circle, #d3e0e2, #ccdee1, #c5dde0, #bedbdf, #b7d9de, #afd5da, #a8d1d7, #a0cdd3 );
+}

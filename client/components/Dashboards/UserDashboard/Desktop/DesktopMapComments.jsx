@@ -33,7 +33,10 @@ const DesktopMapComments = () => {
     }
     return (
         <div>
-            <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
+            <Card
+                className="dashboard-component"
+                elevation={10}
+                sx={{ m: 1 }}>
                 <Typography
                     variant="h5"
                     sx={{ textAlign: "center", color: "#205375" }}>
@@ -60,7 +63,10 @@ const DesktopMapComments = () => {
                     </Link>
                 </Box>
                 {data && data.map((comment) => (
-                    <Card key={comment.id} sx={{ m: 1, p: 2 }}>
+                    <Card 
+                    key={comment.id}
+                    elevation={10} 
+                    sx={{ m: 1, p: 2 }}>
                         <Typography
                             sx={{ textAlign: "center", color: "#205375" }}>
                             {comment.content}
