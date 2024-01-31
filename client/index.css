@@ -164,3 +164,26 @@ html {
   text-decoration: none;
 
 }
+.search-button {
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  font-size: 18px;
+  margin-left: 10px;
+  border-radius: 10px;
+  border: none;
+  color: #E9E8E8;
+  background-image: linear-gradient(to left bottom, #9efef9, #85e6e6, #6ccfd3, #53b8c1, #39a1ae, #2c919d, #1f818c, #10717b, #146369, #165658, #174949, #163c3a);
+  background-size: 400%;
+  transition: 0.5s;
+}
+
+.search-button:hover {
+  cursor: pointer;
+  transition: .5s;
+  transform: center;
+  background-size: 100%;
+  text-decoration: none;
+
+}
