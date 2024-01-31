@@ -37,7 +37,7 @@ const DesktopAdminDashboard = () => {
                             Hello Admin!
                         </Typography>
                     </Box>
-                    <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
+                    <Card className="dashboard-background">
                         <DesktopAddEquipment />
                         <DesktopAdminMapEquip />
                         <Stack direction="row">

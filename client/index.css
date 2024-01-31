@@ -187,3 +187,6 @@ html {
   text-decoration: none;
 
 }
+.dashboard-background{
+  background-image: linear-gradient(to right bottom, #8da6a9, #849ea1, #7a969a, #718f92, #68878b, #618387, #597e83, #527a7f, #4a787d, #42767c, #39737a, #2f7179);
+}

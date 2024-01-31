@@ -38,7 +38,7 @@ const MobileAdminDashboard = () => {
                                         </Link>
                                     </Stack>
                                 </Box>
-                                <Card sx={{ backgroundColor: "#8da6a9", minHeight: 300 }}>
+                                <Card className="dashboard-background">
                                    <MobileAddEquipment />
                                    <MobileAdminMapEquip />
                                     <Grid item xs={12}>

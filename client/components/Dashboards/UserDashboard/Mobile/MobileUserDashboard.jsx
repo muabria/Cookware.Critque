@@ -45,7 +45,7 @@ const MobileUserDashboard = () => {
                         <Typography variant="h5" sx={{ color: "#205375" }}>
                             Hello, {data.username}
                         </Typography>
-                        <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
+                        <Card className="dashboard-background">
                             {data.isAdmin === true ?
                                 <Link to="/admin_dashboard">
                                     <Button sx={{
