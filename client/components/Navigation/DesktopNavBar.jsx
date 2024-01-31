@@ -18,11 +18,17 @@ const DesktopNavBar = () => {
                     alt="Picture of logo with a pot with a clock inside"
                     width="40"
                     height="40" />
-                <Typography variant="h1" sx={{ color: "#205375", flexGrow: 1, fontWeight: "bold",fontSize: "30px" }}>
+                <Typography variant="h1" sx={{ color: "#205375", flexGrow: 1, fontWeight: "bold", fontSize: "30px" }}>
                     Cookware Critique
                 </Typography>
-                <Box sx={{ maxHeight: "50px", backgroundSize: "90%", backgroundImage: "radial-gradient(circle, #fcfcfc, #fefafd, #fff8f9, #fff7f2, #fff8ec, #fdf7e5, #f9f6de)", borderRadius: "50px", boxShadow: "3px 3px 3px #746107" }}>
-                    <Stack direction="row" sx={{ px: 3 }}>
+                <Box sx={{
+                    maxHeight: "50px",
+                    backgroundSize: "90%",
+                    backgroundImage: "radial-gradient(circle, #fcfcfc, #fefafd, #fff8f9, #fff7f2, #fff8ec, #fdf7e5, #f9f6de)",
+                    borderRadius: "50px",
+                    boxShadow: "3px 3px 3px #746107"
+                }}>
+                    <Stack direction="row" sx={{ px: 2, pb: 1 }}>
                         <HomePageButton />
                         <EquipmentAndReviewsButton />
                         <AddReviewButton />
