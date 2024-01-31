@@ -24,9 +24,11 @@ const DesktopAdminDashboard = () => {
             <Grid container spacing={1}>
                 <Grid item xs={2}>
                     <Link to="/account">
-                        <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", mx: 1, mt: 10 }}>
-                            Return to User View
-                        </Button>
+                        <Box sx={{ mt: 5}}>
+                            <button className="dash-critique-button">
+                                Return to User View
+                            </button>
+                        </Box>
                     </Link>
                 </Grid>
                 <Grid item xs={10}>
@@ -39,7 +41,8 @@ const DesktopAdminDashboard = () => {
                     </Box>
                     <Card
                         className="dashboard-background"
-                        elevation={10}>
+                        elevation={10}
+                        sx={{ mr: 10}}>
                         <DesktopAddEquipment />
                         <DesktopAdminMapEquip />
                         <Stack direction="row">

@@ -57,21 +57,21 @@ const DesktopMapComments = () => {
                                     borderRight: 3,
                                     borderRadius: 2
                                 }}>
-                                Click here to comment on a review
+                                Comment on a review
                             </Button>
                         </Typography>
                     </Link>
                 </Box>
                 {data && data.map((comment) => (
-                    <Card 
-                    key={comment.id}
-                    elevation={10} 
-                    sx={{ m: 1, p: 2 }}>
+                    <Card
+                        key={comment.id}
+                        elevation={10}
+                        sx={{ m: 1, p: 2 }}>
                         <Typography
                             sx={{ textAlign: "center", color: "#205375" }}>
                             {comment.content}
                         </Typography>
-                        <Stack direction="row" sx={{ mx: 3 }}>
+                        <Stack direction="row">
                             <Button
                                 variant="outlined"
                                 sx={{ m: 1 }}>

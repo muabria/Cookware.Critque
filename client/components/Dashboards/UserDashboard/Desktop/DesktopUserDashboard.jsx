@@ -79,7 +79,8 @@ const DesktopUserDashboard = () => {
                         </Stack>
                         <Card
                             className="dashboard-background"
-                            elevation={10}>
+                            elevation={10}
+                            sx={{ mr: 5 }}>
                             <Typography variant="h6" sx={{ color: "#205375", mx: 2, mt: 1 }}>
                                 Email: {data.email}
                             </Typography>
