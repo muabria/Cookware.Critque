@@ -52,11 +52,6 @@ const DesktopUserDashboard = () => {
                                     </Button>
                                 </Link>
                             </Typography>
-                            <Typography sx={{ my: 5, color: "#205375" }}>
-                                <Stack direction="row">
-                                    <LogoutSharpIcon sx={{ ml: 2, color: "#205375" }} /> <LogoutButton />
-                                </Stack>
-                            </Typography>
                         </Stack>
                     </Grid>
                     <Grid item xs={10}>
@@ -65,7 +60,9 @@ const DesktopUserDashboard = () => {
                                 Hello, {data.username}
                             </Typography>
                         </Stack>
-                        <Card className="dashboard-background">
+                        <Card
+                            className="dashboard-background"
+                            elevation={10}>
                             <Typography variant="h6" sx={{ color: "#205375", mx: 2, mt: 1 }}>
                                 Email: {data.email}
                             </Typography>

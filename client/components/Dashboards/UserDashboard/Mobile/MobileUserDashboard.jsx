@@ -45,10 +45,12 @@ const MobileUserDashboard = () => {
                         <Typography variant="h5" sx={{ color: "#205375" }}>
                             Hello, {data.username}
                         </Typography>
-                        <Card className="dashboard-background">
+                        <Card
+                            className="dashboard-background"
+                            elevation={10}>
                             {data.isAdmin === true ?
                                 <Link to="/admin_dashboard">
-                                     <button className="admin-button">
+                                    <button className="admin-button">
                                         Admin Dashboard
                                     </button>
                                 </Link>
@@ -60,7 +62,7 @@ const MobileUserDashboard = () => {
                                 </Link>
                             }
                             <Link to="/new_review">
-                            <button className="critique-button">
+                                <button className="critique-button">
                                     Make a Critique
                                 </button>
                             </Link>

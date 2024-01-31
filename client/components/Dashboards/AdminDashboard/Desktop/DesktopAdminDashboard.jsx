@@ -37,12 +37,14 @@ const DesktopAdminDashboard = () => {
                             Hello Admin!
                         </Typography>
                     </Box>
-                    <Card className="dashboard-background">
+                    <Card
+                        className="dashboard-background"
+                        elevation={10}>
                         <DesktopAddEquipment />
                         <DesktopAdminMapEquip />
                         <Stack direction="row">
                             <Grid item xs={6}>
-                              <DesktopMapAllUsers />
+                                <DesktopMapAllUsers />
                             </Grid>
                             <Grid item xs={6}>
                                 <DesktopAdminMapPosts />
