@@ -71,35 +71,21 @@ const DesktopUserDashboard = () => {
                             </Typography>
                             {data.isAdmin === true ?
                                 <Link to="/admin_dashboard">
-                                    <Button sx={{
-                                        textTransform: "none",
-                                        m: 1,
-                                        boxShadow: 3,
-                                        color: "#205375",
-                                        backgroundColor: "#E7B10A",
-                                        border: "solid #D29D2B 2px"
-                                    }}>
-                                        View Admin Dashboard
-                                    </Button>
+                                    <button className="admin-button">
+                                        Admin Dashboard
+                                    </button>
                                 </Link>
                                 :
                                 <Link to="/dummy_admin">
-                                    <Button sx={{
-                                        textTransform: "none",
-                                        m: 1,
-                                        boxShadow: 3,
-                                        color: "#205375",
-                                        backgroundColor: "#E7B10A",
-                                        border: "solid #D29D2B 2px"
-                                    }}>
-                                        View Dummy Admin Dashboard
-                                    </Button>
+                                    <button className="admin-button">
+                                        Admin Dashboard
+                                    </button>
                                 </Link>
                             }
                             <Link to="/new_review">
-                                <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2 }}>
-                                    Make a new critique
-                                </Button>
+                                <button className="critique-button">
+                                    Make a Citique
+                                </button>
                             </Link>
                             <Stack direction="row">
                                 <Grid item xs={9}>

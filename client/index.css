@@ -28,7 +28,7 @@ html {
   border-radius: 50%;
   border-color: transparent;
   background-image: radial-gradient(circle, #fce600, #f9dc00, #f5d200, #f1c802, #edbe05, #e1b306, #d4a807, #c89d08, #b28e08, #9c7f07, #887007, #746107);
-  box-shadow: 5px 5px 5px #746107;
+  box-shadow: 5px 5px 5px #2c2604;
 }
 .mobile-category{
   margin: 5px;
@@ -36,7 +36,7 @@ html {
   border-radius: 50px;
   border-color: transparent;
   background-image: radial-gradient(circle, #fce600, #f9dc00, #f5d200, #f1c802, #edbe05, #e1b306);
-  box-shadow: 5px 5px 5px #746107;
+  box-shadow: 5px 5px 5px #211c02;
 }
 .background-img{
   z-index: -1;
@@ -51,6 +51,7 @@ html {
   background-image: linear-gradient(to right top, #9b2b6b, #a73e79, #b35088, #be6196, #ca72a5, #c982c0, #c494d9, #bca6f0, #91c0ff, #5bd7ff);
   background-size: 400%;
   transition: 0.5s;
+  box-shadow: 3px 3px 3px #02011b;;
 }
 .nav-button:hover {
   cursor: pointer;
@@ -71,6 +72,7 @@ html {
   background-image: linear-gradient(to left bottom, #9efef9, #85e6e6, #6ccfd3, #53b8c1, #39a1ae, #2c919d, #1f818c, #10717b, #146369, #165658, #174949, #163c3a);
   background-size: 400%;
   transition: 0.5s;
+  box-shadow: 3px 3px 3px #02011b;
 }
 .auth-button:hover {
   cursor: pointer;
@@ -103,6 +105,7 @@ html {
   background-image: linear-gradient(to left bottom, #9efef9, #85e6e6, #6ccfd3, #53b8c1, #39a1ae, #2c919d, #1f818c, #10717b, #146369, #165658, #174949, #163c3a);
   background-size: 400%;
   transition: 0.5s;
+  box-shadow: 3px 3px 3px #02011b;;
 }
 
 .mobile-auth-button:hover {
@@ -153,7 +156,7 @@ html {
   background-size: 400%;
   transition: 0.5s;
   color: #2b1a00;
-  box-shadow: 5px 5px 5px #746107;
+  box-shadow: 3px 3px 3px #251f01;
 }
 
 .see-all-button:hover {
@@ -176,7 +179,8 @@ html {
   color: #E9E8E8;
   background-image: linear-gradient(to left bottom, #9efef9, #85e6e6, #6ccfd3, #53b8c1, #39a1ae, #2c919d, #1f818c, #10717b, #146369, #165658, #174949, #163c3a);
   background-size: 400%;
-  transition: 0.5s;
+  transition: 0.5s; 
+  box-shadow: 3px 3px 3px #1b1701;
 }
 
 .search-button:hover {
@@ -189,4 +193,45 @@ html {
 }
 .dashboard-background{
   background-image: linear-gradient(to right bottom, #8da6a9, #849ea1, #7a969a, #718f92, #68878b, #618387, #597e83, #527a7f, #4a787d, #42767c, #39737a, #2f7179);
+}
+.critique-button {
+  align-items: center;
+  margin: 3%;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 50px;
+  border: none;
+  color: #E9E8E8;
+  background-image: linear-gradient(to left bottom, #9efef9, #85e6e6, #6ccfd3, #53b8c1, #39a1ae, #2c919d, #1f818c, #10717b, #146369, #165658, #174949, #163c3a);
+  background-size: 400%;
+  transition: 0.5s;
+  box-shadow: 3px 3px 3px #01041b;
+}
+.critique-button:hover {
+  cursor: pointer;
+  transition: .5s;
+  transform: center;
+  background-size: 100%;
+  text-decoration: none;
+}
+.admin-button {
+  align-items: center;
+  margin: 3%;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 50px;
+  border: none;
+  color: #E9E8E8;
+  background-image: linear-gradient(to left bottom, #fff5ca, #fff1ae, #ffed91, #ffe973, #ffe552, #fcdd41, #f9d62f, #f6ce14, #eec11c, #e5b523, #dca927, #d29d2b);
+  background-size: 400%;
+  transition: 0.5s;
+  color: #0a0600;
+  box-shadow: 3px 3px 3px #1b1701;
+}
+.admin-button:hover {
+  cursor: pointer;
+  transition: .5s;
+  transform: center;
+  background-size: 100%;
+  text-decoration: none;
 }
