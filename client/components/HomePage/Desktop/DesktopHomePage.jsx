@@ -7,61 +7,61 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import MapCategories from "../MapCategories";
+import DesktopMapCategories from "./DesktopMapCategories";
 import background from "../kitchenEquipmentBackground.png"
+
 const DesktopHomePage = () => {
     return (
-        <div>
-            <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                Welcome to Cookware Critique
+        <div className="no-overflow">
+            <img
+                src={background}
+                alt="Background image of kitchen supplies"
+                style={{
+                    marginTop: "5px",
+                    zIndex: -1,
+                    marginLeft: "35%",
+                    backgroundSize: "contain",
+                    height: "700px",
+                    position: "absolute"
+                }} />
+            <Typography
+                variant="h1"
+                sx={{ color: "#205375", fontWeight: "bold", mx: 3 }}>
+                Cookware Critique
             </Typography>
-            <Typography variant="h5" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                Home to honest critiques for all types of kitchen equipment from food prep to clean up.
-            </Typography>
-            <div style={{
-                backgroundImage: `url(${background})`,
-                backgroundSize: "contain",
-                height: "700px",
-                backgroundRepeat: "no-repeat"
-            }}>
-                <Box sx={{ minHeight: 900, my: 2 }}>
-                    <Grid container>
-                        <Grid item xs={1}>
-                        </Grid>
-                        <Grid item xs={11} sx={{ mb: 25 }}>
-                            <Stack direction="row">
-                                <MapCategories />
-                            </Stack>
-                        </Grid>
+            <Box sx={{ minHeight: 900, my: 2 }}>
+                <Grid container>
+                    <Grid item xs={5}>
+                        <Typography
+                            variant="h4"
+                            sx={{ color: "#205375", mt: 1, ml: 5, mr: 12 }}>
+                            Home to honest critiques for all types of kitchen equipment, from food prep to clean up.
+                        </Typography>
                     </Grid>
-                    <Grid container>
-                        <Grid item xs={5.5}>
-                        </Grid>
-                        <Grid item xs={6.5}>
-                            <Stack direction="row">
-                                <motion.div whileHover={{ scale: 1.3 }}>
-                                    <Link
-                                        to="/explore"
-                                        style={{ textDecoration: "none" }}>
-                                        <Box sx={{
-                                            boxShadow: 3,
-                                            color: "#FAF3F0",
-                                            backgroundColor: "#D988B9",
-                                            border: "solid #B0578D 2px",
-                                            borderRadius: "100px",
-                                            p: 3
-                                        }}>
-                                            <Typography variant="h6">
-                                                Equipment and Reviews
-                                            </Typography>
-                                        </Box>
-                                    </Link>
-                                </motion.div>
-                            </Stack>
-                        </Grid>
+                    <Grid item xs={7} sx={{ mx: 3, mt: 10 }}>
+                        <Stack direction="row">
+                            <DesktopMapCategories />
+                        </Stack>
                     </Grid>
-                </Box>
-            </div>
+                </Grid>
+                <Grid container>
+                    <Grid item xs={2}>
+                    </Grid>
+                    <Grid item xs={10} sx={{ mt: 10 }}>
+                        <Stack direction="row">
+                            <motion.div whileHover={{ scale: 1.1 }}>
+                                <Link
+                                    to="/explore"
+                                    style={{ textDecoration: "none" }}>
+                                    <button className="nav-button">
+                                        See Reviews
+                                    </button>
+                                </Link>
+                            </motion.div>
+                        </Stack>
+                    </Grid>
+                </Grid>
+            </Box>
         </div>
     )
 }

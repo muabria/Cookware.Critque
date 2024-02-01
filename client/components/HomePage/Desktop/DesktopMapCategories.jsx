@@ -19,23 +19,22 @@ const DesktopMapCategories = () => {
     return (
         <>
             {data && data.map((category) => (
-                <Box key={category.id} sx={{ m: 2 }}>
+                <Box key={category.id} sx={{ m: 1 }}>
                     <Link to={`/category/${category.id}`}
                         style={{ textDecoration: "none" }}>
-                        <motion.div whileHover={{ scale: 1.3 }}>
+                        <motion.div whileHover={{ scale: 1.1 }}>
                             <Stack direction="column">
-                                <Avatar
-                                    sx={{
-                                        boxShadow: 3,
-                                        p: 3,
-                                        color: "#3C1B1F",
-                                        backgroundColor: "#E7B10A",
-                                        border: "solid #D29D2B 2px"
-                                    }}>
-                                    <Typography sx={{ fontSize: "13px" }}>
+                                <span className="category-circle">
+                                    <Typography
+                                        sx={{
+                                            color: "#38300A",
+                                            textAlign: "center",
+                                            fontWeight: "bold",
+                                            mt: 6,
+                                        }}>
                                         {category.category}
                                     </Typography>
-                                </Avatar>
+                                </span>
                             </Stack>
                         </motion.div>
                     </Link>

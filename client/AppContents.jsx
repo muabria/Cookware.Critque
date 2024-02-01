@@ -11,15 +11,14 @@ import AddNewPost from "./components/AddReview/AddNewPost"
 import NavBar from "./components/Navigation/NavBar";
 import CategoryPage from "./components/Categories/CategoryPage";
 import SingleEquipment from "./components/SingleEquipment/SingleEquipment";
-import EditReviews from "./components/Dashboards/UserDashboard/EditReviews";
-import EditUser from "./components/Dashboards/UserDashboard/EditUser";
+import EditReviews from "./components/Dashboards/EditForms/EditReviews";
+import EditUser from "./components/Dashboards/EditForms/EditUser";
 import EditEquipment from "./components/EditEquipment/EditEquipment";
 import DummyAdminDashboard from "./components/Dashboards/DummyAdmin/DummyAdminDashboard"
 
 const AppContents = () => {
 
   return (
-    <div className='gradient_background'>
       <div className="App">
         <NavBar />
         <Routes>
@@ -45,7 +44,6 @@ const AppContents = () => {
           <Route path="/edit_equipment/:id" element={<EditEquipment/>} />
         </Routes>
       </div>
-    </div>
   );
 }
 

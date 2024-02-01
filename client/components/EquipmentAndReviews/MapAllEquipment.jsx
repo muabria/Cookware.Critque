@@ -1,7 +1,7 @@
 import Card from "@mui/material/Card";
+import { CardContent } from "@mui/joy";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import AspectRatio from '@mui/joy/AspectRatio';
 
@@ -45,8 +45,8 @@ const MapAllEquipment = () => {
     return (
         <>
             <Typography
-                variant="h4"
-                sx={{ textAlign: "center", color: "#205375", mt: 1 }}>
+                variant="h3"
+                sx={{ textAlign: "center", color: "#205375", mt: 1, fontWeight: "bold", mb: 3 }}>
                 See All Equipment
             </Typography>
             <Carousel
@@ -56,51 +56,38 @@ const MapAllEquipment = () => {
                 showDots={true}>
                 {data && data.map((equipment) => (
                     <Card
+                        className="all-card"
+                        elevation={10}
                         key={equipment.id}
-                        sx={{
-                            width: 300,
-                            minHeight: 300,
-                            my: 5,
-                            mx: 2,
-                            color: "#205375",
-                            backgroundColor: "#F9FBE7",
-                            border: "solid #D29D2B 2px"
-                        }}>
+                        sx={{ mb: 5, minHeight: 380 }}>
                         <Stack direction="column">
                             <Typography
-                                variant="h6"
-                                sx={{ textAlign: "center", color: "#205375", backgroundColor: "#EACD65" }}>
+                                variant="h5"
+                                sx={{ m: 1, textAlign: "center", color: "#205375", fontWeight: "bold" }}>
                                 {equipment.name}
                             </Typography>
                             <Typography
-                                sx={{ textAlign: "center" }}>
+                                sx={{ textAlign: "center", color: "#205375" }}>
                                 from {equipment.brand}
                             </Typography>
                             <Box sx={{ m: 2 }}>
-                                <AspectRatio objectFit="contain">
-                                      <img
-                                           src={equipment.image}
-                                           alt={`${equipment.name} image`}
-                                           width="130"
-                                           height="130"
-                                       />
-                                 </AspectRatio>
+                                <AspectRatio
+                                    objectFit="contain">
+                                    <img
+                                        src={equipment.image}
+                                        alt={`${equipment.name} image`}
+                                        width="130"
+                                        height="130"
+                                    />
+                                </AspectRatio>
                             </Box>
-                            <Link to={`/equipment/${equipment.id}`}>
-                                <Typography sx={{ textAlign: "center" }}>
-                                    <Button
-                                        sx={{
-                                            textTransform: "none",
-                                            my: 2,
-                                            boxShadow: 3,
-                                            color: "#3C1B1F",
-                                            backgroundColor: "#EACD65",
-                                            border: "solid #D29D2B 2px"
-                                        }}>
+                            <CardContent>
+                                <Link to={`/equipment/${equipment.id}`}>
+                                    <button className="see-all-button">
                                         See All Reviews
-                                    </Button>
-                                </Typography>
-                            </Link>
+                                    </button>
+                                </Link>
+                            </CardContent>
                         </Stack>
                     </Card>
                 ))}

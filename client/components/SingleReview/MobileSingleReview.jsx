@@ -52,68 +52,66 @@ const MobileSingleReview = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeIn" }}>
-                    <Grid container>
-                        <Grid item xs={12}>
-                            <Link to={`/equipment/${currentEquipment.id}`}>
-                                <Button sx={{ color: "#589D96", textTransform: "none" }}>
-                                    <Typography variant="h3" sx={{ p: 2.5, color: "#589D96" }}>
-                                        {currentEquipment.name}
-                                    </Typography>
-                                </Button>
-                            </Link>
-                            <AspectRatio objectFit="contain">
-                                <img
-                                    src={currentEquipment.image}
-                                    alt={`${currentEquipment.name} image`}
-                                />
-                            </AspectRatio>
-                            <Card key={data.id}>
-                                <Stack direction="column">
-                                    <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
-                                        {data.title}
-                                    </Typography>
-                                    <Rating
-                                        readOnly={true}
-                                        value={data.rating}
-                                        sx={{ alignContent: "center", m: 1 }}
-                                    />
-                                </Stack>
-                                <CardContent>
-                                    <Stack direction="column">
-                                        <Typography sx={{ color: "#205375", m: 1 }}>
-                                            {data.content}
-                                        </Typography>
-                                        <ProvideUsername userId={data.userId} />
-                                    </Stack>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Card sx={{ backgroundColor: "#b6d6d4", p: 2 }}>
-                                <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
-                                    Comments:
+            <Grid container>
+                <Grid item xs={12}>
+                    <Link to={`/equipment/${currentEquipment.id}`}>
+                        <Button sx={{ color: "#589D96", textTransform: "none" }}>
+                            <Typography variant="h3" sx={{ p: 2.5, color: "#589D96" }}>
+                                {currentEquipment.name}
+                            </Typography>
+                        </Button>
+                    </Link>
+                    <AspectRatio objectFit="contain">
+                        <img
+                            src={currentEquipment.image}
+                            alt={`${currentEquipment.name} image`}
+                        />
+                    </AspectRatio>
+                    <Card key={data.id}>
+                        <Stack direction="column">
+                            <Typography variant="h4" sx={{ color: "#205375", textAlign: "center", m: 1 }}>
+                                {data.title}
+                            </Typography>
+                            <Rating
+                                readOnly={true}
+                                value={data.rating}
+                                sx={{ alignContent: "center", m: 1 }}
+                            />
+                        </Stack>
+                        <CardContent>
+                            <Stack direction="column">
+                                <Typography sx={{ color: "#205375", m: 1 }}>
+                                    {data.content}
                                 </Typography>
-                                {token &&
-                                    <Typography sx={{textAlign: "center"}}>
-                                        <Button
-                                            sx={{ textTransform: "none", color: "#205375" }}
-                                            onClick={() => setAddComment(true)}>
-                                            <RateReviewIcon fontSize="small"/> Add a Comment
-                                        </Button>
-                                    </Typography>
-                                }
-                                {addComment && <CommentForm />}
-                                {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
-                                    <Card key={comment.id} sx={{ p: 2, m: 1 }}>
-                                        <Typography>
-                                            {comment.content}
-                                        </Typography>
-                                        <ProvideUsername userId={comment.userId} />
-                                    </Card>
-                                ))}
+                                <ProvideUsername userId={data.userId} />
+                            </Stack>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12}>
+                    <Card sx={{ backgroundColor: "#b6d6d4", p: 2 }}>
+                        <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
+                            Comments:
+                        </Typography>
+                        {token &&
+                           <button
+                           onClick={() => setAddComment(true)}
+                           className="critique-button">
+                           Add a Comment
+                       </button>
+                        }
+                        {addComment && <CommentForm />}
+                        {commentData && commentData.filter(comment => comment.postId === data.id).map((comment) => (
+                            <Card key={comment.id} sx={{ p: 2, m: 1 }}>
+                                <Typography>
+                                    {comment.content}
+                                </Typography>
+                                <ProvideUsername userId={comment.userId} />
                             </Card>
-                        </Grid>
-                    </Grid>
+                        ))}
+                    </Card>
+                </Grid>
+            </Grid>
         </motion.div>
     )
 }
