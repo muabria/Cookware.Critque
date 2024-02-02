@@ -10,17 +10,19 @@ const SearchResults = ({ results }) => {
     return (
         <>
             {results.length === 0 &&
-                <Typography sx={{ py: 2 }}>Whoops! Ingredient not found.</Typography>}
+                <Typography sx={{ py: 2 }}>
+                    Sorry, there is no equipment with that name.
+                </Typography>}
             <Stack direction="row">
                 {results.map((equipment) => (
                     <Card
-                    elevation={10}
+                        elevation={10}
                         sx={{ p: 5, my: 3 }}
                         className="all-card">
                         <Stack direction="column">
-                            <Typography 
-                            variant="h4" 
-                            sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
+                            <Typography
+                                variant="h4"
+                                sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
                                 {equipment.name}
                             </Typography>
                             <AspectRatio objectFit="contain">
