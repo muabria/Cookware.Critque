@@ -49,59 +49,51 @@ const CategoryPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeIn" }}>
-            <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
-                All {data.category} Kitchen Equipment
-            </Typography>
-            <Carousel
-                responsive={responsive}
-                swipeable={true}
-                draggable={true}
-                showDots={true}>
-                {equipmentData && equipmentData.filter((equipment) => equipment.categoryId === data.id).map((equipment) => (
-                    <Card key={equipment.id}
-                        sx={{
-                            backgroundColor: "#F9FBE7",
-                            border: "solid #D29D2B 5px",
-                            borderRadius: "10px",
-                            width: 300,
-                            minHeight: 300,
-                            m: 5,
-                            p: 1,
-                        }}>
-                        <Stack direction="column">
-                            <Typography sx={{ color: "#205375", fontSize: "30px", textAlign: "center" }}>
-                                {equipment.name}
-                            </Typography>
-                            <Typography variant="h6" sx={{ color: "#205375", fontSize: "16px", textAlign: "center" }}>
-                                {equipment.brand}
-                            </Typography>
-                            <AspectRatio objectFit="contain">
-                               <img
-                                   src={equipment.image}
-                                   alt={`${equipment.name} image`}
-                                   width="100"
-                                   height="100"
-                               />
-                            </AspectRatio>
-                            <Link to={`/equipment/${equipment.id}`} >
-                                <Typography sx={{ textAlign: "center" }}>
-                                    <Button
-                                        sx={{
-                                            textTransform: "none",
-                                            mt: 2,
-                                            boxShadow: 3,
-                                            color: "#3C1B1F",
-                                            backgroundColor: "#EACD65",
-                                            border: "solid #D29D2B 2px"
-                                        }}>
-                                        See All Reviews
-                                    </Button>
+            <Card
+                elevation={10}
+                sx={{ m: 3, p: 3 }}>
+                <Typography variant="h3" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
+                    All {data.category} Kitchen Equipment
+                </Typography>
+                <Carousel
+                    responsive={responsive}
+                    swipeable={true}
+                    draggable={true}
+                    showDots={true}>
+                    {equipmentData && equipmentData.filter((equipment) => equipment.categoryId === data.id).map((equipment) => (
+                        <Card key={equipment.id}
+                            sx={{ mb: 10 }}
+                            elevation={10}
+                            className="all-card"
+                        >
+                            <Stack direction="column">
+                                <Typography sx={{ color: "#205375", fontSize: "30px", textAlign: "center", fontWeight: "bold" }}>
+                                    {equipment.name}
                                 </Typography>
-                            </Link>
-                        </Stack>
-                    </Card>
-                ))}
-            </Carousel>
+                                <Typography variant="h6" sx={{ color: "#205375", fontSize: "16px", textAlign: "center" }}>
+                                    {equipment.brand}
+                                </Typography>
+                                <AspectRatio objectFit="contain">
+                                    <img
+                                        src={equipment.image}
+                                        alt={`${equipment.name} image`}
+                                        width="100"
+                                        height="100"
+                                    />
+                                </AspectRatio>
+                                <Link to={`/equipment/${equipment.id}`} >
+                                    <Typography sx={{ textAlign: "center" }}>
+                                        <button
+                                            className="see-all-button">
+                                            See All Reviews
+                                        </button>
+                                    </Typography>
+                                </Link>
+                            </Stack>
+                        </Card>
+                    ))}
+                </Carousel>
+            </Card>
         </motion.div>
     )
 }
