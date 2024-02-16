@@ -108,10 +108,9 @@ const MobileSingleEquipment = () => {
                             {token &&
                                 <Typography sx={{ textAlign: "center" }}>
                                     <Link to="/new_review">
-                                        <Button variant="text" sx={{ color: "#205375", textTransform: "none" }}>
-                                            <RateReviewIcon />
+                                        <button className="critique-button">
                                             Add a Review
-                                        </Button>
+                                        </button>
                                     </Link>
                                 </Typography>
                             }

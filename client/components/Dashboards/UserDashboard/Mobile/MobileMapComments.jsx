@@ -36,7 +36,10 @@ const MobileMapComments = () => {
 
     return (
         <div>
-            <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
+            <Card 
+            className="dashboard-component"
+            elevation={10}
+            sx={{ m: 1 }}>
                 <Typography
                     sx={{ textAlign: "center", color: "#205375" }}>
                     My Comments:
@@ -51,7 +54,10 @@ const MobileMapComments = () => {
                     </Link>
                 </Box>
                 {data && data.map((comment) => (
-                    <Card key={comment.id} sx={{ m: 1, p: 2 }}>
+                    <Card 
+                    key={comment.id} 
+                    sx={{ m: 1, p: 2 }}
+                    elevation={10}>
                         <Grid container>
                             <Grid item xs={12}>
                                 <Typography sx={{ color: "#205375" }}>

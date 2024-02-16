@@ -45,38 +45,26 @@ const MobileUserDashboard = () => {
                         <Typography variant="h5" sx={{ color: "#205375" }}>
                             Hello, {data.username}
                         </Typography>
-                        <Card sx={{ backgroundColor: "#8da6a9", minHeight: 500 }}>
+                        <Card
+                            className="dashboard-background"
+                            elevation={10}>
                             {data.isAdmin === true ?
                                 <Link to="/admin_dashboard">
-                                    <Button sx={{
-                                        textTransform: "none",
-                                        m: 1,
-                                        boxShadow: 3,
-                                        color: "#205375",
-                                        backgroundColor: "#E7B10A",
-                                        border: "solid #D29D2B 2px"
-                                    }}>
-                                        View Admin Dashboard
-                                    </Button>
+                                    <button className="admin-button">
+                                        Admin Dashboard
+                                    </button>
                                 </Link>
                                 :
                                 <Link to="/dummy_admin">
-                                    <Button sx={{
-                                        textTransform: "none",
-                                        m: 1,
-                                        boxShadow: 3,
-                                        color: "#205375",
-                                        backgroundColor: "#E7B10A",
-                                        border: "solid #D29D2B 2px"
-                                    }}>
-                                        View Dummy Admin Dashboard
-                                    </Button>
+                                    <button className="admin-button">
+                                        Admin Dashboard
+                                    </button>
                                 </Link>
                             }
                             <Link to="/new_review">
-                                <Button sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 1 }}>
-                                    Make a new Critique
-                                </Button>
+                                <button className="critique-button">
+                                    Make a Critique
+                                </button>
                             </Link>
                             <Stack direction="column">
                                 <Grid item xs={12}>

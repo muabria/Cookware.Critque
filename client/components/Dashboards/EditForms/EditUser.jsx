@@ -1,7 +1,6 @@
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
@@ -45,11 +44,13 @@ const EditUser = () => {
 
     return userData && (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeIn" }}>
-            <Card sx={{ p: 5, backgroundColor: "white", maxWidth: 600 }}>
-                <Typography variant="h4" sx={{ textAlign: "center", p: 1 }}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
+            <Card
+                className="auth-form"
+                elevation={10}>
+                <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
                     Update Your Account:
                 </Typography>
                 <form onSubmit={handleSubmit}>
@@ -94,6 +95,7 @@ const EditUser = () => {
                             onChange={(event) => setSecondPassword(event.target.value)}
                             size="small"
                             variant="filled"
+                            sx={{ m: 1 }}
                             error={
                                 !!(password && secondPassword !== secondPassword)
                             }
@@ -102,9 +104,11 @@ const EditUser = () => {
                                     <Alert severity="error"> Passwords do not match </Alert> : null
                             }
                         />
-                        <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", p: 1, my: 1 }}>
-                            Update Your Account
-                        </Button>
+                        <button
+                            type="submit"
+                            className="auth-button">
+                            Update
+                        </button>
                     </Stack>
                 </form>
             </Card>

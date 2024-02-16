@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import Avatar from "@mui/material/Avatar";
+import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import AspectRatio from '@mui/joy/AspectRatio';
@@ -10,19 +10,19 @@ const SearchResults = ({ results }) => {
     return (
         <>
             {results.length === 0 &&
-                <Typography sx={{ py: 2 }}>Whoops! Ingredient not found.</Typography>}
+                <Typography sx={{ py: 2 }}>
+                    Sorry, there is no equipment with that name.
+                </Typography>}
             <Stack direction="row">
                 {results.map((equipment) => (
-                    <Avatar key={equipment.id}
-                        sx={{
-                            backgroundColor: "white",
-                            border: "solid #D29D2B 5px",
-                            p: 5,
-                            minWidth: 200,
-                            minHeight: 200
-                        }}>
+                    <Card
+                        elevation={10}
+                        sx={{ p: 5, my: 3 }}
+                        className="all-card">
                         <Stack direction="column">
-                            <Typography variant="h6" sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
+                            <Typography
+                                variant="h4"
+                                sx={{ color: "#205375", textAlign: "center", mb: 2 }}>
                                 {equipment.name}
                             </Typography>
                             <AspectRatio objectFit="contain">
@@ -31,12 +31,12 @@ const SearchResults = ({ results }) => {
                                     alt={`${equipment.name} image`} />
                             </AspectRatio>
                             <Link to={`/equipment/${equipment.id}`} >
-                                <Button sx={{ textTransform: "none", }}>
-                                    See the {equipment.name}'s Review
-                                </Button>
+                                <button className="see-all-button">
+                                    See Review
+                                </button>
                             </Link>
                         </Stack>
-                    </Avatar>
+                    </Card>
                 ))
                 }
             </Stack>

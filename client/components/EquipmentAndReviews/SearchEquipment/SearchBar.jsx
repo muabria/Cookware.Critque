@@ -1,4 +1,3 @@
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
@@ -13,16 +12,13 @@ const SearchBar = ({ onSubmit }) => {
     const [showResult, setShowResult] = useState(false);
 
     const { data, error, isLoading } = useGetEquipmentQuery();
-    if (!data) {
-        return <div> Oops, our own web equipment is broken. We should have the issue resolved soon! </div>
-    }
     if (isLoading) {
         return <div> </div>;
     }
     if (error) {
         return <div>Oops! Something went wrong loading the data.</div>;
     }
-
+console.log("Data:" + data)
     const filteredEquipment = () => data.filter((equipment) =>
         equipment.name.toLowerCase().includes(searchEquipment.toLowerCase())
     );
@@ -32,9 +28,10 @@ const SearchBar = ({ onSubmit }) => {
     return (
         <>
             {/*----------------------------------TEXT FIELD-------------------------------- */}
-                <Stack direction="row">
+            <Stack direction="row">
                 <TextField
                     type="text"
+                    variant="filled"
                     label="Search Equipment By Name"
                     fullWidth
                     value={searchEquipment}
@@ -43,26 +40,16 @@ const SearchBar = ({ onSubmit }) => {
                             setShowResult(false);
                         }
                         setSearchEquipment(event.target.value)
-                    }}
-                    sx={{
-                        backgroundColor: 'white',
-                    }}
-                />
+                    }}/>
                 {/*----------------------------------SUBMIT BUTTON-------------------------------- */}
-                <Button
-                    onClick={() => setShowResult(true)}
-                    sx={{
-                        mx: .5,
-                        boxShadow: 3,
-                        color: "#3C1B1F",
-                        backgroundColor: "#89c7c3",
-                    }}>
+                <button
+                    className="search-button"
+                    onClick={() => setShowResult(true)} >
                     <SearchIcon />
-                </Button>
-                </Stack>
-
-                {showResult &&
-                    <SearchResults results={filteredSearch} />}
+                </button>
+            </Stack>
+            {showResult &&
+                <SearchResults results={filteredSearch} />}
         </>
     );
 };

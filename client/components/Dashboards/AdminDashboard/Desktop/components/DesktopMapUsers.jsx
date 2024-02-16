@@ -27,7 +27,9 @@ const DesktopMapAllUsers = () => {
     }
     return (
         <div>
-            <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
+            <Card
+                elevation={10}
+                sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
                 <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                     All Users:
                 </Typography>

@@ -76,7 +76,9 @@ const DesktopAddEquipment = () => {
                         Add New Equipment <ExpandCircleDownIcon sx={{ color: "#205375" }} />
                     </Typography>
                 </AccordionSummary>
-                <Card sx={{ px: 5, py: 2 }}>
+                <Card
+                    elevation={10}
+                    sx={{ px: 5, py: 2 }}>
                     <Stack direction="row">
                         <form onSubmit={handleSubmit}>
                             <Stack direction="column">
@@ -89,25 +91,22 @@ const DesktopAddEquipment = () => {
                                     variant="filled"
                                     sx={{ m: 1 }}
                                 />
-                                <Typography sx={{ color: "#205375" }}>
-                                    Select Category:
-                                </Typography>
-                                <Stack direction="row">
-                                    {data && data.map((category) => (
-                                        <Box key={category.id}>
-                                            <Button
-                                                onClick={() => setCategory(category.id)}
-                                                sx={{
-                                                    border: select === category.id ? "solid #64CCC5 5px" : "solid #D29D2B 2px",
-                                                    textTransform: "none",
-                                                    mx: 1,
-                                                    backgroundColor: "#9BCDD2"
-                                                }}>
-                                                {category.category}
-                                            </Button>
-                                        </Box>
-                                    ))}
-                                </Stack>
+                                <Box sx={{ mx: 2, my: 1 }}>
+                                    <Typography sx={{ color: "#0d0d0c" }}>
+                                        Select Category:
+                                    </Typography>
+                                    <Stack direction="row">
+                                        {data && data.map((category) => (
+                                            <Box key={category.id}>
+                                                <button
+                                                    className="mobile-category"
+                                                    onClick={() => setCategory(category.id)}>
+                                                    {category.category}
+                                                </button>
+                                            </Box>
+                                        ))}
+                                    </Stack>
+                                </Box>
                                 <TextField
                                     label="Description"
                                     value={description}
@@ -176,11 +175,13 @@ const DesktopAddEquipment = () => {
                                 />
 
                                 {/* <---------------------------SUBMIT BUTTON-----------------------------> */}
-                                <Button type="submit" sx={{ backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
+                                <button
+                                    type="submit"
+                                    className="auth-button">
                                     <Typography variant="h6">
-                                        Submit Equipment
+                                        Submit
                                     </Typography>
-                                </Button>
+                                </button>
                             </Stack>
                         </form>
                     </Stack>

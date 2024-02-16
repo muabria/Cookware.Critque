@@ -35,12 +35,18 @@ const MobileMapPosts = () => {
 
     return (
         <div>
-            <Card sx={{ backgroundColor: "#D3E0E2", m: 1 }}>
+            <Card
+                className="dashboard-component"
+                elevation={10}
+                sx={{ m: 1 }}>
                 <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                     My Reviews:
                 </Typography>
                 {data && data.map((review) => (
-                    <Card key={review.id} sx={{ m: 1, p: 2 }}>
+                    <Card 
+                    key={review.id} 
+                    sx={{ m: 1, p: 2 }}
+                    elevation={10}>
                         <Grid container>
                             <Grid item xs={8}>
                                 <Typography variant="h5" sx={{ color: "#205375" }}>

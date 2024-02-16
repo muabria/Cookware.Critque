@@ -61,6 +61,7 @@ const DesktopAdminMapEquip = () => {
                     showDots={true}>
                     {data && data.map((equipment) => (
                         <Card
+                            elevation={10}
                             key={equipment.id}
                             sx={{ p: 2, m: 2, minWidth: 300, maxWidth: 300 }}>
                             <Stack direction="column">

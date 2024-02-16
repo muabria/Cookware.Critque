@@ -119,7 +119,6 @@ const DesktopAddNewPost = () => {
         4: `Good: A-peeling and good in a kitchen`,
         5: `Excellent: Truely egg-ceptional!`,
     };
-
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -141,7 +140,12 @@ const DesktopAddNewPost = () => {
                             {/* <-----------------SELECT EQUIPMENT-------------------> */}
                             <Card sx={{ backgroundColor: "#D9E4DD", p: 5, mb: 3 }}>
                                 <Stack direction="row">
-                                    <Avatar sx={{ color: "#205375", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px" }}>
+                                    <Avatar
+                                        sx={{
+                                            color: "#205375",
+                                            boxShadow: "2px 2px 2px #2c2604",
+                                            backgroundImage: "radial-gradient(circle, #fce600, #f9dc00, #f5d200, #f1c802, #edbe05, #e1b306, #d4a807, #c89d08, #b28e08, #9c7f07, #887007, #746107)"
+                                        }}>
                                         1
                                     </Avatar>
                                     <Typography v
@@ -161,6 +165,7 @@ const DesktopAddNewPost = () => {
                                             whileTap={{ scale: 1.1 }}>
                                             <Card
                                                 key={equipment.id}
+                                                elevation={10}
                                                 className="select-equipment"
                                                 onClick={() => {
                                                     setEquipment(equipment.id),
@@ -170,12 +175,12 @@ const DesktopAddNewPost = () => {
                                                     m: 3,
                                                     minWidth: 350, maxWidth: 350,
                                                     border: select === equipment.id ? "solid #64CCC5 10px" : "solid #D29D2B 5px",
-                                                    borderRadius: 100
+                                                    borderRadius: 100,
                                                 }}>
-                                                <Box sx={{ pt: 5, px: 2, backgroundColor: "#EACD65" }}>
+                                                <Box sx={{ pt: 5, px: 2 }}>
                                                     <Typography
-                                                        variant="h6"
-                                                        sx={{ color: "#205375", m: 2, textAlign: "center" }}>
+                                                        variant="h5"
+                                                        sx={{ color: "#205375", m: 2, textAlign: "center", fontWeight: "bold" }}>
                                                         {equipment.name}
                                                     </Typography>
                                                     <Typography sx={{ color: "#205375", m: 1, textAlign: "center" }}>
@@ -195,11 +200,11 @@ const DesktopAddNewPost = () => {
                                         </motion.div>
                                     ))}
                                 </Carousel>
-                                <Button
-                                    onClick={() => handelAnimation()}
-                                    sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
-                                    Next <ArrowForwardIosIcon /><ArrowForwardIosIcon /><ArrowForwardIosIcon />
-                                </Button>
+                                <button
+                                    className="critique-button"
+                                    onClick={() => handelAnimation()}>
+                                    Next
+                                </button>
                             </Card>
                             {/* <---------------------------SECOND CARD-----------------------------> */}
                             <motion.div
@@ -208,7 +213,12 @@ const DesktopAddNewPost = () => {
                                 animate={controls}>
                                 <Card sx={{ backgroundColor: "#D9E4DD", p: 5 }}>
                                     <Stack direction="row">
-                                        <Avatar sx={{ color: "#205375", backgroundColor: "#E7B10A", border: "solid #D29D2B 5px" }}>
+                                        <Avatar
+                                            sx={{
+                                                color: "#205375",
+                                                boxShadow: "2px 2px 2px #2c2604",
+                                                backgroundImage: "radial-gradient(circle, #fce600, #f9dc00, #f5d200, #f1c802, #edbe05, #e1b306, #d4a807, #c89d08, #b28e08, #9c7f07, #887007, #746107)"
+                                            }}>
                                             2
                                         </Avatar>
                                         <Typography variant="h5" sx={{ color: "#205375", p: 1 }}>
@@ -256,9 +266,11 @@ const DesktopAddNewPost = () => {
                                             )}
                                         </Stack>
                                     </Stack>
-                                    <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
-                                        Create Your Critique!
-                                    </Button>
+                                    <button
+                                        type="submit"
+                                        className="critique-button">
+                                        Submit Critique!
+                                    </button>
                                 </Card>
                             </motion.div>
                             {/* <-----------------SUBMIT BUTTON-------------------> */}
