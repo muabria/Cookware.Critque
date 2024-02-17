@@ -179,6 +179,11 @@ const EditEquipment = () => {
                                         Save Changes
                                     </Typography>
                                 </Button>
+                                <Button onClick={() => navigate(`/equipment/${equipmentData.id}`)} sx={{ textTransform: "none", backgroundColor: "#D7E462", color: "black", mx: 6, p: 1, mt: 1 }}>
+                                    <Typography>
+                                        Cancel
+                                    </Typography>
+                                </Button>
                             </Stack>
                         </form>
                     </Stack>

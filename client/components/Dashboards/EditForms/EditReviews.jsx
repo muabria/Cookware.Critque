@@ -27,7 +27,7 @@ const EditReviews = () => {
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetSingleReviewQuery(id);
 
     const [patchReview, { data, error, isLoading }] = usePatchReviewMutation();
-    
+
     if (error) {
         return <div>Error</div>
     }
@@ -46,11 +46,18 @@ const EditReviews = () => {
         }
     }
 
+    const populateForm = (event) => {
+        event.preventDefault();
+        setTitle(reviewData.title);
+        setContent(reviewData.content);
+        setRating(reviewData.rating);
+    }
+
     return reviewData && (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeIn" }}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
             <Grid container>
                 <Grid item xs={2}>
 
@@ -60,9 +67,12 @@ const EditReviews = () => {
                     <form onSubmit={handleSubmit}>
                         <Card sx={{ backgroundColor: "#D9E4DD", p: 5 }}>
                             <Stack direction="row">
-                                <Typography variant="h5" sx={{ color: "#205375", p: 1 }}>
+                                <Typography variant="h4" sx={{ color: "#205375", p: 1 }}>
                                     Edit the review
                                 </Typography>
+                                <Button onClick={populateForm} variant="outlined" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 1, p: 1 }}>
+                                    Populate Form
+                                </Button>
                             </Stack>
                             {/* <-----------------TITLE TEXTFIELD------------------> */}
                             <Stack direction="column">
@@ -102,6 +112,13 @@ const EditReviews = () => {
                             </Stack>
                             <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
                                 Save Changes
+                            </Button>
+                            <Button
+                                onClick={() => navigate(`/review/${reviewData.id}`)}
+                                sx={{ textTransform: "none", backgroundColor: "#D7E462", color: "black", mx: 3, p: 1 }}>
+                                <Typography>
+                                    Cancel
+                                </Typography>
                             </Button>
                         </Card>
                     </form>
