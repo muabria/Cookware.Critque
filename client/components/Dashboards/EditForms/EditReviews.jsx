@@ -114,7 +114,7 @@ const EditReviews = () => {
                                 Save Changes
                             </Button>
                             <Button
-                                onClick={() => navigate(`/review/${reviewData.id}`)}
+                                onClick={() => navigate("/account")}
                                 sx={{ textTransform: "none", backgroundColor: "#D7E462", color: "black", mx: 3, p: 1 }}>
                                 <Typography>
                                     Cancel

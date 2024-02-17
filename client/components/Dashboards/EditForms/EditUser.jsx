@@ -35,6 +35,13 @@ const EditUser = () => {
             console.error(error)
         }
     }
+
+    const populateForm = (event) => {
+        event.preventDefault();
+        setUsername(userData.username);
+        setEmail(userData.email);
+    }
+
     if (error) {
         return <div>Error</div>
     }
@@ -53,11 +60,15 @@ const EditUser = () => {
                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
                     Update Your Account:
                 </Typography>
+                <Typography textAlign="center">
+                    <button onClick={populateForm} className="auth-button">
+                        Populate Form
+                    </button>
+                </Typography>
                 <form onSubmit={handleSubmit}>
                     <Stack direction="column">
                         <TextField
                             label="Update Username"
-                            placeholder={userData.username}
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
                             size="small"
@@ -66,7 +77,6 @@ const EditUser = () => {
                         />
                         <TextField
                             label="Update E-mail"
-                            placeholder={userData.email}
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
                             size="small"
@@ -108,6 +118,9 @@ const EditUser = () => {
                             type="submit"
                             className="auth-button">
                             Update
+                        </button>
+                        <button className="admin-button" onClick={() => navigate("/account")}>
+                            Cancel
                         </button>
                     </Stack>
                 </form>
