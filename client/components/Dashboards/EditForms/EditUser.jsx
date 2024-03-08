@@ -61,7 +61,7 @@ const EditUser = () => {
                     Update Your Account:
                 </Typography>
                 <Typography textAlign="center">
-                    <button onClick={populateForm} className="auth-button">
+                    <button onClick={populateForm} className="auth-button" style={{ marginLeft: 0, marginRight: 0 }}>
                         Populate Form
                     </button>
                 </Typography>
@@ -114,14 +114,19 @@ const EditUser = () => {
                                     <Alert severity="error"> Passwords do not match </Alert> : null
                             }
                         />
-                        <button
-                            type="submit"
-                            className="auth-button">
-                            Update
-                        </button>
-                        <button className="admin-button" onClick={() => navigate("/account")}>
-                            Cancel
-                        </button>
+                        <Typography textAlign="center">
+                            <button
+                                type="submit"
+                                className="auth-button"
+                                style={{ width: 150, marginLeft: 0, marginRight: 0 }}>
+                                Update
+                            </button>
+                        </Typography>
+                        <Typography textAlign="center">
+                            <button className="admin-button" onClick={() => navigate("/account")} style={{ width: 100 }}>
+                                Cancel
+                            </button>
+                        </Typography>
                     </Stack>
                 </form>
             </Card>
