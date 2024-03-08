@@ -56,12 +56,13 @@ const EditUser = () => {
             transition={{ duration: 0.5, ease: "easeIn" }}>
             <Card
                 className="auth-form"
-                elevation={10}>
+                elevation={10}
+                sx={{ mb: 10}}>
                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
                     Update Your Account:
                 </Typography>
-                <Typography textAlign="center">
-                    <button onClick={populateForm} className="auth-button" style={{ marginLeft: 0, marginRight: 0 }}>
+                <Typography textAlign="center" sx={{mb: 1.5}}>
+                    <button onClick={populateForm} className="blue-button">
                         Populate Form
                     </button>
                 </Typography>
@@ -114,11 +115,10 @@ const EditUser = () => {
                                     <Alert severity="error"> Passwords do not match </Alert> : null
                             }
                         />
-                        <Typography textAlign="center">
+                        <Typography textAlign="center" sx={{mt: 1}}>
                             <button
                                 type="submit"
-                                className="auth-button"
-                                style={{ width: 150, marginLeft: 0, marginRight: 0 }}>
+                                className="blue-button">
                                 Update
                             </button>
                         </Typography>

@@ -42,7 +42,7 @@ const DesktopAdminDashboard = () => {
                     <Card
                         className="dashboard-background"
                         elevation={10}
-                        sx={{ mr: 10}}>
+                        sx={{ mr: 10, mb: 10}}>
                         <DesktopAddEquipment />
                         <DesktopAdminMapEquip />
                         <Stack direction="row">

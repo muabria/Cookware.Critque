@@ -47,113 +47,115 @@ const DesktopSingleEquipment = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: "easeIn" }}>
-                <Grid container>
-                    <Grid item xs={8}>
-                        <Card
-                            key={data.id}
-                            sx={{ mt: 5, mx: 2, p: 2, backgroundColor: "#b6d6d4" }}>
+            <Grid container>
+                <Grid item xs={8}>
+                    <Card
+                        key={data.id}
+                        sx={{ mt: 5, mx: 2, p: 2, backgroundColor: "#b6d6d4" }}>
+                        <Stack direction="column">
                             <Stack direction="column">
-                                <Stack direction="column">
-                                    <Typography variant="h3" sx={{ color: "#205375" }}>
-                                        {data.name}
-                                    </Typography>
-                                    <Box sx={{ my: 1, p: 1 }}>
-                                        <Stack direction="row">
-                                            <Typography sx={{ color: "#205375", fontSize: "30px" }}>
-                                                Average Rating:
-                                            </Typography>
-                                            <Rating
-                                                readOnly={true}
-                                                value={avgRating}
-                                                sx={{ alignContent: "center", m: 1 }}
-                                            />
-                                        </Stack>
-                                    </Box>
-                                </Stack>
-                                <Card sx={{ m: 1, p: 3 }}>
-                                    <AspectRatio objectFit="contain" >
-                                        <img
-                                            src={data.image}
-                                            alt={data.name}
-                                            width={200} />
-                                    </AspectRatio>
-                                </Card>
-                                <Stack direction="row">
-                                    <Card sx={{ m: 1 }}>
-                                        <Typography sx={{ color: "#205375", p: 1 }}>
-                                            <b>Brand:</b> {data.brand}
+                                <Typography variant="h3" sx={{ color: "#205375" }}>
+                                    {data.name}
+                                </Typography>
+                                <Box sx={{ my: 1, p: 1 }}>
+                                    <Stack direction="row">
+                                        <Typography sx={{ color: "#205375", fontSize: "30px" }}>
+                                            Average Rating:
                                         </Typography>
-                                    </Card>
-                                    <Card sx={{ m: 1 }}>
-                                        <Typography sx={{ color: "#205375", p: 1 }}>
-                                            <b>Price:</b> ${data.priceRating}
-                                        </Typography>
-                                    </Card>
-                                    <Card sx={{ m: 1 }}>
-                                        <Typography sx={{ color: "#205375", p: 1 }}>
-                                            <a href={data.purchaseLink} target="_blank">Buy it here</a>
-                                        </Typography>
-                                    </Card>
-                                </Stack>
+                                        <Rating
+                                            readOnly={true}
+                                            value={avgRating}
+                                            sx={{ alignContent: "center", m: 1 }}
+                                        />
+                                    </Stack>
+                                </Box>
+                            </Stack>
+                            <Card sx={{ m: 1, p: 3 }}>
+                                <AspectRatio objectFit="contain" >
+                                    <img
+                                        src={data.image}
+                                        alt={data.name}
+                                        width={200} />
+                                </AspectRatio>
+                            </Card>
+                            <Stack direction="row">
                                 <Card sx={{ m: 1 }}>
                                     <Typography sx={{ color: "#205375", p: 1 }}>
-                                        <b>Description:</b> {data.description}
+                                        <b>Brand:</b> {data.brand}
+                                    </Typography>
+                                </Card>
+                                <Card sx={{ m: 1 }}>
+                                    <Typography sx={{ color: "#205375", p: 1 }}>
+                                        <b>Price:</b> ${data.priceRating}
+                                    </Typography>
+                                </Card>
+                                <Card sx={{ m: 1 }}>
+                                    <Typography sx={{ color: "#205375", p: 1 }}>
+                                        <a href={data.purchaseLink} target="_blank">Buy it here</a>
                                     </Typography>
                                 </Card>
                             </Stack>
-                        </Card>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Card sx={{ mt: 5, mx: 2, backgroundColor: "#82C4C1", p: 2 }}>
-                            <Typography variant="h4" sx={{ textAlign: "center", color: "#205375" }}>
-                                Reviews:
-                            </Typography>
-                            {token &&
-                                <Link to="/new_review">
-                                    <button className="critique-button">
+                            <Card sx={{ m: 1 }}>
+                                <Typography sx={{ color: "#205375", p: 1 }}>
+                                    <b>Description:</b> {data.description}
+                                </Typography>
+                            </Card>
+                        </Stack>
+                    </Card>
+                </Grid>
+                <Grid item xs={4}>
+                    <Card sx={{ mt: 5, mx: 2, backgroundColor: "#82C4C1", p: 2 }}>
+                        <Typography variant="h4" sx={{ textAlign: "center", color: "#205375" }}>
+                            Reviews:
+                        </Typography>
+                        {token &&
+                            <Link to="/new_review">
+                                <Typography textAlign="center">
+                                    <button className="admin-button" style={{ width: 150, marginTop: 5 }}>
                                         Add a Review
                                     </button>
-                                </Link>
-                            }
-                            {reviewData && reviewData.map((review) => (
-                                <Card key={review.id} sx={{ m: 1, p: 1 }}>
-                                    <Stack direction="column">
-                                        <Link to={`/review/${review.id}`}>
-                                            <Button sx={{ textTransform: "none", color: "white" }}>
-                                                <Typography variant="h5" sx={{ color: "#205375" }}>
-                                                    {review.title}
-                                                </Typography>
-                                            </Button>
-                                        </Link>
-                                        <Rating
-                                            readOnly={true}
-                                            value={review.rating}
-                                            size="small"
-                                            sx={{ alignContent: "center", m: 1 }}
-                                        />
-                                        <Typography sx={{ color: "#205375" }}>
-                                            {review.content}
-                                        </Typography>
-                                        <ProvideUsername userId={review.userId} />
-                                    </Stack>
-                                </Card>
-                            ))}
-                        </Card>
-                    </Grid>
+                                </Typography>
+                            </Link>
+                        }
+                        {reviewData && reviewData.map((review) => (
+                            <Card key={review.id} sx={{ m: 1, p: 1 }}>
+                                <Stack direction="column">
+                                    <Link to={`/review/${review.id}`}>
+                                        <Button sx={{ textTransform: "none", color: "white" }}>
+                                            <Typography variant="h5" sx={{ color: "#205375" }}>
+                                                {review.title}
+                                            </Typography>
+                                        </Button>
+                                    </Link>
+                                    <Rating
+                                        readOnly={true}
+                                        value={review.rating}
+                                        size="small"
+                                        sx={{ alignContent: "center", m: 1 }}
+                                    />
+                                    <Typography sx={{ color: "#205375" }}>
+                                        {review.content}
+                                    </Typography>
+                                    <ProvideUsername userId={review.userId} />
+                                </Stack>
+                            </Card>
+                        ))}
+                    </Card>
                 </Grid>
-                {!userData || userData.isAdmin === false
-                    ? //If not admin.... 
-                    <div>
-                    </div>
-                    : //If admin...
-                    <div>
-                        <Link to={`/edit_equipment/${data.id}`} >
-                            <Button sx={{ textTransform: "none", }}>
-                                Edit Equipment
-                            </Button>
-                        </Link>
-                    </div>
-                }
+            </Grid>
+            {!userData || userData.isAdmin === false
+                ? //If not admin.... 
+                <div>
+                </div>
+                : //If admin...
+                <div>
+                    <Link to={`/edit_equipment/${data.id}`} >
+                        <Button sx={{ textTransform: "none", }}>
+                            Edit Equipment
+                        </Button>
+                    </Link>
+                </div>
+            }
         </motion.div>
     )
 }

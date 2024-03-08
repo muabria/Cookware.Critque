@@ -82,6 +82,20 @@ html {
   box-shadow: 3px 3px 3px #02011b;
 }
 
+.blue-button {
+    align-items: center;
+    padding: 15px;
+    width: 150px;
+    font-size: 18px;
+    border-radius: 50px;
+    border: none;
+    color: #E9E8E8;
+    background-image: linear-gradient(to left bottom, #9efef9, #85e6e6, #6ccfd3, #53b8c1, #39a1ae, #2c919d, #1f818c, #10717b, #146369, #165658, #174949, #163c3a);
+    background-size: 400%;
+    transition: 0.5s;
+    box-shadow: 3px 3px 3px #02011b;
+  }
+
 .auth-button:hover {
   cursor: pointer;
   transition: .5s;
@@ -266,6 +280,21 @@ html {
   color: #0a0600;
   box-shadow: 3px 3px 3px #1b1701;
 }
+
+.admin-button {
+    align-items: center;
+    margin: 3%;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 50px;
+    border: none;
+    color: #E9E8E8;
+    background-image: linear-gradient(to left bottom, #fff5ca, #fff1ae, #ffed91, #ffe973, #ffe552, #fcdd41, #f9d62f, #f6ce14, #eec11c, #e5b523, #dca927, #d29d2b);
+    background-size: 400%;
+    transition: 0.5s;
+    color: #0a0600;
+    box-shadow: 3px 3px 3px #1b1701;
+  }
 
 .admin-button:hover {
   cursor: pointer;

@@ -126,11 +126,13 @@ const DesktopRegister = () => {
                                 password && secondPassword && password !== secondPassword ?
                                     <Alert severity="error"> Passwords do not match </Alert> : null
                             } />
-                        <button
-                            className="auth-button"
-                            type="submit">
-                            Sign Up
-                        </button>
+                        <Typography textAlign="center">
+                            <button
+                                className="blue-button"
+                                type="submit">
+                                Sign Up
+                            </button>
+                        </Typography>
                         <Typography
                             sx={{ mt: 5, textAlign: "center", color: "#205375" }}>
                             Already have an account?

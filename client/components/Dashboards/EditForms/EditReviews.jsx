@@ -65,14 +65,16 @@ const EditReviews = () => {
 
                 <Grid item xs={8}>
                     <form onSubmit={handleSubmit}>
-                        <Card sx={{ backgroundColor: "#D9E4DD", p: 5 }}>
-                            <Stack direction="row">
-                                <Typography variant="h4" sx={{ color: "#205375", p: 1 }}>
-                                    Edit the review
+                        <Card elevation={10} sx={{ backgroundColor: "#D9E4DD", p: 5, mb: 10 }}>
+                            <Stack direction="column">
+                                <Typography variant="h4" sx={{ color: "#205375", p: 1, textAlign: "center" }}>
+                                    Edit the Review
                                 </Typography>
-                                <Button onClick={populateForm} variant="outlined" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 1, p: 1 }}>
-                                    Populate Form
-                                </Button>
+                                <Typography textAlign="center" sx={{mb: 1.5}}>
+                                    <button onClick={populateForm} className="blue-button">
+                                        Populate Form
+                                    </button>
+                                </Typography>
                             </Stack>
                             {/* <-----------------TITLE TEXTFIELD------------------> */}
                             <Stack direction="column">
@@ -110,16 +112,20 @@ const EditReviews = () => {
                                     }
                                 />
                             </Stack>
-                            <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
-                                Save Changes
-                            </Button>
-                            <Button
-                                onClick={() => navigate("/account")}
-                                sx={{ textTransform: "none", backgroundColor: "#D7E462", color: "black", mx: 3, p: 1 }}>
-                                <Typography>
-                                    Cancel
+                            <Stack direction="column">
+                                <Typography textAlign="center" sx={{mt: 1}}>
+                                    <button
+                                        type="submit"
+                                        className="blue-button">
+                                        Update
+                                    </button>
                                 </Typography>
-                            </Button>
+                                <Typography textAlign="center">
+                                    <button className="admin-button" onClick={() => navigate("/account")} style={{ width: 100 }}>
+                                        Cancel
+                                    </button>
+                                </Typography>
+                            </Stack>
                         </Card>
                     </form>
                 </Grid>
