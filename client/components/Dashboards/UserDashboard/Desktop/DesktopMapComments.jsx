@@ -1,5 +1,5 @@
 import Alert from "@mui/material/Alert";
-import Box from "@mui/material/Box"
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack"
@@ -43,7 +43,7 @@ const DesktopMapComments = () => {
                     My Comments:
                 </Typography>
                 <Box sx={{ backgroundColor: "#EEF5FF" }}>
-                    <Link to="/posts">
+                    <Link to="/explore">
                         <Typography textAlign="center">
                             <Button
                                 sx={{
@@ -66,7 +66,7 @@ const DesktopMapComments = () => {
                     <Card
                         key={comment.id}
                         elevation={10}
-                        sx={{ m: 1, p: 2 }}>
+                        sx={{ m: 1, p: 1.5 }}>
                         <Typography
                             sx={{ textAlign: "center", color: "#205375" }}>
                             {comment.content}
@@ -74,20 +74,20 @@ const DesktopMapComments = () => {
                         <Stack direction="row">
                             <Button
                                 variant="outlined"
-                                sx={{ m: 1 }}>
+                                sx={{ my: 1, mx: 0.5}}>
                                 <PreviewIcon />
                             </Button>
                             <Button
                                 onClick={() => setEdit(comment.id)}
                                 variant="outlined"
-                                sx={{ m: 1 }}>
+                                sx={{ my: 1, mx: 0.5 }}>
                                 <EditNoteIcon />
                             </Button>
                             <Button
                                 onClick={() => setAlert(comment.id)}
                                 variant="outlined"
                                 color="error"
-                                sx={{ m: 1 }}>
+                                sx={{ my: 1, mx: 0.5 }}>
                                 <DeleteForeverSharpIcon />
                             </Button>
                         </Stack>

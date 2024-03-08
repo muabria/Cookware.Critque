@@ -248,7 +248,7 @@ html {
 .dash-critique-button {
   align-items: center;
   margin: 3%;
-  padding: 20px;
+  padding: 15px;
   font-size: 18px;
   border-radius: 50px;
   border: none;
@@ -280,21 +280,6 @@ html {
   color: #0a0600;
   box-shadow: 3px 3px 3px #1b1701;
 }
-
-.admin-button {
-    align-items: center;
-    margin: 3%;
-    padding: 15px;
-    font-size: 18px;
-    border-radius: 50px;
-    border: none;
-    color: #E9E8E8;
-    background-image: linear-gradient(to left bottom, #fff5ca, #fff1ae, #ffed91, #ffe973, #ffe552, #fcdd41, #f9d62f, #f6ce14, #eec11c, #e5b523, #dca927, #d29d2b);
-    background-size: 400%;
-    transition: 0.5s;
-    color: #0a0600;
-    box-shadow: 3px 3px 3px #1b1701;
-  }
 
 .admin-button:hover {
   cursor: pointer;
