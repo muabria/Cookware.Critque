@@ -27,7 +27,7 @@ const EditReviews = () => {
     const { data: reviewData, error: reviewError, isLoading: reviewIsLoading } = useGetSingleReviewQuery(id);
 
     const [patchReview, { data, error, isLoading }] = usePatchReviewMutation();
-    
+
     if (error) {
         return <div>Error</div>
     }
@@ -46,11 +46,18 @@ const EditReviews = () => {
         }
     }
 
+    const populateForm = (event) => {
+        event.preventDefault();
+        setTitle(reviewData.title);
+        setContent(reviewData.content);
+        setRating(reviewData.rating);
+    }
+
     return reviewData && (
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeIn" }}>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeIn" }}>
             <Grid container>
                 <Grid item xs={2}>
 
@@ -58,10 +65,15 @@ const EditReviews = () => {
 
                 <Grid item xs={8}>
                     <form onSubmit={handleSubmit}>
-                        <Card sx={{ backgroundColor: "#D9E4DD", p: 5 }}>
-                            <Stack direction="row">
-                                <Typography variant="h5" sx={{ color: "#205375", p: 1 }}>
-                                    Edit the review
+                        <Card elevation={10} sx={{ backgroundColor: "#D9E4DD", p: 5, mb: 10 }}>
+                            <Stack direction="column">
+                                <Typography variant="h4" sx={{ color: "#205375", p: 1, textAlign: "center" }}>
+                                    Edit the Review
+                                </Typography>
+                                <Typography textAlign="center" sx={{mb: 1.5}}>
+                                    <button onClick={populateForm} className="blue-button">
+                                        Populate Form
+                                    </button>
                                 </Typography>
                             </Stack>
                             {/* <-----------------TITLE TEXTFIELD------------------> */}
@@ -100,9 +112,20 @@ const EditReviews = () => {
                                     }
                                 />
                             </Stack>
-                            <Button type="submit" sx={{ textTransform: "none", backgroundColor: "#088395", color: "white", m: 2, p: 1 }}>
-                                Save Changes
-                            </Button>
+                            <Stack direction="column">
+                                <Typography textAlign="center" sx={{mt: 1}}>
+                                    <button
+                                        type="submit"
+                                        className="blue-button">
+                                        Update
+                                    </button>
+                                </Typography>
+                                <Typography textAlign="center">
+                                    <button className="admin-button" onClick={() => navigate("/account")} style={{ width: 100 }}>
+                                        Cancel
+                                    </button>
+                                </Typography>
+                            </Stack>
                         </Card>
                     </form>
                 </Grid>

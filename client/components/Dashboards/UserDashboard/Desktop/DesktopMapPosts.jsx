@@ -2,6 +2,7 @@ import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid"
+import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating"
 import Stack from "@mui/material/Stack"
 import Typography from '@mui/material/Typography';
@@ -42,6 +43,26 @@ const DesktopMapPosts = () => {
                     <Typography variant="h5" sx={{ textAlign: "center", color: "#205375" }}>
                         My Reviews:
                     </Typography>
+                    <Box sx={{ backgroundColor: "#EEF5FF" }}>
+                    <Link to="/new_review">
+                        <Typography textAlign="center">
+                            <Button
+                                sx={{
+                                    textTransform: "none",
+                                    backgroundColor: "transparent",
+                                    color: "#088395",
+                                    m: 1, px: 5, py: 1,
+                                    border: 1,
+                                    borderColor: "#088395",
+                                    borderBottom: 3,
+                                    borderRight: 3,
+                                    borderRadius: 2
+                                }}>
+                                Add a review
+                            </Button>
+                        </Typography>
+                    </Link>
+                </Box>
                     {data && data.map((review) => (
                         <Card 
                         key={review.id} 

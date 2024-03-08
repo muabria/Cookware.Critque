@@ -7,8 +7,6 @@ import Grid from "@mui/material/Grid";
 
 import { motion } from "framer-motion";
 
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
 import DesktopMapComments from "./DesktopMapComments";
 import DesktopMapPosts from "./DesktopMapPosts";
 
@@ -45,29 +43,27 @@ const DesktopUserDashboard = () => {
                     <Grid item xs={2}>
                         <Stack direction="column">
                             <Box sx={{ my: 5 }}>
-                            {data.isAdmin === true ?
+                                {data.isAdmin === true ?
                                     <Link to="/admin_dashboard">
-                                        <button className="admin-button">
+                                        <button className="admin-button" style={{ width: "90%" }}>
                                             Admin Dashboard
                                         </button>
                                     </Link>
                                     :
                                     <Link to="/dummy_admin">
-                                        <button className="admin-button">
+                                        <button className="admin-button" style={{ width: "90%" }}>
                                             Admin Dashboard
                                         </button>
                                     </Link>
                                 }
                                 <Link to="/account/edit" style={{ textDecoration: "none" }}>
-                                    <button className="dash-critique-button">
-                                    <ManageAccountsIcon sx={{ color:"white" }} /> Edit Account
+                                    <button className="dash-critique-button" style={{ width: "90%" }}>
+                                        Edit Account
                                     </button>
                                 </Link>
-                                <Link to="/new_review">
-                                    <button className="dash-critique-button">
-                                        Make a Citique
-                                    </button>
-                                </Link>
+                                <button className="dash-critique-button" style={{ width: "90%" }} onClick={async () => { await logout(); navigate("/"); }}>
+                                    Logout
+                                </button>
                             </Box>
                         </Stack>
                     </Grid>
@@ -80,7 +76,7 @@ const DesktopUserDashboard = () => {
                         <Card
                             className="dashboard-background"
                             elevation={10}
-                            sx={{ mr: 5 }}>
+                            sx={{ mr: 5, mb: 10 }}>
                             <Typography variant="h6" sx={{ color: "#205375", mx: 2, mt: 1 }}>
                                 Email: {data.email}
                             </Typography>

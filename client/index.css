@@ -82,6 +82,20 @@ html {
   box-shadow: 3px 3px 3px #02011b;
 }
 
+.blue-button {
+    align-items: center;
+    padding: 15px;
+    width: 150px;
+    font-size: 18px;
+    border-radius: 50px;
+    border: none;
+    color: #E9E8E8;
+    background-image: linear-gradient(to left bottom, #9efef9, #85e6e6, #6ccfd3, #53b8c1, #39a1ae, #2c919d, #1f818c, #10717b, #146369, #165658, #174949, #163c3a);
+    background-size: 400%;
+    transition: 0.5s;
+    box-shadow: 3px 3px 3px #02011b;
+  }
+
 .auth-button:hover {
   cursor: pointer;
   transition: .5s;
@@ -234,7 +248,7 @@ html {
 .dash-critique-button {
   align-items: center;
   margin: 3%;
-  padding: 20px;
+  padding: 15px;
   font-size: 18px;
   border-radius: 50px;
   border: none;

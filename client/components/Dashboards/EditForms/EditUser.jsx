@@ -35,6 +35,13 @@ const EditUser = () => {
             console.error(error)
         }
     }
+
+    const populateForm = (event) => {
+        event.preventDefault();
+        setUsername(userData.username);
+        setEmail(userData.email);
+    }
+
     if (error) {
         return <div>Error</div>
     }
@@ -49,15 +56,20 @@ const EditUser = () => {
             transition={{ duration: 0.5, ease: "easeIn" }}>
             <Card
                 className="auth-form"
-                elevation={10}>
+                elevation={10}
+                sx={{ mb: 10}}>
                 <Typography variant="h4" sx={{ textAlign: "center", color: "#205375", p: 1 }}>
                     Update Your Account:
+                </Typography>
+                <Typography textAlign="center" sx={{mb: 1.5}}>
+                    <button onClick={populateForm} className="blue-button">
+                        Populate Form
+                    </button>
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     <Stack direction="column">
                         <TextField
                             label="Update Username"
-                            placeholder={userData.username}
                             value={username}
                             onChange={(event) => setUsername(event.target.value)}
                             size="small"
@@ -66,7 +78,6 @@ const EditUser = () => {
                         />
                         <TextField
                             label="Update E-mail"
-                            placeholder={userData.email}
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
                             size="small"
@@ -104,11 +115,18 @@ const EditUser = () => {
                                     <Alert severity="error"> Passwords do not match </Alert> : null
                             }
                         />
-                        <button
-                            type="submit"
-                            className="auth-button">
-                            Update
-                        </button>
+                        <Typography textAlign="center" sx={{mt: 1}}>
+                            <button
+                                type="submit"
+                                className="blue-button">
+                                Update
+                            </button>
+                        </Typography>
+                        <Typography textAlign="center">
+                            <button className="admin-button" onClick={() => navigate("/account")} style={{ width: 100 }}>
+                                Cancel
+                            </button>
+                        </Typography>
                     </Stack>
                 </form>
             </Card>
