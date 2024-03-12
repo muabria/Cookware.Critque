@@ -13,6 +13,7 @@ import DesktopMapAllUsers from "./components/DesktopMapUsers";
 import DesktopAddEquipment from "./components/DesktopAddEquipment";
 import DesktopAdminMapPosts from "./components/DesktopAdminMapPosts";
 import DesktopAdminMapEquip from "./components/DesktopAdminMapEquip";
+import DesktopAdminMapComm from "./components/DesktopAdminMapComm";
 
 const DesktopAdminDashboard = () => {
 
@@ -46,11 +47,14 @@ const DesktopAdminDashboard = () => {
                         <DesktopAddEquipment />
                         <DesktopAdminMapEquip />
                         <Stack direction="row">
-                            <Grid item xs={6}>
+                            <Grid item xs={4}>
                                 <DesktopMapAllUsers />
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={5}>
                                 <DesktopAdminMapPosts />
+                            </Grid>
+                            <Grid item xs={3}>
+                                <DesktopAdminMapComm />
                             </Grid>
                         </Stack>
                     </Card>

@@ -33,12 +33,12 @@ const DesktopAdminMapComm = () => {
                 </Typography>
                 {data && data.map((comment) => (
                     <Card
-                        key={review.id}
+                        key={comment.id}
                         sx={{ m: 1, p: 2 }}
                         elevation={10}>
                         <Grid container>
                             <Grid item xs={8}>
-                                <Typography>
+                                <Typography sx={{pt: 1.5}}>
                                     {comment.content}
                                 </Typography>
                             </Grid>
@@ -67,13 +67,13 @@ const DesktopAdminMapComm = () => {
                                     variant="outlined"
                                     color="error"
                                     sx={{ textTransform: "none", m: 1 }}>
-                                    Yes, delete this review.
+                                    Yes, delete this comment.
                                 </Button>
                                 <Button
                                     variant="outlined"
                                     onClick={() => setAlert(false)}
                                     sx={{ textTransform: "none", m: 1 }}>
-                                    No, keep this review.
+                                    No, keep this comment.
                                 </Button>
                             </Stack>
                         </Alert>
