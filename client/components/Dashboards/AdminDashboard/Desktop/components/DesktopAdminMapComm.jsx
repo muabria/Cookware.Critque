@@ -11,6 +11,7 @@ import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useGetCommentsQuery, useDeleteUsersCommentMutation } from "../../../../../redux/api";
+import ProvideUsername from "../../../../SingleReview/ProvideUsername";
 
 const DesktopAdminMapComm = () => {
     const [alert, setAlert] = useState(false);
@@ -38,9 +39,10 @@ const DesktopAdminMapComm = () => {
                         elevation={10}>
                         <Grid container>
                             <Grid item xs={8}>
-                                <Typography sx={{pt: 1.5}}>
+                                <Typography sx={{py: 0.5}}>
                                     {comment.content}
                                 </Typography>
+                                <ProvideUsername userId={comment.userId} />
                             </Grid>
                             <Grid item xs={4}>
                                 <Link to={`/review/${comment.postId}`}>

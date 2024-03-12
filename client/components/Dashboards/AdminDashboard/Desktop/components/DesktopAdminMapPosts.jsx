@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { useGetReviewsQuery, useDeleteReviewForUserMutation } from "../../../../../redux/api";
+import ProvideUsername from "../../../../SingleReview/ProvideUsername";
 
 const DesktopAdminMapPosts = () => {
     const [alert, setAlert] = useState(false);
@@ -57,6 +58,7 @@ const DesktopAdminMapPosts = () => {
                                 </Typography>
                             </Grid>
                             <Grid item xs={4}>
+                                <ProvideUsername userId={review.userId}/>
                                 <Link to={`/review/${review.id}`}>
                                     <Button
                                         variant="outlined"
@@ -71,6 +73,7 @@ const DesktopAdminMapPosts = () => {
                                     sx={{ textTransform: "none", m: 1 }}>
                                     <DeleteForeverSharpIcon />
                                 </Button>
+                                
                             </Grid>
                         </Grid>
                         {alert === review.id && <Alert severity="warning">
