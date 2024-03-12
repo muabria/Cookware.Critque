@@ -186,7 +186,7 @@ const api = createApi({
         //<---------------------------PATCH--------------------------->
         //PATCH REVIEW
         patchReview: builder.mutation({
-            query: ({ id, title, content, rating  }) => ({
+            query: ({ id, title, content, rating }) => ({
                 url: `/api/review/${id}`,
                 method: 'PATCH',
                 body: { title, content, rating },
@@ -267,7 +267,16 @@ const api = createApi({
                 body: post
             }),
             invalidatesTags: ["Reviews"]
-    }),
+        }),
+        //DELETE USER'S COMMENT
+        deleteUsersComment: builder.mutation({
+            query: (id, comment) => ({
+                url: `/api/admin/comment/${id}`,
+                method: 'DELETE',
+                body: comment
+            }),
+            invalidatesTags: ["Comments"]
+        }),
         //DELETE EQUIPMENT
         deleteEquipment: builder.mutation({
             query: (id, equipment) => ({
@@ -329,6 +338,7 @@ export const {
     useGetAllUsersQuery,
     useDeleteUserMutation,
     useDeleteUsersPostMutation,
+    useDeleteUsersCommentMutation,
     useDeleteEquipmentMutation,
     usePatchToggleAdminMutation,
 } = api
