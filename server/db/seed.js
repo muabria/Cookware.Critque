@@ -1,4 +1,5 @@
 // TODO: seed the DB using Prisma
+const {faker} = require('@faker-js/faker')
 const prisma = require("./client");
 const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
@@ -557,6 +558,17 @@ async function seed() {
             },
 
         })
+
+        for (let i = 0; i < 10; i++) {
+            let entry = await prisma.user.create({
+                data: {
+                    username: faker.internet.userName(),
+                    email: faker.internet.email(),
+                    password: bcrypt.hashSync(faker.internet.password({length: 10}), SALT_COUNT),
+                    isAdmin: faker.datatype.boolean({probability: 0.2})
+                }
+            })
+        }
 
         //Post entries
 
