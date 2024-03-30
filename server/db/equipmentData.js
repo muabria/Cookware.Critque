@@ -1,6 +1,6 @@
 const equipment = [
     {
-        name: "Cork Trivet",
+        name: "Cork Trivet", // 0
         description: "A 7-inch circle of cork that protects counter and other surfaces from hot, cold, and wet items. Ideal for hot pans and water stains.",
         image: "https://m.media-amazon.com/images/I/41TDVYs3YsL._AC_US100_.jpg",
         category: { connect: { id: 0 } },
@@ -9,7 +9,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Chef Kitchen Knife",
+        name: "Chef Kitchen Knife", // 1
         description: " A versatile knife for chopping, slicing, and dicing.",
         image: "https://assets.wfcdn.com/im/72291186/resize-h445%5Ecompr-r85/2431/243198643/AIRPJ+21+Piece+Stainless+Steel+Knife+Block+Set.jpg",
         category: { connect: { id: 0 } },
@@ -18,7 +18,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Cutting Board",
+        name: "Cutting Board", // 2
         description: "A non-porous surface for protecting your countertops and knives.",
         image: "https://www.ikea.com/us/en/images/products/proppmaett-cutting-board-beech__0523429_pe643788_s5.jpg?f=xl",
         category: { connect: { id: 0 } },
@@ -27,7 +27,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Mixing Bowl",
+        name: "Mixing Bowl", // 3
         description: "Various sizes for mixing ingredients, whisking, and marinating",
         image: "https://i.ebayimg.com/images/g/kQUAAOSwU1Rk036h/s-l1600.jpg",
         category: { connect: { id: 0 } },
@@ -36,7 +36,7 @@ const equipment = [
         priceRating: 4
     },
     {
-        name: "Measuring Cup",
+        name: "Measuring Cup", // 4
         description: "Accurate measuring is essential for successful cooking.",
         image: "https://m.media-amazon.com/images/I/71LQ0iJB9OL._AC_SL1500_.jpg",
         category: { connect: { id: 0 } },
@@ -45,7 +45,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Dobie",
+        name: "Dobie", // 5
         description: "A cleaning sponge with a little abrasion to get food off.",
         image: "https://m.media-amazon.com/images/I/71WMDYKl1PL._AC_SX679_.jpg",
         category: { connect: { id: 2 } },
@@ -54,7 +54,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Bon Ami, Powder Cleanser",
+        name: "Bon Ami, Powder Cleanser", // 6
         description: "Bon Ami - All Natural Powder Cleanser Kitchen & Bath",
         image: "https://m.media-amazon.com/images/I/61Zmt9jQX+L._AC_SL1000_.jpg",
         category: { connect: { id: 2 } },
@@ -63,7 +63,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Dish Soap + Sponge",
+        name: "Dish Soap + Sponge", // 7
         description: "For cleaning dishes, utensils, and cookware.",
         image: "https://m.media-amazon.com/images/I/71YqdIu6PAL._AC_SL1500_.jpg",
         category: { connect: { id: 2 } },
@@ -72,7 +72,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Dish Towels",
+        name: "Dish Towels", // 8
         description: "For drying dishes and keeping your kitchen clean.",
         image: "https://m.media-amazon.com/images/I/71-tUVBNGfL._AC_SL1500_.jpg",
         category: { connect: { id: 2 } },
@@ -81,7 +81,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Rubber Gloves",
+        name: "Rubber Gloves", // 9
         description: "To protect your hands from hot water and harsh chemicals.",
         image: "https://m.media-amazon.com/images/I/61Td8R2fzIL._AC_SX679_.jpg",
         category: { connect: { id: 2 } },
@@ -90,7 +90,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Trash Can",
+        name: "Trash Can",  // 10
         description: "For disposing of food waste and packaging.",
         image: "https://m.media-amazon.com/images/I/61yHuoYNFTL._AC_SL1080_.jpg",
         category: { connect: { id: 2 } },
@@ -99,7 +99,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "All Purpose Cleaner ",
+        name: "All Purpose Cleaner ", // 11
         description: " For cleaning countertops, appliances, and other surfaces.",
         image: "https://m.media-amazon.com/images/I/81S7NjGk8ML._AC_SL1500_.jpg",
         category: { connect: { id: 2 } },
@@ -108,7 +108,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Parchment Paper Liners",
+        name: "Parchment Paper Liners", // 12
         description: "pre-cut 7 inch round air fryer parchment paper liners are suitable for most air fryers on the market and can be used for baking, frying, grilling and so on. ",
         image: "https://m.media-amazon.com/images/I/719evGmaCGL._AC_SL1500_.jpg",
         category: { connect: { id: 1 } },
@@ -117,7 +117,7 @@ const equipment = [
         priceRating: 4
     },
     {
-        name: "Stock Pot",
+        name: "Stock Pot", // 13
         description: "A large pot for boiling water, making stock, and cooking pasta.",
         image: "https://cdn.shopify.com/s/files/1/0024/4137/9915/files/Perfect_Pot_-_Steam.jpg?crop=center&height=1376&v=1665445958&width=1376",
         category: { connect: { id: 1 } },
@@ -126,7 +126,7 @@ const equipment = [
         priceRating: 4
     },
     {
-        name: "Sauté Pan",
+        name: "Sauté Pan", // 14
         description: "A versatile pan for frying, sautéing, and searing.",
         image: "https://cdn.shopify.com/s/files/1/0024/4137/9915/products/AP_Sage_1.png?crop=center&height=1376&v=1691170483&width=1376",
         category: { connect: { id: 1 } },
@@ -135,7 +135,7 @@ const equipment = [
         priceRating: 4
     },
     {
-        name: "Cast Iron Skillet",
+        name: "Cast Iron Skillet", // 15
         description: "Great for browning meat, baking, and cooking cornbread.",
         image: "https://cdn.shopify.com/s/files/1/0024/4137/9915/files/Cast_Iron_Always_Pan_-_Spice.jpg?crop=center&height=1376&v=1665445939&width=1376",
         category: { connect: { id: 1 } },
@@ -144,7 +144,7 @@ const equipment = [
         priceRating: 4
     },
     {
-        name: "Baking Sheet",
+        name: "Baking Sheet", // 16
         description: "For roasting vegetables, baking cookies, and making sheet pan dinners.",
         image: "https://m.media-amazon.com/images/I/91hBA6hLfuL._AC_SL1500_.jpg",
         category: { connect: { id: 1 } },
@@ -153,7 +153,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Mandolin",
+        name: "Mandolin",  // 17
         description: "The Mandolin is a tool usually has a couple of blade options and can slice vegetables as thin as paper. It can also julienne veggies and, with the turn of the mechanism, cut French fry potatoes.",
         image: "https://cdn.cleaneatingmag.com/wp-content/uploads/2015/07/mandoline.jpg?width=730",
         category: { connect: { id: 4 } },
@@ -162,7 +162,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Blender",
+        name: "Blender",  // 18
         description: "You can blend creamy smoothies, craft cocktails, swirl together sorbet and ice cream bases, make sauces, and whip up condiments… You can make breadcrumbs, grind or grate hard cheeses, make salsas, puree soups and baby food.",
         image: "https://m.media-amazon.com/images/I/61Y1g4jMIsL._AC_SL1001_.jpg",
         category: { connect: { id: 4 } },
@@ -171,7 +171,7 @@ const equipment = [
         priceRating: 4.5
     },
     {
-        name: "Hand Blender",
+        name: "Hand Blender", // 19
         description: "Designed for the perfect puree, you can blend everything from smoothies, to milk shakes, soups, sauces and so much more.",
         image: "https://www.kitchenaid.com/is/image/content/dam/global/kitchenaid/countertop-appliance/portable/images/hero-KHBV53IC.tif?$PRODUCT-FEATURE$&fmt=webp-alpha",
         category: { connect: { id: 4 } },
@@ -180,7 +180,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Food Processor",
+        name: "Food Processor", // 20
         description: "It can be used to grind your coffee beans or toasted whole spices for ultimately fresh spice flavors that can be added to your recipes.",
         image: "https://cdn.cleaneatingmag.com/wp-content/uploads/2015/07/spicegrinder.jpg?width=730",
         category: { connect: { id: 4 } },
@@ -189,7 +189,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Juicer",
+        name: "Juicer", // 21
         description: "A juicer is a great tool for squeezing all the basics like lemon, lime, and orange juice when called for in multiple recipes!!",
         image: "https://www.foodandwine.com/thmb/4SOH_P7cWin0hb7tKCGTklia-R4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/Best-Cold-Press-Juicers-Tested-FW-Social-d23056545dd44c33814aecbc32f8bfee.jpg",
         category: { connect: { id: 4 } },
@@ -198,7 +198,7 @@ const equipment = [
         priceRating: 3
     },
     {
-        name: "Curve Handle Pasta Server",
+        name: "Curve Handle Pasta Server", // 22
         description: "Tools are designed to lie flat on the countertop and will not roll, Nylon heads on tools are heat resistant up to 400-Degree Fahrenheit",
         image: "https://m.media-amazon.com/images/I/61GOqhhQiyL._AC_SL1500_.jpg",
         category: { connect: { id: 5 } },
@@ -207,7 +207,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Can Opener",
+        name: "Can Opener", // 23
         description: "For opening canned food.",
         image: "https://cb.scene7.com/is/image/Crate/OXOCanOpenerBlackAVSSS21_VND/$web_pdp_main_carousel_high$/210413142448/oxo-good-grips-can-opener.jpg",
         category: { connect: { id: 5 } },
@@ -216,7 +216,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Garlic Presser",
+        name: "Garlic Presser", // 24
         description: "For mincing garlic quickly and easily.",
         image: "https://www.kroger.com/product/images/thumbnail/front/0064463719119",
         category: { connect: { id: 5 } },
@@ -225,7 +225,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Box Grater",
+        name: "Box Grater", // 25
         description: "For shredding cheese, vegetables, and chocolate.",
         image: "https://m.media-amazon.com/images/I/71ali47MlZL._AC_SL1500_.jpg",
         category: { connect: { id: 5 } },
@@ -234,7 +234,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Whisk",
+        name: "Whisk", // 26
         description: "For whipping cream, beating eggs, and making sauces.",
         image: "https://m.media-amazon.com/images/I/81QiauSTQzL._AC_SL1500_.jpg",
         category: { connect: { id: 5 } },
@@ -243,7 +243,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Kitchen Timer",
+        name: "Kitchen Timer", // 27
         description: "To keep track of cooking times and prevent overcooked dishes.",
         image: "https://m.media-amazon.com/images/I/51budipuuhL._SL1080_.jpg",
         category: { connect: { id: 5 } },
@@ -252,7 +252,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Pantry Shelf/Containers",
+        name: "Pantry Shelf/Containers", // 28
         description: "If you cannot renovate, simply add baskets to the shelves so that you can pull them out to access what is in the back. You can also Purcahse Pantry storage based containers to use as storage for you.",
         image: "https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fit,w_730,h_487/project%20prism%2Fcolor%20search%20archive%2Fa54c4855e6b1c7a66c738fd7be85d7a7b1cb503d",
         category: { connect: { id: 3 } },
@@ -261,7 +261,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Air Tight Container",
+        name: "Air Tight Container", // 29
         description: "For storing dry goods, leftovers, and prepped ingredients.",
         image: "https://m.media-amazon.com/images/I/617clEP1jWS._AC_SL1000_.jpg",
         category: { connect: { id: 3 } },
@@ -270,7 +270,7 @@ const equipment = [
         priceRating: 2
     },
     {
-        name: "Zip Top Bags",
+        name: "Zip Top Bags", // 30
         description: "For freezing food, storing snacks, and marinating",
         image: "https://m.media-amazon.com/images/I/71C03SGUCAL._AC_SL1500_.jpg",
         category: { connect: { id: 3 } },
@@ -279,7 +279,7 @@ const equipment = [
         priceRating: 3
     },
     {
-        name: "Aluminum Foil",
+        name: "Aluminum Foil", // 31
         description: "For wrapping food, covering bowls, and lining baking sheets",
         image: "https://www.rd.com/wp-content/uploads/2021/08/GettyImages-186874895-scaled-e1629406266878.jpg?resize=1536%2C1024",
         category: { connect: { id: 3 } },
@@ -288,7 +288,7 @@ const equipment = [
         priceRating: 1
     },
     {
-        name: "Glass Jars",
+        name: "Glass Jars", // 32
         description: "For storing spices, herbs, and homemade jams.",
         image: "https://cdnimg.webstaurantstore.com/images/products/large/592230/2454581.jpg",
         category: { connect: { id: 3 } },
