@@ -1038,6 +1038,13 @@ for (const userData of data.users) {
         data: userData,
     });
 }
+for (const categoryData of data.categories) {
+    await prisma.category.create({
+        data: {
+            category: categoryData,
+        }
+    })
+}
 
 
         delete mvPass, bmPass, hmPass, kcPass;
