@@ -1,4 +1,4 @@
-const equipment = [
+const equipments = [
     {
         name: "Cork Trivet", // 0
         description: "A 7-inch circle of cork that protects counter and other surfaces from hot, cold, and wet items. Ideal for hot pans and water stains.",
@@ -298,4 +298,4 @@ const equipment = [
     },  
 ]
 
-module.exports = {equipment};
+module.exports = {equipments};

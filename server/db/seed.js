@@ -5,24 +5,24 @@ const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
 const data = require("./seedData.js")
-const equipment = require("./equipmentData.js")
+const equipments = require("./equipmentData.js")
 const posts = require("./postData.js")
-console.log(posts)
+console.log(equipments)
 
-let mvPass = "";
-let bmPass = "";
-let hmPass = "";
-let kcPass = "";
+// let mvPass = "";
+// let bmPass = "";
+// let hmPass = "";
+// let kcPass = "";
 
-async function hash() {
-    mvPass = await bcrypt.hashSync("MyF@vor1te", SALT_COUNT);
-    bmPass = await bcrypt.hashSync("F@ncySh0es", SALT_COUNT);
-    hmPass = await bcrypt.hashSync("Ded1c@tion", SALT_COUNT);
-    kcPass = await bcrypt.hashSync("De$ignCentra1", SALT_COUNT);
-    return (mvPass, bmPass, hmPass, kcPass);
-}
+// async function hash() {
+//     mvPass = await bcrypt.hashSync("MyF@vor1te", SALT_COUNT);
+//     bmPass = await bcrypt.hashSync("F@ncySh0es", SALT_COUNT);
+//     hmPass = await bcrypt.hashSync("Ded1c@tion", SALT_COUNT);
+//     kcPass = await bcrypt.hashSync("De$ignCentra1", SALT_COUNT);
+//     return (mvPass, bmPass, hmPass, kcPass);
+// }
 
-hash();
+// hash();
 
 async function seed() {
     console.log("Seeding the database.");
@@ -1045,7 +1045,12 @@ for (const categoryData of data.categories) {
         }
     })
 }
-
+for (const equipmentData of equipments) {
+    await prisma.equipment.create({
+        data: equipmentData,
+        //include: {category: true}
+    })
+}
 
         delete mvPass, bmPass, hmPass, kcPass;
         console.log("Database is seeded.")
