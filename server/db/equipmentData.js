@@ -1,3 +1,5 @@
+const data = require("./seedData.js")
+
 const equipments = [
     {
         name: "Cork Trivet", // 0
