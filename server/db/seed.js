@@ -3,21 +3,6 @@ const prisma = require("./client");
 const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
-let mvPass = "";
-let bmPass = "";
-let hmPass = "";
-let kcPass = "";
-
-async function hash() {
-    mvPass = await bcrypt.hashSync("MyF@vor1te", SALT_COUNT);
-    bmPass = await bcrypt.hashSync("F@ncySh0es", SALT_COUNT);
-    hmPass = await bcrypt.hashSync("Ded1c@tion", SALT_COUNT);
-    kcPass = await bcrypt.hashSync("De$ignCentra1", SALT_COUNT);
-    return (mvPass, bmPass, hmPass, kcPass);
-}
-
-hash();
-
 async function seed() {
     console.log("Seeding the database.");
     await prisma.comment.deleteMany();
@@ -26,6 +11,7 @@ async function seed() {
     await prisma.equipment.deleteMany();
     await prisma.category.deleteMany();
 
+    const randomUser = Math.floor(Math.random() * 10);
 
     //<-------------------------------- CATEGORIES -------------------------------->
 
@@ -522,7 +508,7 @@ async function seed() {
             data: {
                 username: 'mvandell',
                 email: 'marisavandellos@gmail.com',
-                password: mvPass,
+                password: bcrypt.hashSync("MyF@vor1te", SALT_COUNT),
                 isAdmin: true,
             },
 
@@ -532,7 +518,7 @@ async function seed() {
             data: {
                 username: 'muabria',
                 email: 'email@email.com',
-                password: bmPass.toString(),
+                password: bcrypt.hashSync("F@ncySh0es", SALT_COUNT),
                 isAdmin: true,
             },
 
@@ -542,7 +528,7 @@ async function seed() {
             data: {
                 username: 'mizhenn',
                 email: 'email@email.com',
-                password: hmPass.toString(),
+                password: bcrypt.hashSync("Ded1c@tion", SALT_COUNT),
                 isAdmin: true,
             },
 
@@ -552,11 +538,20 @@ async function seed() {
             data: {
                 username: 'katc336',
                 email: 'email@email.com',
-                password: kcPass.toString(),
+                password: bcrypt.hashSync("De$ignCentra1", SALT_COUNT),
                 isAdmin: true,
             },
 
         })
+
+        for (let i = 0; i < 6; i++) { //fake users
+            users.push({
+                    username: faker.internet.userName(),
+                    email: faker.internet.email(),
+                    password: bcrypt.hashSync(faker.internet.password({length: 10}), SALT_COUNT),
+                    isAdmin: faker.datatype.boolean({probability: 0.2}),
+                })
+        };
 
         //Post entries
 
@@ -564,19 +559,19 @@ async function seed() {
 
         //Comment entries
 
-        // <------ MARISA COMMENTS ------>
+        // <------ TRIVET ------>
 
         const post1 = await prisma.post.create({
             data: {
                 title: "Works great!",
-                content: 'I love this! I put one under everything',
-                rating: 5,
-                user: { connect: { id: marisa.id } },
+                content: "This cork trivet has become a staple in my kitchen for its superb heat resistance and eco-friendly qualities. The cork material is of high quality and provides a sturdy base for hot pots and pans. However, the smaller size of the trivet limits its usability for larger cookware. Overall, I would rate this cork trivet a 3 out of 5 for its durability and eco-friendliness.",
+                rating: 3,
+                user: { connect: { id: randomUser } },
                 equipment: { connect: { id: trivet.id } },
                 comments: {
                     create: {
                         content: 'Keeps my counter from getting water stains from my water pitcher',
-                        user: { connect: { id: marisa.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -586,14 +581,14 @@ async function seed() {
         const post2 = await prisma.post.create({
             data: {
                 title: "Love this!",
-                content: 'I use this so often',
-                rating: 5,
-                user: { connect: { id: marisa.id } },
-                equipment: { connect: { id: blender.id } },
+                content: "I'm loving this cork trivet for its excellent heat resistance and stylish design. It fits perfectly in my kitchen decor and has proven to be a reliable tool for protecting my countertops. The only downside is that the cork material tends to absorb liquids and stains easily, requiring frequent cleaning. Despite this, I would still give this cork trivet a solid 4 out of 5 for its functionality and aesthetics.",
+                rating: 4,
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: trivet.id } },
                 comments: {
                     create: {
                         content: 'definitely buy!',
-                        user: { connect: { id: marisa.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -603,14 +598,14 @@ async function seed() {
         const post3 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
-                content: 'I love this! I am always investing in a set!',
-                rating: 5,
-                user: { connect: { id: marisa.id } },
-                equipment: { connect: { id: glassJar.id } },
+                content: "This cork trivet has been a pleasant addition to my kitchen, providing reliable heat resistance and a sleek design. The eco-friendly nature of cork is a big plus for me, and the trivet's compact size makes it easy to store. However, I've noticed that the cork tends to discolor over time with regular use. Taking this into account, I would rate this cork trivet a 3 out of 5 for its functionality and eco-friendliness.",
+                rating: 3,
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: trivet.id } },
                 comments: {
                     create: {
-                        content: 'I store all my veggies in my jars! I will save my broth, steams, sliced, diced you name it I am storing it!',
-                        user: { connect: { id: marisa.id } },
+                        content: '',
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -620,14 +615,14 @@ async function seed() {
         const post4 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
-                content: 'Got this for my self and no compliants here!',
-                rating: 5,
-                user: { connect: { id: marisa.id } },
-                equipment: { connect: { id: kitchenTimer.id } },
+                content: "I've been using this cork trivet for a while now and have been impressed with its heat resistance and overall durability. The minimalist design blends well with my kitchen decor, and the trivet has held up well to daily use. My only issue is that the cork material can sometimes give off a slight odor, especially when exposed to heat. Despite this, I would still give this cork trivet a 4 out of 5 for its quality and design.",
+                rating: 4,
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: trivet.id } },
                 comments: {
                     create: {
                         content: 'I love this! ',
-                        user: { connect: { id: marisa.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -637,31 +632,31 @@ async function seed() {
         const post5 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
-                content: 'Got this for my self and no compliants here!',
-                rating: 5,
-                user: { connect: { id: marisa.id } },
-                equipment: { connect: { id: chefKnife.id } },
+                content: "This cork trivet has been a game-changer in my kitchen, providing excellent heat resistance and a stylish touch to my countertop. The eco-friendly aspect of cork is a major selling point for me, and the trivet's compact size is perfect for smaller pots and pans. However, the cork material tends to stain easily and requires frequent cleaning to maintain its appearance. Despite this minor inconvenience, I would rate this cork trivet a solid 4 out of 5 for its functionality and aesthetics.",
+                rating: 4,
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: trivet.id } },
                 comments: {
                     create: {
                         content: 'The sets are GORGGG!',
-                        user: { connect: { id: marisa.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
             include: { user: true, equipment: true }
         })
-
+// <------ KNIFE ------>
         const post6 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
-                content: 'You need this!',
+                content: "This chef's knife is perfect for all my cooking needs. The sharp blade cuts through vegetables and meats effortlessly, making meal prep a breeze.",
                 rating: 5,
-                user: { connect: { id: marisa.id } },
-                equipment: { connect: { id: allPurposeCleaner.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: chefKnife.id } },
                 comments: {
                     create: {
-                        content: 'Cleans everything so well! ',
-                        user: { connect: { id: marisa.id } },
+                        content: 'Cuts everything so well! ',
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -671,37 +666,31 @@ async function seed() {
         const post7 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
-                content: 'You need this!',
+                content: "I love the balance of this chef's knife - it's comfortable to hold and easy to control. I feel like a professional chef every time I use it!",
                 rating: 5,
-                user: { connect: { id: marisa.id } },
-                equipment: { connect: { id: dishSoapSponge.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: chefKnife.id } },
                 comments: {
                     create: {
-                        content: 'Cleans everything so well! ',
-                        user: { connect: { id: marisa.id } },
+                        content: 'Works so well! ',
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
             include: { user: true, equipment: true }
         })
 
-
-
-
-
-        // <------ BRIANNA COMMENTS ------>
-
         const post8 = await prisma.post.create({
             data: {
                 title: "Buy it right now!",
-                content: 'I love this!',
-                rating: 5,
-                user: { connect: { id: brianna.id } },
-                equipment: { connect: { id: juicer.id } },
+                content: "I have been nothing short of impressed with this chef's knife. The sharp blade effortlessly slices through all types of ingredients, making meal prep a breeze. The balance and comfort of the knife are unmatched, allowing for precise cuts and control while cooking. It truly feels like a professional-quality knife that enhances my cooking experience. The durability of the blade is also outstanding, remaining sharp even after frequent use. I highly recommend this chef's knife to anyone looking for a reliable and high-quality kitchen tool.",
+                rating: 4,
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: chefKnife.id } },
                 comments: {
                     create: {
                         content: 'definitely buy!',
-                        user: { connect: { id: brianna.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -711,31 +700,31 @@ async function seed() {
         const post9 = await prisma.post.create({
             data: {
                 title: "Love this!",
-                content: 'I use this so often, helps organize everything! super satisfying!',
+                content: "The quality of this chef's knife is top-notch. It has stayed sharp even after multiple uses, and I appreciate the durability of the blade.",
                 rating: 5,
-                user: { connect: { id: brianna.id } },
-                equipment: { connect: { id: pantryContainer.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: chefKnife.id } },
                 comments: {
                     create: {
-                        content: 'definitely buy!',
-                        user: { connect: { id: brianna.id } },
+                        content: 'Great!',
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
             include: { user: true, equipment: true }
         })
-
+// <------ CUTTING BOARD ------>   
         const post10 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
-                content: 'Always need some trash bags and these are so sturdy!',
+                content: "I absolutely love this cutting board! It's spacious enough to chop a variety of ingredients, and the non-slip edges keep it in place on my countertop.",
                 rating: 5,
-                user: { connect: { id: brianna.id } },
-                equipment: { connect: { id: trashCan.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: cuttingBoard.id } },
                 comments: {
                     create: {
                         content: 'I love this! ',
-                        user: { connect: { id: brianna.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -745,14 +734,14 @@ async function seed() {
         const post11 = await prisma.post.create({
             data: {
                 title: "Soo good!",
-                content: 'I bake almost everything on this!',
-                rating: 5,
-                user: { connect: { id: brianna.id } },
-                equipment: { connect: { id: bakingSheet.id } },
+                content: 'I cannot say enough good things about this cutting board. Its spacious design allows for easy chopping and slicing of various ingredients, while the non-slip edges keep it securely in place on my countertop. The high-quality material is not only durable but also knife-friendly, ensuring that my knives stay sharp even after prolonged use. I appreciate how easy it is to clean and maintain, making it a practical and essential kitchen item. Overall, this cutting board has become a staple in my cooking routine, and I would highly recommend it to others.',
+                rating: 4,
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: cuttingBoard.id } },
                 comments: {
                     create: {
                         content: 'I love this! So durable and long lasting!',
-                        user: { connect: { id: brianna.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -762,14 +751,14 @@ async function seed() {
         const post12 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
-                content: 'I feel like betty crocker herself when using my mixing bowl!',
+                content: "The material of this cutting board is high-quality and easy to clean. I appreciate that it doesn't dull my knives like other cutting boards I've used in the past.",
                 rating: 5,
-                user: { connect: { id: brianna.id } },
-                equipment: { connect: { id: mixingBowl.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: cuttingBoard.id } },
                 comments: {
                     create: {
                         content: 'I love this! ',
-                        user: { connect: { id: brianna.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -779,50 +768,47 @@ async function seed() {
         const post13 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
-                content: 'I feel like betty crocker herself!',
+                content: "This cutting board is a kitchen essential. It's sturdy, doesn't warp over time, and has become a staple in my meal preparation routine.",
                 rating: 5,
-                user: { connect: { id: brianna.id } },
-                equipment: { connect: { id: castIronSkillet.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: cuttingBoard.id } },
                 comments: {
                     create: {
-                        content: 'I love this! Makes the meat so nice and tender! Got it during black friday in love already!!',
-                        user: { connect: { id: brianna.id } },
+                        content: '',
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
             include: { user: true, equipment: true }
         })
-
+//<------ MIXING BOWL ------>
         const post14 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
-                content: 'This is perfect for your oven or airfryer',
+                content: "This mixing bowl is perfect for all my baking needs. It's lightweight yet durable, and the non-slip base prevents it from sliding around on my countertops.",
                 rating: 5,
-                user: { connect: { id: brianna.id } },
-                equipment: { connect: { id: parchmentPaperLiners.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: mixingBowl.id } },
                 comments: {
                     create: {
-                        content: 'Perfect to use inside your Oven + Airfryer',
-                        user: { connect: { id: brianna.id } },
+                        content: 'Perfect',
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
             include: { user: true, equipment: true }
         })
-
-        // <------ HENRIETTA COMMENTS ------>
-
         const post15 = await prisma.post.create({
             data: {
                 title: "Ahmazinggg!",
-                content: 'I love this! I put one under everything',
-                rating: 5,
-                user: { connect: { id: henrietta.id } },
-                equipment: { connect: { id: handBlender.id } },
+                content: "I love the size of this mixing bowl - it's large enough to mix ingredients for a big batch of cookies or cake batter. The handle also makes it easy to hold and pour.",
+                rating: 4,
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: mixingBowl.id } },
                 comments: {
                     create: {
                         content: 'definitely buy!',
-                        user: { connect: { id: henrietta.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -832,14 +818,14 @@ async function seed() {
         const post16 = await prisma.post.create({
             data: {
                 title: "Love this!",
-                content: 'I use this so often',
-                rating: 5,
-                user: { connect: { id: henrietta.id } },
-                equipment: { connect: { id: foodProcessor.id } },
+                content: 'This mixing bowl has exceeded my expectations in every way. Its lightweight yet durable construction makes it perfect for all my baking needs. The non-slip base ensures stability during mixing, while the handle makes it easy to hold and pour. The size is ideal for preparing large batches of dough or batter, and the dishwasher-safe feature simplifies cleaning up after baking. The quality of this mixing bowl is outstanding, and it has quickly become one of my favorite kitchen tools. I cannot imagine baking without it, and I highly recommend it to anyone in need of a reliable and versatile mixing bowl.',
+                rating: 4,
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: mixingBowl.id } },
                 comments: {
                     create: {
                         content: 'Love using this product, definitely buy!',
-                        user: { connect: { id: henrietta.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -849,31 +835,31 @@ async function seed() {
         const post17 = await prisma.post.create({
             data: {
                 title: "Love this!",
-                content: 'If you love to organize this is the perfect product for you!',
+                content: "The quality of this mixing bowl is unbeatable. It's dishwasher-safe, which makes cleanup a breeze, and the smooth surface doesn't retain odors or stains.",
                 rating: 5,
-                user: { connect: { id: henrietta.id } },
-                equipment: { connect: { id: zipTopBags.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: mixingBowl.id } },
                 comments: {
                     create: {
                         content: 'Definitely buy!',
-                        user: { connect: { id: henrietta.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
             include: { user: true, equipment: true }
         })
-
+//<------ MEASURING CUPS ------>
         const post18 = await prisma.post.create({
             data: {
                 title: "Love this!",
-                content: 'I use this so often',
+                content: "These measuring cups are a kitchen essential. The different sizes make it easy to measure out ingredients accurately, and the durable construction ensures they'll last for years.",
                 rating: 5,
-                user: { connect: { id: henrietta.id } },
-                equipment: { connect: { id: canOpener.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: measuringCups.id } },
                 comments: {
                     create: {
                         content: 'Definitely buy!',
-                        user: { connect: { id: henrietta.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -883,14 +869,14 @@ async function seed() {
         const post19 = await prisma.post.create({
             data: {
                 title: "Love this!",
-                content: 'I use this so often',
+                content: "I appreciate the clear measurement markings on these cups, as it makes it easy to see the exact amount of ingredients I'm adding. The nesting design also saves space in my kitchen.",
                 rating: 5,
-                user: { connect: { id: henrietta.id } },
-                equipment: { connect: { id: sautéPan.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: measuringCups.id } },
                 comments: {
                     create: {
-                        content: 'Definitely buy! Veggies and broth come out so good! ',
-                        user: { connect: { id: henrietta.id } },
+                        content: 'Definitely buy! Measures so well! ',
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -900,35 +886,30 @@ async function seed() {
         const post20 = await prisma.post.create({
             data: {
                 title: "Love this!",
-                content: 'My kitchen looks so much more organized!',
+                content: "The material of these measuring cups is high-quality and easy to clean. They're a must-have for any home cook or baker.",
                 rating: 5,
-                user: { connect: { id: henrietta.id } },
-                equipment: { connect: { id: airtightContainer.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: measuringCups.id } },
                 comments: {
                     create: {
                         content: 'If you love to be organized...Definitely buy!',
-                        user: { connect: { id: henrietta.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
             include: { user: true, equipment: true }
         })
-
-
-
-        // <------ KAT COMMENTS ------>
-
         const post21 = await prisma.post.create({
             data: {
                 title: "Works even better!",
-                content: `I love this more than Post 1's!`,
+                content: `I absolutely love my new set of measuring cups! They are sturdy and well-made, and the measurements are clear and easy to read. The different sizes are perfect for all my baking and cooking needs, from measuring out ingredients for a cake to accurately portioning out rice for dinner. The cups also have a handy pour spout, which makes transferring liquids a breeze. Overall, I couldn't be happier with this purchase and would highly recommend these measuring cups to anyone in need of a reliable set for their kitchen.`,
                 rating: 5,
-                user: { connect: { id: kat.id } },
-                equipment: { connect: { id: dobie.id } },
+                user: { connect: { id: randomUser } },
+                equipment: { connect: { id: measuringCups.id } },
                 comments: {
                     create: {
-                        content: 'Keeps my counter from getting water stains from my water pitcher',
-                        user: { connect: { id: kat.id } },
+                        content: '',
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -938,14 +919,14 @@ async function seed() {
         const post22 = await prisma.post.create({
             data: {
                 title: "Love this!",
-                content: 'I use this so often',
-                rating: 5,
-                user: { connect: { id: kat.id } },
+                content: 'These measuring cups are a game-changer in my kitchen! The cups are made of durable material that feels like they will last a long time, even with daily use. The measurements are accurate, allowing me to confidently follow recipes without worrying about getting the proportions wrong. The cups are also easy to clean, either by hand or in the dishwasher, which is a huge plus for me. I appreciate the thoughtful design of these measuring cups, and I will definitely be reaching for them every time I cook or bake.',
+                rating: 4,
+                user: { connect: { id: randomUser } },
                 equipment: { connect: { id: Mandolin.id } },
                 comments: {
                     create: {
                         content: 'definitely buy!',
-                        user: { connect: { id: kat.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -955,31 +936,31 @@ async function seed() {
         const post23 = await prisma.post.create({
             data: {
                 title: "Works even better!",
-                content: `Quite Efficient!`,
-                rating: 5,
-                user: { connect: { id: kat.id } },
+                content: `I am so impressed with the quality of these measuring cups! Not only are they well-made and sturdy, but they also stack neatly inside each other, saving me valuable storage space in my kitchen. The measurements are easy to read, and the handles are comfortable to hold, making them a pleasure to use. I also appreciate that the measurements are engraved on the cups, meaning they won't fade or wear off over time. These measuring cups have quickly become an essential tool in my kitchen, and I can't imagine cooking without them now. Highly recommend this set to anyone looking for reliable and efficient measuring cups.`,
+                rating: 4,
+                user: { connect: { id: randomUser } },
                 equipment: { connect: { id: cuttingBoard.id } },
                 comments: {
                     create: {
                         content: 'definitely buy!',
-                        user: { connect: { id: kat.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
             include: { user: true, equipment: true }
         })
-
+//<------ MIXING BOWL ------>
         const post24 = await prisma.post.create({
             data: {
                 title: "Works great!",
                 content: `Quite Efficient!`,
                 rating: 5,
-                user: { connect: { id: kat.id } },
+                user: { connect: { id: randomUser } },
                 equipment: { connect: { id: dishTowel.id } },
                 comments: {
                     create: {
                         content: 'Keeps my counter from getting water and food stains',
-                        user: { connect: { id: kat.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -991,12 +972,12 @@ async function seed() {
                 title: "Works even better!",
                 content: `I love this!!`,
                 rating: 5,
-                user: { connect: { id: kat.id } },
+                user: { connect: { id: randomUser } },
                 equipment: { connect: { id: stockPot.id } },
                 comments: {
                     create: {
                         content: 'I feel like Betty Crocker herself when using a Stock Pot! Food comes out ahhmazingg! ',
-                        user: { connect: { id: kat.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
@@ -1008,12 +989,12 @@ async function seed() {
                 title: "Works even better!",
                 content: `I love this!!`,
                 rating: 5,
-                user: { connect: { id: kat.id } },
+                user: { connect: { id: randomUser } },
                 equipment: { connect: { id: aluminumFoil.id } },
                 comments: {
                     create: {
                         content: 'Wrap all types of my food with this. Can do no wrong with having in the kitchen!',
-                        user: { connect: { id: kat.id } },
+                        user: { connect: { id: randomUser } },
                     }
                 }
             },
