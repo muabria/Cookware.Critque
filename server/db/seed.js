@@ -999,6 +999,17 @@ async function seed() {
             },
             include: { user: true, equipment: true }
         })
+//<------ BON AMI ------>
+
+//<------ DISH SOAP AND SPONGE ------>
+
+//<------ DISH TOWEL ------>
+
+//<------ RUBBER GLOVES ------>
+
+//<------ TRASH CAN ------>
+
+//<------ ALL PURPOSE CLEANER ------>
 
 //<----------------------- COOKING -------------------------->
 //<------ PARCHMENT PAPER LINERS ------>
@@ -1253,9 +1264,38 @@ const baking3 = await prisma.post.create({
     include: { user: true, equipment: true }
 })
 //<----------------------- GADGET -------------------------->
+//<------ MANDOLIN ------>
+
+//<------ BLENDER ------>
+
+//<------ HAND BLENDER ------>
+
+//<------ FOOD PROCESSOR ------>
+
+//<------ JUICER ------>
 
 
 //<----------------------- MISCELLANEOUS -------------------------->
+//<------ CURVE HANDLE PASTA SERVER ------>
+
+//<------ CAN OPENER ------>
+
+//<------ GARLIC PRESS ------>
+
+//<------ BOX GRATER ------>
+
+//<------ WHISK ------>
+
+//<------ KITCHEN TIMER ------>
+
+//<----------------------- STORAGE -------------------------->
+//<------ AIR TIGHT CONTAINER ------>
+
+//<------ ZIP TOP BAGS ------>
+
+//<------ ALUMINUM FOIL ------>
+
+//<------ GLASS JARS ------>
 
 
 
