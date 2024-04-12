@@ -553,15 +553,13 @@ async function seed() {
                 })
         };
 
-        //Post entries
+        //<-------------------------------- POST/COMMENT ENTRIES -------------------------------->
 
-        //<-------------------------------- COMMENT ENTRIES -------------------------------->
-
-        //Comment entries
+        //<----------------------- BASIC -------------------------->
 
         // <------ TRIVET ------>
 
-        const post1 = await prisma.post.create({
+        const trivet1 = await prisma.post.create({
             data: {
                 title: "Works great!",
                 content: "This cork trivet has become a staple in my kitchen for its superb heat resistance and eco-friendly qualities. The cork material is of high quality and provides a sturdy base for hot pots and pans. However, the smaller size of the trivet limits its usability for larger cookware. Overall, I would rate this cork trivet a 3 out of 5 for its durability and eco-friendliness.",
@@ -578,7 +576,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post2 = await prisma.post.create({
+        const trivet2 = await prisma.post.create({
             data: {
                 title: "Love this!",
                 content: "I'm loving this cork trivet for its excellent heat resistance and stylish design. It fits perfectly in my kitchen decor and has proven to be a reliable tool for protecting my countertops. The only downside is that the cork material tends to absorb liquids and stains easily, requiring frequent cleaning. Despite this, I would still give this cork trivet a solid 4 out of 5 for its functionality and aesthetics.",
@@ -595,7 +593,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post3 = await prisma.post.create({
+        const trivet3 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
                 content: "This cork trivet has been a pleasant addition to my kitchen, providing reliable heat resistance and a sleek design. The eco-friendly nature of cork is a big plus for me, and the trivet's compact size makes it easy to store. However, I've noticed that the cork tends to discolor over time with regular use. Taking this into account, I would rate this cork trivet a 3 out of 5 for its functionality and eco-friendliness.",
@@ -612,7 +610,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post4 = await prisma.post.create({
+        const trivet4 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
                 content: "I've been using this cork trivet for a while now and have been impressed with its heat resistance and overall durability. The minimalist design blends well with my kitchen decor, and the trivet has held up well to daily use. My only issue is that the cork material can sometimes give off a slight odor, especially when exposed to heat. Despite this, I would still give this cork trivet a 4 out of 5 for its quality and design.",
@@ -629,7 +627,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post5 = await prisma.post.create({
+        const trivet5 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
                 content: "This cork trivet has been a game-changer in my kitchen, providing excellent heat resistance and a stylish touch to my countertop. The eco-friendly aspect of cork is a major selling point for me, and the trivet's compact size is perfect for smaller pots and pans. However, the cork material tends to stain easily and requires frequent cleaning to maintain its appearance. Despite this minor inconvenience, I would rate this cork trivet a solid 4 out of 5 for its functionality and aesthetics.",
@@ -646,7 +644,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 // <------ KNIFE ------>
-        const post6 = await prisma.post.create({
+        const knife1 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
                 content: "This chef's knife is perfect for all my cooking needs. The sharp blade cuts through vegetables and meats effortlessly, making meal prep a breeze.",
@@ -663,7 +661,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post7 = await prisma.post.create({
+        const knife2 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
                 content: "I love the balance of this chef's knife - it's comfortable to hold and easy to control. I feel like a professional chef every time I use it!",
@@ -680,7 +678,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post8 = await prisma.post.create({
+        const knife3 = await prisma.post.create({
             data: {
                 title: "Buy it right now!",
                 content: "I have been nothing short of impressed with this chef's knife. The sharp blade effortlessly slices through all types of ingredients, making meal prep a breeze. The balance and comfort of the knife are unmatched, allowing for precise cuts and control while cooking. It truly feels like a professional-quality knife that enhances my cooking experience. The durability of the blade is also outstanding, remaining sharp even after frequent use. I highly recommend this chef's knife to anyone looking for a reliable and high-quality kitchen tool.",
@@ -697,7 +695,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post9 = await prisma.post.create({
+        const knife4 = await prisma.post.create({
             data: {
                 title: "Love this!",
                 content: "The quality of this chef's knife is top-notch. It has stayed sharp even after multiple uses, and I appreciate the durability of the blade.",
@@ -714,7 +712,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 // <------ CUTTING BOARD ------>   
-        const post10 = await prisma.post.create({
+        const cutting1 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
                 content: "I absolutely love this cutting board! It's spacious enough to chop a variety of ingredients, and the non-slip edges keep it in place on my countertop.",
@@ -731,7 +729,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post11 = await prisma.post.create({
+        const cutting2 = await prisma.post.create({
             data: {
                 title: "Soo good!",
                 content: 'I cannot say enough good things about this cutting board. Its spacious design allows for easy chopping and slicing of various ingredients, while the non-slip edges keep it securely in place on my countertop. The high-quality material is not only durable but also knife-friendly, ensuring that my knives stay sharp even after prolonged use. I appreciate how easy it is to clean and maintain, making it a practical and essential kitchen item. Overall, this cutting board has become a staple in my cooking routine, and I would highly recommend it to others.',
@@ -748,7 +746,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post12 = await prisma.post.create({
+        const cutting3 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
                 content: "The material of this cutting board is high-quality and easy to clean. I appreciate that it doesn't dull my knives like other cutting boards I've used in the past.",
@@ -765,7 +763,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post13 = await prisma.post.create({
+        const cutting4 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
                 content: "This cutting board is a kitchen essential. It's sturdy, doesn't warp over time, and has become a staple in my meal preparation routine.",
@@ -782,7 +780,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 //<------ MIXING BOWL ------>
-        const post14 = await prisma.post.create({
+        const mixing1 = await prisma.post.create({
             data: {
                 title: "Can do no wrong!",
                 content: "This mixing bowl is perfect for all my baking needs. It's lightweight yet durable, and the non-slip base prevents it from sliding around on my countertops.",
@@ -798,7 +796,7 @@ async function seed() {
             },
             include: { user: true, equipment: true }
         })
-        const post15 = await prisma.post.create({
+        const mixing2 = await prisma.post.create({
             data: {
                 title: "Ahmazinggg!",
                 content: "I love the size of this mixing bowl - it's large enough to mix ingredients for a big batch of cookies or cake batter. The handle also makes it easy to hold and pour.",
@@ -815,7 +813,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post16 = await prisma.post.create({
+        const mixing3 = await prisma.post.create({
             data: {
                 title: "Love this!",
                 content: 'This mixing bowl has exceeded my expectations in every way. Its lightweight yet durable construction makes it perfect for all my baking needs. The non-slip base ensures stability during mixing, while the handle makes it easy to hold and pour. The size is ideal for preparing large batches of dough or batter, and the dishwasher-safe feature simplifies cleaning up after baking. The quality of this mixing bowl is outstanding, and it has quickly become one of my favorite kitchen tools. I cannot imagine baking without it, and I highly recommend it to anyone in need of a reliable and versatile mixing bowl.',
@@ -832,7 +830,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post17 = await prisma.post.create({
+        const mixing4 = await prisma.post.create({
             data: {
                 title: "Love this!",
                 content: "The quality of this mixing bowl is unbeatable. It's dishwasher-safe, which makes cleanup a breeze, and the smooth surface doesn't retain odors or stains.",
@@ -849,7 +847,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 //<------ MEASURING CUPS ------>
-        const post18 = await prisma.post.create({
+        const measure1 = await prisma.post.create({
             data: {
                 title: "Love this!",
                 content: "These measuring cups are a kitchen essential. The different sizes make it easy to measure out ingredients accurately, and the durable construction ensures they'll last for years.",
@@ -866,7 +864,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post19 = await prisma.post.create({
+        const measure2 = await prisma.post.create({
             data: {
                 title: "Love this!",
                 content: "I appreciate the clear measurement markings on these cups, as it makes it easy to see the exact amount of ingredients I'm adding. The nesting design also saves space in my kitchen.",
@@ -883,7 +881,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post20 = await prisma.post.create({
+        const measure3 = await prisma.post.create({
             data: {
                 title: "Love this!",
                 content: "The material of these measuring cups is high-quality and easy to clean. They're a must-have for any home cook or baker.",
@@ -899,7 +897,7 @@ async function seed() {
             },
             include: { user: true, equipment: true }
         })
-        const post21 = await prisma.post.create({
+        const measure4 = await prisma.post.create({
             data: {
                 title: "Works even better!",
                 content: `I absolutely love my new set of measuring cups! They are sturdy and well-made, and the measurements are clear and easy to read. The different sizes are perfect for all my baking and cooking needs, from measuring out ingredients for a cake to accurately portioning out rice for dinner. The cups also have a handy pour spout, which makes transferring liquids a breeze. Overall, I couldn't be happier with this purchase and would highly recommend these measuring cups to anyone in need of a reliable set for their kitchen.`,
@@ -916,7 +914,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post22 = await prisma.post.create({
+        const measure5 = await prisma.post.create({
             data: {
                 title: "Love this!",
                 content: 'These measuring cups are a game-changer in my kitchen! The cups are made of durable material that feels like they will last a long time, even with daily use. The measurements are accurate, allowing me to confidently follow recipes without worrying about getting the proportions wrong. The cups are also easy to clean, either by hand or in the dishwasher, which is a huge plus for me. I appreciate the thoughtful design of these measuring cups, and I will definitely be reaching for them every time I cook or bake.',
@@ -933,7 +931,7 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post23 = await prisma.post.create({
+        const measure6 = await prisma.post.create({
             data: {
                 title: "Works even better!",
                 content: `I am so impressed with the quality of these measuring cups! Not only are they well-made and sturdy, but they also stack neatly inside each other, saving me valuable storage space in my kitchen. The measurements are easy to read, and the handles are comfortable to hold, making them a pleasure to use. I also appreciate that the measurements are engraved on the cups, meaning they won't fade or wear off over time. These measuring cups have quickly become an essential tool in my kitchen, and I can't imagine cooking without them now. Highly recommend this set to anyone looking for reliable and efficient measuring cups.`,
@@ -949,14 +947,15 @@ async function seed() {
             },
             include: { user: true, equipment: true }
         })
-//<------ MIXING BOWL ------>
-        const post24 = await prisma.post.create({
+//<----------------------- CLEANING -------------------------->
+//<------ DOBIE ------>
+        const dobie1 = await prisma.post.create({
             data: {
                 title: "Works great!",
                 content: `Quite Efficient!`,
                 rating: 5,
                 user: { connect: { id: randomUser } },
-                equipment: { connect: { id: dishTowel.id } },
+                equipment: { connect: { id: dobie.id } },
                 comments: {
                     create: {
                         content: 'Keeps my counter from getting water and food stains',
@@ -967,13 +966,13 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post25 = await prisma.post.create({
+        const dobie2 = await prisma.post.create({
             data: {
                 title: "Works even better!",
                 content: `I love this!!`,
                 rating: 5,
                 user: { connect: { id: randomUser } },
-                equipment: { connect: { id: stockPot.id } },
+                equipment: { connect: { id: dobie.id } },
                 comments: {
                     create: {
                         content: 'I feel like Betty Crocker herself when using a Stock Pot! Food comes out ahhmazingg! ',
@@ -984,13 +983,13 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
-        const post26 = await prisma.post.create({
+        const dobie3 = await prisma.post.create({
             data: {
                 title: "Works even better!",
                 content: `I love this!!`,
                 rating: 5,
                 user: { connect: { id: randomUser } },
-                equipment: { connect: { id: aluminumFoil.id } },
+                equipment: { connect: { id: dobie.id } },
                 comments: {
                     create: {
                         content: 'Wrap all types of my food with this. Can do no wrong with having in the kitchen!',
@@ -1001,10 +1000,265 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 
+//<----------------------- COOKING -------------------------->
+//<------ PARCHMENT PAPER LINERS ------>
+const parchment1 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `Parchment paper liners are a game-changer for baking enthusiasts! The convenience they offer cannot be overstated. Not only do they prevent sticking and ensure easy cleanup, but they also help in creating beautifully baked goods with evenly distributed heat. From cookies to pastries, using parchment paper liners guarantees a perfect result every time. While they may seem like a small addition to the kitchen, their impact is significant, earning them a solid four-star rating.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: parchmentPaperLiners.id } },
+        comments: {
+            create: {
+                content: 'Comes in different sizes, too',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+const parchment2 = await prisma.post.create({
+    data: {
+        title: "Amazing",
+        content: `Parchment paper liners are an absolute kitchen essential! They make baking a breeze, preventing sticking and ensuring even cooking. The convenience they offer is unparalleled; no more scrubbing pans for hours. Plus, they're versatile enough to be used for lining trays, wrapping food for steaming, and even crafting homemade piping bags. With their affordable price and time-saving benefits, parchment paper liners easily earn a solid four-star rating.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: parchmentPaperLiners.id } },
+        comments: {
+            create: {
+                content: 'Agreed!',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+const parchment3 = await prisma.post.create({
+    data: {
+        title: "Solid",
+        content: `Parchment paper liners are a handy tool to have in the kitchen, especially for those who love to bake. They certainly make cleanup a breeze and help prevent food from sticking to the pan. However, the quality can vary, and sometimes they tear easily, which can be frustrating. While they serve their purpose adequately, there may be room for improvement in terms of durability. Overall, a decent option for baking needs, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: parchmentPaperLiners.id } },
+        comments: {
+            create: {
+                content: 'Mine are sturdy enough',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+//<------ STOCK POT ------>
+const stock1 = await prisma.post.create({
+    data: {
+        title: "Love it!",
+        content: `The stock pot is the unsung hero of the kitchen. Whether you're simmering soups, boiling pasta, or brewing a hearty broth, this versatile vessel delivers every time. Its spacious capacity and sturdy construction make it a must-have for home chefs and professional cooks alike. From family dinners to entertaining guests, the stock pot never fails to impress. With its durability, functionality, and endless culinary possibilities, it deserves a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: stockPot.id } },
+        comments: {
+            create: {
+                content: 'Works great',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+const stock2 = await prisma.post.create({
+    data: {
+        title: "Awesome",
+        content: `The stock pot is an absolute lifesaver in the kitchen! Its generous size and durable construction make it perfect for cooking large batches of soups, stews, and stocks. Whether I'm feeding a crowd or meal prepping for the week, the stock pot always delivers. The even heat distribution ensures that everything cooks evenly, and the sturdy handles make it easy to maneuver, even when full. A must-have for any serious home cook, deserving of a five-star rating without a doubt.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: stockPot.id } },
+        comments: {
+            create: {
+                content: 'Same',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+const stock3 = await prisma.post.create({
+    data: {
+        title: "Works well",
+        content: `The stock pot is a versatile addition to any kitchen arsenal. Its large capacity and sturdy build make it ideal for boiling pasta, simmering soups, and preparing stocks. While it may not be the most exciting piece of cookware, its functionality cannot be denied. However, the weight of the pot, especially when full, can make it a bit cumbersome to handle. Despite this minor inconvenience, its performance and durability warrant a solid four-star rating.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: stockPot.id } },
+        comments: {
+            create: {
+                content: 'I feel like Betty Crocker herself when using a Stock Pot! Food comes out ahhmazingg! ',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+//<------ SAUTE PAN ------>
+const saute1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `The saute pan is a versatile workhorse in any kitchen. Its wide, flat base and high, straight sides make it perfect for everything from searing meats to sautéing vegetables. The even heat distribution ensures consistent cooking, while the non-stick surface makes cleanup a breeze. Whether you're whipping up a quick weeknight stir-fry or preparing a gourmet feast, the saute pan delivers reliable results every time. While it may not have the flashy appeal of other cookware, its practicality and performance earn it a solid four-star rating.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: sautéPan.id } },
+        comments: {
+            create: {
+                content: '5 stars!',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const saute2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `The saute pan is a workhorse in my kitchen, perfect for everything from quick weekday meals to gourmet dinner parties. Its spacious cooking surface and high sides make it versatile enough for sautéing vegetables, searing meats, or even making sauces. The non-stick coating ensures easy cleanup, while the sturdy construction guarantees even heat distribution. While it may not be the most glamorous piece of cookware, its reliability and performance earn it a solid four-star rating. `,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: sautéPan.id } },
+        comments: {
+            create: {
+                content: 'I have no problems with mine',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const saute3 = await prisma.post.create({
+    data: {
+        title: "Perfection",
+        content: `The saute pan is a kitchen essential that I simply cannot live without! Its versatility and durability make it perfect for a wide range of cooking tasks, from stir-frying to braising. The non-stick surface ensures that food slides right off, making cleanup a breeze. Plus, the heat-resistant handle provides a comfortable grip, even when cooking for extended periods. Whether I'm cooking for myself or entertaining guests, the saute pan always delivers flawless results. Deserving of a glowing five-star rating without question. `,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: sautéPan.id } },
+        comments: {
+            create: {
+                content: 'For real?',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+//<------ CAST IRON SKILLET ------>
+const iron1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `The cast iron skillet is a kitchen classic that never fails to impress. Its ability to retain and distribute heat evenly makes it perfect for achieving that perfect sear on steaks or baking golden cornbread. With proper care, it develops a natural non-stick surface that only gets better with time. While it requires a bit of maintenance, the results are well worth the effort. A versatile and durable piece of cookware that earns a solid four-star rating.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: castIronSkillet.id } },
+        comments: {
+            create: {
+                content: 'I feel the same way',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const iron2 = await prisma.post.create({
+    data: {
+        title: "Great",
+        content: `The cast iron skillet is the ultimate kitchen workhorse, earning a perfect five-star rating without hesitation. Its unparalleled heat retention and distribution make it ideal for achieving that perfect sear on steaks, frying crispy bacon, or baking golden cornbread. From stovetop to oven, this durable piece of cookware can handle it all. With proper care, it only gets better with age, developing a naturally non-stick surface that enhances cooking with every use. Whether you're a seasoned chef or a novice cook, the cast iron skillet is a timeless kitchen essential that will never let you down.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: castIronSkillet.id } },
+        comments: {
+            create: {
+                content: 'I feel like an American! Food comes out ahhmazingg! ',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const iron3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `The cast iron skillet is hands down my favorite piece of cookware in the kitchen! Its versatility knows no bounds, from frying eggs to baking desserts. The even heat distribution ensures that food cooks evenly every time, while the durable construction means it will last a lifetime with proper care. Whether I'm cooking breakfast, lunch, or dinner, the cast iron skillet never disappoints. A true kitchen essential that deserves a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: castIronSkillet.id } },
+        comments: {
+            create: {
+                content: 'Perfect',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+//<------ BAKING SHEET ------>
+const baking1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `The baking sheet is a staple in every kitchen, offering endless possibilities for creating delicious baked goods and savory treats. Its flat surface and raised edges make it perfect for baking cookies, roasting vegetables, or toasting nuts. Made from durable materials like aluminum or stainless steel, it withstands high temperatures and ensures even cooking every time. While it may not be the flashiest piece of kitchen equipment, its versatility and reliability earn it a solid four-star rating. Whether you're a baking enthusiast or just starting out, a quality baking sheet is a must-have for any culinary adventure. `,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: bakingSheet.id } },
+        comments: {
+            create: {
+                content: 'Works well',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const baking2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `The baking sheet is a staple in my kitchen for its versatility and reliability. Whether I'm baking cookies, roasting vegetables, or toasting nuts, it consistently delivers excellent results. The raised edges prevent spills and make it easy to transfer food in and out of the oven. While it may not be the most glamorous piece of equipment, its practicality makes it indispensable. A solid four-star rating for its consistent performance.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: bakingSheet.id } },
+        comments: {
+            create: {
+                content: 'I feel like Betty Crocker herself when using a baking sheet! Food comes out ahhmazingg! ',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const baking3 = await prisma.post.create({
+    data: {
+        title: "OK",
+        content: `The baking sheet is a functional piece of kitchen equipment that gets the job done. Its flat surface and raised edges make it suitable for a variety of baking and roasting tasks. However, I've found that some baking sheets tend to warp over time, which can affect baking results. While they're affordable and widely available, the durability could be improved. Overall, a decent option for basic baking needs, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: bakingSheet.id } },
+        comments: {
+            create: {
+                content: 'This is my favorite baking sheet',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+//<----------------------- GADGET -------------------------->
+
+
+//<----------------------- MISCELLANEOUS -------------------------->
 
 
 
-        delete mvPass, bmPass, hmPass, kcPass;
         console.log("Database is seeded.")
     }
     catch (error) {
