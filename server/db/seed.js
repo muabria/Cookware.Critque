@@ -1265,15 +1265,260 @@ const baking3 = await prisma.post.create({
 })
 //<----------------------- GADGET -------------------------->
 //<------ MANDOLIN ------>
+const mandolin1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `As someone who loves cooking, the mandolin slicer has become an indispensable tool in my kitchen! Its ability to create perfectly uniform slices in seconds has elevated my culinary creations to a whole new level. From delicate vegetable carpaccio to crispy potato gratin, the mandolin delivers consistent results with ease. The adjustable thickness settings offer versatility, while the safety guard ensures peace of mind during use. Cleanup is a breeze, making it a joy to work with. A must-have for any serious home cook, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: Mandolin.id } },
+        comments: {
+            create: {
+                content: 'This is so fun to use',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const mandolin2 = await prisma.post.create({
+    data: {
+        title: "Works really well!",
+        content: `The mandolin slicer has revolutionized the way I prep vegetables in the kitchen! Its razor-sharp blades effortlessly slice through produce, creating uniform cuts in seconds. From paper-thin slices of potatoes for chips to precise julienne cuts for salads, this tool delivers consistent results every time. The adjustable thickness settings offer versatility, while the safety features ensure peace of mind during use. While it requires careful handling due to its sharp blades, its efficiency and precision earn it a solid four-star rating.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: Mandolin.id } },
+        comments: {
+            create: {
+                content: 'This is my favorite kitchen gadget',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const mandolin3 = await prisma.post.create({
+    data: {
+        title: "Decent",
+        content: `The mandolin slicer is a handy tool for achieving uniform cuts in the kitchen. Its adjustable blade settings allow for versatility in slicing vegetables and fruits. However, I found that it requires careful handling to avoid accidents, as the blades are extremely sharp. Additionally, cleaning can be a bit tedious, especially with small crevices where food can get trapped. While it serves its purpose adequately, there may be room for improvement in terms of safety features and ease of maintenance. Overall, a decent option for those who need precise slicing, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: Mandolin.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ BLENDER ------>
+const blender1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `The blender is a versatile kitchen appliance that I use daily for making smoothies, sauces, and soups. Its powerful motor effortlessly blends even the toughest ingredients to a smooth consistency. The variable speed settings allow for precise control over texture, while the durable construction ensures long-lasting performance. While it may be a bit noisy during operation, its functionality and reliability make it a worthy addition to any kitchen. A solid four-star rating for its consistent performance.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: blender.id } },
+        comments: {
+            create: {
+                content: 'I love making smoothies with this',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const blender2 = await prisma.post.create({
+    data: {
+        title: "Passable",
+        content: `The blender is a convenient tool for quickly mixing and blending ingredients. It's great for making smoothies and pureeing soups, but I found that it struggles with tougher ingredients like ice and frozen fruits. The motor also tends to overheat with prolonged use, requiring frequent breaks to cool down. While it serves its purpose adequately for basic blending tasks, there may be better options available for more demanding applications. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: blender.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const blender3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `I absolutely love my blender! It's a powerhouse in the kitchen, effortlessly transforming fruits, vegetables, and nuts into smooth, creamy concoctions. Whether I'm making morning smoothies or whipping up homemade sauces, the blender never disappoints. The durable construction and easy-to-clean design make it a joy to use. Plus, the sleek aesthetic looks great on my countertop. A must-have for anyone looking to elevate their culinary creations, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: blender.id } },
+        comments: {
+            create: {
+                content: 'I use this to make almond milk in the mornings',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ HAND BLENDER ------>
+const hand1 = await prisma.post.create({
+    data: {
+        title: "Efficient",
+        content: `The hand blender is a versatile and convenient tool for blending soups, sauces, and smoothies directly in the pot or container. Its compact design and lightweight construction make it easy to maneuver, while the powerful motor ensures smooth and consistent results. The detachable blending wand is easy to clean, and the variable speed settings offer precise control over texture. While it may not be suitable for heavy-duty blending tasks, its portability and efficiency make it a valuable addition to any kitchen. A solid four-star rating for its versatility and performance.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: handBlender.id } },
+        comments: {
+            create: {
+                content: 'Agreed',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const hand2 = await prisma.post.create({
+    data: {
+        title: "Works well",
+        content: `The hand blender is a handy tool for blending small batches of soups, sauces, and smoothies. Its compact size and lightweight design make it easy to use and store, but I found that it struggles with tougher ingredients like frozen fruits and ice. The motor also tends to overheat with prolonged use, requiring frequent breaks. While it serves its purpose adequately for basic blending tasks, there may be better options available for more demanding applications. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: handBlender.id } },
+        comments: {
+            create: {
+                content: 'No comment',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const hand3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `I cannot imagine my kitchen without my hand blender! It's the ultimate tool for quickly blending soups, sauces, and smoothies to perfection. Its compact size and ergonomic design make it easy to handle, while the powerful motor delivers smooth and consistent results every time. The detachable blending wand is a breeze to clean, making cleanup a snap. Whether I'm whipping up a quick batch of homemade pesto or pureeing a silky soup, the hand blender never fails to impress. A must-have for any home cook, deserving of a glowing five-star rating. `,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: handBlender.id } },
+        comments: {
+            create: {
+                content: 'Seriously?',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ FOOD PROCESSOR ------>
+const processor1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `The food processor is a kitchen workhorse that I rely on for chopping, slicing, shredding, and pureeing a variety of ingredients. Its powerful motor and sharp blades make quick work of even the toughest tasks, saving me time and effort in the kitchen. The large capacity bowl allows for processing large batches of ingredients at once, while the multiple attachments offer versatility in food preparation. While it may be bulky to store, its performance and functionality make it a worthy investment. A solid four-star rating for its efficiency and convenience.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: foodProcessor.id } },
+        comments: {
+            create: {
+                content: 'I like this one',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const processor2 = await prisma.post.create({
+    data: {
+        title: "Alright",
+        content: `The food processor is a useful tool for chopping, slicing, and shredding ingredients, but I found that it struggles with heavier tasks like kneading dough or pureeing thick mixtures. The motor also tends to overheat with prolonged use, requiring frequent breaks to cool down. While it serves its purpose adequately for basic food processing tasks, there may be better options available for more demanding applications. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: foodProcessor.id } },
+        comments: {
+            create: {
+                content: 'I love mine!',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const processor3 = await prisma.post.create({
+    data: {
+        title: "Works ahmaaaazing",
+        content: `The food processor is an absolute game-changer in the kitchen! Its powerful motor and versatile attachments make quick work of food prep tasks, from chopping vegetables to kneading dough. Whether I'm making homemade hummus or shredding cheese for tacos, the food processor delivers consistent results with ease. The large capacity bowl is perfect for processing large batches of ingredients, while the compact design saves valuable counter space. A must-have for any serious home cook, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: foodProcessor.id } },
+        comments: {
+            create: {
+                content: "What's your trick?",
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ JUICER ------>
+const juicer1 = await prisma.post.create({
+    data: {
+        title: "Works quite well",
+        content: `The juicer is a convenient tool for extracting fresh juice from fruits and vegetables, perfect for creating healthy and refreshing beverages at home. Its powerful motor and efficient extraction mechanism produce smooth and pulp-free juice with minimal effort. The wide feed chute accommodates whole fruits and vegetables, reducing prep time. While it may be a bit noisy during operation, its performance and functionality make it a valuable addition to any kitchen. A solid four-star rating for its efficiency and ease of use.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: juicer.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const juicer2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `The juicer is a handy appliance for making fresh fruit and vegetable juice at home, but I found that it struggles with leafy greens and fibrous produce, often leaving behind a significant amount of pulp. The motor also tends to overheat with prolonged use, requiring frequent breaks to cool down. While it serves its purpose adequately for basic juicing tasks, there may be better options available for more efficient extraction. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: juicer.id } },
+        comments: {
+            create: {
+                content: 'I have the same issue',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const juicer3 = await prisma.post.create({
+    data: {
+        title: "Works perfectly!",
+        content: `I absolutely love my juicer! It's the perfect tool for creating delicious and nutritious juices at home. Its powerful motor and efficient extraction mechanism yield smooth and pulp-free juice every time. Whether I'm making a refreshing orange juice or a vibrant green juice, the juicer delivers excellent results with minimal effort. The wide feed chute makes juicing whole fruits and vegetables a breeze, while the easy-to-clean design saves time and hassle. A must-have for anyone looking to embrace a healthier lifestyle, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: juicer.id } },
+        comments: {
+            create: {
+                content: 'I love how it looks',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
 //<----------------------- MISCELLANEOUS -------------------------->
 //<------ CURVE HANDLE PASTA SERVER ------>
