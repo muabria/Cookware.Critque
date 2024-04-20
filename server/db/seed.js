@@ -122,7 +122,6 @@ async function seed() {
             include: { category: true }
         })
 
-
         // <------ CLEANING EQUIPMENTS ------>
 
         const dobie = await prisma.equipment.create({
@@ -952,8 +951,8 @@ async function seed() {
         const dobie1 = await prisma.post.create({
             data: {
                 title: "Works great!",
-                content: `Quite Efficient!`,
-                rating: 5,
+                content: ``,
+                rating: 4,
                 user: { connect: { id: randomUser } },
                 equipment: { connect: { id: dobie.id } },
                 comments: {
@@ -969,8 +968,8 @@ async function seed() {
         const dobie2 = await prisma.post.create({
             data: {
                 title: "Works even better!",
-                content: `I love this!!`,
-                rating: 5,
+                content: ``,
+                rating: 3,
                 user: { connect: { id: randomUser } },
                 equipment: { connect: { id: dobie.id } },
                 comments: {
@@ -986,7 +985,7 @@ async function seed() {
         const dobie3 = await prisma.post.create({
             data: {
                 title: "Works even better!",
-                content: `I love this!!`,
+                content: ``,
                 rating: 5,
                 user: { connect: { id: randomUser } },
                 equipment: { connect: { id: dobie.id } },
@@ -1522,16 +1521,311 @@ const juicer3 = await prisma.post.create({
 
 //<----------------------- MISCELLANEOUS -------------------------->
 //<------ CURVE HANDLE PASTA SERVER ------>
+const curve1 = await prisma.post.create({
+    data: {
+        title: "Everyday use",
+        content: `The curve handle pasta server is a simple yet indispensable tool for pasta lovers! Its ergonomic design and curved shape make it easy to scoop and serve noodles without slipping or sliding. The sturdy construction ensures durability, while the heat-resistant handle provides a comfortable grip. While it may not be the most glamorous kitchen utensil, its practicality and reliability make it a must-have for any pasta enthusiast. A solid four-star rating for its efficiency and ease of use.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: pastaServer.id } },
+        comments: {
+            create: {
+                content: 'I love this',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const curve2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `The curve handle pasta server is a handy tool for serving pasta, but I found that the curve isn't as pronounced as I would like, making it a bit awkward to scoop noodles from deeper pots. Additionally, the plastic construction feels a bit flimsy and may not hold up well over time. While it serves its purpose adequately, there may be room for improvement in terms of design and durability. A decent option for occasional pasta serving needs, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: pastaServer.id } },
+        comments: {
+            create: {
+                content: 'I use this everyday',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const curve3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `As a pasta lover, I can't imagine serving noodles without my curve handle pasta server! Its ergonomic design and sturdy construction make it a joy to use. The curved shape allows for easy scooping and serving, while the heat-resistant handle ensures a comfortable grip. Whether I'm serving spaghetti or fettuccine, the pasta server delivers perfect portions every time. A must-have for any pasta aficionado, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: pastaServer.id } },
+        comments: {
+            create: {
+                content: 'Same',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ CAN OPENER ------>
+const can1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `The can opener is a kitchen essential that I rely on for effortlessly opening cans of all sizes. Its sharp cutting wheel and sturdy construction make quick work of even the toughest cans, while the ergonomic handles provide a comfortable grip. The built-in magnet ensures safe disposal of sharp edges, while the compact design saves valuable drawer space. While it may require occasional cleaning to prevent rust, its performance and reliability make it a worthy addition to any kitchen. A solid four-star rating for its efficiency and durability.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: canOpener.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const can2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `The can opener is a useful tool for opening cans, but I found that it struggles with larger or dented cans, often requiring multiple attempts to fully open. The cutting wheel also tends to become dull over time, making it less effective at piercing cans. While it serves its purpose adequately for basic can opening needs, there may be better options available for more efficient operation. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: canOpener.id } },
+        comments: {
+            create: {
+                content: 'Mine is indispensable',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const can3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `I love my can opener! It's the perfect tool for effortlessly opening cans of all shapes and sizes. Whether I'm cooking dinner or preparing snacks, the can opener delivers smooth and precise cuts every time. The ergonomic handles provide a comfortable grip, while the built-in magnet ensures safe disposal of sharp edges. Plus, the compact design makes storage a breeze. A must-have for any kitchen, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: canOpener.id } },
+        comments: {
+            create: {
+                content: 'Seriously?!',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ GARLIC PRESS ------>
+const garlic1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `The garlic press is a handy tool for quickly mincing garlic cloves with ease. Its sturdy construction and ergonomic handles make it comfortable to use, while the efficient crushing mechanism ensures maximum flavor extraction. The removable basket makes cleanup a breeze, while the compact design saves valuable drawer space. While it may require some effort to press larger cloves, its performance and reliability make it a valuable addition to any kitchen. A solid four-star rating for its efficiency and convenience.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: garlicPress.id } },
+        comments: {
+            create: {
+                content: 'Mushy garlic',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const garlic2 = await prisma.post.create({
+    data: {
+        title: "Works well",
+        content: `The garlic press is a useful tool for mincing garlic, but I found that it struggles with larger cloves, often requiring significant effort to press. The removable basket is convenient for cleaning, but I noticed that garlic residue tends to get stuck in the crevices, making it difficult to fully clean. While it serves its purpose adequately for basic garlic mincing needs, there may be better options available for more efficient operation. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: garlicPress.id } },
+        comments: {
+            create: {
+                content: 'I cook a lot of European food, so I use this almost everyday',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const garlic3 = await prisma.post.create({
+    data: {
+        title: "Works amazing!",
+        content: `I can't imagine cooking without my garlic press! It's the perfect tool for quickly and efficiently mincing garlic cloves with minimal effort. Whether I'm making pasta sauce or stir-fry, the garlic press delivers perfectly minced garlic every time. The sturdy construction and ergonomic handles make it comfortable to use, while the removable basket ensures easy cleanup. A must-have for any garlic lover, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: garlicPress.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ BOX GRATER ------>
+const box1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `The box grater is a versatile tool that I use regularly for shredding cheese, vegetables, and more. Its multiple grating surfaces offer versatility in shredding, slicing, and grating, while the sturdy construction ensures durability. The non-slip base provides stability during use, while the compact design makes storage a breeze. While it may require some effort to clean, its performance and reliability make it a valuable addition to any kitchen. A solid four-star rating for its efficiency and versatility.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: boxGrater.id } },
+        comments: {
+            create: {
+                content: 'Agreed',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const box2 = await prisma.post.create({
+    data: {
+        title: "Decent",
+        content: `The box grater is a useful tool for shredding cheese and vegetables, but I found that the smaller grating surfaces tend to clog easily, making shredding more challenging. The larger grating surfaces work well for softer ingredients, but struggle with harder ones like carrots or potatoes. While it serves its purpose adequately for basic grating needs, there may be better options available for more efficient operation. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: boxGrater.id } },
+        comments: {
+            create: {
+                content: 'must-have',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const box3 = await prisma.post.create({
+    data: {
+        title: "Perfection",
+        content: `I love my box grater! It's the perfect tool for shredding cheese, vegetables, and more with ease. The multiple grating surfaces offer versatility in shredding, slicing, and grating, while the sturdy construction ensures durability. The non-slip base provides stability during use, while the compact design makes storage a breeze. Whether I'm making salads, tacos, or casseroles, the box grater delivers consistent results every time. A must-have for any kitchen, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: boxGrater.id } },
+        comments: {
+            create: {
+                content: 'I love mine too',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ WHISK ------>
+const whisk1 = await prisma.post.create({
+    data: {
+        title: "Great!",
+        content: `The whisk is a versatile tool that I use regularly for mixing, whipping, and aerating ingredients. Its sturdy wires and ergonomic handle make it comfortable to use, while the balloon shape ensures efficient mixing. The stainless steel construction ensures durability and easy cleanup, while the compact design makes storage a breeze. While it may require some effort to whisk thicker mixtures, its performance and reliability make it a valuable addition to any kitchen. A solid four-star rating for its efficiency and versatility.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: whisk.id } },
+        comments: {
+            create: {
+                content: "I'll stick with mine",
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const whisk2 = await prisma.post.create({
+    data: {
+        title: "OK",
+        content: `The whisk is a useful tool for mixing ingredients, but I found that it struggles with thicker mixtures like pancake batter or cream. The wires tend to bend under pressure, making whisking more challenging. While it serves its purpose adequately for basic mixing needs, there may be better options available for more efficient operation. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: whisk.id } },
+        comments: {
+            create: {
+                content: 'I feel like Betty Crocker herself when using a whisk! Food comes out ahhmazingg! ',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const whisk3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `I adore my whisk! It's the perfect tool for mixing, whipping, and aerating ingredients with ease. Whether I'm making scrambled eggs, whipped cream, or cake batter, the whisk delivers smooth and consistent results every time. The sturdy wires and ergonomic handle make it comfortable to use, while the stainless steel construction ensures durability and easy cleanup. A must-have for any home baker or cook, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: whisk.id } },
+        comments: {
+            create: {
+                content: "You must be joking, is it all that great? It's just a whisk",
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ KITCHEN TIMER ------>
+const timer1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `The kitchen timer is a handy tool for keeping track of cooking and baking times in the kitchen. Its simple design and intuitive controls make it easy to use, while the loud alarm ensures that I never miss the timer going off. The magnetic back and fold-out stand offer versatile placement options, while the compact size makes it easy to store. While it may not have advanced features like multiple timers or preset options, its reliability and functionality make it a valuable addition to any kitchen. A solid four-star rating for its simplicity and effectiveness.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: kitchenTimer.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const timer2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `The kitchen timer is a useful tool for keeping track of cooking and baking times, but I found that the alarm isn't as loud as I would like, making it easy to miss when I'm in another room. Additionally, the timer only counts up to 60 minutes, which may not be sufficient for longer cooking times. While it serves its purpose adequately for basic timing needs, there may be better options available for more features and functionality. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: kitchenTimer.id } },
+        comments: {
+            create: {
+                content: 'I like this one',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const timer3 = await prisma.post.create({
+    data: {
+        title: "Works perfectly!",
+        content: `My kitchen timer is a lifesaver! It's the perfect tool for keeping track of cooking and baking times with precision. The loud alarm ensures that I never miss when my dishes are ready, while the easy-to-read display makes it simple to set the timer. The magnetic back and fold-out stand offer versatile placement options, while the compact size makes it easy to store. Whether I'm cooking dinner or baking cookies, the kitchen timer ensures perfect results every time. A must-have for any kitchen, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: kitchenTimer.id } },
+        comments: {
+            create: {
+                content: "Isn't this outdated?",
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
 //<----------------------- STORAGE -------------------------->
 //<------ AIR TIGHT CONTAINER ------>
