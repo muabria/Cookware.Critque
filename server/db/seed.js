@@ -1829,13 +1829,209 @@ const timer3 = await prisma.post.create({
 
 //<----------------------- STORAGE -------------------------->
 //<------ AIR TIGHT CONTAINER ------>
+const container1 = await prisma.post.create({
+    data: {
+        title: "Essential",
+        content: `Air-tight containers are an absolute kitchen essential for storing dry goods, leftovers, and meal prep ingredients. Their durable construction and secure seals keep food fresh and prevent moisture and odors from seeping in. The transparent design allows for easy identification of contents, while the stackable shape saves valuable pantry space. While they may be a bit pricey compared to other storage options, their quality and longevity make them a worthy investment. A solid four-star rating for their functionality and convenience.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: airtightContainer.id } },
+        comments: {
+            create: {
+                content: 'I use these for everything too',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const container2 = await prisma.post.create({
+    data: {
+        title: "Works alright",
+        content: `Air-tight containers are convenient for storing leftovers and dry goods, but I found that the lids can be difficult to close properly, leading to potential leaks and spills. Additionally, the plastic material tends to retain odors, which can be challenging to remove even with thorough cleaning. While they serve their purpose adequately for basic storage needs, there may be better options available for more reliable sealing and odor resistance. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: airtightContainer.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const container3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `Air-tight containers are a game-changer in my kitchen! Their secure seals and durable construction keep food fresh and organized with ease. Whether I'm storing leftovers, pantry staples, or meal prep ingredients, the air-tight containers deliver reliable performance every time. The transparent design allows for easy visibility of contents, while the stackable shape maximizes storage space. A must-have for any home cook or meal prepper, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: airtightContainer.id } },
+        comments: {
+            create: {
+                content: 'Agreed',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ ZIP TOP BAGS ------>
+const zip1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `Zip-top bags are a versatile and convenient storage solution for a variety of foods and household items. Their resealable design makes them perfect for storing leftovers, freezing meats, and organizing snacks on-the-go. The durable material prevents leaks and spills, while the zipper closure ensures a secure seal. While they may not be as eco-friendly as reusable containers, their affordability and convenience make them a staple in any kitchen. A solid four-star rating for their versatility and reliability.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: zipTopBags.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const zip2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `Zip-top bags are an essential kitchen tool that I use daily for storing leftovers, freezing meats, and organizing snacks. Their resealable design and durable material make them perfect for a variety of uses, from meal prep to travel. Whether I'm packing lunches for work or storing ingredients in the freezer, the zip-top bags deliver reliable performance every time. A must-have for any busy household, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: zipTopBags.id } },
+        comments: {
+            create: {
+                content: 'I love these',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const zip3 = await prisma.post.create({
+    data: {
+        title: "Works decently",
+        content: `Zip-top bags are handy for storing leftovers and organizing items, but I found that the zipper closures can be flimsy and prone to breaking after repeated use. Additionally, the plastic material isn't as durable as other storage options, leading to potential tears and leaks. While they serve their purpose adequately for basic storage needs, there may be better options available for more reliable sealing and durability. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: zipTopBags.id } },
+        comments: {
+            create: {
+                content: 'Put all types of my food in this. Can do no wrong with having in the kitchen!',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ ALUMINUM FOIL ------>
+const foil1 = await prisma.post.create({
+    data: {
+        title: "Works really well!",
+        content: `Aluminum foil is a versatile kitchen essential that I use regularly for cooking, baking, and food storage. Its durable and flexible material molds to the shape of whatever it covers, ensuring a snug fit and even cooking. Whether I'm roasting vegetables, wrapping leftovers, or covering dishes to keep them warm, aluminum foil delivers reliable performance every time. While it may not be as environmentally friendly as other options, its affordability and convenience make it a staple in any kitchen. A solid four-star rating for its versatility and reliability.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: aluminumFoil.id } },
+        comments: {
+            create: {
+                content: 'Keeps my counter from getting water and food stains',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const foil2 = await prisma.post.create({
+    data: {
+        title: "Not the best",
+        content: `Aluminum foil is a useful tool for cooking and food storage, but I found that it can tear easily, especially when handling hot or sharp objects. Additionally, the thin material isn't as durable as other options, leading to potential leaks and spills. While it serves its purpose adequately for basic cooking and storage needs, there may be better options available for more reliable performance. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: aluminumFoil.id } },
+        comments: {
+            create: {
+                content: 'You get what you pay for',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const foil3 = await prisma.post.create({
+    data: {
+        title: "Great!",
+        content: `Aluminum foil is a kitchen staple that I can't live without! Its versatility and durability make it perfect for cooking, baking, and food storage. Whether I'm lining baking sheets, wrapping leftovers, or creating foil packets for grilling, aluminum foil delivers reliable results every time. The flexible material molds to the shape of whatever it covers, ensuring even cooking and freshness. A must-have for any home cook, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: aluminumFoil.id } },
+        comments: {
+            create: {
+                content: 'Wrap all types of my food with this. Can do no wrong with having in the kitchen!',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ GLASS JARS ------>
+const glass1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `Glass jars are a classic and eco-friendly storage solution for pantry staples, homemade preserves, and meal prep ingredients. Their transparent design allows for easy identification of contents, while the airtight seals keep food fresh and prevent moisture and odors from seeping in. Whether I'm storing grains, spices, or leftovers, glass jars deliver reliable performance with minimal environmental impact. While they may be a bit heavier than other storage options, their durability and versatility make them a worthy investment. A solid four-star rating for their functionality and sustainability.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: glassJar.id } },
+        comments: {
+            create: {
+                content: 'Classic design',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const glass2 = await prisma.post.create({
+    data: {
+        title: "Outdated",
+        content: `Glass jars are a beautiful and eco-friendly option for storing pantry staples and homemade goods, but I found that the lids can be difficult to open and close, especially when the jars are filled to capacity. Additionally, the glass material can be prone to chipping or breaking if mishandled. While they serve their purpose adequately for basic storage needs, there may be better options available for more user-friendly design and durability. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: glassJar.id } },
+        comments: {
+            create: {
+                content: 'I love the design too',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const glass3 = await prisma.post.create({
+    data: {
+        title: "Tried and true",
+        content: `I adore my glass jars! They're perfect for storing pantry staples, homemade preserves, and meal prep ingredients with style and sustainability in mind. Their airtight seals and durable construction keep food fresh and prevent spills, while the transparent design allows for easy identification of contents. Whether I'm organizing my pantry or gifting homemade goodies, glass jars deliver reliable performance every time. A must-have for any eco-conscious home cook, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: glassJar.id } },
+        comments: {
+            create: {
+                content: 'I love mine too',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
 
         console.log("Database is seeded.")
