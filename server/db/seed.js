@@ -556,7 +556,7 @@ async function seed() {
 
         //<----------------------- BASIC -------------------------->
 
-        // <------ TRIVET ------>
+// <------ TRIVET ------>
 
         const trivet1 = await prisma.post.create({
             data: {
@@ -951,13 +951,13 @@ async function seed() {
         const dobie1 = await prisma.post.create({
             data: {
                 title: "Works great!",
-                content: ``,
+                content: `The Dobie scouring pad is a versatile and effective cleaning tool for tackling tough messes in the kitchen. Its non-abrasive surface gently scrubs away dirt and grime without scratching delicate surfaces, making it ideal for cleaning pots, pans, and dishes. The sponge-like material holds soap well, creating a rich lather for thorough cleaning. While it may wear out over time with heavy use, its durability and effectiveness make it a staple in any kitchen cleaning arsenal. A solid four-star rating for its versatility and performance.`,
                 rating: 4,
                 user: { connect: { id: randomUser } },
                 equipment: { connect: { id: dobie.id } },
                 comments: {
                     create: {
-                        content: 'Keeps my counter from getting water and food stains',
+                        content: 'Keeps my dishes super clean',
                         user: { connect: { id: randomUser } },
                     }
                 }
@@ -967,14 +967,14 @@ async function seed() {
 
         const dobie2 = await prisma.post.create({
             data: {
-                title: "Works even better!",
-                content: ``,
+                title: "Works well!",
+                content: `The Dobie scouring pad is a decent option for everyday cleaning tasks in the kitchen, but I found that it tends to wear out quickly, especially with heavy use. Additionally, the sponge-like material can harbor bacteria if not properly cleaned and sanitized. While it serves its purpose adequately for basic cleaning needs, there may be better options available for more durable and hygienic cleaning tools. A decent choice for occasional use, deserving of a three-star rating.`,
                 rating: 3,
                 user: { connect: { id: randomUser } },
                 equipment: { connect: { id: dobie.id } },
                 comments: {
                     create: {
-                        content: 'I feel like Betty Crocker herself when using a Stock Pot! Food comes out ahhmazingg! ',
+                        content: "I can't believe how well it works",
                         user: { connect: { id: randomUser } },
                     }
                 }
@@ -985,13 +985,13 @@ async function seed() {
         const dobie3 = await prisma.post.create({
             data: {
                 title: "Works even better!",
-                content: ``,
+                content: `I love my Dobie scouring pad! It's perfect for tackling tough messes in the kitchen without scratching surfaces. Whether I'm scrubbing pots, pans, or countertops, the Dobie pad delivers excellent results every time. The sponge-like material holds soap well for a thorough clean, while the non-abrasive surface ensures no damage to delicate items. A must-have for any home cook, deserving of a glowing five-star rating.`,
                 rating: 5,
                 user: { connect: { id: randomUser } },
                 equipment: { connect: { id: dobie.id } },
                 comments: {
                     create: {
-                        content: 'Wrap all types of my food with this. Can do no wrong with having in the kitchen!',
+                        content: 'How can anything work so well?',
                         user: { connect: { id: randomUser } },
                     }
                 }
@@ -999,17 +999,311 @@ async function seed() {
             include: { user: true, equipment: true }
         })
 //<------ BON AMI ------>
+const bonami1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `Bon Ami cleaning powder is a gentle yet effective cleaner for removing tough stains and grease from a variety of surfaces. Its non-abrasive formula makes it safe for use on delicate items like cookware, countertops, and appliances, while the mild abrasive action provides extra cleaning power. The biodegradable ingredients make it environmentally friendly, while the nostalgic packaging adds a touch of charm to any cleaning routine. While it may require some extra scrubbing for heavily soiled areas, its versatility and eco-friendliness make it a worthy addition to any cleaning arsenal. A solid four-star rating for its effectiveness and sustainability.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: bonAmi.id } },
+        comments: {
+            create: {
+                content: 'Works great on coffee and tea stains',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const bonami2 = await prisma.post.create({
+    data: {
+        title: "Works ok",
+        content: `Bon Ami cleaning powder is a decent option for gentle cleaning tasks around the kitchen, but I found that it struggles with tough stains and baked-on grease, requiring extra effort to achieve satisfactory results. Additionally, the powder can leave behind a residue if not rinsed thoroughly, which may require additional cleaning. While it serves its purpose adequately for basic cleaning needs, there may be better options available for more heavy-duty cleaning tasks. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: bonAmi.id } },
+        comments: {
+            create: {
+                content: 'Mine works amazing',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const bonami3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `Bon Ami cleaning powder is a classic and effective cleaner that I trust for tackling tough messes in the kitchen and beyond. Its gentle yet powerful formula removes stains and grease without scratching surfaces, making it safe for use on a variety of items. Whether I'm cleaning cookware, countertops, or sinks, Bon Ami delivers reliable results every time. Plus, the biodegradable ingredients give me peace of mind knowing it's environmentally friendly. A must-have for any eco-conscious home, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: bonAmi.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ DISH SOAP AND SPONGE ------>
+const soap1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `The combination of dish soap and sponge is a classic and effective cleaning duo for washing dishes and cleaning surfaces in the kitchen. The dish soap cuts through grease and grime, while the sponge provides gentle scrubbing action for thorough cleaning. The sponge's absorbent material holds soap well for a rich lather, ensuring dishes and surfaces are left sparkling clean. While the sponge may wear out over time with heavy use, its affordability and versatility make it a staple in any kitchen cleaning routine. A solid four-star rating for its effectiveness and convenience.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: dishSoapSponge.id } },
+        comments: {
+            create: {
+                content: 'Cleans well',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const soap2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `The combination of dish soap and sponge is a basic but reliable option for everyday cleaning tasks in the kitchen. However, I found that the sponge tends to wear out quickly, especially with heavy use, leading to potential bacterial buildup if not replaced regularly. Additionally, some dish soaps can leave behind a residue if not rinsed thoroughly, which may require additional cleaning. While they serve their purpose adequately for basic cleaning needs, there may be better options available for more durable and hygienic cleaning tools. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: dishSoapSponge.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const soap3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: ` swear by the combination of dish soap and sponge for keeping my kitchen clean and tidy! The dish soap cuts through grease and grime with ease, while the sponge provides gentle scrubbing action without scratching surfaces. Whether I'm washing dishes, wiping down countertops, or cleaning appliances, this dynamic duo delivers excellent results every time. A must-have for any home cook, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: dishSoapSponge.id } },
+        comments: {
+            create: {
+                content: 'Seriously?',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ DISH TOWEL ------>
+const towel1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `Dish towels are a kitchen essential for drying dishes, wiping down countertops, and handling hot cookware. Their absorbent material quickly soaks up spills and moisture, while their durable construction ensures long-lasting performance. The soft texture is gentle on delicate dishes and surfaces, while the looped design allows for easy hanging and drying. While they may become stained or worn over time with frequent use, their affordability and versatility make them a staple in any kitchen. A solid four-star rating for their functionality and convenience.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: dishTowel.id } },
+        comments: {
+            create: {
+                content: 'I love mine',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const towel2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `Dish towels are a useful tool for drying dishes and wiping down surfaces, but I found that they tend to become damp quickly, especially when used to dry large quantities of dishes. Additionally, some towels may lint or shed fibers, leaving behind residue on dishes and surfaces. While they serve their purpose adequately for basic kitchen tasks, there may be better options available for more absorbent and lint-free towels. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: dishTowel.id } },
+        comments: {
+            create: {
+                content: 'Same',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const towel3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `I love my dish towels! They're perfect for drying dishes, wiping down countertops, and handling hot cookware with ease. Their absorbent material quickly soaks up spills and moisture, while their durable construction ensures long-lasting performance. Plus, the soft texture is gentle on delicate dishes and surfaces. Whether I'm cooking dinner or cleaning up after a meal, my dish towels are always within reach. A must-have for any kitchen, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: dishTowel.id } },
+        comments: {
+            create: {
+                content: 'Is that even possible?',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ RUBBER GLOVES ------>
+const rubber1 = await prisma.post.create({
+    data: {
+        title: "Works great!",
+        content: `Rubber gloves are a practical and essential tool for protecting hands during cleaning tasks in the kitchen. Their durable material provides a barrier against hot water, chemicals, and cleaning agents, preventing skin irritation and damage. The textured surface enhances grip and control, while the cotton lining adds comfort during extended use. While they may become sticky or deteriorate over time with frequent use, their affordability and effectiveness make them a staple in any cleaning routine. A solid four-star rating for their durability and functionality.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: rubberGloves.id } },
+        comments: {
+            create: {
+                content: "They're not as grippy as bare hands, though",
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const rubber2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `Rubber gloves are useful for protecting hands during cleaning tasks, but I found that they can be uncomfortable to wear for extended periods, especially in hot or humid conditions. Additionally, some gloves may have a strong odor when first purchased, which may require airing out before use. While they serve their purpose adequately for basic cleaning needs, there may be better options available for more comfortable and odor-free gloves. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: rubberGloves.id } },
+        comments: {
+            create: {
+                content: 'I swear by my pair',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const rubber3 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `Rubber gloves are a lifesaver in my kitchen! They protect my hands from hot water, chemicals, and cleaning agents, allowing me to tackle tough cleaning tasks without worry. The textured surface provides excellent grip and control, while the cotton lining adds comfort during extended use. Whether I'm washing dishes, scrubbing countertops, or cleaning appliances, my rubber gloves are always up to the task. A must-have for any home cook, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: rubberGloves.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ TRASH CAN ------>
+const trash1 = await prisma.post.create({
+    data: {
+        title: "Essential!",
+        content: `The trash can is a basic but essential item for managing waste and keeping the kitchen clean and tidy. Its sturdy construction and spacious capacity make it suitable for holding household trash, food scraps, and recycling items. The hands-free operation allows for easy disposal of waste, while the lid helps contain odors and prevent pests. While it may not be the most stylish or high-tech trash can on the market, its functionality and reliability make it a staple in any kitchen. A solid four-star rating for its durability and convenience.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: trashCan.id } },
+        comments: {
+            create: {
+                content: 'I have 3',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const trash2 = await prisma.post.create({
+    data: {
+        title: "Works even better!",
+        content: `The trash can is a practical item for managing waste in the kitchen, but I found that it can be challenging to keep clean and odor-free, especially with frequent use. Additionally, some trash cans may have a flimsy construction, leading to potential leaks or spills. While they serve their purpose adequately for basic waste disposal needs, there may be better options available for more durable and hygienic trash cans. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: trashCan.id } },
+        comments: {
+            create: {
+                content: 'Too true',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const trash3 = await prisma.post.create({
+    data: {
+        title: "Works perfectly!",
+        content: `I couldn't live without my trash can! It's the perfect size for managing household waste and recycling items with ease. The sturdy construction and hands-free operation make disposal a breeze, while the lid helps contain odors and prevent pests. Whether I'm cooking dinner or cleaning up after a meal, my trash can is always there to help keep my kitchen clean and organized. A must-have for any home, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: trashCan.id } },
+        comments: {
+            create: {
+                content: 'I agree',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<------ ALL PURPOSE CLEANER ------>
+const all1 = await prisma.post.create({
+    data: {
+        title: "Versatile",
+        content: `The all-purpose cleaner is a versatile and effective cleaning solution for tackling a variety of messes and surfaces in the kitchen. Its powerful formula cuts through grease and grime with ease, leaving surfaces sparkling clean and smelling fresh. Whether I'm wiping down countertops, cleaning appliances, or scrubbing floors, the all-purpose cleaner delivers reliable results every time. While it may contain harsh chemicals, its effectiveness and convenience make it a staple in any cleaning routine. A solid four-star rating for its versatility and performance.`,
+        rating: 4,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: allPurposeCleaner.id } },
+        comments: {
+            create: {
+                content: '',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 
+const all2 = await prisma.post.create({
+    data: {
+        title: "Great but...",
+        content: `The all-purpose cleaner is a convenient option for cleaning surfaces in the kitchen, but I found that it can leave behind a residue if not rinsed thoroughly, which may require additional cleaning. Additionally, some cleaners may have a strong chemical odor that lingers after use, which can be unpleasant. While they serve their purpose adequately for basic cleaning needs, there may be better options available for more environmentally friendly and odor-free cleaners. A decent choice for occasional use, deserving of a three-star rating.`,
+        rating: 3,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: allPurposeCleaner.id } },
+        comments: {
+            create: {
+                content: 'True',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
+
+const all3 = await prisma.post.create({
+    data: {
+        title: "Ahmaaazing",
+        content: `I swear by my all-purpose cleaner for keeping my kitchen clean and sanitized! Its powerful formula cuts through grease and grime with ease, leaving surfaces sparkling clean and smelling fresh. Whether I'm wiping down countertops, cleaning appliances, or scrubbing floors, the all-purpose cleaner delivers excellent results every time. Plus, the convenient spray bottle makes application a breeze. A must-have for any home, deserving of a glowing five-star rating.`,
+        rating: 5,
+        user: { connect: { id: randomUser } },
+        equipment: { connect: { id: allPurposeCleaner.id } },
+        comments: {
+            create: {
+                content: 'Seriously?',
+                user: { connect: { id: randomUser } },
+            }
+        }
+    },
+    include: { user: true, equipment: true }
+})
 //<----------------------- COOKING -------------------------->
 //<------ PARCHMENT PAPER LINERS ------>
 const parchment1 = await prisma.post.create({
