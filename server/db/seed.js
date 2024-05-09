@@ -1087,7 +1087,7 @@ const soap2 = await prisma.post.create({
 const soap3 = await prisma.post.create({
     data: {
         title: "Works even better!",
-        content: ` swear by the combination of dish soap and sponge for keeping my kitchen clean and tidy! The dish soap cuts through grease and grime with ease, while the sponge provides gentle scrubbing action without scratching surfaces. Whether I'm washing dishes, wiping down countertops, or cleaning appliances, this dynamic duo delivers excellent results every time. A must-have for any home cook, deserving of a glowing five-star rating.`,
+        content: `I swear by the combination of dish soap and sponge for keeping my kitchen clean and tidy! The dish soap cuts through grease and grime with ease, while the sponge provides gentle scrubbing action without scratching surfaces. Whether I'm washing dishes, wiping down countertops, or cleaning appliances, this dynamic duo delivers excellent results every time. A must-have for any home cook, deserving of a glowing five-star rating.`,
         rating: 5,
         user: { connect: { id: randomUser } },
         equipment: { connect: { id: dishSoapSponge.id } },
