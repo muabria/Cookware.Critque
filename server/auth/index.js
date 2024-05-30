@@ -33,9 +33,9 @@ authRouter.get("/users",[requireUser, requireAdmin], async (req, res, next) => {
 authRouter.get("/users/validate", async (req, res, next) => {
     try {
         const user = prisma.user
-        const users = await user.findMany();
-
-        delete user.password
+        const users = await user.findMany({
+            select: {username: true}
+        });
         res.send(users);
     } catch (error) {
         next(error);
