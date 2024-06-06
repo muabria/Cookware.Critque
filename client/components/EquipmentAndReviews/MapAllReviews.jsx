@@ -1,7 +1,6 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { useMediaQuery, useTheme } from "@mui/material";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -15,9 +14,6 @@ import { useGetReviewsQuery } from '../../redux/api';
 import EquipmentName from './EquipmentName';
 
 const MapAllReviews = () => {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
     const { data, error, isLoading } = useGetReviewsQuery()
 
     if (isLoading) {

@@ -14,7 +14,7 @@ const EquipmentName = ({ equipmentId }) => {
     const currentEquipment = data && data.find((equipment) => { return equipment.id === equipmentId });
 
     return (
-        <Typography align='center' sx={{ color: '#8F8F8F' }}>
+        <Typography variant="h6" align='center' sx={{ color: '#489995' }}>
             {currentEquipment.name}
         </Typography>
     )
