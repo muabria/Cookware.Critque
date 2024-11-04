@@ -42,8 +42,7 @@ used
 10. Open the app on your localhost at the port you specified!
 
 ## Known Issues  
-- Error handling for updating records  
-- Update forms do not auto-populate with current content    
-- Admins are not able to delete comments  
+- Seed broken
+- Error handling for updating records        
 - There are very few character limits on the forms
 - Some purchase links do not go to the right place
